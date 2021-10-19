@@ -1,11 +1,9 @@
-import StringUtils;
-
 public class Order{
     private int tableID;
     private MenuItem[] itemList;
     private Staff orderCreator;
-    private final TAX_RATE = 0.07; // 7% tax
-    private final DISCOUNT_RATE = 0.05;
+    private final double TAX_RATE = 0.07; // 7% tax
+    private final double DISCOUNT_RATE = 0.05;
     private Customer patron;
     private double tax;
     private double subTotal; // before taxes, discounts included
@@ -18,6 +16,7 @@ public class Order{
         this.patron = patron;
         this.itemList = new MenuItem[itemList.length];
         this.subTotal = 0;
+        //this.timestamp = ?
         int i = 0;
 
         for (MenuItem item : itemList){
@@ -45,7 +44,23 @@ public class Order{
     }
 
     public void printInvoice(){
-        
+        String restaurantName = "Happy Chicken Diner";
+        int rowLength = 63;
+        for (int i = 0; i < rowLength; i++) { // print a ----- row
+            System.out.print("-");
+        }
+        System.out.println();
+        String leftFormat = "%-"+((rowLength/2)-(restaurantName.length()/2))+"s";
+        String rightFormat = "%"+((rowLength/2)-(restaurantName.length()/2))+"s";
+        System.out.format(leftFormat, "|");
+        System.out.print(restaurantName);
+        System.out.format(rightFormat, "|");
+        for (int i = 0; i < rowLength; i++) { // print a ----- row
+            System.out.print("-");
+        }
+        System.out.println();
+
+
     }
 
 
