@@ -46,19 +46,50 @@ public class Order{
     public void printInvoice(){
         String restaurantName = "Happy Chicken Diner";
         int rowLength = 63;
+        //Line 1:
         for (int i = 0; i < rowLength; i++) { // print a ----- row
             System.out.print("-");
         }
         System.out.println();
+        //Line 2:
         String leftFormat = "%-"+((rowLength/2)-(restaurantName.length()/2))+"s";
         String rightFormat = "%"+((rowLength/2)-(restaurantName.length()/2))+"s";
         System.out.format(leftFormat, "|");
         System.out.print(restaurantName);
         System.out.format(rightFormat, "|");
+        System.out.println();
+        //Line 3:
         for (int i = 0; i < rowLength; i++) { // print a ----- row
             System.out.print("-");
         }
         System.out.println();
+        //Line 4:
+        System.out.print("| Item");
+        String priceFormat = "%"+(rowLength-6)+"s";
+        System.out.format(priceFormat, "|    Price    |");
+        System.out.println();
+        //Line 5:
+        for (int i = 0; i < rowLength; i++) { // print a ----- row
+            System.out.print("-");
+        }
+        System.out.println();
+        //Line 6:
+        for (item : itemList){
+            String itemName = item.getName();
+            String leftString = "| "+itemName;
+            System.out.print(leftString);
+            priceFormat = "%"+(rowLength-leftString.length())+"s";
+            String priceString = "|    "+Double.toString(item.getPrice())+"    |";
+            System.out.format(priceFormat, priceString);
+
+            for (int i = 0; i < rowLength; i++) { // print a ----- row
+                System.out.print("-");
+            }
+            System.out.println();
+        }
+
+
+
 
 
     }
