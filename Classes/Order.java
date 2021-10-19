@@ -81,16 +81,47 @@ public class Order{
             priceFormat = "%"+(rowLength-leftString.length())+"s";
             String priceString = "|    "+Double.toString(item.getPrice())+"    |";
             System.out.format(priceFormat, priceString);
-
-            for (int i = 0; i < rowLength; i++) { // print a ----- row
-                System.out.print("-");
-            }
             System.out.println();
         }
+        for (int i = 0; i < rowLength; i++) { // print a ----- row
+            System.out.print("-");
+        }
+        System.out.println();
+        //Bottom segment:
+        String subTotalPrice = Double.toString(subTotal);
+        String totalPrice = Double.toString(grandTotal);
+        String discountRate = Integer.toString((int)(100*DISCOUNT_RATE)) + "%";
+        String taxRate = Integer.toString((int)(100*TAX_RATE)) + "%";
 
+        String discountFormat = String.format("%5s", discountRate);
+        String subTotalFormat = String.format("%5s", subTotalPrice);
+        String totalFormat = String.format("%5s", totalPrice);
+        String taxFormat = String.format("%5s", taxRate);
 
+        String subTotalString = "subTotal: "+subTotalFormat+"    |";
+        String discountString = "Discount: "+discountFormat+"    |";
+        String taxString = "Tax:      "+taxFormat+"    |";
+        String totalString = "Total:    "+totalFormat+"    |";
 
+        String resultFormatter = "%"+(rowLength-1)+"s";
 
+        System.out.print("|");
+        System.out.format(resultFormatter, subTotalString);
+        System.out.println();
+        System.out.print("|");
+        System.out.format(resultFormatter, discountString);
+        System.out.println();
+        System.out.print("|");
+        System.out.format(resultFormatter, taxString);
+        System.out.println();
+        System.out.print("|");
+        System.out.format(resultFormatter, totalString);
+        System.out.println();
+
+        for (int i = 0; i < rowLength; i++) { // print a ----- row
+            System.out.print("-");
+        }
+        System.out.println();
 
     }
 
