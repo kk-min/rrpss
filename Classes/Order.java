@@ -66,7 +66,7 @@ public class Order{
         //Line 4:
         System.out.print("| Item");
         String priceFormat = "%"+(rowLength-6)+"s";
-        System.out.format(priceFormat, "|    Price    |");
+        System.out.format(priceFormat, "|     Price    |");
         System.out.println();
         //Line 5:
         for (int i = 0; i < rowLength; i++) { // print a ----- row
@@ -79,7 +79,7 @@ public class Order{
             String leftString = "| "+itemName;
             System.out.print(leftString);
             priceFormat = "%"+(rowLength-leftString.length())+"s";
-            String priceString = "|    "+Double.toString(item.getPrice())+"    |";
+            String priceString = "|    $"+Double.toString(item.getPrice())+"    |";
             System.out.format(priceFormat, priceString);
             System.out.println();
         }
@@ -88,15 +88,15 @@ public class Order{
         }
         System.out.println();
         //Bottom segment:
-        String subTotalPrice = Double.toString(subTotal);
-        String totalPrice = Double.toString(grandTotal);
+        String subTotalPrice = "$"+Double.toString(subTotal);
+        String totalPrice = "$"+Double.toString(grandTotal);
         String discountRate = Integer.toString((int)(100*DISCOUNT_RATE)) + "%";
         String taxRate = Integer.toString((int)(100*TAX_RATE)) + "%";
 
-        String discountFormat = String.format("%5s", discountRate);
-        String subTotalFormat = String.format("%5s", subTotalPrice);
-        String totalFormat = String.format("%5s", totalPrice);
-        String taxFormat = String.format("%5s", taxRate);
+        String discountFormat = String.format("%"+totalPrice.length()+"s", discountRate);
+        String subTotalFormat = String.format("%"+totalPrice.length()+"s", subTotalPrice);
+        String totalFormat = String.format("%"+totalPrice.length()+"s", totalPrice);
+        String taxFormat = String.format("%"+totalPrice.length()+"s", taxRate);
 
         String subTotalString = "subTotal: "+subTotalFormat+"    |";
         String discountString = "Discount: "+discountFormat+"    |";
@@ -106,10 +106,10 @@ public class Order{
         String resultFormatter = "%"+(rowLength-1)+"s";
 
         System.out.print("|");
-        System.out.format(resultFormatter, subTotalString);
+        System.out.format(resultFormatter, discountString);
         System.out.println();
         System.out.print("|");
-        System.out.format(resultFormatter, discountString);
+        System.out.format(resultFormatter, subTotalString);
         System.out.println();
         System.out.print("|");
         System.out.format(resultFormatter, taxString);
