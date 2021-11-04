@@ -33,15 +33,15 @@ public class Printer{
             String leftString = "| "+itemName;
             System.out.print(leftString);
             priceFormat = "%"+(rowLength-leftString.length())+"s";
-            String priceString = "|    $"+Double.toString(item.getPrice())+"    |";
+            String priceString = "|    $"+String.format("%.2f",item.getPrice())+"    |";
             System.out.format(priceFormat, priceString);
             System.out.println();
         }
         System.out.printf("-".repeat(rowLength));
         System.out.println();
         //Bottom segment:
-        String subTotalPrice = "$"+Double.toString(subTotal);
-        String totalPrice = "$"+Double.toString(grandTotal);
+        String subTotalPrice = "$"+String.format("%.2f",subTotal);
+        String totalPrice = "$"+String.format("%.2f",grandTotal);
         String discountRate = Integer.toString((int)(100*DISCOUNT_RATE)) + "%";
         String taxRate = Integer.toString((int)(100*TAX_RATE)) + "%";
 
@@ -112,7 +112,7 @@ public class Printer{
         //Line 7:
         System.out.print("| Sales Revenue");
         String revenueFormat = "%"+(rowLength-15)+"s";
-        String revenueString = "|    $"+report.getTotalRevenue()+"    |";
+        String revenueString = "|    $"+String.format("%.2f",report.getTotalRevenue())+"    |";
         System.out.format(revenueFormat, revenueString);
         System.out.println();
         //Line 8:
@@ -122,7 +122,7 @@ public class Printer{
         //Line 9:
         System.out.print("| Earnings before income tax");
         String beforeTaxFormat = "%"+(rowLength-28)+"s";
-        String beforeTaxString = "|    $"+report.getTotalRevenue()+"    |";
+        String beforeTaxString = "|    $"+String.format("%.2f",report.getTotalRevenue())+"    |";
         System.out.format(beforeTaxFormat, beforeTaxString);
         System.out.println();
 
@@ -134,7 +134,7 @@ public class Printer{
 
         System.out.println("| Income tax expense");
         String incomeTaxFormat = "%"+(rowLength-20)+"s";
-        String incomeTaxString = "|    $"+(report.getTotalRevenue()*(double)(7/107))+"    |";
+        String incomeTaxString = "|    $"+String.format("%.2f",(report.getTotalRevenue()*(double)(7/107)))+"    |";
         System.out.format(incomeTaxFormat, incomeTaxString);
         System.out.println();
 
@@ -146,7 +146,7 @@ public class Printer{
 
         System.out.println("| Net income");
         String netIncomeFormat = "%"+(rowLength-12)+"s";
-        String netIncomeString = "|    $"+(report.getTotalRevenue()*(double)(100/107))+"    |";
+        String netIncomeString = "|    $"+String.format("%.2f",(report.getTotalRevenue()*(double)(100/107)))+"    |";
         System.out.format(netIncomeFormat, netIncomeString);
         System.out.println();
 
