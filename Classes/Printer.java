@@ -110,6 +110,24 @@ public class Printer{
         System.out.println();
 
         //Line 7:
+        String itemsSoldHeader = "ITEMS SOLD";
+        leftFormat = "%-"+((rowLength/2)-(itemsSoldHeader.length()/2))+"s";
+        rightFormat = "%"+((rowLength/2)-(itemsSoldHeader.length()/2))+"s";
+        System.out.format(leftFormat, "|");
+        System.out.print(Header);
+        System.out.format(rightFormat, "|");
+        System.out.println();
+
+        //Line 8:
+        System.out.printf("-".repeat(rowLength));
+        System.out.println();
+
+        //Item lists:
+        for (Order order : orderList){
+            
+        }
+
+        //Line 7:
         System.out.print("| Sales Revenue");
         String revenueFormat = "%"+(rowLength-15)+"s";
         String revenueString = "|    $"+String.format("%.2f",report.getTotalRevenue())+"    |";
