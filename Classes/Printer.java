@@ -1,3 +1,5 @@
+import java.util.Map;
+
 public class Printer{
 
     public static void printInvoice(Order order){
@@ -75,9 +77,10 @@ public class Printer{
 
     }
 
-    public static void generateReport(SalesRevenueReport report){
+    public static void generateReport(SalesRevenueReport report, Map alacarteStatistics, Map promotionalStatistics, String[] menuItemNames){
         String Header = "SALES REVENUE REPORT" +" ("+report.getPeriod()+")";
         int rowLength = 63;
+        int count;
 
         //Line 1:
         System.out.printf("-".repeat(rowLength));
@@ -123,32 +126,44 @@ public class Printer{
         System.out.println();
 
         //Item lists:
-        for (Order order : orderList){
-            
+        for (String name : menuItemNames){
+            String leftString = "| "+name+": ";
+            System.out.print(leftString);
+            count = (int) alacarteStatistics.get(name);
+            System.out.print(count);
+            System.out.println(" (Ala Carte)");
+            System.out.print(leftString);
+            count = (int) promotionalStatistics.get(name);
+            System.out.print(count);
+            System.out.println(" (Promotional)");
         }
 
-        //Line 7:
+        //Line x:
+        System.out.printf("-".repeat(rowLength));
+        System.out.println();
+
+        //Line x+1:
         System.out.print("| Sales Revenue");
         String revenueFormat = "%"+(rowLength-15)+"s";
         String revenueString = "|    $"+String.format("%.2f",report.getTotalRevenue())+"    |";
         System.out.format(revenueFormat, revenueString);
         System.out.println();
-        //Line 8:
+        //Line x+2:
         System.out.printf("-".repeat(rowLength));
         System.out.println();
 
-        //Line 9:
+        //Line x+2:
         System.out.print("| Earnings before income tax");
         String beforeTaxFormat = "%"+(rowLength-28)+"s";
         String beforeTaxString = "|    $"+String.format("%.2f",report.getTotalRevenue())+"    |";
         System.out.format(beforeTaxFormat, beforeTaxString);
         System.out.println();
 
-        //Line 10:
+        //Line x+3:
         System.out.printf("-".repeat(rowLength));
         System.out.println();
 
-        //Line 11:
+        //Line x+4:
 
         System.out.println("| Income tax expense");
         String incomeTaxFormat = "%"+(rowLength-20)+"s";
@@ -156,20 +171,18 @@ public class Printer{
         System.out.format(incomeTaxFormat, incomeTaxString);
         System.out.println();
 
-        //Line 12:
+        //Line x+5:
         System.out.printf("-".repeat(rowLength));
         System.out.println();
 
-        //Line 13:
-
+        //Line x+6:
         System.out.println("| Net income");
         String netIncomeFormat = "%"+(rowLength-12)+"s";
         String netIncomeString = "|    $"+String.format("%.2f",(report.getTotalRevenue()*(double)(100/107)))+"    |";
         System.out.format(netIncomeFormat, netIncomeString);
         System.out.println();
 
-        //Line 14:
-
+        //Line x+7:
         System.out.printf("-".repeat(rowLength));
         System.out.println();
     }
