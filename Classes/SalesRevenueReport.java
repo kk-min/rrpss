@@ -5,7 +5,6 @@ public class SalesRevenueReport {
     private double totalRevenue;
 
     public SalesRevenueReport(Order[] orderList, Staff[] staffList, String period){
-
         int i = 0;
         this.totalRevenue = 0;
         this.orderList = new Order[orderList.length];
