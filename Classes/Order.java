@@ -10,10 +10,9 @@ public class Order{
     private double grandTotal; // after taxes
     //private Time timestamp; // TO DO!
 
-    public Order(int tableID, MenuItem[] itemList, Staff orderCreator, Customer patron){
+    public Order(int tableID, MenuItem[] itemList, Staff orderCreator, boolean isMember){
         this.tableID = tableID;
         this.orderCreator = orderCreator;
-        this.patron = patron;
         this.itemList = new MenuItem[itemList.length];
         this.subTotal = 0;
         //this.timestamp = ?
@@ -24,14 +23,11 @@ public class Order{
             this.subTotal += item.getPrice(); // add all prices of individual MenuItems into our subTotal attribute
         }
 
-        if (Customer.isMember()){ // check Membership status
+        if (isMember){ // check Membership status
             this.subTotal = (this.subTotal)*DISCOUNT_RATE;
         }
 
         this.grandTotal = subTotal*(1+TAX_RATE); // Add tax
-        if (Customer.isMember()){ // check Membership status
-            this.grandTotal = (this.grandTotal)*DISCOUNT_RATE;
-        }
 
     }
 
