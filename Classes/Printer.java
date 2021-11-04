@@ -1,15 +1,13 @@
 public class Printer{
 
-    public void printInvoice(Order order){
+    public static void printInvoice(Order order){
         String restaurantName = "Happy Chicken Diner";
         MenuItem[] itemList = order.getitemList();
         double subTotal = order.getSubTotal();
         double grandTotal = order.getGrandTotal();
         int rowLength = 63;
         //Line 1:
-        for (int i = 0; i < rowLength; i++) { // print a ----- row
-            System.out.print("-");
-        }
+        System.out.printf("-".repeat(rowLength));
         System.out.println();
         //Line 2:
         String leftFormat = "%-"+((rowLength/2)-(restaurantName.length()/2))+"s";
@@ -19,9 +17,7 @@ public class Printer{
         System.out.format(rightFormat, "|");
         System.out.println();
         //Line 3:
-        for (int i = 0; i < rowLength; i++) { // print a ----- row
-            System.out.print("-");
-        }
+        System.out.printf("-".repeat(rowLength));
         System.out.println();
         //Line 4:
         System.out.print("| Item");
@@ -29,9 +25,7 @@ public class Printer{
         System.out.format(priceFormat, "|     Price    |");
         System.out.println();
         //Line 5:
-        for (int i = 0; i < rowLength; i++) { // print a ----- row
-            System.out.print("-");
-        }
+        System.out.printf("-".repeat(rowLength));
         System.out.println();
         //Line 6:
         for (MenuItem item : itemList){
@@ -43,9 +37,7 @@ public class Printer{
             System.out.format(priceFormat, priceString);
             System.out.println();
         }
-        for (int i = 0; i < rowLength; i++) { // print a ----- row
-            System.out.print("-");
-        }
+        System.out.printf("-".repeat(rowLength));
         System.out.println();
         //Bottom segment:
         String subTotalPrice = "$"+Double.toString(subTotal);
@@ -78,21 +70,17 @@ public class Printer{
         System.out.format(resultFormatter, totalString);
         System.out.println();
 
-        for (int i = 0; i < rowLength; i++) { // print a ----- row
-            System.out.print("-");
-        }
+        System.out.printf("-".repeat(rowLength));
         System.out.println();
 
     }
 
-    public void generateReport(SalesRevenueReport report){
+    public static void generateReport(SalesRevenueReport report){
         String Header = "SALES REVENUE REPORT" +" ("+report.getPeriod()+")";
         int rowLength = 63;
 
         //Line 1:
-        for (int i = 0; i < rowLength; i++) { // print a ----- row
-            System.out.print("-");
-        }
+        System.out.printf("-".repeat(rowLength));
         System.out.println();
 
         //Line 2:
@@ -104,9 +92,7 @@ public class Printer{
         System.out.println();
 
         //Line 3:
-        for (int i = 0; i < rowLength; i++) { // print a ----- row
-            System.out.print("-");
-        }
+        System.out.printf("-".repeat(rowLength));
         System.out.println();
 
         //Line 4 and 5:
@@ -120,9 +106,7 @@ public class Printer{
         System.out.println();
 
         //Line 6:
-        for (int i = 0; i < rowLength; i++) { // print a ----- row
-            System.out.print("-");
-        }
+        System.out.printf("-".repeat(rowLength));
         System.out.println();
 
         //Line 7:
@@ -132,10 +116,7 @@ public class Printer{
         System.out.format(revenueFormat, revenueString);
         System.out.println();
         //Line 8:
-
-        for (int i = 0; i < rowLength; i++) { // print a ----- row
-            System.out.print("-");
-        }
+        System.out.printf("-".repeat(rowLength));
         System.out.println();
 
         //Line 9:
@@ -146,9 +127,7 @@ public class Printer{
         System.out.println();
 
         //Line 10:
-        for (int i = 0; i < rowLength; i++) { // print a ----- row
-            System.out.print("-");
-        }
+        System.out.printf("-".repeat(rowLength));
         System.out.println();
 
         //Line 11:
@@ -160,9 +139,7 @@ public class Printer{
         System.out.println();
 
         //Line 12:
-        for (int i = 0; i < rowLength; i++) { // print a ----- row
-            System.out.print("-");
-        }
+        System.out.printf("-".repeat(rowLength));
         System.out.println();
 
         //Line 13:
@@ -175,13 +152,8 @@ public class Printer{
 
         //Line 14:
 
-        for (int i = 0; i < rowLength; i++) { // print a ----- row
-            System.out.print("-");
-        }
+        System.out.printf("-".repeat(rowLength));
         System.out.println();
-
-
-
     }
 
 }
