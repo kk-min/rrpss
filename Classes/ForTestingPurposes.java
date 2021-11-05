@@ -204,23 +204,19 @@ public class ForTestingPurposes {
         System.out.printf("-".repeat(rowLength));
         System.out.println();
 
-        //Line x+2:
+        //Line x+3:
         System.out.print("| Earnings before income tax");
         String beforeTaxFormat = "%"+(rowLength-28)+"s";
-
-
-
         String beforeTaxString = "$"+String.format("%.2f",90543.53)+"    |";
         beforeTaxString = String.format("|"+" ".repeat(revenueString.length()-beforeTaxString.length()-1)+beforeTaxString);
         System.out.format(beforeTaxFormat, beforeTaxString);
         System.out.println();
 
-        //Line x+3:
+        //Line x+4:
         System.out.printf("-".repeat(rowLength));
         System.out.println();
 
-        //Line x+4:
-
+        //Line x+5:
         System.out.print("| Income tax expense");
         String incomeTaxFormat = "%"+(rowLength-20)+"s";
         String incomeTaxString = "$"+String.format("%.2f",(105698.58*(double)(7/107)))+"    |";
@@ -228,11 +224,11 @@ public class ForTestingPurposes {
         System.out.format(incomeTaxFormat, incomeTaxString);
         System.out.println();
 
-        //Line x+5:
+        //Line x+6:
         System.out.printf("-".repeat(rowLength));
         System.out.println();
 
-        //Line x+6:
+        //Line x+7:
         System.out.print("| Net income");
         String netIncomeFormat = "%"+(rowLength-12)+"s";
         String netIncomeString = "$"+String.format("%.2f",(105698.58*(double)(100/107)))+"    |";
@@ -240,7 +236,7 @@ public class ForTestingPurposes {
         System.out.format(netIncomeFormat, netIncomeString);
         System.out.println();
 
-        //Line x+7:
+        //Line x+8:
         System.out.printf("-".repeat(rowLength));
         System.out.println();
     }
