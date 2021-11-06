@@ -21,13 +21,14 @@ public class MainApp {
 		
 	}
 	
-	private void createTableCollection() {
-		int i,j,n = 0,capacity = 2;
-		for(i = 0; i < 5; i++) {
+	private static void createTableCollection() {
+		int i = 0,j,n = 1,capacity = 2;
+		while(capacity <= 10) {
 			for(j = 0; j < tableTrack[i]; j++) {
 				Table table = new Table(n++,capacity);
 				tableCollection.add(table);
 			}
+			i++;
 			capacity += 2;
 		}
 	}
