@@ -4,7 +4,7 @@ public class Printer{
 
     public static void printInvoice(Order order){
         String restaurantName = "Happy Chicken Diner";
-        MenuItem[] itemList = order.getitemList();
+        Map<AMenuItem, Integer> itemList = order.getitemList();
         double subTotal = order.getSubTotal();
         double grandTotal = order.getGrandTotal();
         int rowLength = 63;
@@ -25,7 +25,7 @@ public class Printer{
         // Info Line:
         String orderIDString = "| Order ID: "+order.getOrderID()+" |";
         String orderIDFormat = "%-"+orderIDString.length()+"s";
-        String dateTimeString = "| Date: "+order.getPeriod()+" |";
+        String dateTimeString = "| Date: "+order.getDateTime()+" |";
         String dateTimeFormat = "%"+dateTimeString.length()+"s";
         int midLength = rowLength-orderIDString.length()-dateTimeString.length();
         String tableIDString = " Table ID: "+order.getTableID()+" ";
@@ -48,12 +48,12 @@ public class Printer{
         System.out.printf("-".repeat(rowLength));
         System.out.println();
         //Line 6:
-        for (MenuItem item : itemList){
+        for (AMenuItem item : itemList){
             String itemName = item.getName();
-            String leftString = "| "+itemName;
+            String leftString = "| "+itemName+" x"+itemList.get(item);
             System.out.print(leftString);
             priceFormat = "%"+(rowLength-leftString.length())+"s";
-            String priceString = "|     $"+String.format("%.2f",item.getPrice())+"     |";
+            String priceString = "|     $"+String.format("%.2f",item.getPrice()*itemList.get(item))+"     |";
             System.out.format(priceFormat, priceString);
             System.out.println();
         }
