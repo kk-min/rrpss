@@ -1,0 +1,37 @@
+---------------------------------------------------------------
+                    Welcome to XXX Restaurant!
+---------------------------------------------------------------
+Select an option:
+
+1. Menu
+2. Order
+3. Reservation
+4. Print Order invoice
+5. Print Sale Revenue Report
+---------------------------------------------------------------
+<Menu submenu>
+Select an option:
+
+1. Create Ala Carte item
+2. Update Ala Carte item
+3. Remove Ala Carte item
+4. Create Promotional item
+5. Update Promotional item
+6. Remove Promotional item
+---------------------------------------------------------------
+<Order submenu>
+Select an option:
+
+1. Create Order
+2. View Order
+3. Add item to Order
+4. Remove item from Order
+---------------------------------------------------------------
+<Reservation submenu>
+Select an option:
+
+1. Create Reservation booking
+2. Check Reservation booking
+3. Remove Reservation booking
+4. Check Table availability
+---------------------------------------------------------------
