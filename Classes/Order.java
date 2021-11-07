@@ -66,5 +66,13 @@ public class Order{
         return this.dateTime;
     }
 
+    public double getTAX_RATE() {
+        return this.TAX_RATE;
+    }
+
+    public double getDISCOUNT_RATE(){
+        return this.DISCOUNT_RATE;
+    }
+
 
 }
