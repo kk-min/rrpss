@@ -62,8 +62,8 @@ public class Printer{
         //Bottom segment:
         String subTotalPrice = "$"+String.format("%.2f",subTotal);
         String totalPrice = "$"+String.format("%.2f",grandTotal);
-        String discountRate = Integer.toString((int)(100*DISCOUNT_RATE)) + "%";
-        String taxRate = Integer.toString((int)(100*TAX_RATE)) + "%";
+        String discountRate = Integer.toString((int)(100*order.getDISCOUNT_RATE)) + "%";
+        String taxRate = Integer.toString((int)(100*order.getTAX_RATE)) + "%";
 
         String discountFormat = String.format("%"+totalPrice.length()+"s", discountRate);
         String subTotalFormat = String.format("%"+totalPrice.length()+"s", subTotalPrice);
