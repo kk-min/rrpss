@@ -27,6 +27,26 @@ public class ForTestingPurposes {
         //Line 3:
         System.out.printf("-".repeat(rowLength)); // print a ----- row
         System.out.println();
+
+        // Info Line:
+        String orderIDString = "| Order ID: "+12345+" |";
+        String orderIDFormat = "%-"+orderIDString.length()+"s";
+        String dateTimeString = "| Date: "+"03/12/2021"+" |";
+        String dateTimeFormat = "%"+dateTimeString.length()+"s";
+        int midLength = rowLength-orderIDString.length()-dateTimeString.length();
+        String tableIDString = " Table ID: "+"12"+" ";
+        String tableIDFormat = "%-"+((midLength/2)+(tableIDString.length()/2))+"s";
+        System.out.format(orderIDFormat, orderIDString);
+        System.out.print(" ".repeat((midLength/2)-tableIDString.length()/2));
+        System.out.format(tableIDFormat, tableIDString);
+        System.out.format(dateTimeFormat, dateTimeString);
+        System.out.println();
+
+        System.out.printf("-".repeat(rowLength)); // print a ----- row
+        System.out.println();
+
+
+
         //Line 4:
         System.out.print("| Item");
         String priceFormat = "%"+(rowLength-6)+"s";
