@@ -11,35 +11,45 @@ public class Table {
 	private int capacity;
 	public static int MAX_CAPACITY = 10;
 	private int ID;
-	private boolean occupied;
-	private boolean reserved;
+	private TStatus status;
+
+	public enum TStatus {
+		EMPTY, RESERVED, OCCUPIED
+	};
 
 	public Table(int tableNo, int cap) {
 		this.ID = tableNo;
-		this.occupied = false;
-		this.reserved = false;
+		this.status = TStatus.EMPTY;
 		if (cap > 10)
 			capacity = 10;
 		else
 			capacity = cap;
 	}
 
-	public boolean isOccupied() {
-		return occupied;
+	public void setEmpty() {
+		this.status = TStatus.EMPTY;
 	}
 
-	public void assign() {
-		occupied = true;
-		reserved = true;
+	public void setReserved() {
+		if (this.status == TStatus.OCCUPIED) return;
+		else this.status = TStatus.RESERVED;
 	}
 
-	public void deassign() {
-		occupied = false;
-		reserved = false;
+	public void setOccupied() {
+		this.status = TStatus.OCCUPIED;
 	}
 
-	public void reserve() {
-		reserved = true;
+	public void deoccupy() {
+		for (Reservation r : MainApp.reservationCollection)
+			if (r.getTableID() == this.ID) {
+				this.status = TStatus.RESERVED;
+				return;
+			}
+		this.status = TStatus.EMPTY;
+	}
+
+	public TStatus getStatus() {
+		return status;
 	}
 
 	public int getID() {
@@ -73,16 +83,16 @@ public class Table {
 		return output;
 	}
 
-	public static void printTableAvailibilityByDateAndSession(LocalDate date, Reservation.ReservationSession session,
+	public static void printTableStatusByDateAndSession(LocalDate date, Reservation.ReservationSession session,
 			boolean now) {
 		ArrayList<Table> unavailable = Reservation.getTableBookedByDateAndSession(date, session);
-		ArrayList<Table> available = getTheOtherHalf(unavailable);
 		System.out.printf("%-9s %-10s %-8s\n", "TableID", "Capacity", "Status");
-		String status = "Unknown";
-		for (Table t : available) {
+		String status = "";
+		for (Table t : MainApp.tableCollection) {
+			status = "Available";
 			if (unavailable.contains(t))
 				status = "Reserved";
-			if (now && t.isOccupied())
+			if (now && t.getStatus() == Table.TStatus.OCCUPIED)
 				status = "Occupied";
 			System.out.printf("%-9d %-10d %-8s\n", t.getID(), t.getCapacity(), status);
 		}
