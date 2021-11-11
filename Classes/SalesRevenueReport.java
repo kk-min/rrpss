@@ -8,6 +8,14 @@ public class SalesRevenueReport {
         int i = 0;
         this.totalRevenue = 0;
         this.orderList = new ArrayList<Order>;
+        this.period = period;
+        LocalDate currentDate = DateTimeFormatHelper.getTodayDate(false);
+        switch(this.period){
+            case "DAY":
+                for ()
+            case "MONTH":
+            case "YEAR":
+        }
         for (Order order: orderList){
             this.orderList[i].add(order);
             this.totalRevenue += order.getGrandTotal();
@@ -19,8 +27,6 @@ public class SalesRevenueReport {
         for (Staff staff : staffList){
             this.staffList[i] = staff;
         }
-
-        this.period = period;
     }
 
 
