@@ -2,7 +2,7 @@ package Classes.AMenuItem;
 
 /**
  * Promotional Class
- * extend from Amenuitem
+ * extend from AMenuItem
  */
 public class Promotional extends AMenuItem  {
     /**

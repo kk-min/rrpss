@@ -1,8 +1,8 @@
 package Classes.AMenuItem;
 
 /**
-* beverage Class
-* extend from AlaCartitem
+* Beverage Class
+* extend from AlaCarteItem
 *
 */
 class Beverage extends AlaCarteItem {
