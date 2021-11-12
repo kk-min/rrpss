@@ -1,4 +1,4 @@
-package Classes.Miscellaneous;
+package Classes.Time;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -109,7 +109,7 @@ public class DateTimeFormatHelper {
         }
     }
 
-    public static long getTimeWithSGTimeZone() {
+    public static long getSysTimeMillisWithSGTimeZone() {
         return System.currentTimeMillis() + TO_UTC_8;
     }
 }
