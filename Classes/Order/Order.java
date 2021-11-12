@@ -152,6 +152,14 @@ public class Order{
     }
 
     /**
+     * Gets the order's creator
+     * @return this Order's creator (Staff)
+     */
+    public Staff getCreator(){
+        return this.createdBy;
+    }
+
+    /**
      * Gets the order's creation date
      * @return this Order's creation date
      */
