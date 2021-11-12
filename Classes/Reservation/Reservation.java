@@ -1,12 +1,13 @@
 package Classes.Reservation;
 
-import java.time.LocalTime;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.stream.Collectors;
-import Project.Table;
-import Project.MainApp;
+
+import Classes.Table.Table;
+
+// TODO: reservationCollection array is from ReservationInterface class, change the necessary lines below
 
 public class Reservation {
 	public enum ReservationSession {

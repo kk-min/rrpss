@@ -4,7 +4,7 @@ import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import Classes.Reservation.ReservationMenuUI;
+import Classes.Reservation.ReservationInterface;
 
 public class UITimerExample extends TimerTask {
 
@@ -18,6 +18,6 @@ public class UITimerExample extends TimerTask {
 	public void run() {
 		/*System.out.println(
 				Thread.currentThread().getName() + " " + name + " the task has executed successfully " + new Date());*/
-		ReservationMenuUI.checkExpiredReservations();
+		ReservationInterface.checkExpiredReservations();
 	}
 }

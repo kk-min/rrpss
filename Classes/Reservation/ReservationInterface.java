@@ -219,7 +219,7 @@ public class ReservationInterface {
 			System.out.println("Invalid reservation Id! Please check again!");
 	}
 
-	static void checkExpiredReservations() {
+	public static void checkExpiredReservations() {
 		Reservation r;
 		Iterator<Reservation> iter = MainApp.reservationCollection.iterator();
 		while (iter.hasNext()) {
