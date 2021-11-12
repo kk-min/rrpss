@@ -447,20 +447,23 @@ public class MenuManager  {
 			System.out.println("Deletion Failed...");
 	}
 
-	public static MainDish getMainDish(int Id) {
-		return maindishes.get(Id-1);
-	}
+	public static AMenuItem getMenuItem() {
+		displayMenu();
+		System.out.println("What is the type of the item (Main 1)/(Beverage 2)/(Dessert 3)?");
+		int choice = input.nextInt();
+		System.out.println("What is the ID of the item?");
+		int id = input.nextInt();
 
-	public static Beverage getBeverage(int Id) {
-		return beverages.get(Id-1);
-	}
-
-	public static Dessert getDessert(int Id) {
-		return desserts.get(Id-1);
-	}
-
-	public static Promotional getPromotional(int Id) {
-		return promotionals.get(Id-1);
+		switch (choice)
+		{
+			case 1:
+				return maindishes.get(id-1);
+			case 2:
+				return beverages.get(id-1);
+			case 3:
+				return desserts.get(id-1);
+		}
+		return null;
 	}
 }
 	

@@ -104,6 +104,7 @@ public class Order{
             return;
         }
         this.itemList.put(key, this.itemList.get(key)-quantity);
+        System.out.println("Item successfully removed.");
     }
 
     /**
@@ -123,7 +124,23 @@ public class Order{
         else{ // Item key is not inside the map
             this.itemList.put(key, quantity);
         }
+        System.out.println("Item successfully added.");
+    }
 
+    /**
+     * Gets the order's ID
+     * @return this Order's orderID
+     */
+    public int getID(){
+        return this.orderID;
+    }
+
+    /**
+     * Gets the order's tableID
+     * @return this Order's tableID
+     */
+    public int getTableID(){
+        return this.tableID;
     }
 
     /**
