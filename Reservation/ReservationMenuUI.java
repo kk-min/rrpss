@@ -147,7 +147,8 @@ public class ReservationMenuUI {
 				MainApp.reservationCollection.add(r);
 				System.out.println("Your reservation has been successfully recorded! Your reservation ID is " + lastNum
 						+ " , and your assigned table is " + tableNum + ".");
-				System.out.println("Please take notice that your reservation will expire after 30 minutes of your booking time.");
+				System.out.println(
+						"Please take notice that your reservation will expire after 30 minutes of your booking time.");
 			} else {
 				System.out.println(
 						"There are no available tables that can cater the number of pax for the day and session. We're sorry!");
@@ -221,8 +222,10 @@ public class ReservationMenuUI {
 		while (iter.hasNext()) {
 			r = iter.next();
 			if (r.getResvDate().equals(LocalDate.now()))
-				if (DateTimeFormatHelper.getTimeDifferenceMinutes(LocalTime.now(), r.getResvTime()) <= -30) {
+				if (DateTimeFormatHelper.getTimeDifferenceMinutes(LocalTime.now(), r.getResvTime()) <= -30
+						&& !(Table.getTableByID(r.getTableID()).getStatus() == Table.TStatus.OCCUPIED)) {
 					System.out.println("Reservation " + r.getResvId() + "has expired and removed.");
+					Table.getTableByID(r.getTableID());
 					iter.remove();
 				}
 		}
@@ -255,5 +258,13 @@ public class ReservationMenuUI {
 			}
 		}
 		return count;
+	}
+
+	public static int getTableIDByReservationID(int id) {
+		for (Reservation r : MainApp.reservationCollection) {
+			if (r.getResvId() == id)
+				return r.getTableID();
+		}
+		return -1;
 	}
 }
