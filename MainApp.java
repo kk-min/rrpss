@@ -62,36 +62,11 @@ public class MainApp {
 	
 				switch(choice) {
 					case 1: //Menu submenu
-						while (subchoice < 8) {
-							System.out.println("Select an option:");
-							System.out.println();
-							System.out.println("1. View Menu");
-							System.out.println("2. Create Ala Carte item");
-							System.out.println("3. Update Ala Carte item");
-							System.out.println("4. Remove Ala Carte item");
-							System.out.println("5. Create Promotional item");
-							System.out.println("6. Update Promotional item");
-							System.out.println("7. Remove Promotional item");
-							System.out.println("8. Go Back");
-
-							System.out.printf("-".repeat(rowLength));
-							System.out.println();
-
-							System.out.print("Enter your choice: ");
-							do {
-								subchoice = sc.nextInt();
-							} while (subchoice > 8 || subchoice <= 0);
-
-							switch (subchoice) {
-								case 1:
-								case 2:
-								case 3:
-								case 4:
-								case 5:
-								case 6:
-								case 7:
-							}
-						}
+						int exit = 1;
+        					Menumanager.initiateMenu();
+        					do{
+       						 //generateMenuScreen:exit code=-1
+        					exit = Menumanager.generateMenuScreen();} while(exit != -1);
 						break;
 					case 2:	//Order submenu
 						while (subchoice < 5) {
