@@ -35,6 +35,8 @@ public class SalesRevenueReport {
                         this.totalRevenue += order.getGrandTotal();
                     }
                 }
+                break;
+
             case "MONTH":
                 for (Order order : orderList){
                     if ((order.getDateTime()[3]+order.getdateTime[4]) == (currentDate[3]+currentDate[4]))
@@ -43,6 +45,8 @@ public class SalesRevenueReport {
                         this.totalRevenue += order.getGrandTotal();
                     }
                 }
+                break;
+
             case "YEAR":
                 for (Order order : orderList){
                     if ((order.getDateTime()[6]+order.getdateTime[7]+order.getDateTime()[8]+order.getDateTime()[9]) == (currentDate[6]+currentDate[7]+currentDate[8]+currentDate[9]))
@@ -51,6 +55,8 @@ public class SalesRevenueReport {
                         this.totalRevenue += order.getGrandTotal();
                     }
                 }
+                break;
+            default:
         }
             this.totalRevenue += order.getGrandTotal();
     }
