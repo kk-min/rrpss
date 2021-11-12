@@ -1,7 +1,10 @@
 package Classes.Order;
-import java.util.ArrayList;
+
+import java.util.HashMap;
 import java.util.Map;
 
+import Classes.AMenuItem.AMenuItem;
+import Classes.Staff.Staff;
 import Classes.Time.DateTimeFormatHelper;
 
 /**
@@ -40,10 +43,6 @@ public class Order{
      */
     private final double DISCOUNT_RATE = 0.05;
     /**
-     * The total tax value for the item
-     */
-    private double tax;
-    /**
      *  Total price of the items before taxes, discounts included
      */
     private double subTotal; // before taxes, discounts included
@@ -66,18 +65,16 @@ public class Order{
         this.orderID = globalID++;
         this.tableID = tableID;
         this.createdBy = orderCreator;
-        this.itemList = new Map<AMenuItem, Integer>();
+        this.itemList = new HashMap<AMenuItem, Integer>();
         this.subTotal = 0;
         this.dateTime  = DateTimeFormatHelper.formatToStringDate(DateTimeFormatHelper.getTodayDate(false));
-        int i = 0;
-        this.itemList = new Map<AMenuItem, Integer>(itemList); //Create a shallow copy
+        this.itemList = new HashMap<AMenuItem, Integer>(itemList); //Create a shallow copy
 
         if (isMember){ // check Membership status
             this.subTotal = (this.subTotal)*DISCOUNT_RATE;
         }
 
         this.grandTotal = subTotal*(1+TAX_RATE); // Add tax
-
     }
 
     /**
@@ -152,6 +149,4 @@ public class Order{
     public double getDISCOUNT_RATE(){
         return this.DISCOUNT_RATE;
     }
-
-
 }
