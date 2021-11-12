@@ -1,7 +1,13 @@
 import java.util.Map;
 
+/**
+ * Printer class that prints the receipts and Sales Revenue Reports onto the console
+ */
 public class Printer{
-
+    /**
+     * Prints the receipt for a particular order
+     * @param order The order for whhich to print the receipt
+     */
     public static void printInvoice(Order order){
         String restaurantName = "Happy Chicken Diner";
         Map<AMenuItem, Integer> itemList = order.getitemList();
@@ -95,6 +101,14 @@ public class Printer{
 
     }
 
+    /**
+     * Prints the Sales Revenue Report for a particular SalesRevenueReport object
+     * @param report The Sales Revenue Report that we want to print
+     * @param alacarteStatistics Statistics that detail how much of each alacarte items were sold
+     * @param promotionalStatistics Statistics that detail how much of each promotional items were sold
+     * @param alaCarteNames Array with the list of alacarte item names
+     * @param promotionalNames Array with teh list of promotional item names
+     */
     public static void generateReport(SalesRevenueReport report, Map alacarteStatistics, Map promotionalStatistics, String[] alaCarteNames, String[] promotionalNames){
         String Header = "SALES REVENUE REPORT" +" ("+report.getPeriod()+")";
         int rowLength = 63;
