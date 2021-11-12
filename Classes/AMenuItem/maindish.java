@@ -1,13 +1,13 @@
 package Classes.AMenuItem;
+
 /**
-    * maindish Class
-    * extend from AlaCartitem
-    *
-    */
+* maindish Class
+* extend from AlaCartitem
+*
+*/
+class MainDish extends AlaCarteItem {
 
-class maindish extends AlaCartitem{
-    public maindish(int ID, String name, double price, String description) {
+    public MainDish(int ID, String name, double price, String description) {
         super(ID, name, price, description);
-
     }
 }

@@ -1,13 +1,14 @@
 package Classes.AMenuItem;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
- * The Menumanager- Menu UI
- *
+ * MenuInterface- the interface for our restaurant Menu
+ * 
  * 
  */
-public class Menumanager  {
+public class MenuInterface  {
 	/**
      * initiateMenu()
      * generateMenuScreen()
@@ -25,23 +26,23 @@ public class Menumanager  {
 
    
 
-    private static ArrayList<maindish> maindishs = new ArrayList<>();
-    private static ArrayList<beverage> beverages = new ArrayList<>();
-    private static ArrayList<dessert> desserts = new ArrayList<>();
-    private static ArrayList<promotional>  promotionals = new ArrayList<>();
+    private static ArrayList<MainDish> maindishs = new ArrayList<>();
+    private static ArrayList<Beverage> beverages = new ArrayList<>();
+    private static ArrayList<Dessert> desserts = new ArrayList<>();
+    private static ArrayList<Promotional>  promotionals = new ArrayList<>();
 	/**
      * initiateMenu()
 	 * defalt menu option
      */
     public static void initiateMenu()
 	{
-		maindish myDish = new maindish(1, "Chicken rice", 3.00, "Flavourful chicken, juicy and fresh");
+		MainDish myDish = new MainDish(1, "Chicken rice", 3.00, "Flavourful chicken, juicy and fresh");
 		maindishs.add(myDish);
-		beverage mybeverage = new beverage(1, "Ice Milo", 1.00, "Chilling milo to start your day");
+		Beverage mybeverage = new Beverage(1, "Ice Milo", 1.00, "Chilling milo to start your day");
 		beverages.add(mybeverage);
-		dessert mydesert = new dessert(1, "gelato", 5.00, "Silky smooth texture");
+		Dessert mydesert = new Dessert(1, "gelato", 5.00, "Silky smooth texture");
 		desserts.add(mydesert);
-		promotional mypromo = new promotional(1,"chicken rice *2",5.00,"hungry for 2?");
+		Promotional mypromo = new Promotional(1,"chicken rice *2",5.00,"hungry for 2?");
 		promotionals.add(mypromo);
 		//desserts mydesert = new 
 	}
@@ -157,7 +158,7 @@ public class Menumanager  {
 				sc.nextLine();
 				System.out.println("What is the description of the item?");
 				Mdescription += sc.nextLine();
-				maindish newitem =new maindish((maindishs.size()+1),Mname,Mprice,Mdescription);
+				MainDish newitem =new MainDish((maindishs.size()+1),Mname,Mprice,Mdescription);
 				maindishs.add(newitem);
 				System.out.println("Main Dish item added...");
                 
@@ -172,7 +173,7 @@ public class Menumanager  {
 				sc.nextLine();
 				System.out.println("What is the description of the item?");
 				Mdescription += sc.nextLine();
-				beverage newitem =new beverage((beverages.size()+1),Mname,Mprice,Mdescription);
+				Beverage newitem =new Beverage((beverages.size()+1),Mname,Mprice,Mdescription);
 				beverages.add(newitem);
 				System.out.println("Beverage item added...");
 			}
@@ -186,7 +187,7 @@ public class Menumanager  {
 				sc.nextLine();
 				System.out.println("What is the description of the item?");
 				Mdescription += sc.nextLine();
-				dessert newitem =new dessert((desserts.size()+1),Mname,Mprice,Mdescription);
+				Dessert newitem =new Dessert((desserts.size()+1),Mname,Mprice,Mdescription);
 				desserts.add(newitem);
 				System.out.println("Dessert item added...");
 			}
@@ -353,7 +354,7 @@ public class Menumanager  {
 		sc.nextLine();
 		System.out.println("What is the description of the item?");
 		Mdescription += sc.nextLine();
-		promotional newitem =new promotional((promotionals.size() + 1),Mname,Mprice,Mdescription);
+		Promotional newitem =new Promotional((promotionals.size() + 1),Mname,Mprice,Mdescription);
 		promotionals.add(newitem);
 		System.out.println("promo item added...");
 	}
@@ -508,25 +509,25 @@ public class Menumanager  {
 		}
 	}
 
-	public static maindish getMaindish(int Id)
+	public static MainDish getMaindish(int Id)
 	{
 		
 		return maindishs.get(Id+1);
 
 	}
-	public static beverage getBeverage(int Id)
+	public static Beverage getBeverage(int Id)
 	{
 		
 		return beverages.get(Id+1);
 
 	}
-	public static dessert getDessert(int Id)
+	public static Dessert getDessert(int Id)
 	{
 		
 		return desserts.get(Id+1);
 
 	}
-	public static promotional getPromotional(int Id)
+	public static Promotional getPromotional(int Id)
 	{
 		
 		return promotionals.get(Id+1);

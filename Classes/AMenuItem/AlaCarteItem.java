@@ -1,11 +1,14 @@
 package Classes.AMenuItem;
+
 /**
- * AlaCartitem Class 
- * extend from A menu item
+ * AlaCarteItem Class 
+ * extend from AMenuItem
  *
  */
-
-public class AlaCartitem extends Amenuitem  {
+public class AlaCarteItem extends AMenuItem  {
+    
+    public int Type;
+    
     /**
      * Constructor to pass in all required parameters for menu item.
      *
@@ -14,8 +17,7 @@ public class AlaCartitem extends Amenuitem  {
      * @param description Menu item's description.
      * @param price       Menu item's price.
      */
-    public int Type;
-	public AlaCartitem(int ID,String name, double price,String description)
+	public AlaCarteItem(int ID, String name, double price, String description)
 	{
         super(ID, name, price, description);
     }

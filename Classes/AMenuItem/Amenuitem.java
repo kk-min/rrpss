@@ -1,48 +1,43 @@
 package Classes.AMenuItem;
-public class Amenuitem {
 
+/**
+* AMenuItem Class
+*
+*/
+public class AMenuItem {
     /**
-    * AlaCartitem Class
-    *
-    */
-
-
-
-
-    /**
-     * The ID of the restaurant item.
+     * The ID of the menu item.
      */
     private int ID;
     /**
-     * The name of the restaurant item.
+     * The name of the menu item.
      */
     private String name;
     /**
-     * The price of the restaurant item.
+     * The price of the menu item.
      */
     private double price;
         /**
-     * The describtion of the restaurant item.
+     * The description of the menu item.
      */
     private String description;
 
-
     /**
-     * Constructor to pass in all required parameters for a general restaurant item.
+     * Constructor to pass in all required parameters for a general menu item.
      *
-     * ID    This restaurant item's ID.
-     * name  This restaurant item's name.
-     * price This restaurant item's price.
-     * describtion This restaurant item's describtion.
+     * ID           This menu item's ID.
+     * name         This menu item's name.
+     * price        This menu item's price.
+     * description  This menu item's description.
      */
-    public Amenuitem (int ID,String name, double price,String description)
+    public AMenuItem (int ID, String name, double price, String description)
     {
         this.ID = ID;
         this.name = name; 
         this.price = price;
         this.description = description;
-  
     }
+    
     /**
      * getId()
      * setId(int ID)
@@ -59,7 +54,6 @@ public class Amenuitem {
         return ID;
     }
 
-
     public void setId(int ID) {
         this.ID = ID;
     }
@@ -72,11 +66,9 @@ public class Amenuitem {
         this.name = name;
     }
 
-
     public double getPrice() {
         return price;
     }
-
 
     public void setPrice(double price) {
         this.price = price;
@@ -86,10 +78,8 @@ public class Amenuitem {
         return description;
     }
 
-
     public void setDescription(String description) {
         this.description = description;
     }
-
 }
 
