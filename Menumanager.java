@@ -510,25 +510,25 @@ public class Menumanager  {
 	public static maindish getMaindish(int Id)
 	{
 		
-		return maindishs.get(Id);
+		return maindishs.get(Id+1);
 
 	}
 	public static beverage getBeverage(int Id)
 	{
 		
-		return beverages.get(Id);
+		return beverages.get(Id+1);
 
 	}
 	public static dessert getDessert(int Id)
 	{
 		
-		return desserts.get(Id);
+		return desserts.get(Id+1);
 
 	}
 	public static promotional getPromotional(int Id)
 	{
 		
-		return promotionals.get(Id);
+		return promotionals.get(Id+1);
 
 	}
 			
