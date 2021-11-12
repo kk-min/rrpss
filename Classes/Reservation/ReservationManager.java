@@ -28,43 +28,9 @@ public class ReservationManager {
 
 	public ReservationManager() {
 		reservationCollection = new ArrayList<Reservation>();
-	}	
-
-	protected static int generateMenuScreen() {
-		System.out.println("Reservation Booking Management");
-		System.out.println("1) Create a new reservation booking");
-		System.out.println("2) Check reservation booking");
-		System.out.println("3) Remove reservation booking");
-		System.out.println("4) Check for expired reservations");
-		System.out.println("5) Back to main menu");
-		System.out.println("0) Exit Application");
-
-		int choice = input.nextInt();
-		input.nextLine();
-		switch (choice) {
-		case 1:
-			createReservationBooking();
-			break;
-		case 2:
-			checkReservationBooking();
-			break;
-		case 3:
-			removeReservationBooking();
-			break;
-		case 4:
-			checkExpiredReservations();
-			break;
-		case 5:
-			return -1;
-		case 0:
-			return 1;
-		default:
-			return -1;
-		}
-		return 0;
 	}
 
-	private static void createReservationBooking() {
+	public static void createReservationBooking() {
 		Reservation r = null;
 		String custName;
 		String custContact;
@@ -194,7 +160,7 @@ public class ReservationManager {
 		return -1;
 	}
 
-	private static void checkReservationBooking() {
+	public static void checkReservationBooking() {
 		int count = 0;
 		System.out.print("Enter your reservation Id: ");
 		int Id = input.nextInt();
@@ -222,7 +188,7 @@ public class ReservationManager {
 		System.out.println("Invalid Reservation ID. No removals made.");
 	}
 
-	private static void removeReservationBooking() {
+	public static void removeReservationBooking() {
 		int count = 0;
 
 		System.out.println("Remove Reservation Booking");

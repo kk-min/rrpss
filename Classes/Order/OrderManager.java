@@ -24,7 +24,7 @@ public class OrderManager {
         return OrderHistory;
     }
 
-    public static Order create(ArrayList<Staff> staffList) {
+    public static Order create() {
         System.out.print("Please enter the Table ID for the order: ");
         int tableID = input.nextInt();
         TableManager.getTableByID(tableID).setOccupied();

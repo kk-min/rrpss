@@ -29,8 +29,7 @@ public class MenuManager  {
      * initialiseMenu()
 	 * defalt menu options
      */
-    public static void initialiseMenu()
-	{
+    public static void initialiseMenu() {
 		MainDish myDish = new MainDish(1, "Chicken Rice", 3.00, "Flavourful chicken, juicy and fresh");
 		maindishes.add(myDish);
 		Beverage myBeverage = new Beverage(1, "Ice Milo", 1.00, "Chilling milo to start your day");
@@ -41,55 +40,7 @@ public class MenuManager  {
 		promotionals.add(myPromo);
 	}
 
-	/**
-     * The Food Menu Items Management Menu
-     * generateMenuScreen
-     * @return Exit Code. Return -1 to exit the program 
-     */
 	// every function is public static so that it can be accessed without creating an object
-	public static int generateMenuScreen() {
-		// TODO: make it loop
-		System.out.println("Menu Items Management" );
-        System.out.println("1) View Menu");
-        System.out.println("2) Create a new A la Carte item");
-        System.out.println("3) Update an existing A la Carte item's details");
-        System.out.println("4) Delete an existing A la Carte item");
-		System.out.println("5) Create a new Promotional item");
-		System.out.println("6) Update an existing Promotional item's details");
-		System.out.println("7) Delete an existing Promotional item");
-        System.out.println("8) Back to main menu");
-
-		int choice = input.nextInt();
-        switch (choice) {
-            case 1: // Prints menu
-                displayMenu();
-                break;
-            case 2: // Create new menu item
-                addAlaCarteItem();
-                break;
-            case 3: // Edit an existing menu item
-				updateAlaCarteItem();
-                break;
-            case 4: // Delete an existing menu item
-                deleteAlaCarteItem();
-                break;
-			case 5: // Create a new promo item
-                addPromoItem();
-                break;
-			case 6: // Edit an existing promo item's details
-				updatePromoItem();
-                break;
-			case 7: // Delete a promo item"
-				deletePromoItem();
-                break;
-            case 8:
-                return -1;
-            default:
-				return -1;
-        }
-        return 1;
-    }
-
     public static void displayMenu()
 	{
 		System.out.printf("%s %15s %15s %15s", "Item ID", "Menu Item","Description","Price");

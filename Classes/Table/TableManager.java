@@ -46,6 +46,8 @@ public class TableManager {
 		return null;
 	}
 
+	// TODO: Check Table Availability function
+
     public static void printTableStatusByDateAndSession(LocalDate date, Reservation.ReservationSession session,
 			boolean now) {
 		ArrayList<Table> unavailable = ReservationManager.getTableBookedByDateAndSession(date, session);
