@@ -8,8 +8,8 @@ import java.util.InputMismatchException;
 import java.util.Iterator;
 import java.util.Scanner;
 
-import Classes.Miscellaneous.DateTimeFormatHelper;
 import Classes.Table.Table;
+import Classes.Time.DateTimeFormatHelper;
 
 public class ReservationInterface {
 

@@ -2,7 +2,7 @@ package Classes.Order;
 import java.util.ArrayList;
 import java.util.Map;
 
-import Classes.Miscellaneous.DateTimeFormatHelper;
+import Classes.Time.DateTimeFormatHelper;
 
 /**
  Contains information about  the items ordered by a single Customer/Table.
