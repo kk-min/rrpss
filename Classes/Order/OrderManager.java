@@ -8,7 +8,7 @@ import Classes.AMenuItem.AMenuItem;
 import Classes.AMenuItem.MenuManager;
 import Classes.Staff.Staff;
 import Classes.Staff.StaffManager;
-import Classes.Table.Table;
+import Classes.Table.TableManager;
 
 public class OrderManager {
 
@@ -27,7 +27,7 @@ public class OrderManager {
     public static Order create(ArrayList<Staff> staffList) {
         System.out.print("Please enter the Table ID for the order: ");
         int tableID = input.nextInt();
-        Table.getTableByID(tableID).setOccupied();
+        TableManager.getTableByID(tableID).setOccupied();
         System.out.print("Is the customer a member? (Y/N): ");
         char member = input.next().charAt(0);
         boolean isMember = false;
@@ -102,7 +102,7 @@ public class OrderManager {
                 Order userOrder = viewOrder;
                 Printer.printInvoice(userOrder);
                 int tableID = userOrder.getTableID();
-                Table.getTableByID(tableID).setEmpty();
+                TableManager.getTableByID(tableID).setEmpty();
                 System.out.println("Order successfully checked out.");
                 return;
             }

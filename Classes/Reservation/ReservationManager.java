@@ -9,22 +9,26 @@ import java.util.Iterator;
 import java.util.Scanner;
 
 import Classes.Table.Table;
+import Classes.Table.TableManager;
 import Classes.Time.DateTimeFormatHelper;
 
 public class ReservationManager {
 
 	private static Scanner input = new Scanner(System.in);
 
-	// TODO: initialise the reservationCollection array here (it wont exist in MainApp) & refactor all necessary code in the functions below
-	private final int MAX_TABLES = MainApp.tableCollection.size();
+	private static ArrayList<Reservation> reservationCollection;
 
 	// TODO: can this main func be removed
-	public static void main(String[] args) {
-		MainApp.main(args);
-		ReservationManager ui = new ReservationManager();
-		while (true)
-			ui.generateMenuScreen();
-	}// debug
+	// public static void main(String[] args) {
+	// 	MainApp.main(args);
+	// 	ReservationManager ui = new ReservationManager();
+	// 	while (true)
+	// 		ui.generateMenuScreen();
+	// }// debug
+
+	public ReservationManager() {
+		reservationCollection = new ArrayList<Reservation>();
+	}	
 
 	protected static int generateMenuScreen() {
 		System.out.println("Reservation Booking Management");
@@ -141,13 +145,13 @@ public class ReservationManager {
 
 			if (tableNum > 0) {
 				int lastNum;
-				if (MainApp.reservationCollection.isEmpty())
+				if (reservationCollection.isEmpty())
 					lastNum = 1;
 				else
-					lastNum = MainApp.reservationCollection.get(MainApp.reservationCollection.size() - 1).getResvId()
+					lastNum = reservationCollection.get(reservationCollection.size() - 1).getResvId()
 							+ 1;
 				r = new Reservation(lastNum, resvDate, resvTime, resvSession, custContact, custName, numPax, tableNum);
-				MainApp.reservationCollection.add(r);
+				reservationCollection.add(r);
 				System.out.println("Your reservation has been successfully recorded! Your reservation ID is " + lastNum
 						+ " , and your assigned table is " + tableNum + ".");
 				System.out.println(
@@ -165,15 +169,24 @@ public class ReservationManager {
 		}
 	}
 
+	public static ArrayList<Table> getTableBookedByDateAndSession(LocalDate date, Reservation.ReservationSession session) {
+		ArrayList<Table> bookedTables = new ArrayList<Table>();
+		for (Reservation resv : reservationCollection) {
+			if (resv.getResvDate().equals(date) && resv.getResvSession() == session)
+				bookedTables.add(TableManager.getTableByID(resv.getTableID()));
+		}
+		return bookedTables;
+	}
+
 	private static int findTableForReservation(int cusCount, LocalDate resvDate, char session) {
 		ArrayList<Table> available, unavailable = new ArrayList<Table>();
 		Reservation.ReservationSession s = session == 'A' ? Reservation.ReservationSession.AM
 				: Reservation.ReservationSession.PM;
-		unavailable = Reservation.getTableBookedByDateAndSession(resvDate, s);
+		unavailable = getTableBookedByDateAndSession(resvDate, s);
 		for (Table i : unavailable) {
 			System.out.println("Table ID " + i.getID());
 		}
-		available = Table.getTheOtherHalf(unavailable);
+		available = TableManager.getTheOtherHalf(unavailable);
 		for (Table t : available) {
 			if (t.getCapacity() >= cusCount)
 				return t.getID();
@@ -192,9 +205,25 @@ public class ReservationManager {
 		}
 	}
 
+	public static void removeReservationFromList(int Id) {
+		if (Id == -1)
+			return;
+
+		Iterator<Reservation> iter = reservationCollection.iterator();
+		while (iter.hasNext()) {
+			Reservation r = iter.next();
+			if (r.getResvId() == Id) {
+				iter.remove();
+				System.out.println("Reservation ID " + Id + " has been successfully removed.");
+				return;
+			}
+		}
+
+		System.out.println("Invalid Reservation ID. No removals made.");
+	}
+
 	private static void removeReservationBooking() {
 		int count = 0;
-		int Id = 0;
 
 		System.out.println("Remove Reservation Booking");
 		System.out.print("Enter the reservation Id: ");
@@ -207,7 +236,7 @@ public class ReservationManager {
 			System.out.print("Are you sure you want to delete this reservation (Y/N)? ");
 			switch (Character.toUpperCase(input.nextLine().charAt(0))) {
 			case 'Y':
-				Reservation.removeReservationFromList(resvId);
+				removeReservationFromList(resvId);
 				break;
 			case 'N':
 				break;
@@ -221,14 +250,14 @@ public class ReservationManager {
 
 	public static void checkExpiredReservations() {
 		Reservation r;
-		Iterator<Reservation> iter = MainApp.reservationCollection.iterator();
+		Iterator<Reservation> iter = reservationCollection.iterator();
 		while (iter.hasNext()) {
 			r = iter.next();
 			if (r.getResvDate().equals(LocalDate.now()))
 				if (DateTimeFormatHelper.getTimeDifferenceMinutes(LocalTime.now(), r.getResvTime()) <= -30
-						&& !(Table.getTableByID(r.getTableID()).getStatus() == Table.TStatus.OCCUPIED)) {
+						&& !(TableManager.getTableByID(r.getTableID()).getStatus() == Table.TStatus.OCCUPIED)) {
 					System.out.println("Reservation " + r.getResvId() + "has expired and removed.");
-					Table.getTableByID(r.getTableID());
+					TableManager.getTableByID(r.getTableID());
 					iter.remove();
 				}
 		}
@@ -254,7 +283,7 @@ public class ReservationManager {
 		System.out.printf("%-6s %-15s %-10s %-10s %-15s %-30s %-3s %-9s\n", "ID", "Date", "Session", "Time", "Tel. No",
 				"Name", "Pax", "Table No.");
 		System.out.println("");
-		for (Reservation r : MainApp.reservationCollection) {
+		for (Reservation r : reservationCollection) {
 			if (resvId == r.getResvId()) {
 				printReservationLine(r);
 				count++;
@@ -264,10 +293,14 @@ public class ReservationManager {
 	}
 
 	public static int getTableIDByReservationID(int id) {
-		for (Reservation r : MainApp.reservationCollection) {
+		for (Reservation r : reservationCollection) {
 			if (r.getResvId() == id)
 				return r.getTableID();
 		}
 		return -1;
+	}
+
+	public static ArrayList<Reservation> getReservationCollection() {
+		return reservationCollection;
 	}
 }

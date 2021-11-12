@@ -2,12 +2,8 @@ package Classes.Reservation;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.ArrayList;
-import java.util.Iterator;
 
-import Classes.Table.Table;
-
-// TODO: reservationCollection array is from ReservationInterface class, change the necessary lines below
+import Classes.Table.TableManager;
 
 public class Reservation {
 	public enum ReservationSession {
@@ -33,7 +29,7 @@ public class Reservation {
 		this.customerName = custName;
 		this.numPax = pax;
 		this.tableID = t;
-		Table.getTableByID(t).setReserved();
+		TableManager.getTableByID(t).setReserved();
 	}
 
 	public int getResvId() {
@@ -66,35 +62,5 @@ public class Reservation {
 
 	public int getTableID() {
 		return tableID;
-	}
-
-	public static ArrayList<Table> getTableBookedByDateAndSession(LocalDate date, ReservationSession session) {
-		ArrayList<Table> bookedTables = new ArrayList<Table>();
-		for (Reservation resv : MainApp.reservationCollection) {
-			if (resv.getResvDate().equals(date) && resv.getResvSession() == session)
-				bookedTables.add(Table.getTableByID(resv.getTableID()));
-		}
-		return bookedTables;
-	}
-
-	public static void removeReservationFromList(Reservation r) {
-		MainApp.reservationCollection.remove(r);
-	}
-
-	public static void removeReservationFromList(int Id) {
-		if (Id == -1)
-			return;
-
-		Iterator<Reservation> iter = MainApp.reservationCollection.iterator();
-		while (iter.hasNext()) {
-			Reservation r = iter.next();
-			if (r.getResvId() == Id) {
-				iter.remove();
-				System.out.println("Reservation ID " + Id + " has been successfully removed.");
-				return;
-			}
-		}
-
-		System.out.println("Invalid Reservation ID. No removals made.");
 	}
 }
