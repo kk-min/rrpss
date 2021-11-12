@@ -29,7 +29,7 @@ public class SalesRevenueReport {
                 }
             case "YEAR":
                 for (Order order : orderList){
-                    if ((order.getdateTime()[7]+order.getdateTime[1]) == (currentDate[0]+currentDate[8]))
+                    if ((order.getdateTime()[6]+order.getdateTime[7]+order.getdateTime()[8]+order.getdateTime()[9]) == (currentDate[6]+currentDate[7]+currentDate[8]+currentDate[9]))
                     {
                         orderList.add(order);
                         this.totalRevenue += order.getGrandTotal();
