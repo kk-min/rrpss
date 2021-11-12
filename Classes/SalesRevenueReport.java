@@ -1,9 +1,17 @@
+/**
+ * Contains the sales information of all items sold for a particular period of time.
+ */
 public class SalesRevenueReport {
+    /**
+     * Creates a Sales Revenue Report for a certain period of time.
+     * @param orderList List of all orders sold within the period
+     * @param staffList List of all staff
+     * @param period The period (day, month, year) which sales are being reported for
+     */
     private ArrayList<Order> orderList;
     private Staff[] staffList;
     private String period;
     private double totalRevenue;
-
     public SalesRevenueReport(ArrayList<Order> orderList, Staff[] staffList, String period){
         int i = 0;
         this.totalRevenue = 0;
