@@ -1,14 +1,8 @@
 package Classes.Table;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.time.LocalTime;
-import java.time.LocalDate;
-
 import Classes.Reservation.Reservation;
+import Classes.Reservation.ReservationManager;
 
-// TODO: reservationCollection array is from ReservationInterface class, change the necessary lines below
 // TODO: initialise the tableCollection array here (it wont exist in MainApp) & refactor all necessary code in the functions below
 
 public class Table {
@@ -44,7 +38,7 @@ public class Table {
 	}
 
 	public void deoccupy() {
-		for (Reservation r : MainApp.reservationCollection)
+		for (Reservation r : ReservationManager.getReservationCollection())
 			if (r.getTableID() == this.ID) {
 				this.status = TStatus.RESERVED;
 				return;
@@ -69,36 +63,5 @@ public class Table {
 			capacity = 10;
 		else
 			capacity = cap;
-	}
-
-	public static Table getTableByID(int id) {
-		for (Table t : MainApp.tableCollection) {
-			if (t.getID() == id)
-				return t;
-		}
-		return null;
-	}
-
-	public static ArrayList<Table> getTheOtherHalf(ArrayList<Table> input) {
-		ArrayList<Table> output = new ArrayList<Table>(MainApp.tableCollection);
-		for (Table t : input)
-			output.remove(t);
-		output.sort(Comparator.comparingInt(o -> o.capacity));
-		return output;
-	}
-
-	public static void printTableStatusByDateAndSession(LocalDate date, Reservation.ReservationSession session,
-			boolean now) {
-		ArrayList<Table> unavailable = Reservation.getTableBookedByDateAndSession(date, session);
-		System.out.printf("%-9s %-10s %-8s\n", "TableID", "Capacity", "Status");
-		String status = "";
-		for (Table t : MainApp.tableCollection) {
-			status = "Available";
-			if (unavailable.contains(t))
-				status = "Reserved";
-			if (now && t.getStatus() == Table.TStatus.OCCUPIED)
-				status = "Occupied";
-			System.out.printf("%-9d %-10d %-8s\n", t.getID(), t.getCapacity(), status);
-		}
 	}
 }
