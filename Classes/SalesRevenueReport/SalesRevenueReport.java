@@ -1,3 +1,4 @@
+package Classes.SalesRevenueReport;
 /**
  * Contains the sales information of all items sold for a particular period of time.
  */
