@@ -1,8 +1,12 @@
-/**
- * Amenuitem Class
-
- */
 public class Amenuitem {
+
+    /**
+    * AlaCartitem Class
+    *
+    */
+
+
+
 
     /**
      * The ID of the restaurant item.
@@ -23,7 +27,7 @@ public class Amenuitem {
 
 
     /**
-     * Constructor to pass in all required parameters for a restaurant item.
+     * Constructor to pass in all required parameters for a general restaurant item.
      *
      * ID    This restaurant item's ID.
      * name  This restaurant item's name.
@@ -39,72 +43,49 @@ public class Amenuitem {
   
     }
     /**
-     * Accessor for Restaurant Item type.
-     *
-     * @return Gets the restaurant item's ID.
+     * getId()
+     * setId(int ID)
+     * getName()
+     * setName(String name)
+     * getPrice()
+     * setPrice(double price)
+     * getDescription()
+     * setDescription(String description)
+     * 
      */
+
     public int getId() {
         return ID;
     }
 
-    /**
-     * Mutator for Restaurant Item ID.
-     *
-     * @param restaurantItemID Sets the restaurant item's ID.
-     */
+
     public void setId(int ID) {
         this.ID = ID;
     }
 
-    /**
-     * Accessor for Restaurant Item name.
-     *
-     * @return Gets the restaurant item's name.
-     */
     public String getName() {
         return name;
     }
 
-    /**
-     * Mutator for Restaurant Item name.
-     *
-     * @param name Sets the restaurant item's name.
-     */
     public void setName(String name) {
         this.name = name;
     }
 
-    /**
-     * Accessor for Restaurant Item price.
-     *
-     * @return Gets the restaurant item's price.
-     */
+
     public double getPrice() {
         return price;
     }
 
-    /**
-     * Mutator for Restaurant Item price.
-     *
-     * @param price Sets the restaurant item's price.
-     */
+
     public void setPrice(double price) {
         this.price = price;
     }
-        /**
-     * Accessor for Restaurant Item name.
-     *
-     * @return Gets the restaurant item's describtion.
-     */
+ 
     public String getDescription() {
         return description;
     }
 
-    /**
-     * Mutator for Restaurant Item name.
-     *
-     * @param name Sets the restaurant item's describtion.
-     */
+
     public void setDescription(String description) {
         this.description = description;
     }
