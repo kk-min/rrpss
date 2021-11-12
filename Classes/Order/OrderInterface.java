@@ -1,7 +1,11 @@
 package Classes.Order;
+
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class OrderInterface {
+
+    private static Scanner input = new Scanner(System.in);
 
     private static ArrayList<Order> OrderHistory;
 
@@ -15,17 +19,17 @@ public class OrderInterface {
 
     public static Order create(ArrayList<Staff> staffList) {
         System.out.print("Please enter the Table ID for the order: ");
-        tableID = in.nextInt();
+        tableID = input.nextInt();
         Table.getTableById(tableID).setOccupied();
         System.out.print("Is the customer a member? (Y/N): ");
-        isMember = in.nextChar();
+        isMember = input.nextChar();
         if (isMember == 'Y') isMember = true;
         else isMember = false;
         for (Staff staff : staffList){
             System.out.println(staff.getEmployeeID(), ": ", staff.getName());
         }
         System.out.print("Please enter your staff ID: ");
-        staffID = in.nextInt();
+        staffID = input.nextInt();
         Order userOrder = new Order(tableID, staffID, isMember);
         System.out.println("You have created a new order. Order ID: %d\n", userOrder.getID());
         return userOrder;
@@ -34,7 +38,7 @@ public class OrderInterface {
     public static void view() {
         int flag = 0;
         System.out.print("Please enter the Order ID to view: ");
-        orderID = in.nextInt();
+        orderID = input.nextInt();
         for (Order viewOrder : OrderHistory){
             if (viewOrder.getID() == orderID){
                 userOrder = viewOrder;
@@ -53,7 +57,7 @@ public class OrderInterface {
     public static void add() {
         int flag = 0;
         System.out.print("Please enter the Order ID to add items to: ");
-        orderID = in.nextInt();
+        orderID = input.nextInt();
         for (Order viewOrder : OrderHistory){
             if (viewOrder.getID() == orderID){
                 userOrder = viewOrder;
@@ -75,9 +79,9 @@ public class OrderInterface {
             // Add Item
             // TODO: display menu items
             System.out.println("Please select an item to add to order: ");
-            itemID = in.nextInt();  // TODO: convert into AMenuItem
+            itemID = input.nextInt();  // TODO: convert into AMenuItem
             System.out.println("Enter the quantity: ");
-            itemQty = in.nextInt();
+            itemQty = input.nextInt();
             userOrder.addItem(itemID, itemQty);
         }
     }
@@ -85,7 +89,7 @@ public class OrderInterface {
     public static void remove() {
         int flag = 0;
         System.out.print("Please enter the Order ID to remove items from: ");
-        orderID = in.nextInt();
+        orderID = input.nextInt();
         for (Order viewOrder : OrderHistory){
             if (viewOrder.getID() == orderID){
                 userOrder = viewOrder;
@@ -105,7 +109,7 @@ public class OrderInterface {
 
             // Remove Item
             System.out.println("Please select the item you wish to remove: ");
-            itemID = in.nextInt();  // TODO: convert to object
+            itemID = input.nextInt();  // TODO: convert to object
             userOrder.removeItem(itemID);
             System.out.println("Item successfully Removed.");
         }
@@ -113,7 +117,7 @@ public class OrderInterface {
 
     public static void checkout() {
         System.out.print("Please enter the Order to checkout: ");
-        orderID = in.nextInt();
+        orderID = input.nextInt();
         for (Order viewOrder : OrderHistory){
             if (viewOrder.getID() == orderID){
                 userOrder = viewOrder;
