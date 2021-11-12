@@ -1,4 +1,4 @@
-package Project;
+package Classes.Table;
 
 import java.util.*;
 
