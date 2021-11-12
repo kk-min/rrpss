@@ -1,4 +1,4 @@
-package Project;
+package Classes.Table;
 
 import Project.MainApp;
 import java.util.ArrayList;
@@ -92,7 +92,7 @@ public class Table {
 			status = "Available";
 			if (unavailable.contains(t))
 				status = "Reserved";
-			if (now && t.getStatus() == Table.TStatus.OCCUPIED)
+			if (now && t.getStatus() == Classes.Table.TStatus.OCCUPIED)
 				status = "Occupied";
 			System.out.printf("%-9d %-10d %-8s\n", t.getID(), t.getCapacity(), status);
 		}

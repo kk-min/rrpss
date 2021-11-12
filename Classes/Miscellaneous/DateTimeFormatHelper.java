@@ -1,5 +1,4 @@
-package Project;
-
+package Classes.Miscellaneous;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -15,23 +14,20 @@ public class DateTimeFormatHelper {
     private final static long TO_UTC_8 = 28800000;
 
     public static String formatToStringDate(LocalDate date) {
-        String year = date.getYear() + "";
-        String month = date.getMonthValue() + "";
-        String day = date.getDayOfMonth() + "";
+        String day, month, year;
+        year = date.getYear() + "";
+        month = date.getMonthValue() + "";
+        day = date.getDayOfMonth() + "";
         return day + "/" + month + "/" + year;
     }
 
     public static String formatToStringTime(LocalTime time) {
-        String hour = time.getHour() + "";
-        String minute = "";
-        if (time.getMinute() == 0) {
-            minute = "00";
-        } else {
-            minute = time.getMinute() + "";
-        }
+        String hour, minute;
+        hour = time.getHour() + "";
+        minute = ((time.getMinute() == 0) ? "00" : time.getMinute()) + "";
         return hour + ":" + minute;
     }
-    
+
     public static LocalDate formatToLocalDate(String date) throws DateTimeParseException {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/M/yyyy");
         return LocalDate.parse(date, formatter);
@@ -44,9 +40,9 @@ public class DateTimeFormatHelper {
 
     public static LocalDate getTodayDate(boolean getNextMonth) {
         if (!getNextMonth)
-            return LocalDate.ofEpochDay(SGTimeZone() / MILLIS_TO_DAYS);
+            return LocalDate.ofEpochDay(getSysTimeMillisWithSGTimeZone() / MILLIS_TO_DAYS);
         else {
-            return LocalDate.ofEpochDay(SGTimeZone() / MILLIS_TO_DAYS + 30);
+            return LocalDate.ofEpochDay(getSysTimeMillisWithSGTimeZone() / MILLIS_TO_DAYS + 30);
         }
     }
 
@@ -59,7 +55,7 @@ public class DateTimeFormatHelper {
     }
 
     public static boolean compareIfBeforeToday(LocalDate inputDate) {
-        return inputDate.isBefore(LocalDate.ofEpochDay(SGTimeZone() / MILLIS_TO_DAYS));
+        return inputDate.isBefore(LocalDate.ofEpochDay(getSysTimeMillisWithSGTimeZone() / MILLIS_TO_DAYS));
     }
 
     public static String formatMillisToDateTime(long millis) {
@@ -78,23 +74,27 @@ public class DateTimeFormatHelper {
             int d = Integer.parseInt(dateSplit[0]);
             int m = Integer.parseInt(dateSplit[1]);
             int y = Integer.parseInt(dateSplit[2]);
-
             if ((((m == 4) || (m == 6)) || ((m == 9) || (m == 11))) && (d > 30)) {
                 System.out.println("Invalid date!");
                 return false;
-            } else if (((y % 4 == 0) || ((y % 100 == 0) && (y % 400 == 0))) && ((m == 2) && (d >= 30))) {
+            }
+            else if (((y % 4 != 0) || ((y % 100 == 0) && (y % 400 != 0))) && ((m == 2) && (d >= 29))) {
                 System.out.println("Invalid date!");
                 return false;
-            } else if (((y % 4 != 0) || ((y % 100 == 0) && (y % 400 != 0))) && ((m == 2) && (d >= 29))) {
+            }
+            else if (((y % 4 == 0) || ((y % 100 == 0) && (y % 400 == 0))) && ((m == 2) && (d >= 30))) {
                 System.out.println("Invalid date!");
                 return false;
-            } else if (m < 1 || m > 12) {
+            }
+            else if (m < 1 || m > 12) {
                 System.out.println("Invalid date!");
                 return false;
-            } else if (d < 1 || d > 31) {
+            }
+            else if (d < 1 || d > 31) {
                 System.out.println("Invalid date!");
                 return false;
-            } else {
+            }
+            else {
                 return true;
             }
         } catch (InputMismatchException e) {
@@ -109,7 +109,7 @@ public class DateTimeFormatHelper {
         }
     }
 
-    public static long SGTimeZone() {
+    public static long getTimeWithSGTimeZone() {
         return System.currentTimeMillis() + TO_UTC_8;
     }
 }

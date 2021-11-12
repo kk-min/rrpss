@@ -1,9 +1,10 @@
-package Project;
+package Classes.Timed;
 
 import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
-import Project.ReservationMenuUI;
+
+import Classes.Reservation.ReservationMenuUI;
 
 public class UITimerExample extends TimerTask {
 

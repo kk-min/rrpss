@@ -1,4 +1,4 @@
-package Project;
+package Classes.Timed;
 
 import java.util.Date;
 import java.util.Timer;

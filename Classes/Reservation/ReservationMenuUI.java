@@ -1,4 +1,4 @@
-package Project;
+package Classes.Reservation;
 
 import java.time.LocalDate;
 import Project.MainApp;
@@ -164,8 +164,8 @@ public class ReservationMenuUI {
 
 	private static int findTableForReservation(int cusCount, LocalDate resvDate, char session) {
 		ArrayList<Table> available, unavailable = new ArrayList<Table>();
-		Reservation.ReservationSession s = session == 'A' ? Reservation.ReservationSession.AM
-				: Reservation.ReservationSession.PM;
+		Reservation.ReservationSession s = session == 'A' ? Classes.Reservation.ReservationSession.AM
+				: Classes.Reservation.ReservationSession.PM;
 		unavailable = Reservation.getTableBookedByDateAndSession(resvDate, s);
 		for (Table i : unavailable) {
 			System.out.println("Table ID " + i.getID());
@@ -223,7 +223,7 @@ public class ReservationMenuUI {
 			r = iter.next();
 			if (r.getResvDate().equals(LocalDate.now()))
 				if (DateTimeFormatHelper.getTimeDifferenceMinutes(LocalTime.now(), r.getResvTime()) <= -30
-						&& !(Table.getTableByID(r.getTableID()).getStatus() == Table.TStatus.OCCUPIED)) {
+						&& !(Table.getTableByID(r.getTableID()).getStatus() == Classes.Table.TStatus.OCCUPIED)) {
 					System.out.println("Reservation " + r.getResvId() + "has expired and removed.");
 					Table.getTableByID(r.getTableID());
 					iter.remove();
@@ -240,7 +240,7 @@ public class ReservationMenuUI {
 			}
 		System.out.printf("%-6d %-15s %-10s %-10s %-15s %-30s %-3d %-9d\n", r.getResvId(),
 				DateTimeFormatHelper.formatToStringDate(r.getResvDate()),
-				r.getResvSession() == Reservation.ReservationSession.AM ? 'A' : 'P',
+				r.getResvSession() == Classes.Reservation.ReservationSession.AM ? 'A' : 'P',
 				DateTimeFormatHelper.formatToStringTime(r.getResvTime()), r.getCustomerContact(), r.getCustomerName(),
 				r.getNumPax(), r.getTableID());
 	}
