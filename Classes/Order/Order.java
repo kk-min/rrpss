@@ -144,6 +144,14 @@ public class Order{
     }
 
     /**
+     * Gets the order's itemList
+     * @return this Order's itemList
+     */
+    public Map<AMenuItem, Integer> getItemList(){
+        return this.itemList;
+    }
+
+    /**
      * Gets the order's creation date
      * @return this Order's creation date
      */

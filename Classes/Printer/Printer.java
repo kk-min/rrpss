@@ -1,7 +1,10 @@
 package Classes.Printer;
 import java.util.Map;
 
+import Classes.AMenuItem.AMenuItem;
 import Classes.Order.Order;
+import Classes.SalesRevenueReport.SalesRevenueReport;
+import Classes.Staff.StaffManager;
 
 /**
  * Printer class that prints the receipts and Sales Revenue Reports onto the console
@@ -13,7 +16,7 @@ public class Printer{
      */
     public static void printInvoice(Order order){
         String restaurantName = "Happy Chicken Diner";
-        Map<AMenuItem, Integer> itemList = order.getitemList();
+        Map<AMenuItem, Integer> itemList = order.getItemList();
         double subTotal = order.getSubTotal();
         double grandTotal = order.getGrandTotal();
         int rowLength = 63;
@@ -32,7 +35,7 @@ public class Printer{
         System.out.println();
 
         // Info Line:
-        String orderIDString = "| Order ID: "+order.getOrderID()+" |";
+        String orderIDString = "| Order ID: "+order.getID()+" |";
         String orderIDFormat = "%-"+orderIDString.length()+"s";
         String dateTimeString = "| Date: "+order.getDateTime()+" |";
         String dateTimeFormat = "%"+dateTimeString.length()+"s";
@@ -57,6 +60,7 @@ public class Printer{
         System.out.printf("-".repeat(rowLength));
         System.out.println();
         //Line 6:
+        // TODO: didnt include count of each item (and itemList is a map now)
         for (AMenuItem item : itemList){
             String itemName = item.getName();
             String leftString = "| "+itemName+" x"+itemList.get(item);
@@ -71,8 +75,8 @@ public class Printer{
         //Bottom segment:
         String subTotalPrice = "$"+String.format("%.2f",subTotal);
         String totalPrice = "$"+String.format("%.2f",grandTotal);
-        String discountRate = Integer.toString((int)(100*order.getDISCOUNT_RATE)) + "%";
-        String taxRate = Integer.toString((int)(100*order.getTAX_RATE)) + "%";
+        String discountRate = Integer.toString((int)(100*order.getDISCOUNT_RATE())) + "%";
+        String taxRate = Integer.toString((int)(100*order.getTAX_RATE())) + "%";
 
         String discountFormat = String.format("%"+totalPrice.length()+"s", discountRate);
         String subTotalFormat = String.format("%"+totalPrice.length()+"s", subTotalPrice);
@@ -124,7 +128,7 @@ public class Printer{
         //Line 2:
         String leftFormat = "%-"+((rowLength/2)-(Header.length()/2))+"s";
         String rightFormat;
-        if ((report.getPeriod().length)%2 == 0){
+        if ((report.getPeriod().length)%2 == 0){    // TODO: sorry idk what you wanted to achieve here so couldn't fix it :'
             rightFormat = "%"+((rowLength/2)-(Header.length()/2))+"s";
         }
         else{
@@ -140,11 +144,11 @@ public class Printer{
         System.out.println();
 
         //Line 4 and 5:
-        String totalStaffString = "| Total Staff: "+staffList.length;
+        String totalStaffString = "| Total Staff: "+StaffManager.totalStaffNum();
         System.out.print(totalStaffString);
         System.out.format("%"+(rowLength-totalStaffString.length())+"s", "|");
         System.out.println();
-        String totalOrderString = "| Orders fulfilled: "+orderList.length;
+        String totalOrderString = "| Orders fulfilled: "+report.getOrderList().size();
         System.out.print(totalOrderString);
         System.out.format("%"+(rowLength-totalOrderString.length())+"s", "|");
         System.out.println();
@@ -231,7 +235,7 @@ public class Printer{
         System.out.println();
 
         //Line x+3:
-        double earningsBeforeIncomeTax = report.getTotalRevenue;
+        double earningsBeforeIncomeTax = report.getTotalRevenue();
         System.out.print("| Earnings before income tax");
         String beforeTaxFormat = "%"+(rowLength-28)+"s";
         String beforeTaxString = "$"+String.format("%.2f",earningsBeforeIncomeTax)+"    |";

@@ -20,7 +20,7 @@ public class OrderManager {
         OrderHistory = new ArrayList<Order>();
     }
 
-    public ArrayList<Order> getOrderHistory() {
+    public static ArrayList<Order> getOrderHistory() {
         return OrderHistory;
     }
 

@@ -33,6 +33,10 @@ public class StaffManager {
         }
     }
 
+    public static int totalStaffNum() {
+        return staffList.size();
+    }
+
     public static Staff getStaff() {
         displayStaffList();
 		System.out.print("Please enter your staff ID: ");
