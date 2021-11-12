@@ -31,7 +31,7 @@ public class SalesRevenueReport {
                 for (Order order : orderList){
                     if ((order.getDateTime()[0]+order.getDateTime[1]) == (currentDate[0]+currentDate[1]))
                     {
-                        orderList.add(order);
+                        this.orderList.add(order);
                         this.totalRevenue += order.getGrandTotal();
                     }
                 }
@@ -39,7 +39,7 @@ public class SalesRevenueReport {
                 for (Order order : orderList){
                     if ((order.getDateTime()[3]+order.getdateTime[4]) == (currentDate[3]+currentDate[4]))
                     {
-                        orderList.add(order);
+                        this.orderList.add(order);
                         this.totalRevenue += order.getGrandTotal();
                     }
                 }
@@ -47,7 +47,7 @@ public class SalesRevenueReport {
                 for (Order order : orderList){
                     if ((order.getDateTime()[6]+order.getdateTime[7]+order.getDateTime()[8]+order.getDateTime()[9]) == (currentDate[6]+currentDate[7]+currentDate[8]+currentDate[9]))
                     {
-                        orderList.add(order);
+                        this.orderList.add(order);
                         this.totalRevenue += order.getGrandTotal();
                     }
                 }
@@ -56,14 +56,14 @@ public class SalesRevenueReport {
     }
 
     public ArrayList<Order> getOrderList() {
-        return orderList;
+        return this.orderList;
     }
 
     public double getPeriod() {
-        return totalRevenue;
+        return this.period;
     }
 
     public double getTotalRevenue() {
-        return totalRevenue;
+        return this.totalRevenue;
     }
 }
