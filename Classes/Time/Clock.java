@@ -1,3 +1,4 @@
+package Classes.Time;
 public class Clock {
     private static int clockValue = 0; // Tracked in seconds
 
