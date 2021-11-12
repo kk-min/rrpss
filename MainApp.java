@@ -6,7 +6,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 
-import Classes.Order.OrderInterface;
+import Classes.Order.OrderManager;
 
 public class MainApp {
 	
@@ -119,16 +119,16 @@ public class MainApp {
 
 							switch (subchoice) {
 								case 1:
-									OrderInterface.create(staffCollection);
+									OrderManager.create(staffCollection);
 									break;
 								case 2:
-									OrderInterface.view(OngoingOrders);
+									OrderManager.view(OngoingOrders);
 									break;
 								case 3:
-									OrderInterface.add(OngoingOrders);
+									OrderManager.add(OngoingOrders);
 									break;
 								case 4:
-									OrderInterface.remove(OngoingOrders, OrderHistory);
+									OrderManager.remove(OngoingOrders, OrderHistory);
 							}
 						}
 						break;

@@ -2,7 +2,7 @@ package Classes.Time;
 
 import java.util.TimerTask;
 
-import Classes.Reservation.ReservationInterface;
+import Classes.Reservation.ReservationManager;
 
 public class UITimerExample extends TimerTask {
 
@@ -16,6 +16,6 @@ public class UITimerExample extends TimerTask {
 	public void run() {
 		/*System.out.println(
 				Thread.currentThread().getName() + " " + name + " the task has executed successfully " + new Date());*/
-		ReservationInterface.checkExpiredReservations();
+		ReservationManager.checkExpiredReservations();
 	}
 }
