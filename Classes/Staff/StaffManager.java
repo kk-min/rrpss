@@ -16,12 +16,12 @@ public class StaffManager {
 
     public static void initialiseStaffList()
 	{
-		Staff s1 = new Staff(1, "Carl Ryder", 'M', "General Manager");
-        Staff s2 = new Staff(2, "Anastazia Murray", 'F', "Assistant Manager");
-        Staff s3 = new Staff(3, "Skyla Gilmore", 'F', "Chief Server");
-        Staff s4 = new Staff(4, "Darin Wilcox", 'M', "Server");
-        Staff s5 = new Staff(5, "Ernie Rosales", 'M', "Server");
-        Staff s6 = new Staff(6, "Felicia Hodges", 'F', "Server");
+		Staff s1 = new Staff(1, "Carl Ryder", 'M', Staff.JobTitle.MANAGER);
+        Staff s2 = new Staff(2, "Anastazia Murray", 'F', Staff.JobTitle.ASSISTANT_MANAGER);
+        Staff s3 = new Staff(3, "Skyla Gilmore", 'F', Staff.JobTitle.CHIEF_SERVER);
+        Staff s4 = new Staff(4, "Darin Wilcox", 'M', Staff.JobTitle.SERVER);
+        Staff s5 = new Staff(5, "Ernie Rosales", 'M', Staff.JobTitle.SERVER);
+        Staff s6 = new Staff(6, "Felicia Hodges", 'F', Staff.JobTitle.SERVER);
 		staffList.add(s1); staffList.add(s2); staffList.add(s3);
         staffList.add(s4); staffList.add(s5); staffList.add(s6);
 	}
