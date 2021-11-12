@@ -32,6 +32,7 @@ public class Reservation {
 		this.customerName = custName;
 		this.numPax = pax;
 		this.tableID = t;
+		Table.getTableByID(t).setReserved();
 	}
 
 	public int getResvId() {
@@ -71,9 +72,6 @@ public class Reservation {
 		for (Reservation resv : MainApp.reservationCollection) {
 			if (resv.getResvDate().equals(date) && resv.getResvSession() == session)
 				bookedTables.add(Table.getTableByID(resv.getTableID()));
-			else
-				System.out.println("Mismatch: " + resv.getResvDate() + " and " + date + ", " + resv.getResvSession()
-						+ " and " + session);
 		}
 		return bookedTables;
 	}
@@ -99,10 +97,3 @@ public class Reservation {
 		System.out.println("Invalid Reservation ID. No removals made.");
 	}
 }
-
-/*
- * table and reservation: MainApp object initialize tableColle tableColle is
- * stored in MainApp object resvMng create reservation objects reservation
- * objects stored in ArrayList<Reservation> resvColle, in MainApp object to
- * check availability of tables, resvMng calls tableChecK
- */
