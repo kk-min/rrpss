@@ -25,7 +25,7 @@ public class SalesRevenueReport {
         this.period = period;
         String currentDate = DateTimeFormatHelper.formatToStringDate(DateTimeFormatHelper.getTodayDate(false));
 
-        // TODO: fix errors
+        // TODO Min: fix errors
         switch(this.period){
             case "DAY":
                 for (Order order : orderList){

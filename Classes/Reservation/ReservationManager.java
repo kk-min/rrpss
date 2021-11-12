@@ -18,7 +18,7 @@ public class ReservationManager {
 
 	private static ArrayList<Reservation> reservationCollection;
 
-	// TODO: can this main func be removed
+	//  TODO Erli: can this main func be removed
 	// public static void main(String[] args) {
 	// 	MainApp.main(args);
 	// 	ReservationManager ui = new ReservationManager();

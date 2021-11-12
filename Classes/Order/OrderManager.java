@@ -3,7 +3,7 @@ package Classes.Order;
 import java.util.Scanner;
 import java.util.ArrayList;
 
-import Classes.Printer.Printer;
+import Classes.Printer.PrintReceipt;
 import Classes.AMenuItem.AMenuItem;
 import Classes.AMenuItem.MenuManager;
 import Classes.Staff.Staff;
@@ -43,7 +43,7 @@ public class OrderManager {
         int orderID = input.nextInt();
         for (Order viewOrder : OrderHistory){
             if (viewOrder.getID() == orderID){
-                Printer.printInvoice(viewOrder); // We can just print the invoice from the printer class, because that's basically the summary of the order...
+                PrintReceipt.printInvoice(viewOrder); // We can just print the invoice from the printer class, because that's basically the summary of the order...
                 return;
             }
         }
@@ -57,7 +57,7 @@ public class OrderManager {
             if (viewOrder.getID() == orderID){
                 Order userOrder = viewOrder;
                 System.out.printf("You have chosen Order %-9d. Current order summary: %n", userOrder.getID());
-                Printer.printInvoice(userOrder);
+                PrintReceipt.printInvoice(userOrder);
                 
                 // Add Item
                 AMenuItem newItem = MenuManager.getMenuItem();
@@ -79,7 +79,7 @@ public class OrderManager {
             if (viewOrder.getID() == orderID){
                 Order userOrder = viewOrder;
                 System.out.printf("You have chosen Order %-9d. Current order summary: %n", userOrder.getID());
-                Printer.printInvoice(userOrder);
+                PrintReceipt.printInvoice(userOrder);
 
                 // Remove Item
                 AMenuItem item = MenuManager.getMenuItem();
@@ -100,7 +100,7 @@ public class OrderManager {
         for (Order viewOrder : OrderHistory){
             if (viewOrder.getID() == orderID){
                 Order userOrder = viewOrder;
-                Printer.printInvoice(userOrder);
+                PrintReceipt.printInvoice(userOrder);
                 int tableID = userOrder.getTableID();
                 TableManager.getTableByID(tableID).setEmpty();
                 System.out.println("Order successfully checked out.");

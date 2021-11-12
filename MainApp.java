@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 import Classes.Order.OrderManager;
-import Classes.Printer.Printer;
+import Classes.Printer.PrintReceipt;
 import Classes.Printer.SubMenuPrinter;
 import Classes.Table.TableManager;
 

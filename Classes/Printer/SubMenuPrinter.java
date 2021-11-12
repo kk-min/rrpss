@@ -10,7 +10,7 @@ public class SubMenuPrinter {
 
     private static Scanner input = new Scanner(System.in);
 
-    // TODO: the line formatting for all 3 submenus here
+    // TODO Min: the line formatting for all 3 submenus here
 
     public static int printMenuSubMenu() {
 		System.out.println("Restaurant Menu\nSelect an option:\n" );

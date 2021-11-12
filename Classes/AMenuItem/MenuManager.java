@@ -30,6 +30,7 @@ public class MenuManager  {
 	 * defalt menu options
      */
     public static void initialiseMenu() {
+		// TODO lingyi: can we have 5 items in each array :""
 		MainDish myDish = new MainDish(1, "Chicken Rice", 3.00, "Flavourful chicken, juicy and fresh");
 		maindishes.add(myDish);
 		Beverage myBeverage = new Beverage(1, "Ice Milo", 1.00, "Chilling milo to start your day");
