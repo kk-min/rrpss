@@ -31,11 +31,12 @@ public class TableColle {
 				noTrack[(i/2)-1] += no;
 			}
 		}
+		sc.close();
 	}
 
 	private void addTable(int count, int capacity) {
 		for (int i = 0; i < count; i++) {
-			Table table = new Table(capacity);
+			Table table = new Table(count, capacity);
 			colle.add(table);
 		}
 	}
@@ -47,19 +48,19 @@ public class TableColle {
 			index += noTrack[i];
 		}
 		try {
-			while (colle.get(index).isOccupied())
+			while (colle.get(index).getStatus() == Table.TStatus.OCCUPIED)
 				index++;
 		} catch (IndexOutOfBoundsException e) {
 			System.out.printf("Cannot accommodate %d customers.\n", customerCount);
 			return -1;
 		}
-		colle.get(index).assign();
+		colle.get(index).setOccupied();
 		return colle.get(index).getID();
 	}
 	
 	public void deassignTable(int id) {
 		int n = 0;
 		while(colle.get(n).getID() != id) n++;
-		colle.get(n).deassign();
+		colle.get(n).deoccupy();
 	}
 }

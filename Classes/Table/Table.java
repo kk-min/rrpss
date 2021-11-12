@@ -1,11 +1,15 @@
 package Classes.Table;
 
-import Project.MainApp;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.time.LocalTime;
 import java.time.LocalDate;
+
+import Classes.Reservation.Reservation;
+
+// TODO: reservationCollection array is from ReservationInterface class, change the necessary lines below
+// TODO: initialise the tableCollection array here (it wont exist in MainApp) & refactor all necessary code in the functions below
 
 public class Table {
 	private int capacity;
@@ -92,7 +96,7 @@ public class Table {
 			status = "Available";
 			if (unavailable.contains(t))
 				status = "Reserved";
-			if (now && t.getStatus() == Classes.Table.TStatus.OCCUPIED)
+			if (now && t.getStatus() == Table.TStatus.OCCUPIED)
 				status = "Occupied";
 			System.out.printf("%-9d %-10d %-8s\n", t.getID(), t.getCapacity(), status);
 		}
