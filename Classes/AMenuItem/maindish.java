@@ -1,4 +1,5 @@
-    /**
+package Classes.AMenuItem;
+/**
     * maindish Class
     * extend from AlaCartitem
     *

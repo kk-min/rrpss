@@ -1,3 +1,4 @@
+package Classes.AMenuItem;
 public class Amenuitem {
 
     /**

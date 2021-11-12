@@ -1,4 +1,4 @@
-
+package Classes.AMenuItem;
 /**
  * promotional Class
  * extend from Amenuitem
