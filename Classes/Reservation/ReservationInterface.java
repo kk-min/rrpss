@@ -1,24 +1,27 @@
 package Classes.Reservation;
 
 import java.time.LocalDate;
-import Project.MainApp;
-import Project.Reservation;
-import java.util.ArrayList;
 import java.time.LocalTime;
 import java.time.format.DateTimeParseException;
-import java.util.*;
-import java.util.Timer;
-import Project.DateTimeFormatHelper;
+import java.util.ArrayList;
+import java.util.InputMismatchException;
+import java.util.Iterator;
+import java.util.Scanner;
 
-public class ReservationMenuUI {
+import Classes.Miscellaneous.DateTimeFormatHelper;
+import Classes.Table.Table;
+
+public class ReservationInterface {
 
 	private static Scanner input = new Scanner(System.in);
 
+	// TODO: initialise the reservationCollection array here (it wont exist in MainApp) & refactor all necessary code in the functions below
 	private final int MAX_TABLES = MainApp.tableCollection.size();
 
+	// TODO: can this main func be removed
 	public static void main(String[] args) {
 		MainApp.main(args);
-		ReservationMenuUI ui = new ReservationMenuUI();
+		ReservationInterface ui = new ReservationInterface();
 		while (true)
 			ui.generateMenuScreen();
 	}// debug
@@ -164,8 +167,8 @@ public class ReservationMenuUI {
 
 	private static int findTableForReservation(int cusCount, LocalDate resvDate, char session) {
 		ArrayList<Table> available, unavailable = new ArrayList<Table>();
-		Reservation.ReservationSession s = session == 'A' ? Classes.Reservation.ReservationSession.AM
-				: Classes.Reservation.ReservationSession.PM;
+		Reservation.ReservationSession s = session == 'A' ? Reservation.ReservationSession.AM
+				: Reservation.ReservationSession.PM;
 		unavailable = Reservation.getTableBookedByDateAndSession(resvDate, s);
 		for (Table i : unavailable) {
 			System.out.println("Table ID " + i.getID());
@@ -223,7 +226,7 @@ public class ReservationMenuUI {
 			r = iter.next();
 			if (r.getResvDate().equals(LocalDate.now()))
 				if (DateTimeFormatHelper.getTimeDifferenceMinutes(LocalTime.now(), r.getResvTime()) <= -30
-						&& !(Table.getTableByID(r.getTableID()).getStatus() == Classes.Table.TStatus.OCCUPIED)) {
+						&& !(Table.getTableByID(r.getTableID()).getStatus() == Table.TStatus.OCCUPIED)) {
 					System.out.println("Reservation " + r.getResvId() + "has expired and removed.");
 					Table.getTableByID(r.getTableID());
 					iter.remove();
@@ -240,7 +243,7 @@ public class ReservationMenuUI {
 			}
 		System.out.printf("%-6d %-15s %-10s %-10s %-15s %-30s %-3d %-9d\n", r.getResvId(),
 				DateTimeFormatHelper.formatToStringDate(r.getResvDate()),
-				r.getResvSession() == Classes.Reservation.ReservationSession.AM ? 'A' : 'P',
+				r.getResvSession() == Reservation.ReservationSession.AM ? 'A' : 'P',
 				DateTimeFormatHelper.formatToStringTime(r.getResvTime()), r.getCustomerContact(), r.getCustomerName(),
 				r.getNumPax(), r.getTableID());
 	}
