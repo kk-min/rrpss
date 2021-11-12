@@ -46,7 +46,22 @@ public class TableManager {
 		return null;
 	}
 
-	// TODO: Check Table Availability function
+	public static ArrayList<Table> getTableAvailabilities() {
+		ArrayList<Table> available = new ArrayList<Table>();
+		for (Table t : tableCollection) {
+			if (t.getStatus() == Table.TStatus.EMPTY)
+				available.add(t);
+		}
+		return available;
+	}
+	
+	public static void printTableAvailabilities() {
+		ArrayList<Table> available = getTableAvailabilities();
+		for (Table t : available) {
+			System.out.println("These tables are currently available:");
+			System.out.printf("Table %-9d - %-9d pax %n", t.getID(), t.getCapacity());
+		}
+	}
 
     public static void printTableStatusByDateAndSession(LocalDate date, Reservation.ReservationSession session,
 			boolean now) {

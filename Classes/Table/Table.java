@@ -3,8 +3,6 @@ package Classes.Table;
 import Classes.Reservation.Reservation;
 import Classes.Reservation.ReservationManager;
 
-// TODO: initialise the tableCollection array here (it wont exist in MainApp) & refactor all necessary code in the functions below
-
 public class Table {
 	private int capacity;
 	public static int MAX_CAPACITY = 10;

@@ -98,7 +98,6 @@ public class SubMenuPrinter {
 		System.out.println("2) Check reservation booking");
 		System.out.println("3) Remove a reservation booking");
 		System.out.println("4) Check for expired reservations");
-		// TODO: Check Table Availability
 		System.out.println("5) Back to main menu");
 		System.out.println("0) Exit Application");
 

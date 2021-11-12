@@ -3,6 +3,7 @@ import java.util.Scanner;
 import Classes.Order.OrderManager;
 import Classes.Printer.Printer;
 import Classes.Printer.SubMenuPrinter;
+import Classes.Table.TableManager;
 
 public class MainApp {
 	
@@ -35,11 +36,12 @@ public class MainApp {
 			//Line 4+:
 			System.out.println("Select an option:");
 			System.out.println();
-			System.out.println("1. Menu");
-			System.out.println("2. Order");
-			System.out.println("3. Reservation");
-			System.out.println("4. Print Order Invoice");
-			System.out.println("5. Print Sale Revenue Report");
+			System.out.println("1) Menu");
+			System.out.println("2) Order");
+			System.out.println("3) Reservation");
+			System.out.println("4) Check current table availabilities");
+			System.out.println("5) Print Order Invoice");
+			System.out.println("6) Print Sale Revenue Report");
 			System.out.println("0) Exit Application");
 
 			//Line 11:
@@ -61,10 +63,13 @@ public class MainApp {
 				case 3:	// Reservation submenu
 					subMenuResult = SubMenuPrinter.printReservationSubMenu();
 					break;
-				case 4:	// Print Order Invoice
+				case 4: // Check table availability
+					TableManager.printTableAvailabilities();
+					break;
+				case 5:	// Print Order Invoice
 					OrderManager.checkout();
 					break;
-				case 5: // Print Sale Revenue Report
+				case 6: // Print Sale Revenue Report
 				// TODO
 					// Printer.generateReport(report, alacarteStatistics, promotionalStatistics, alaCarteNames, promotionalNames);
 					break;
