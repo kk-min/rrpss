@@ -16,8 +16,7 @@ public class TableManager {
         initialisetableCollection();
     }
 
-    public static void initialisetableCollection()
-	{
+    public static void initialisetableCollection() {
 		Table t1 = new Table(1, 2);
         Table t2 = new Table(2, 2);
         Table t3 = new Table(3, 4);

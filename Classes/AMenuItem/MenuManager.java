@@ -18,10 +18,10 @@ public class MenuManager  {
     private static ArrayList<Promotional> promotionals;
 
 	public MenuManager() {
-        maindishes = new ArrayList<>();
-		beverages = new ArrayList<>();
-		desserts = new ArrayList<>();
-		promotionals = new ArrayList<>();
+        maindishes = new ArrayList<MainDish>();
+		beverages = new ArrayList<Beverage>();
+		desserts = new ArrayList<Dessert>();
+		promotionals = new ArrayList<Promotional>();
 		initialiseMenu();
     }
 
@@ -33,30 +33,30 @@ public class MenuManager  {
 		MainDish myDish = new MainDish(1, "Chicken Rice", 3.00, "Flavourful chicken, juicy and fresh");
 		maindishes.add(myDish);
 		MainDish myDish1 = new MainDish(2, "Noodle in Sweet Sesame Sauce (Chicken)", 7.90, "Dinner under Starlight");
-		maindishes.add(myDish);
+		maindishes.add(myDish1);
 		MainDish myDish2 = new MainDish(3, "Teriyaki Chicken Pasta", 12.80, "Lime added for that special flavour");
-		maindishes.add(myDish);
+		maindishes.add(myDish2);
 
 		Beverage myBeverage = new Beverage(1, "Ice Milo", 1.00, "Chilling milo to start your day");
 		beverages.add(myBeverage);
-		Beverage myBeverage1 = new Beverage(2, "Mr. coconut's signature", 5.50, " We sell Mr.coconut and price it higher");
-		beverages.add(myBeverage);
+		Beverage myBeverage1 = new Beverage(2, "Signature Coconut Shake", 5.50, " Delicious cooling coconut drink for a hot summer day");
+		beverages.add(myBeverage1);
 		Beverage myBeverage2 = new Beverage(3, "Lemon Tea", 4.00, "Lemon and tea");
-		beverages.add(myBeverage);
+		beverages.add(myBeverage2);
 
 		Dessert myDessert = new Dessert(1, "Sweet Potato Soup with Barley", 2.50, "Not really sweet.");
 		desserts.add(myDessert);
 		Dessert myDessert1 = new Dessert(2, "Mixed Bean Longan", 5.00, "from our next door neighbour Mr.bean");
-		desserts.add(myDessert);
+		desserts.add(myDessert1);
 		Dessert myDessert2 = new Dessert(3, "Gelato", 5.00, "Silky smooth texture");
-		desserts.add(myDessert);
+		desserts.add(myDessert2);
 
 		Promotional myPromo = new Promotional(1,"Chicken Family Combo", 10.00, "Fambam! Have 4 sets of chicken rice to feed the family.");
 		promotionals.add(myPromo);
-		Promotional myPromo1 = new Promotional(2,"Teriyaki Chicken Paster with Ice Milo", 10.00, " Best Match!");
-		promotionals.add(myPromo);
-		Promotional myPromo2 = new Promotional(3,"sweet potato soup for 3", 10.00, "proudly serving our best dessert for your family");
-		promotionals.add(myPromo);
+		Promotional myPromo1 = new Promotional(2,"Teriyaki Chicken Pasta with Ice Milo", 10.00, " Best Match!");
+		promotionals.add(myPromo1);
+		Promotional myPromo2 = new Promotional(3,"Sweet Potato Soup for 3", 10.00, "proudly serving our best dessert for your family");
+		promotionals.add(myPromo2);
 	}
 
 	// every function is public static so that it can be accessed without creating an object
