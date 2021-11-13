@@ -12,6 +12,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import Classes.Reservation.ReservationManager;
+import Classes.Table.TableManager;
 
 public class DateTimeFormatHelper {
 
@@ -47,12 +48,8 @@ public class DateTimeFormatHelper {
         return LocalTime.parse(time, formatter);
     }
 
-    public static LocalDate getTodayDate(boolean getNextMonth) {
-        if (!getNextMonth)
+    public static LocalDate getTodayDate() {
             return LocalDate.ofEpochDay(SGTimeZone() / MILLIS_TO_DAYS);
-        else {
-            return LocalDate.ofEpochDay(SGTimeZone() / MILLIS_TO_DAYS + 30);
-        }
     }
 
     public static LocalTime getTimeNow() {
