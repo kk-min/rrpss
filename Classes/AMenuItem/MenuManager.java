@@ -502,10 +502,12 @@ public class MenuManager extends UserInterfacePrinter{
 
 	public static AMenuItem getMenuItem() {
 		displayMenu();
-		System.out.println("What is the type of the item (Main Dish 1)/(Beverage 2)/(Dessert 3)?");
+		System.out.println("What is the type of the item (Main Dish 1)/(Beverage 2)/(Dessert 3)/(Promotional 4)?");
 		int choice = input.nextInt();
+		input.nextLine();
 		System.out.println("What is the ID of the item?");
 		int id = input.nextInt();
+		input.nextLine();
 
 		switch (choice)
 		{
@@ -515,6 +517,8 @@ public class MenuManager extends UserInterfacePrinter{
 				return beverages.get(id-1);
 			case 3:
 				return desserts.get(id-1);
+			case 4:
+				return promotionals.get(id-1);
 		}
 		return null;
 	}
