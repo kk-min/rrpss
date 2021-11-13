@@ -4,6 +4,7 @@ import java.util.Map;
 import java.util.Scanner;
 
 import Classes.SalesRevenueReport.SalesRevenueReport;
+import Classes.Printer.UserInterfacePrinter;
 /**
  * Implements printing functionality for printing the Sales Revenue Report object.
  */

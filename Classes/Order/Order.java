@@ -8,7 +8,7 @@ import Classes.Staff.Staff;
 import Classes.Time.DateTimeFormatHelper;
 
 /**
- Contains information about  the items ordered by a single Customer/Table.
+ Contains information about the items ordered by a single Customer/Table.
  @author  Min
  @version 1.0
  @since   2021-11-12
