@@ -1,9 +1,14 @@
 import java.util.Scanner;
 
+import Classes.AMenuItem.MenuManager;
 import Classes.Order.OrderManager;
+import Classes.Printer.MenuSubMenu;
+import Classes.Printer.OrderSubMenu;
 import Classes.Printer.PrintReceipt;
 import Classes.Printer.PrintReport;
+import Classes.Printer.ReservationSubMenu;
 import Classes.Printer.SubMenuPrinter;
+import Classes.Reservation.Reservation;
 import Classes.Table.TableManager;
 
 public class MainApp {
@@ -14,6 +19,8 @@ public class MainApp {
 
 		String restaurantName = "HELLOWORLD";
 		int rowLength = 63;
+
+		MenuManager.initialiseMenu();
 		
 
 		int choice = 1, subMenuResult = -1;
@@ -56,13 +63,14 @@ public class MainApp {
 
 			switch(choice) {
 				case 1: //Menu submenu
-					subMenuResult = SubMenuPrinter.printMenuSubMenu();
+					subMenuResult = MenuSubMenu.print();
+					System.out.print("\n\n\n\n\n\n\n\\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nn\n\n");
 					break;
 				case 2:	//Order submenu
-					subMenuResult = SubMenuPrinter.printOrderSubMenu();
+					subMenuResult = OrderSubMenu.print();
 					break;
 				case 3:	// Reservation submenu
-					subMenuResult = SubMenuPrinter.printReservationSubMenu();
+					subMenuResult = ReservationSubMenu.print();
 					break;
 				case 4: // Check table availability
 					TableManager.printTableAvailabilities();

@@ -1,8 +1,5 @@
 package Classes.Table;
 
-import Classes.Reservation.Reservation;
-import Classes.Reservation.ReservationManager;
-
 public class Table {
 	private int capacity;
 	public static int MAX_CAPACITY = 10;
@@ -27,21 +24,11 @@ public class Table {
 	}
 
 	public void setReserved() {
-		if (this.status == TStatus.OCCUPIED) return;
-		else this.status = TStatus.RESERVED;
+		this.status = TStatus.RESERVED;
 	}
 
 	public void setOccupied() {
 		this.status = TStatus.OCCUPIED;
-	}
-
-	public void deoccupy() {
-		for (Reservation r : ReservationManager.getReservationCollection())
-			if (r.getTableID() == this.ID) {
-				this.status = TStatus.RESERVED;
-				return;
-			}
-		this.status = TStatus.EMPTY;
 	}
 
 	public TStatus getStatus() {
@@ -54,12 +41,5 @@ public class Table {
 
 	public int getCapacity() {
 		return capacity;
-	}
-
-	public void setCapacity(int cap) {
-		if (cap > 10)
-			capacity = 10;
-		else
-			capacity = cap;
 	}
 }

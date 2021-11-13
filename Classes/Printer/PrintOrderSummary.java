@@ -2,7 +2,14 @@ package Classes.Printer;
 
 import Classes.Order.Order;
 
-public class PrintOrderSummary implements Printer{
+/**
+ * Implements printing functionality for viewing a current order's summary
+ */
+public class PrintOrderSummary implements Printer {
+    /**
+     * Prints the order summary for a particular order
+     * @param viewOrder The order which we are trying to view the current summary for
+     */
     public static void print(Order viewOrder){
 
         //Line 1:

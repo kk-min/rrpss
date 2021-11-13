@@ -2,34 +2,30 @@ package Classes.AMenuItem;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import Classes.Printer.UserInterfacePrinter;
 
 /**
  * MenuManager - the manager for our restaurant Menu
  * 
  * 
  */
-public class MenuManager  {
-
-	private static Scanner input = new Scanner(System.in);
+public class MenuManager extends UserInterfacePrinter {
 	
     private static ArrayList<MainDish> maindishes;
     private static ArrayList<Beverage> beverages;
     private static ArrayList<Dessert> desserts;
     private static ArrayList<Promotional> promotionals;
 
-	public MenuManager() {
-        maindishes = new ArrayList<MainDish>();
-		beverages = new ArrayList<Beverage>();
-		desserts = new ArrayList<Dessert>();
-		promotionals = new ArrayList<Promotional>();
-		initialiseMenu();
-    }
-
 	/**
      * initialiseMenu()
 	 * defalt menu options
      */
     public static void initialiseMenu() {
+		maindishes = new ArrayList<MainDish>();
+		beverages = new ArrayList<Beverage>();
+		desserts = new ArrayList<Dessert>();
+		promotionals = new ArrayList<Promotional>();
+		
 		MainDish myDish = new MainDish(1, "Chicken Rice", 3.00, "Flavourful chicken, juicy and fresh");
 		maindishes.add(myDish);
 		MainDish myDish1 = new MainDish(2, "Noodle in Sweet Sesame Sauce (Chicken)", 7.90, "Dinner under Starlight");
@@ -46,7 +42,7 @@ public class MenuManager  {
 
 		Dessert myDessert = new Dessert(1, "Sweet Potato Soup with Barley", 2.50, "Not really sweet.");
 		desserts.add(myDessert);
-		Dessert myDessert1 = new Dessert(2, "Mixed Bean Longan", 5.00, "from our next door neighbour Mr.bean");
+		Dessert myDessert1 = new Dessert(2, "Mixed Bean Longan", 5.00, "A sweet treat to brighten up your day.");
 		desserts.add(myDessert1);
 		Dessert myDessert2 = new Dessert(3, "Gelato", 5.00, "Silky smooth texture");
 		desserts.add(myDessert2);
@@ -62,33 +58,110 @@ public class MenuManager  {
 	// every function is public static so that it can be accessed without creating an object
     public static void displayMenu()
 	{
-		System.out.printf("%s %15s %15s %15s", "Item ID", "Menu Item","Description","Price");
-		System.out.println("");
-		System.out.println("Main Dishes---------------------------------------");
+		// Line 1:
+		System.out.printf("-".repeat(rowLength));
+		System.out.println();
+
+		// Line 2:
+		String MenuName = "MENU";
+		String leftFormat = "%-" + ((rowLength / 2) - (MenuName.length() / 2)) + "s";
+		String rightFormat = "%" + ((rowLength / 2) - (MenuName.length() / 2)) + "s";
+		System.out.format(leftFormat, " ");
+		System.out.print(MenuName);
+		System.out.format(rightFormat, " ");
+		System.out.println();
+
+		//Line 3:
+		System.out.printf("-".repeat(rowLength));
+		System.out.println();
+
+		//Line 4:
+		String mainString = "MAIN COURSE";
+		leftFormat = "%-" + ((rowLength / 2) - (mainString.length() / 2)) + "s";
+		rightFormat = "%" + ((rowLength / 2) - (mainString.length() / 2)) + "s";
+		System.out.format(leftFormat, " ");
+		System.out.print(mainString);
+		System.out.format(rightFormat, " ");
+		System.out.println();
+		//Line 5:
+		System.out.println();
+
+
 
 		for(int i=0;i<maindishes.size();i++)
 		{
-			System.out.printf("%s %20s %20s %20.2f\n", maindishes.get(i).getId(), maindishes.get(i).getName(), maindishes.get(i).getDescription(), maindishes.get(i).getPrice());
+			System.out.println("ID: "+maindishes.get(i).getId());
+			System.out.println("Name: "+maindishes.get(i).getName());
+			System.out.println("Description: "+maindishes.get(i).getDescription());
+			System.out.println("Price: S$"+maindishes.get(i).getPrice());
 		}
-		System.out.println("");
-		System.out.println("Desserts-----------------------------------------");
+		System.out.printf("-".repeat(rowLength));
+		System.out.println();
+
+		String dessertsString = "DESSERTS";
+		leftFormat = "%-" + ((rowLength / 2) - (dessertsString.length() / 2)) + "s";
+		rightFormat = "%" + ((rowLength / 2) - (dessertsString.length() / 2)) + "s";
+		System.out.format(leftFormat, " ");
+		System.out.print(dessertsString);
+		System.out.format(rightFormat, " ");
+		System.out.println();
+		//Line 5:
+		System.out.println();
+
+
 		for(int i=0;i<desserts.size();i++)
 		{
-			System.out.printf("%s %20s %20s %20.2f\n", desserts.get(i).getId(), desserts.get(i).getName(), desserts.get(i).getDescription(), desserts.get(i).getPrice());
+			System.out.println("ID: "+desserts.get(i).getId());
+			System.out.println("Name: "+desserts.get(i).getName());
+			System.out.println("Description: "+desserts.get(i).getDescription());
+			System.out.println("Price: S$"+desserts.get(i).getPrice());
 		}
-		System.out.println("");
-		System.out.println("Beverages----------------------------------------");
+
+		System.out.printf("-".repeat(rowLength));
+		System.out.println();
+
+		String beveragesString = "BEVERAGES";
+		leftFormat = "%-" + ((rowLength / 2) - (beveragesString.length() / 2)) + "s";
+		rightFormat = "%" + ((rowLength / 2) - (beveragesString.length() / 2)) + "s";
+		System.out.format(leftFormat, " ");
+		System.out.print(beveragesString);
+		System.out.format(rightFormat, " ");
+		System.out.println();
+		//Line 5:
+		System.out.println();
+
+
 		for(int i=0;i<beverages.size();i++)
 		{
-			System.out.printf("%s %20s %20s %20.2f\n", beverages.get(i).getId(), beverages.get(i).getName(), beverages.get(i).getDescription(), beverages.get(i).getPrice());
+			System.out.println("ID: "+beverages.get(i).getId());
+			System.out.println("Name: "+beverages.get(i).getName());
+			System.out.println("Description: "+beverages.get(i).getDescription());
+			System.out.println("Price: S$"+beverages.get(i).getPrice());
 		}
-		System.out.println("");
-		System.out.println("Promotion Bundles----------------------------------------");
+
+		System.out.printf("-".repeat(rowLength));
+		System.out.println();
+
+		String promotionString = "PROMOTIONAL BUNDLES";
+		leftFormat = "%-" + ((rowLength / 2) - (promotionString.length() / 2)) + "s";
+		rightFormat = "%" + ((rowLength / 2) - (promotionString.length() / 2)) + "s";
+		System.out.format(leftFormat, " ");
+		System.out.print(promotionString);
+		System.out.format(rightFormat, " ");
+		System.out.println();
+		//Line 5:
+		System.out.println();
+
 		for(int i=0;i<promotionals.size();i++)
 		{
-			System.out.printf("%s %20s %20s %20.2f\n", promotionals.get(i).getId(), promotionals.get(i).getName(), promotionals.get(i).getDescription(), promotionals.get(i).getPrice());
+			System.out.println("ID: "+promotionals.get(i).getId());
+			System.out.println("Name: "+promotionals.get(i).getName());
+			System.out.println("Description: "+promotionals.get(i).getDescription());
+			System.out.println("Price: S$"+promotionals.get(i).getPrice());
 		}
-		System.out.println("");
+		System.out.printf("-".repeat(rowLength));
+		System.out.println();
+
 	}
 
     public static void addAlaCarteItem()

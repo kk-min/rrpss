@@ -1,43 +1,42 @@
 package Classes.Table;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Comparator;
 
 import Classes.Reservation.Reservation;
 import Classes.Reservation.ReservationManager;
+import Classes.Time.DateTimeFormatHelper;
 
 public class TableManager {
-    
-    private static ArrayList<Table> tableCollection;
 
-    public TableManager() {
-        tableCollection = new ArrayList<Table>();
-        initialisetableCollection();
-    }
+	private static ArrayList<Table> tableCollection;
 
-    public static void initialisetableCollection() {
-		Table t1 = new Table(1, 2);
-        Table t2 = new Table(2, 2);
-        Table t3 = new Table(3, 4);
-        Table t4 = new Table(4, 4);
-        Table t5 = new Table(5, 6);
-        Table t6 = new Table(6, 6);
-        Table t7 = new Table(7, 8);
-        Table t8 = new Table(8, 8);
-        Table t9 = new Table(9, 10);
-        Table t10 = new Table(10, 10);
-		tableCollection.add(t1); tableCollection.add(t2); tableCollection.add(t3);
-        tableCollection.add(t4); tableCollection.add(t5); tableCollection.add(t6);
-        tableCollection.add(t7); tableCollection.add(t8); tableCollection.add(t9);
-        tableCollection.add(t10);
-    }
+	private static final int[] tableTrack = { 2, 2, 2, 2, 2 };
 
-    public static int totalTableNum() {
-        return tableCollection.size();
-    }
+	public TableManager() {
+		tableCollection = new ArrayList<Table>();
+		initialiseTableCollection();
+	}
 
-    public static Table getTableByID(int id) {
+	private static void initialiseTableCollection() {
+		int i = 0, j, n = 1, capacity = 2;
+		while (capacity <= 10) {
+			for (j = 0; j < tableTrack[i]; j++) {
+				Table table = new Table(n++, capacity);
+				tableCollection.add(table);
+			}
+			i++;
+			capacity += 2;
+		}
+	}
+
+	public static int totalTableNum() {
+		return tableCollection.size();
+	}
+
+	public static Table getTableByID(int id) {
 		for (Table t : tableCollection) {
 			if (t.getID() == id)
 				return t;
@@ -53,7 +52,7 @@ public class TableManager {
 		}
 		return available;
 	}
-	
+
 	public static void printTableAvailabilities() {
 		ArrayList<Table> available = getTableAvailabilities();
 		for (Table t : available) {
@@ -62,7 +61,7 @@ public class TableManager {
 		}
 	}
 
-    public static void printTableStatusByDateAndSession(LocalDate date, Reservation.ReservationSession session,
+	public static void printTableStatusByDateAndSession(LocalDate date, Reservation.ReservationSession session,
 			boolean now) {
 		ArrayList<Table> unavailable = ReservationManager.getTableBookedByDateAndSession(date, session);
 		System.out.printf("%-9s %-10s %-8s\n", "TableID", "Capacity", "Status");
@@ -77,11 +76,22 @@ public class TableManager {
 		}
 	}
 
-    public static ArrayList<Table> getTheOtherHalf(ArrayList<Table> input) {
+	public static ArrayList<Table> getComplement(ArrayList<Table> input) {
 		ArrayList<Table> output = new ArrayList<Table>(tableCollection);
 		for (Table t : input)
 			output.remove(t);
 		output.sort(Comparator.comparingInt(o -> o.getCapacity()));
 		return output;
 	}
+
+	public static void updateTableStatus() {
+    	LocalDate date = DateTimeFormatHelper.inbuiltDate();
+    	LocalTime time = DateTimeFormatHelper.inbuiltTime();
+    	Reservation.ReservationSession s;
+    	s = DateTimeFormatHelper.inbuiltSession(time);
+    	if(s == null) return;
+		ArrayList<Table> booked = getTableBookedByDateAndSession(date,s);
+		for(Table t: booked)
+			t.setReserved();
+    }
 }

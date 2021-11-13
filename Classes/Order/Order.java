@@ -67,7 +67,7 @@ public class Order{
         this.createdBy = orderCreator;
         this.itemList = new HashMap<AMenuItem, Integer>();
         this.subTotal = 0;
-        this.dateTime  = DateTimeFormatHelper.formatToStringDate(DateTimeFormatHelper.getTodayDate(false));
+        this.dateTime  = DateTimeFormatHelper.formatToStringDate(DateTimeFormatHelper.inbuiltDate());
         this.itemList = new HashMap<AMenuItem, Integer>(itemList); //Create a shallow copy
 
         if (isMember){ // check Membership status

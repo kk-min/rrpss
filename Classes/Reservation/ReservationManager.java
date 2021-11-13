@@ -112,25 +112,25 @@ public class ReservationManager {
 				//Find the reservation session according to the input reservation time
 				if (!isToday || !(DateTimeFormatHelper.getTimeDifferenceMinutes(DateTimeFormatHelper.inbuiltTime(), resvTime) <= 0)) {
 					if (DateTimeFormatHelper.checkResvTimeSession(resvTime, LocalTime.of(10, 0), LocalTime.of(16, 0))) {
-						resvSession = 'A';
-						correctTime = true;
+					  resvSession = 'A';
+					  correctTime = true;
 					} else if (DateTimeFormatHelper.checkResvTimeSession(resvTime, LocalTime.of(18, 0),
-							LocalTime.of(23, 59))) {
-						resvSession = 'P';
-						correctTime = true;
+						LocalTime.of(23, 59))) {
+					  resvSession = 'P';
+					  correctTime = true;
 					} else {
-						System.out.println("The restaurant is not in operation at the time you entered.");
-						correctTime = false;
+					  System.out.println("The restaurant is not in operation at the time you entered.");
+					  correctTime = false;
 					}
-				} else {
+				  } else {
 					System.out.println("The time entered is passed! Current time is " + LocalTime.now() + ".");
 					correctTime = false;
-				}
+				  }
 			}
 
 			//Enter the number of customer
 			while (numPax <= 0 || numPax > 10) {
-				System.out.print("Enter numble of customer: ");
+				System.out.print("Enter number of customer: ");
 				numPax = input.nextInt();
 				if (numPax <= 0) {
 					System.out.println("You cannot have less than 1 person.");
@@ -197,7 +197,7 @@ public class ReservationManager {
 		Reservation.ReservationSession s = session == 'A' ? Reservation.ReservationSession.AM
 				: Reservation.ReservationSession.PM;
 		unavailable = getTableBookedByDateAndSession(resvDate, s);
-		available = TableManager.getTheOtherHalf(unavailable);
+		available = TableManager.getComplement(unavailable);
 		for (Table t : available) {
 			if (t.getCapacity() >= cusCount)
 				return t.getID();

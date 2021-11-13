@@ -4,11 +4,15 @@ import java.util.Map;
 import java.util.Scanner;
 
 import Classes.SalesRevenueReport.SalesRevenueReport;
-
-public class PrintReport implements Printer{
-
+/**
+ * Implements printing functionality for printing the Sales Revenue Report object.
+ */
+public class PrintReport extends UserInterfacePrinter {
     private static Scanner input = new Scanner(System.in);
 
+    /**
+     * Prints the Sales Revenue Report.
+     */
     public static SalesRevenueReport generateReport() {
         System.out.print("Choose a period to generate the Sales Revenue Report for\n1) Day\n2)Month\n3)Year");
         int choice = input.nextInt();
