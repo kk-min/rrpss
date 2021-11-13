@@ -33,6 +33,15 @@ public class ReservationManager {
      */
 	private static Scanner input = new Scanner(System.in);	
 
+	/**
+     * Accessor for reservation collection
+     *
+     * @return the reservation collection in arraylist
+     */
+	public static ArrayList<Reservation> getReservationCollection() {
+		return reservationCollection;
+	}
+
     /**
      * Creating a new reservation booking
      */
@@ -114,7 +123,7 @@ public class ReservationManager {
 
 			//Enter the number of customer
 			while (numPax <= 0 || numPax > 10) {
-				System.out.print("Enter number of customer: ");
+				System.out.print("Enter number of customers: ");
 				numPax = input.nextInt();
 				if (numPax <= 0) {
 					System.out.println("You cannot have less than 1 person.");
