@@ -213,8 +213,8 @@ public class ReservationManager {
 		for (Reservation r : reservationCollection) {
 			if (DateTimeFormatHelper.compareIfBeforeToday(r.getResvDate())) {
 				passed = true;
-			} else if (r.getResvDate().isEqual(DateTimeFormatHelper.getTodayDate())) {
-				if (r.getResvTime().isBefore(DateTimeFormatHelper.getTimeNow())) {
+			} else if (r.getResvDate().isEqual(DateTimeFormatHelper.inbuiltDate())) {
+				if (r.getResvTime().isBefore(DateTimeFormatHelper.inbuiltTime())) {
 					passed = true;
 				}
 			}
