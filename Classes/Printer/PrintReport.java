@@ -2,7 +2,9 @@ package Classes.Printer;
 
 import java.util.Map;
 
+import Classes.AMenuItem.AMenuItem;
 import Classes.SalesRevenueReport.SalesRevenueReport;
+import Classes.Staff.StaffManager;
 
 /**
  * Implements printing functionality for printing the Sales Revenue Report
@@ -15,9 +17,8 @@ public class PrintReport extends UserInterfacePrinter {
      * @return SalesRevenueReport r with name report 
      */
     public static SalesRevenueReport generateReport() {
-        System.out.print("Choose a period to generate the Sales Revenue Report for\n1) Day\n2) Month\n3) Year\nYour Choice: ");
-        int choice = input.nextInt();
-        input.nextLine();
+        System.out.print("Choose a period to generate the Sales Revenue Report for:\n1) Day\n2) Month\n3) Year\nYour Choice: ");
+        int choice = input.nextInt(); input.nextLine();
         String period = "";
         switch (choice) {
         case 1:
@@ -42,8 +43,8 @@ public class PrintReport extends UserInterfacePrinter {
      */
     public static void print() {
         SalesRevenueReport report = PrintReport.generateReport();
-        Map<Classes.AMenuItem.AMenuItem, Integer> alacarteStatistics = report.getAlaCarteStatistics();
-        Map<Classes.AMenuItem.AMenuItem, Integer> promotionalStatistics = report.getPromotionalStatistics();
+        Map<AMenuItem, Integer> alacarteStatistics = report.getAlaCarteStatistics();
+        Map<AMenuItem, Integer> promotionalStatistics = report.getPromotionalStatistics();
         String Header = "SALES REVENUE REPORT" + " (" + report.getPeriod() + ")";
         int count;
 
@@ -69,7 +70,7 @@ public class PrintReport extends UserInterfacePrinter {
         System.out.println();
 
         // Line 4 and 5:
-        String totalStaffString = "| Total Staff: " + Classes.Staff.StaffManager.totalStaffNum();
+        String totalStaffString = "| Total Staff: " + StaffManager.totalStaffNum();
         System.out.print(totalStaffString);
         System.out.format("%" + (rowLength - totalStaffString.length()) + "s", "|");
         System.out.println();
@@ -118,7 +119,7 @@ public class PrintReport extends UserInterfacePrinter {
             System.out.println();
         } else {
             for (var entry : alacarteStatistics.entrySet()) {
-                Classes.AMenuItem.AMenuItem alacarteItem = entry.getKey();
+                AMenuItem alacarteItem = entry.getKey();
                 String name = alacarteItem.getName();
                 String leftString = "| " + name + ": ";
                 System.out.print(leftString);
@@ -157,7 +158,7 @@ public class PrintReport extends UserInterfacePrinter {
             System.out.println();
         } else {
             for (var entry : promotionalStatistics.entrySet()) {
-                Classes.AMenuItem.AMenuItem promotionItem = entry.getKey();
+                AMenuItem promotionItem = entry.getKey();
                 String name = promotionItem.getName();
                 String leftString = "| " + name + ": ";
                 System.out.print(leftString);

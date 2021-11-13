@@ -203,34 +203,34 @@ public class DateTimeFormatHelper {
     	int choice;
     	int amount;
     	do {
-    		choice = sc.nextInt();
+    		choice = sc.nextInt(); sc.nextLine();
         	switch(choice) {
         	case (1):{
         		System.out.println("Enter number of days:");
-        		amount = sc.nextInt();
+        		amount = sc.nextInt(); sc.nextLine();
         		while (amount < 0) {
         			System.out.println("Time must not be negative. Reenter:");
-        			amount = sc.nextInt();
+        			amount = sc.nextInt(); sc.nextLine();
         		}
         		incrementModifier(24*60*amount);
         		break;
         	}
         	case (2):{
         		System.out.println("Enter number of hours:");
-        		amount = sc.nextInt();
+        		amount = sc.nextInt(); sc.nextLine();
         		while (amount < 0) {
         			System.out.println("Time must not be negative. Reenter:");
-        			amount = sc.nextInt();
+        			amount = sc.nextInt(); sc.nextLine();
         		}
         		incrementModifier(60*amount);
         		break;
         	}
         	case (3):{
         		System.out.println("Enter number of minutes:");
-        		amount = sc.nextInt();
+        		amount = sc.nextInt(); sc.nextLine();
         		while (amount < 0) {
         			System.out.println("Time must not be negative. Reenter:");
-        			amount = sc.nextInt();
+        			amount = sc.nextInt(); sc.nextLine();
         		}
         		incrementModifier(amount);
         		break;

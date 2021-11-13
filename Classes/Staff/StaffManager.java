@@ -53,7 +53,7 @@ public class StaffManager {
     public static Staff getStaff() {
         displayStaffList();
 		System.out.print("Please enter your staff ID: ");
-        int staffID = input.nextInt();
+        int staffID = input.nextInt(); input.nextLine();
 
 		for (Staff staff : staffList) {
             if (staff.getEmployeeID() == staffID) {

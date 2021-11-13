@@ -113,19 +113,19 @@ public class ReservationManager {
 					  resvSession = 'P';
 					  correctTime = true;
 					} else {
-					  System.out.println("The restaurant is not in operation at the time you entered.");
+					  System.out.println("The restaurant is not in operation at the time which you entered.");
 					  correctTime = false;
 					}
 				  } else {
-					System.out.println("The time entered is passed! Current time is " + LocalTime.now() + ".");
+					System.out.println("The time entered has already passed! Current time is " + DateTimeFormatHelper.formatToStringTime(DateTimeFormatHelper.inbuiltTime()) + ".");
 					correctTime = false;
 				  }
 			}
 
-			//Enter the number of customer
+			//Enter the number of customers
 			while (numPax <= 0 || numPax > 10) {
 				System.out.print("Enter number of customers: ");
-				numPax = input.nextInt();
+				numPax = input.nextInt(); input.nextLine();
 				if (numPax <= 0) {
 					System.out.println("You cannot have less than 1 person.");
 				} else if (numPax > 10) {
@@ -146,16 +146,15 @@ public class ReservationManager {
 							+ 1;
 				r = new Reservation(assignedTableNum, resvDate, resvTime, resvSession, custContact, custName, numPax, tableNum);
 				reservationCollection.add(r);
-				System.out.println("Your reservation has been successfully recorded! Your reservation ID is " + assignedTableNum
-						+ " , and your assigned table is " + tableNum + ".");
+				System.out.println("Your reservation has been successfully recorded! Your reservation ID is " + assignedTableNum + ".");
 				System.out.println(
-						"Please take notice that your reservation will expire after 30 minutes of your booking time.");
+						"Please take note that your reservation will expire 30 minutes of your booking time.");
 			} else {
 				System.out.println(
-						"There are no available tables that can cater the number of pax for the day and session. We're sorry!");
+						"The restaurant is full for the day and session you entered. We're sorry!");
 			}
 		} catch (DateTimeParseException e) {
-			System.out.println("ERROR! Please make sure the date or time input is in correct format! (" + e.getLocalizedMessage() + ")");
+			System.out.println("ERROR! Please make sure the date or time inputted is in correct format! (" + e.getLocalizedMessage() + ")");
 		} catch (InputMismatchException e) {
 			System.out.println("ERROR! Please make sure the input is valid! (" + e.getLocalizedMessage() + "}");
 		}
@@ -238,17 +237,21 @@ public class ReservationManager {
      */
 	public static int checkReservationBooking() {
 		boolean flag = false;
-		System.out.print("Enter your reservation Id: ");
-		int Id = input.nextInt();
+		System.out.print("Enter your reservation ID: ");
+		int Id = input.nextInt(); input.nextLine();
 		for (Reservation r : reservationCollection) {
 			if (Id == r.getResvId()) {
-				System.out.println("Below is the reservation linked to the reservation number " + Id);
-				System.out.printf("%-6s %-15s %-10s %-10s %-15s %-30s %-3s %-9s\n", "ID", "Date", "Session", "Time", "Tel. No",
-						"Name", "Pax", "Table No.");
-				System.out.println("");
-				System.out.printf("%-6d %-15s %-10s %-10s %-15s %-30s %-3d %-9d\n", r.getResvId(),
-				DateTimeFormatHelper.formatToStringDate(r.getResvDate()), r.getResvSession() == Reservation.ReservationSession.AM ? 'A' : 'P',
-				DateTimeFormatHelper.formatToStringTime(r.getResvTime()), r.getCustomerContact(), r.getCustomerName(), r.getNumPax(), r.getTableID());
+				System.out.println("Here are your reservation details:");
+				System.out.println("ID: " + r.getResvId());
+				System.out.println("Name: " + r.getCustomerName());
+				System.out.println("Date & Time: " + r.getResvDate() + " " + r.getResvTime());
+				System.out.println("Pax: " + r.getNumPax());
+				// System.out.printf("%-6s %-15s %-10s %-10s %-15s %-15s %-3s %-9s\n", "ID", "Date", "Session", "Time", "Tel. No",
+				// 		"Name", "Pax", "Table No.");
+				// System.out.println("");
+				// System.out.printf("%-6d %-15s %-10s %-10s %-15s %-15s %-3d %-9d\n", r.getResvId(),
+				// DateTimeFormatHelper.formatToStringDate(r.getResvDate()), r.getResvSession() == Reservation.ReservationSession.AM ? 'A' : 'P',
+				// DateTimeFormatHelper.formatToStringTime(r.getResvTime()), r.getCustomerContact(), r.getCustomerName(), r.getNumPax(), r.getTableID());
 				flag = true;
 				break;
 			}
@@ -275,7 +278,8 @@ public class ReservationManager {
 
 		if (Id != -1) {
 			System.out.print("Are you sure you want to delete this reservation (Y/N)? ");
-			switch (Character.toUpperCase(input.nextLine().charAt(0))) {
+			int confirm = input.nextLine().charAt(0);
+			switch (Character.toUpperCase(confirm)) {
 			case 'Y':
 				Iterator<Reservation> iter = reservationCollection.iterator();
 				while (iter.hasNext()) {
@@ -286,7 +290,7 @@ public class ReservationManager {
 						&& r.getResvSession().equals(DateTimeFormatHelper.inbuiltSession(DateTimeFormatHelper.inbuiltTime()))) {
 							TableManager.getTableByID(r.getTableID()).setEmpty();
 						}
-						System.out.println("Reservation ID " + Id + " has been successfully removed.");
+						System.out.println("Reservation with ID " + Id + " has been successfully removed.");
 						break;
 					}
 				}
@@ -304,7 +308,7 @@ public class ReservationManager {
 	/**
      * Method to automatedly delete the reservation after 30 minutes of its reservation time and the customer(s) haven't showed up
 	 * 
-	 * This method will be called once a minute in the MainApp
+	 * This method will be called once a minute by TimerExecutr in the MainApp
      */
 	public static void checkExpiredReservations() {
 		Reservation r;
