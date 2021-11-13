@@ -3,8 +3,12 @@ package Classes.SalesRevenueReport;
 import java.util.ArrayList;
 
 import Classes.Order.Order;
+import Classes.Order.OrderManager;
 import Classes.Staff.Staff;
 import Classes.Time.DateTimeFormatHelper;
+import java.util.Map;
+import Classes.AMenuItem.AMenuItem;
+import Classes.AMenuItem.AMenuItem.TYPE;
 
 /**
  * Contains the sales information of all items sold for a particular period of time.
@@ -18,14 +22,43 @@ public class SalesRevenueReport {
     private ArrayList<Order> orderList;
     private String period;
     private double totalRevenue;
-    public SalesRevenueReport(ArrayList<Order> orderList, String period){
+    private Map<AMenuItem, Integer> alacarteStatistics;
+    private Map<AMenuItem, Integer> promotionalStatistics;
+
+    public SalesRevenueReport(String period){
         int i = 0;
         this.totalRevenue = 0;
-        this.orderList = new ArrayList<Order>();
+        this.orderList = OrderManager.getOrderHistory();
         this.period = period;
         String currentDate = DateTimeFormatHelper.formatToStringDate(DateTimeFormatHelper.getTodayDate(false));
+        
+        for (Order order : this.orderList){
+            for (var entry : order.getItemList().entrySet()){
+                AMenuItem item = entry.getKey();
+                int quantity = entry.getValue();
+                if (item.getType() == TYPE.ALACARTE){
+                    if (!alacarteStatistics.containsKey(item)){ // key is not in our map yet
+                        alacarteStatistics.put(item, quantity);
+                    }
+                    else{
+                        alacarteStatistics.put(item, alacarteStatistics.get(item));
+                    }
+                }
+                else if (item.getType() == TYPE.PROMOTIONAL){
+                    if (!promotionalStatistics.containsKey(item)){ // key is in our map
+                        promotionalStatistics.put(item, quantity);
+                    }
+                    else{
+                        promotionalStatistics.put(item, alacarteStatistics.get(item));
+                    }
+                }
+                
+            }
+        }
 
-        // TODO Min: fix errors
+        
+
+
         switch(this.period){
             case "DAY":
                 for (Order order : orderList){
@@ -39,7 +72,7 @@ public class SalesRevenueReport {
 
             case "MONTH":
                 for (Order order : orderList){
-                    if ((order.getDateTime().charAt(3)+order.getdateTime.charAt(4)) == (currentDate.charAt(3)+currentDate.charAt(4)))
+                    if ((order.getDateTime().charAt(3)+order.getDateTime().charAt(4)) == (currentDate.charAt(3)+currentDate.charAt(4)))
                     {
                         this.orderList.add(order);
                         this.totalRevenue += order.getGrandTotal();
@@ -49,7 +82,7 @@ public class SalesRevenueReport {
 
             case "YEAR":
                 for (Order order : orderList){
-                    if ((order.getDateTime().charAt(6)+order.getdateTime.charAt(7)+order.getDateTime().charAt(8)+order.getDateTime().charAt(9)) == (currentDate.charAt(6)+currentDate.charAt(7)+currentDate.charAt(8)+currentDate.charAt(9)))
+                    if ((order.getDateTime().charAt(6)+order.getDateTime().charAt(7)+order.getDateTime().charAt(8)+order.getDateTime().charAt(9)) == (currentDate.charAt(6)+currentDate.charAt(7)+currentDate.charAt(8)+currentDate.charAt(9)))
                     {
                         this.orderList.add(order);
                         this.totalRevenue += order.getGrandTotal();
@@ -58,7 +91,6 @@ public class SalesRevenueReport {
                 break;
             default:
         }
-            this.totalRevenue += order.getGrandTotal();
     }
 
     public ArrayList<Order> getOrderList() {
@@ -71,5 +103,13 @@ public class SalesRevenueReport {
 
     public double getTotalRevenue() {
         return this.totalRevenue;
+    }
+
+    public Map<AMenuItem, Integer> getAlaCarteStatistics(){
+        return this.alacarteStatistics;
+    }
+
+    public Map<AMenuItem, Integer> getPromotionalStatistics(){
+        return this.promotionalStatistics;
     }
 }

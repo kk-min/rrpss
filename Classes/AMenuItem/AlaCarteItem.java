@@ -7,8 +7,6 @@ package Classes.AMenuItem;
  */
 public class AlaCarteItem extends AMenuItem  {
     
-    public int Type;
-    
     /**
      * Constructor to pass in all required parameters for menu item.
      *
@@ -20,6 +18,7 @@ public class AlaCarteItem extends AMenuItem  {
 	public AlaCarteItem(int ID, String name, double price, String description)
 	{
         super(ID, name, price, description);
+        this.itemType = TYPE.ALACARTE;
     }
 
 }

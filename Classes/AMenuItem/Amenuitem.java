@@ -5,6 +5,8 @@ package Classes.AMenuItem;
 *
 */
 public class AMenuItem {
+    public enum TYPE {ALACARTE, PROMOTIONAL};
+    protected TYPE itemType;
     /**
      * The ID of the menu item.
      */
@@ -80,6 +82,9 @@ public class AMenuItem {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+    public TYPE getType(){
+        return this.itemType;
     }
 }
 
