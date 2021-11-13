@@ -10,9 +10,13 @@ import Classes.Reservation.ReservationManager;
 import Classes.Time.DateTimeFormatHelper;
 
 public class TableManager {
-
+	/**
+	 * Arraylist to store all the table.
+	 */
 	private static ArrayList<Table> tableCollection = new ArrayList<Table>();
-
+	/**
+	 * Array to store number of each type of tables.
+	 */
 	private static final int[] tableTrack = { 2, 2, 2, 2, 2 };
 
 	public static void initialiseTableCollection() {
