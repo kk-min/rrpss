@@ -245,10 +245,8 @@ public class ReservationManager {
 						"Name", "Pax", "Table No.");
 				System.out.println("");
 				System.out.printf("%-6d %-15s %-10s %-10s %-15s %-30s %-3d %-9d\n", r.getResvId(),
-						DateTimeFormatHelper.formatToStringDate(r.getResvDate()),
-						r.getResvSession() == Reservation.ReservationSession.AM ? 'A' : 'P',
-						DateTimeFormatHelper.formatToStringTime(r.getResvTime()), r.getCustomerContact(), r.getCustomerName(),
-						r.getNumPax(), r.getTableID());
+				DateTimeFormatHelper.formatToStringDate(r.getResvDate()), r.getResvSession() == Reservation.ReservationSession.AM ? 'A' : 'P',
+				DateTimeFormatHelper.formatToStringTime(r.getResvTime()), r.getCustomerContact(), r.getCustomerName(), r.getNumPax(), r.getTableID());
 				flag = true;
 				break;
 			}
