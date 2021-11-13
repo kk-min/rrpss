@@ -2,6 +2,10 @@ package Classes.Printer;
 import java.util.Hashtable;
 
 public class ForTestingPurposes {
+    /**
+     * For testing program main
+     * @param args
+     */
     public static void main(String args[]) {
 
         //Print Receipt:

@@ -10,7 +10,8 @@ import Classes.SalesRevenueReport.SalesRevenueReport;
  */
 public class PrintReport extends UserInterfacePrinter {
     /**
-     * Prints the Sales Revenue Report.
+     * Prints the Sales Revenue Report. If generation failed,Return SalesRevenueReport Object for debugging 
+     * @return SalesRevenueReport r with name report 
      */
     public static SalesRevenueReport generateReport() {
         System.out.print("Choose a period to generate the Sales Revenue Report for\n1) Day\n2) Month\n3) Year\nYour Choice: ");
