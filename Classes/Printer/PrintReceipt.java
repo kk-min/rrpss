@@ -63,7 +63,6 @@ public class PrintReceipt {
         System.out.printf("-".repeat(rowLength));
         System.out.println();
         // Line 6:
-        // TODO Min: didnt include count of each item (and itemList is a map now)
         for (var entry : itemList.entrySet()) {
             AMenuItem item = entry.getKey();
             String itemName = item.getName();
