@@ -33,7 +33,7 @@ public class ReservationManager {
 		LocalTime resvTime = LocalTime.now();
 		char resvSession = ' ';
 		String userDate = "";
-		
+
 		boolean correctDate = false;
 		boolean correctTime = false;
 		boolean isToday = false;
@@ -222,19 +222,6 @@ public class ReservationManager {
 
 	}
 
-	private static void printReservationLine(Reservation r) {
-		if (r.getResvDate().equals(LocalDate.now()))
-			if (DateTimeFormatHelper.getTimeDifferenceMinutes(LocalTime.now(), r.getResvTime()) <= -30) {
-				System.out.println("Sorry, your reservation has expired.");
-				checkExpiredReservations();
-			}
-		System.out.printf("%-6d %-15s %-10s %-10s %-15s %-30s %-3d %-9d\n", r.getResvId(),
-				DateTimeFormatHelper.formatToStringDate(r.getResvDate()),
-				r.getResvSession() == Reservation.ReservationSession.AM ? 'A' : 'P',
-				DateTimeFormatHelper.formatToStringTime(r.getResvTime()), r.getCustomerContact(), r.getCustomerName(),
-				r.getNumPax(), r.getTableID());
-	}
-
 	private static int printReservationLine(int resvId) {
 		int count = 0;
 		System.out.println("Below are the reservations linked to the reservation number " + resvId);
@@ -243,7 +230,11 @@ public class ReservationManager {
 		System.out.println("");
 		for (Reservation r : reservationCollection) {
 			if (resvId == r.getResvId()) {
-				printReservationLine(r);
+				System.out.printf("%-6d %-15s %-10s %-10s %-15s %-30s %-3d %-9d\n", r.getResvId(),
+						DateTimeFormatHelper.formatToStringDate(r.getResvDate()),
+						r.getResvSession() == Reservation.ReservationSession.AM ? 'A' : 'P',
+						DateTimeFormatHelper.formatToStringTime(r.getResvTime()), r.getCustomerContact(), r.getCustomerName(),
+						r.getNumPax(), r.getTableID());
 				count++;
 			}
 		}
