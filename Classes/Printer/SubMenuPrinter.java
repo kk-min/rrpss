@@ -3,13 +3,10 @@ package Classes.Printer;
 import java.util.Scanner;
 
 import Classes.AMenuItem.MenuManager;
-import Classes.AMenuItem.AMenuItem;
 import Classes.Order.OrderManager;
-import Classes.Order.Order;
 import Classes.Reservation.ReservationManager;
 
-public class SubMenuPrinter {
-    private static int rowLength = 63;
+public class SubMenuPrinter implements Printer {
     private static Scanner input = new Scanner(System.in);
 
     // TODO Min: the line formatting for all 3 submenus here

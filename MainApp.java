@@ -2,6 +2,7 @@ import java.util.Scanner;
 
 import Classes.Order.OrderManager;
 import Classes.Printer.PrintReceipt;
+import Classes.Printer.PrintReport;
 import Classes.Printer.SubMenuPrinter;
 import Classes.Table.TableManager;
 
@@ -70,8 +71,7 @@ public class MainApp {
 					OrderManager.checkout();
 					break;
 				case 6: // Print Sale Revenue Report
-				// TODO
-					// Printer.generateReport(report, alacarteStatistics, promotionalStatistics, alaCarteNames, promotionalNames);
+					PrintReport.print();
 					break;
 			}
 		}
