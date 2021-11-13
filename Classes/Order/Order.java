@@ -147,7 +147,7 @@ public class Order{
         if (this.isMember){ // Order made by a member
             this.subTotal = this.subTotal*(1-DISCOUNT_RATE);
         }
-        this.grandTotal = this.grandTotal*(1+TAX_RATE);
+        this.grandTotal = this.subTotal*(1+TAX_RATE);
     }
 
     /**
