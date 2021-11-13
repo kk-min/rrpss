@@ -1,7 +1,5 @@
 package Classes.AMenuItem;
 
-import Classes.AMenuItem.AMenuItem.TYPE;
-
 /**
  * Promotional Class extend from AMenuItem
  */

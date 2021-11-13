@@ -1,4 +1,4 @@
-package Project;
+package Classes.Time;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -10,6 +10,8 @@ import java.time.temporal.ChronoUnit;
 import java.util.Date;
 import java.util.InputMismatchException;
 import java.util.Scanner;
+
+import Classes.Reservation.ReservationManager;
 
 public class DateTimeFormatHelper {
 
@@ -173,7 +175,7 @@ public class DateTimeFormatHelper {
         	}
         	}
     	}while(choice < 0 || choice > 3);
-    	ReservationMenuUI.checkExpiredReservations();
+    	ReservationManager.checkExpiredReservations();
     	sc.close();
     }
     
