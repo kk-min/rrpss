@@ -47,12 +47,8 @@ public class DateTimeFormatHelper {
         return LocalTime.parse(time, formatter);
     }
 
-    public static LocalDate getTodayDate(boolean getNextMonth) {
-        if (!getNextMonth)
-            return LocalDate.ofEpochDay(SGTimeZone() / MILLIS_TO_DAYS);
-        else {
-            return LocalDate.ofEpochDay(SGTimeZone() / MILLIS_TO_DAYS + 30);
-        }
+    public static LocalDate getTodayDate() {
+        return LocalDate.ofEpochDay(SGTimeZone() / MILLIS_TO_DAYS);
     }
 
     public static LocalTime getTimeNow() {
