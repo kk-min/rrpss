@@ -173,5 +173,4 @@ public class PrintReport implements Printer{
         System.out.printf("-".repeat(rowLength));
         System.out.println();
     }
-
 }

@@ -3,9 +3,7 @@ package Classes.Printer;
 import java.util.Scanner;
 
 import Classes.AMenuItem.MenuManager;
-import Classes.AMenuItem.AMenuItem;
 import Classes.Order.OrderManager;
-import Classes.Order.Order;
 import Classes.Reservation.ReservationManager;
 
 public class SubMenuPrinter {

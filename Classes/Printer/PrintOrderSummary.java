@@ -1,4 +1,5 @@
-package Printer;
+package Classes.Printer;
+
 import Classes.Order.Order;
 
 public class PrintOrderSummary implements Printer{
