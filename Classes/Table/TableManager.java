@@ -87,10 +87,11 @@ public class TableManager {
 	public static void updateTableStatus() {
     	LocalDate date = DateTimeFormatHelper.inbuiltDate();
     	LocalTime time = DateTimeFormatHelper.inbuiltTime();
-    	if(time.compareTo(LocalTime.of(10, 0))) > 0 && time.compareTo(LocalTime.of(16, 00)) < 0)
-			Reservation.ReservationSession s = Reservation.ReservationSeesion.AM;
+    	Reservation.ReservationSession s;
+    	if(time.compareTo(LocalTime.of(10, 0)) > 0 && time.compareTo(LocalTime.of(16, 00)) < 0)
+			s = Reservation.ReservationSeesion.AM;
 		else if (time.compareTo(LocalTime.of(18, 0)) > 0 && time.compareTo(LocalTime.of(23, 59)) < 0)
-			Reservation.ReservationSession s = Reservation.ReservationSeesion.PM;
+			s = Reservation.ReservationSeesion.PM;
 		else return;
 		ArrayList<Table> booked = getTableBookedByDateAndSession(date,s);
 		for(Table t: booked)
