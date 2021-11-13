@@ -11,6 +11,7 @@ import java.util.Date;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import Classes.Reservation.Reservation;
 import Classes.Reservation.ReservationManager;
 import Classes.Table.TableManager;
 
@@ -128,9 +129,9 @@ public class DateTimeFormatHelper {
     
     public static Reservation.ReservationSession inbuiltSession(LocalTime time){
     	if(time.compareTo(LocalTime.of(10, 0)) > 0 && time.compareTo(LocalTime.of(16, 00)) < 0)
-    		return Reservation.ReservationSeesion.AM;
+    		return Reservation.ReservationSession.AM;
 		else if (time.compareTo(LocalTime.of(18, 0)) > 0 && time.compareTo(LocalTime.of(23, 59)) < 0)
-			return Reservation.ReservationSeesion.PM;
+			return Reservation.ReservationSession.PM;
 		return null;
     }
     

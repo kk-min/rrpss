@@ -1,7 +1,6 @@
 package Classes.AMenuItem;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 import Classes.Printer.UserInterfacePrinter;
 
 /**
