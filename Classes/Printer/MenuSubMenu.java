@@ -1,7 +1,14 @@
 package Printer;
 import Classes.Printer.UserInterfacePrinter;
 
+/**
+ * Implements printing functinality for Menu sub-menus
+ */
 public class MenuSubMenu extends UserInterfacePrinter {
+    /**
+     * Prints the menu submenu
+     * @return an integer flag indicating whether to exit the the application or go to previous menu
+     */
     public static int print(){
         System.out.printf("-".repeat(rowLength));
         System.out.println();

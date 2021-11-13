@@ -1,6 +1,14 @@
 package Printer;
 import Classes.Printer.UserInterfacePrinter;
+
+/**
+ * Implements printing functionality for Order sub-menus
+ */
 public class OrderSubMenu extends UserInterfacePrinter {
+    /**
+     * Prints the order sub-menu
+     * @return an integer flag indicating whether to exit the the application or go to previous menu
+     */
     public static int print(){
         System.out.printf("-".repeat(rowLength));
         System.out.println();

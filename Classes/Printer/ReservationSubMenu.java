@@ -1,6 +1,14 @@
 package Printer;
 import Classes.Printer.UserInterfacePrinter;
+
+/**
+ * Implements printing functionality for Reservation sub-menus
+ */
 public class ReservationSubMenu extends UserInterfacePrinter {
+    /**
+     * Prints the reservation submenu
+     * @return an integer flag indicating whether to exit the the application (1) or go to previous menu (-1)
+     */
     public static int print(){
         System.out.printf("-".repeat(rowLength));
         System.out.println();
