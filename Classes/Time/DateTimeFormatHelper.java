@@ -12,7 +12,6 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import Classes.Reservation.ReservationManager;
-import Classes.Table.TableManager;
 
 public class DateTimeFormatHelper {
 
@@ -48,8 +47,12 @@ public class DateTimeFormatHelper {
         return LocalTime.parse(time, formatter);
     }
 
-    public static LocalDate getTodayDate() {
-        return LocalDate.ofEpochDay(SGTimeZone() / MILLIS_TO_DAYS);
+    public static LocalDate getTodayDate(boolean getNextMonth) {
+        if (!getNextMonth)
+            return LocalDate.ofEpochDay(SGTimeZone() / MILLIS_TO_DAYS);
+        else {
+            return LocalDate.ofEpochDay(SGTimeZone() / MILLIS_TO_DAYS + 30);
+        }
     }
 
     public static LocalTime getTimeNow() {
@@ -126,6 +129,14 @@ public class DateTimeFormatHelper {
     	return inbuiltDateTime().toLocalTime();
     }
     
+    public static Reservation.ReservationSession inbuiltSession(LocalTime time){
+    	if(time.compareTo(LocalTime.of(10, 0)) > 0 && time.compareTo(LocalTime.of(16, 00)) < 0)
+    		return Reservation.ReservationSeesion.AM;
+		else if (time.compareTo(LocalTime.of(18, 0)) > 0 && time.compareTo(LocalTime.of(23, 59)) < 0)
+			return Reservation.ReservationSeesion.PM;
+		return null;
+    }
+    
     public static void advanceTime() {
     	System.out.print("Advance Time Options:\n"
     			+ "1. In days\n"
@@ -172,7 +183,7 @@ public class DateTimeFormatHelper {
         	}
         	}
     	}while(choice < 0 || choice > 3);
-        synchronize();
+    	synchronize();
     	sc.close();
     }
     
@@ -184,4 +195,5 @@ public class DateTimeFormatHelper {
     	ReservationManager.checkExpiredReservations();
     	TableManager.updateTableStatus();
     }
+    
 }
