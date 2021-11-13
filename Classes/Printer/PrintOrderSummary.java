@@ -34,9 +34,10 @@ public class PrintOrderSummary implements Printer {
         System.out.println(OrderNo);
 
         //Line 5:
-        String tableFormat = String.format("%"+(OrderNo.length()-8)+"s");
+        String tableFormat = "%"+(OrderNo.length()-8)+"s";
         System.out.print("Table ID");
         System.out.format(tableFormat, viewOrder.getTableID());
+        System.out.println();
 
         //Line 6:
         System.out.printf("-".repeat(rowLength));

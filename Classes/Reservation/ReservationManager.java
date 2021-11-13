@@ -23,6 +23,7 @@ import java.util.InputMismatchException;
 
 public class ReservationManager {
 
+<<<<<<< HEAD
 	/**
      * The arraylist storing all the reservation records
      */
@@ -43,6 +44,9 @@ public class ReservationManager {
 	public ReservationManager() {
 		reservationCollection = new ArrayList<Reservation>();
 	}
+=======
+	private static ArrayList<Reservation> reservationCollection = new ArrayList<Reservation>();
+>>>>>>> f7ac3abc8940ad617edc12ff34043abccf562e24
 
     /**
      * Scanner object for taking user input

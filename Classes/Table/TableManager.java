@@ -11,16 +11,11 @@ import Classes.Time.DateTimeFormatHelper;
 
 public class TableManager {
 
-	private static ArrayList<Table> tableCollection;
+	private static ArrayList<Table> tableCollection = new ArrayList<Table>();
 
 	private static final int[] tableTrack = { 2, 2, 2, 2, 2 };
 
-	public TableManager() {
-		tableCollection = new ArrayList<Table>();
-		initialiseTableCollection();
-	}
-
-	private static void initialiseTableCollection() {
+	public static void initialiseTableCollection() {
 		int i = 0, j, n = 1, capacity = 2;
 		while (capacity <= 10) {
 			for (j = 0; j < tableTrack[i]; j++) {

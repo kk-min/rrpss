@@ -22,14 +22,7 @@ import Classes.Time.DateTimeFormatHelper;
 public class OrderManager {
     private static Scanner input = new Scanner(System.in);
 
-    private static ArrayList<Order> OrderHistory;
-
-    /**
-     * Creates an Order Manager with an initialized list detailing Order History.
-     */
-    public OrderManager() {
-        OrderHistory = new ArrayList<Order>();
-    }
+    private static ArrayList<Order> OrderHistory = new ArrayList<Order>();
 
     /**
      * Gets the order history.

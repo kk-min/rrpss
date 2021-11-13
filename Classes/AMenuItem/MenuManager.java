@@ -178,7 +178,7 @@ public class MenuManager extends UserInterfacePrinter {
 		input.nextLine();
 		System.out.println("What is the description of the item?");
 		Mdescription += input.nextLine();
-		System.out.println("What type of item is the new menu item (Main 1)/(Beverage 2)/(Dessert 3)?");
+		System.out.println("What type of item is the new menu item (Main Dish 1)/(Beverage 2)/(Dessert 3)?");
 		int choice = input.nextInt();
 		input.nextLine();
 		switch (choice)
@@ -209,8 +209,10 @@ public class MenuManager extends UserInterfacePrinter {
 
 	public static void updateAlaCarteItem()
 	{
+		System.out.println("Here is the current menu:\n---");
+		displayMenu();
 		int id, choiceType, choiceDetail, check = 0;
-		System.out.println("What type of item is the menu item to be updated (Main 1)/(Beverage 2)/(Dessert 3)?");
+		System.out.println("What type of item is the menu item to be updated (Main Dish 1)/(Beverage 2)/(Dessert 3)?");
 		choiceType = input.nextInt();
 		input.nextLine();
 		System.out.println("What is the ID of the item to be updated?");
@@ -333,8 +335,10 @@ public class MenuManager extends UserInterfacePrinter {
 
 	public static void deleteAlaCarteItem()
 	{
+		System.out.println("Here is the current menu:\n---");
+		displayMenu();
 		int id, check = 0;
-		System.out.println("What type of item do you want to delete (Main 1)/(Beverage 2)/(Dessert 3)?");
+		System.out.println("What type of item do you want to delete (Main Dish 1)/(Beverage 2)/(Dessert 3)?");
 		int choice = input.nextInt();
 		System.out.println("What is the ID of the item to be deleted?");
 		id = input.nextInt();
@@ -402,12 +406,12 @@ public class MenuManager extends UserInterfacePrinter {
 
 	public static void addPromoItem()
 	{
-		String Mname,Mdescription;
+		String Mname, Mdescription;
 		Mname = "";
 		Mdescription = "";
 		double Mprice;
 
-		System.out.println("What is the name of the new promo Dish?");
+		System.out.println("What is the name of the new Promotional Item?");
 		Mname += input.nextLine();
 		System.out.println("What is the price of this item?");
 		Mprice = input.nextDouble();
@@ -421,6 +425,8 @@ public class MenuManager extends UserInterfacePrinter {
 
 	public static void updatePromoItem()
 	{
+		System.out.println("Here is the current menu:\n---");
+		displayMenu();
 		System.out.println("What is the ID of the Promotional Item to be updated?");
 		int id = input.nextInt();
 		System.out.println("What detail would you like to update (Name 1)/(Description 2)/(Price 3)?");
@@ -466,8 +472,9 @@ public class MenuManager extends UserInterfacePrinter {
 
 	public static void deletePromoItem()
 	{
-
-		System.out.println("What is the ID of the Promotion Item to be deleted?");
+		System.out.println("Here is the current menu:\n---");
+		displayMenu();
+		System.out.println("What is the ID of the Promotional Item to be deleted?");
 		int id = input.nextInt();
 		int check = 0;
 		for(int i=0;i<promotionals.size();i++)
@@ -492,7 +499,7 @@ public class MenuManager extends UserInterfacePrinter {
 
 	public static AMenuItem getMenuItem() {
 		displayMenu();
-		System.out.println("What is the type of the item (Main 1)/(Beverage 2)/(Dessert 3)?");
+		System.out.println("What is the type of the item (Main Dish 1)/(Beverage 2)/(Dessert 3)?");
 		int choice = input.nextInt();
 		System.out.println("What is the ID of the item?");
 		int id = input.nextInt();

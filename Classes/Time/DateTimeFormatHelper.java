@@ -182,7 +182,7 @@ public class DateTimeFormatHelper {
         	}
         	}
     	}while(choice < 0 || choice > 3);
-        synchronize();
+    	synchronize();
     	sc.close();
     }
     
@@ -194,4 +194,5 @@ public class DateTimeFormatHelper {
     	ReservationManager.checkExpiredReservations();
     	TableManager.updateTableStatus();
     }
+    
 }

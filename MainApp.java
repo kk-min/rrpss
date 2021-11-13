@@ -4,11 +4,10 @@ import Classes.AMenuItem.MenuManager;
 import Classes.Order.OrderManager;
 import Classes.Printer.MenuSubMenu;
 import Classes.Printer.OrderSubMenu;
-import Classes.Printer.PrintReceipt;
 import Classes.Printer.PrintReport;
+import Classes.Printer.Printer;
 import Classes.Printer.ReservationSubMenu;
-import Classes.Printer.SubMenuPrinter;
-import Classes.Reservation.Reservation;
+import Classes.Staff.StaffManager;
 import Classes.Table.TableManager;
 
 public class MainApp {
@@ -17,11 +16,12 @@ public class MainApp {
 	
 	public static void main(String args[]) {
 
-		String restaurantName = "HELLOWORLD";
-		int rowLength = 63;
+		String restaurantName = Printer.restaurantName;
+		int rowLength = Printer.rowLength;	// TODO: think of a better way to do this
 
 		MenuManager.initialiseMenu();
-		
+		TableManager.initialiseTableCollection();
+		StaffManager.initialiseStaffList();
 
 		int choice = 1, subMenuResult = -1;
 		while (choice != 0 && subMenuResult != 1) {
@@ -64,7 +64,6 @@ public class MainApp {
 			switch(choice) {
 				case 1: //Menu submenu
 					subMenuResult = MenuSubMenu.print();
-					System.out.print("\n\n\n\n\n\n\n\\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nn\n\n");
 					break;
 				case 2:	//Order submenu
 					subMenuResult = OrderSubMenu.print();
