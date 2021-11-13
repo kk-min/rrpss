@@ -60,7 +60,7 @@ public class Order{
     private String dateTime;
 
     /**
-     * Creates a new order with the given tableID and orderCreator
+     * Constructor to Creates a new order with the given tableID and orderCreator
      * @param tableID The Table ID where the order was made
      * @param orderCreator The name of the Staff who crated the order
      * @param isMember Flag value that checks whether order was made by a member to apply discount

@@ -6,8 +6,8 @@ import Classes.AMenuItem.AMenuItem;
 import Classes.Order.Order;
 
 /**
- * Printer class that prints the receipts and Sales Revenue Reports onto the
- * console
+ * Printer class that prints the receipts and Sales Revenue Reports onto the console
+ * @version 1.0
  */
 public class PrintReceipt implements Printer{
     /**

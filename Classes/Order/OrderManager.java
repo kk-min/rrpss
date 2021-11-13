@@ -16,10 +16,13 @@ import Classes.Table.TableManager;
 
 /**
  * Manages various functionalities pertaining to Order objects.
+ * @version 1.0
  */
 public class OrderManager {
     private static Scanner input = new Scanner(System.in);
-
+    /**
+    * ArrayList OrderHistor to store all Order Objects
+    */
     private static ArrayList<Order> OrderHistory = new ArrayList<Order>();
 
     /**

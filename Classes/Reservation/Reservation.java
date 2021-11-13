@@ -16,7 +16,7 @@ import Classes.Table.TableManager;
 public class Reservation {
 
 	/**
-     * The sessions enum of the reservation, AM or PM.
+     * The sessions enum of the reservation, AM (10 am to 4 pm) or PM (6 pm to midnight).
      */
 	public enum ReservationSession {
 		AM, PM
@@ -33,7 +33,7 @@ public class Reservation {
 	private LocalDate resvDate;
 
 	/**
-     * The reservation date. 
+     * The reservation time. 
      */
 	private LocalTime resvTime;
 

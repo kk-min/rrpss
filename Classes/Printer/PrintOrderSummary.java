@@ -4,6 +4,7 @@ import Classes.Order.Order;
 
 /**
  * Implements printing functionality for viewing a current order's summary
+ * @version 1.0
  */
 public class PrintOrderSummary implements Printer {
     /**

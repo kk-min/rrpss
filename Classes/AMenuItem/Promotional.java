@@ -2,6 +2,7 @@ package Classes.AMenuItem;
 
 /**
  * Promotional Class extend from AMenuItem
+ * @version 1.0
  */
 public class Promotional extends AMenuItem {
     /**

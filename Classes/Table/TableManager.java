@@ -8,6 +8,12 @@ import java.util.Comparator;
 import Classes.Reservation.Reservation;
 import Classes.Reservation.ReservationManager;
 import Classes.Time.DateTimeFormatHelper;
+/**
+ * The Table Manager class
+ *
+ * @author Ma Guangheng
+ * @version 1.0
+ */
 
 public class TableManager {
 	/**

@@ -2,10 +2,18 @@ package Classes.Staff;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+/**
+ * StaffManager for all the Employees in the resturants
+ * @version 1.0
+ * @author Herhuey
+ */
 
 public class StaffManager {
     
     private static Scanner input = new Scanner(System.in);
+    /**
+     * ArrayList staffList to store Staff Object 
+     */
 
     private static ArrayList<Staff> staffList = new ArrayList<Staff>();
 
@@ -27,10 +35,20 @@ public class StaffManager {
             System.out.printf("%-3s - %-30s %n", staff.getEmployeeID(), staff.getName());
         }
     }
-
+    /**
+     * Return the how long is the staffList
+     * 
+     * @return staffList.size()
+     */
     public static int totalStaffNum() {
         return staffList.size();
     }
+    /**
+     * If the staff ID exist, return Object staff
+     * if the staff ID does not exist, return null
+     * 
+     * @return staff,null
+     */
 
     public static Staff getStaff() {
         displayStaffList();
