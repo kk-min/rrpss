@@ -3,6 +3,7 @@ import Classes.Table.Table;
 import Classes.Table.TableManager;
 import Classes.Time.DateTimeFormatHelper;
 
+import java.sql.Date;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
@@ -44,6 +45,7 @@ public class ReservationManager {
 
     /**
      * Creating a new reservation booking
+	 * Get inputs from user: Customer name, customer contact, date, time of reservation and no of pax
      */
 	public static void createReservationBooking() {
 
@@ -161,7 +163,8 @@ public class ReservationManager {
 	}
 
 	/**
-     * Method to check the booked (unavailable) tables at the given date and session
+     * Method to check the booked (unavailable) tables at the given date and session. The booked tables will be returned
+	 * in an arraylist
      *
      * @param date     The given date to check tables' availability
 	 * @param session  The given session to check tables' availability
@@ -309,8 +312,8 @@ public class ReservationManager {
 		Iterator<Reservation> iter = reservationCollection.iterator();
 		while (iter.hasNext()) {
 			r = iter.next();
-			if (r.getResvDate().equals(LocalDate.now()))
-				if (DateTimeFormatHelper.getTimeDifferenceMinutes(LocalTime.now(), r.getResvTime()) <= -30
+			if (r.getResvDate().equals(DateTimeFormatHelper.inbuiltDate()))
+				if (DateTimeFormatHelper.getTimeDifferenceMinutes(DateTimeFormatHelper.inbuiltTime(), r.getResvTime()) <= -30
 						&& !(TableManager.getTableByID(r.getTableID()).getStatus() == Table.TStatus.OCCUPIED)) {
 					TableManager.getTableByID(r.getTableID()).setEmpty();
 					iter.remove();

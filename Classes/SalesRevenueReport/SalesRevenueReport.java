@@ -15,10 +15,25 @@ import Classes.AMenuItem.AMenuItem.TYPE;
  * time.
  */
 public class SalesRevenueReport {
+    /**
+     * Collection of all orders.
+     */
     private ArrayList<Order> orderList;
+    /**
+     * A specified period to generate a report from
+     */
     private String period;
+    /**
+     * Total revenue in the given peroid.
+     */
     private double totalRevenue;
+    /**
+     * Statistics of alacarte items sold.
+     */
     private Map<AMenuItem, Integer> alacarteStatistics;
+    /**
+     * Statistics of promotional items sold.
+     */
     private Map<AMenuItem, Integer> promotionalStatistics;
 
     /**
