@@ -7,12 +7,7 @@ public class StaffManager {
     
     private static Scanner input = new Scanner(System.in);
 
-    private static ArrayList<Staff> staffList;
-
-    public StaffManager() {
-        staffList = new ArrayList<Staff>();
-        initialiseStaffList();
-    }
+    private static ArrayList<Staff> staffList = new ArrayList<Staff>();
 
     public static void initialiseStaffList()
 	{
@@ -29,7 +24,7 @@ public class StaffManager {
     public static void displayStaffList() {
         System.out.println("Staff List:");
         for (Staff staff : staffList) {
-            System.out.printf("%-9s: %-9s %n", staff.getEmployeeID(), staff.getName());
+            System.out.printf("%-3s - %-30s %n", staff.getEmployeeID(), staff.getName());
         }
     }
 

@@ -25,7 +25,7 @@ public class Order{
     /**
      * Variable that is assigned and incremented in order to ensure orderID is unique for every instance of order
      */
-    private static int globalID = 0;
+    private static int globalID = 1;
     /**
      * A Map that contains a Menu Item object as a key and the total numbers of that item ordered in a single order as the value
      */

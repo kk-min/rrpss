@@ -104,6 +104,5 @@ public class PrintReceipt implements Printer{
 
         System.out.printf("-".repeat(rowLength));
         System.out.println();
-
     }
 }

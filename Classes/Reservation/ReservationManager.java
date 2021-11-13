@@ -17,11 +17,7 @@ public class ReservationManager {
 
 	private static Scanner input = new Scanner(System.in);
 
-	private static ArrayList<Reservation> reservationCollection;
-
-	public ReservationManager() {
-		reservationCollection = new ArrayList<Reservation>();
-	}
+	private static ArrayList<Reservation> reservationCollection = new ArrayList<Reservation>();
 
 	public static void createReservationBooking() {
 		Reservation r = null;
