@@ -88,12 +88,9 @@ public class TableManager {
     	LocalDate date = DateTimeFormatHelper.inbuiltDate();
     	LocalTime time = DateTimeFormatHelper.inbuiltTime();
     	Reservation.ReservationSession s;
-    	if(time.compareTo(LocalTime.of(10, 0)) > 0 && time.compareTo(LocalTime.of(16, 00)) < 0)
-			s = Reservation.ReservationSession.AM;
-		else if (time.compareTo(LocalTime.of(18, 0)) > 0 && time.compareTo(LocalTime.of(23, 59)) < 0)
-			s = Reservation.ReservationSession.PM;
-		else return;
-		ArrayList<Table> booked = ReservationManager.getTableBookedByDateAndSession(date,s);
+    	s = DateTimeFormatHelper.inbuiltSession(time);
+    	if(s == null) return;
+		ArrayList<Table> booked = getTableBookedByDateAndSession(date,s);
 		for(Table t: booked)
 			t.setReserved();
     }
