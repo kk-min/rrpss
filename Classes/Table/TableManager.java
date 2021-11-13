@@ -7,7 +7,7 @@ import java.util.Comparator;
 
 import Classes.Reservation.Reservation;
 import Classes.Reservation.ReservationManager;
-import Project.Table;
+import Classes.Time.DateTimeFormatHelper;
 
 public class TableManager {
 
@@ -89,11 +89,11 @@ public class TableManager {
     	LocalTime time = DateTimeFormatHelper.inbuiltTime();
     	Reservation.ReservationSession s;
     	if(time.compareTo(LocalTime.of(10, 0)) > 0 && time.compareTo(LocalTime.of(16, 00)) < 0)
-			s = Reservation.ReservationSeesion.AM;
+			s = Reservation.ReservationSession.AM;
 		else if (time.compareTo(LocalTime.of(18, 0)) > 0 && time.compareTo(LocalTime.of(23, 59)) < 0)
-			s = Reservation.ReservationSeesion.PM;
+			s = Reservation.ReservationSession.PM;
 		else return;
-		ArrayList<Table> booked = getTableBookedByDateAndSession(date,s);
+		ArrayList<Table> booked = ReservationManager.getTableBookedByDateAndSession(date,s);
 		for(Table t: booked)
 			t.setReserved();
     }

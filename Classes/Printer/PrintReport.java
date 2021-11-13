@@ -4,7 +4,6 @@ import java.util.Map;
 import java.util.Scanner;
 
 import Classes.SalesRevenueReport.SalesRevenueReport;
-import Classes.Printer.UserInterfacePrinter;
 /**
  * Implements printing functionality for printing the Sales Revenue Report object.
  */
@@ -14,7 +13,7 @@ public class PrintReport extends UserInterfacePrinter {
     /**
      * Prints the Sales Revenue Report.
      */
-    public static void SalesRevenueReport generateReport() {
+    public static SalesRevenueReport generateReport() {
         System.out.print("Choose a period to generate the Sales Revenue Report for\n1) Day\n2)Month\n3)Year");
         int choice = input.nextInt();
         String period = "";

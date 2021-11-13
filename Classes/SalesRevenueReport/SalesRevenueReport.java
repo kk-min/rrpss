@@ -27,7 +27,7 @@ public class SalesRevenueReport {
         this.totalRevenue = 0;
         this.orderList = OrderManager.getOrderHistory();
         this.period = period;
-        String currentDate = DateTimeFormatHelper.formatToStringDate(DateTimeFormatHelper.getTodayDate(false));
+        String currentDate = DateTimeFormatHelper.formatToStringDate(DateTimeFormatHelper.inbuiltDate());
         
         for (Order order : this.orderList){
             for (var entry : order.getItemList().entrySet()){

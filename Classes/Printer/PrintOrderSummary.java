@@ -1,7 +1,6 @@
-package Printer;
+package Classes.Printer;
 
 import Classes.Order.Order;
-import Classes.Printer;
 
 /**
  * Implements printing functionality for viewing a current order's summary

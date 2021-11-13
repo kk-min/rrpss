@@ -1,5 +1,4 @@
-package Printer;
-import Classes.Printer.UserInterfacePrinter;
+package Classes.Printer;
 
 /**
  * Implements printing functinality for Menu sub-menus
@@ -10,22 +9,24 @@ public class MenuSubMenu extends UserInterfacePrinter {
      * @return an integer flag indicating whether to exit the the application or go to previous menu
      */
     public static int print(){
-        System.out.printf("-".repeat(rowLength));
-        System.out.println();
-        System.out.println("Restaurant Menu\nSelect an option:\n" );
-        System.out.println("1) View Menu");
-        System.out.println("2) Create a new A la Carte item");
-        System.out.println("3) Update an existing A la Carte item's details");
-        System.out.println("4) Delete an existing A la Carte item");
-        System.out.println("5) Create a new Promotional item");
-        System.out.println("6) Update an existing Promotional item's details");
-        System.out.println("7) Delete an existing Promotional item");
-        System.out.println("8) Back to main menu");
-        System.out.println("0) Exit Application");
-        System.out.printf("-".repeat(rowLength));
-        System.out.println();
-        int choice = input.nextInt();
         while (true) {
+
+            System.out.printf("-".repeat(rowLength));
+            System.out.println();
+            System.out.println("Restaurant Menu\nSelect an option:\n" );
+            System.out.println("1) View Menu");
+            System.out.println("2) Create a new A la Carte item");
+            System.out.println("3) Update an existing A la Carte item's details");
+            System.out.println("4) Delete an existing A la Carte item");
+            System.out.println("5) Create a new Promotional item");
+            System.out.println("6) Update an existing Promotional item's details");
+            System.out.println("7) Delete an existing Promotional item");
+            System.out.println("8) Back to main menu");
+            System.out.println("0) Exit Application");
+            System.out.printf("-".repeat(rowLength));
+            System.out.println();
+            int choice = input.nextInt();
+        
             switch (choice) {
                 case 1: // Prints menu
                     Classes.AMenuItem.MenuManager.displayMenu();

@@ -1,8 +1,5 @@
 package Classes.Table;
 
-import Classes.Reservation.Reservation;
-import Classes.Reservation.ReservationManager;
-
 public class Table {
 	private int capacity;
 	public static int MAX_CAPACITY = 10;

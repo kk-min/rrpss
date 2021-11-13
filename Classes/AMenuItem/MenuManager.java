@@ -17,19 +17,16 @@ public class MenuManager  {
     private static ArrayList<Dessert> desserts;
     private static ArrayList<Promotional> promotionals;
 
-	public MenuManager() {
-        maindishes = new ArrayList<MainDish>();
-		beverages = new ArrayList<Beverage>();
-		desserts = new ArrayList<Dessert>();
-		promotionals = new ArrayList<Promotional>();
-		initialiseMenu();
-    }
-
 	/**
      * initialiseMenu()
 	 * defalt menu options
      */
     public static void initialiseMenu() {
+		maindishes = new ArrayList<MainDish>();
+		beverages = new ArrayList<Beverage>();
+		desserts = new ArrayList<Dessert>();
+		promotionals = new ArrayList<Promotional>();
+		
 		MainDish myDish = new MainDish(1, "Chicken Rice", 3.00, "Flavourful chicken, juicy and fresh");
 		maindishes.add(myDish);
 		MainDish myDish1 = new MainDish(2, "Noodle in Sweet Sesame Sauce (Chicken)", 7.90, "Dinner under Starlight");
@@ -46,7 +43,7 @@ public class MenuManager  {
 
 		Dessert myDessert = new Dessert(1, "Sweet Potato Soup with Barley", 2.50, "Not really sweet.");
 		desserts.add(myDessert);
-		Dessert myDessert1 = new Dessert(2, "Mixed Bean Longan", 5.00, "from our next door neighbour Mr.bean");
+		Dessert myDessert1 = new Dessert(2, "Mixed Bean Longan", 5.00, "A sweet treat to brighten up your day.");
 		desserts.add(myDessert1);
 		Dessert myDessert2 = new Dessert(3, "Gelato", 5.00, "Silky smooth texture");
 		desserts.add(myDessert2);
