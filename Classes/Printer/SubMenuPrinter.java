@@ -7,7 +7,6 @@ import Classes.AMenuItem.AMenuItem;
 import Classes.Order.OrderManager;
 import Classes.Order.Order;
 import Classes.Reservation.ReservationManager;
-import java.util.Map;
 
 public class SubMenuPrinter {
     private static int rowLength = 63;

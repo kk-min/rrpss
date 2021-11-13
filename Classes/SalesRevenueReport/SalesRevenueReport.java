@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import Classes.Order.Order;
 import Classes.Order.OrderManager;
-import Classes.Staff.Staff;
 import Classes.Time.DateTimeFormatHelper;
 import java.util.Map;
 import Classes.AMenuItem.AMenuItem;
@@ -26,7 +25,6 @@ public class SalesRevenueReport {
     private Map<AMenuItem, Integer> promotionalStatistics;
 
     public SalesRevenueReport(String period){
-        int i = 0;
         this.totalRevenue = 0;
         this.orderList = OrderManager.getOrderHistory();
         this.period = period;
@@ -52,12 +50,8 @@ public class SalesRevenueReport {
                         promotionalStatistics.put(item, alacarteStatistics.get(item));
                     }
                 }
-                
             }
         }
-
-        
-
 
         switch(this.period){
             case "DAY":

@@ -11,6 +11,8 @@ import java.util.Date;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import Classes.Reservation.ReservationManager;
+
 public class DateTimeFormatHelper {
 
     private final static long MILLIS_TO_DAYS = 1000 * 60 * 60 * 24;
@@ -173,7 +175,7 @@ public class DateTimeFormatHelper {
         	}
         	}
     	}while(choice < 0 || choice > 3);
-    	ReservationMenuUI.checkExpiredReservations();
+    	ReservationManager.checkExpiredReservations();
     	sc.close();
     }
     
