@@ -14,8 +14,7 @@ class Beverage extends AlaCarteItem {
      * @param description Menu item's description.
      * @param price       Menu item's price.
      */
-
-    public beverage(int ID, String name, double price, String description) {
+    public Beverage(int ID, String name, double price, String description) {
         super(ID, name, price, description);
     }
 }
