@@ -27,6 +27,10 @@ public class Order{
      */
     private static int globalID = 1;
     /**
+     * Flag that indicates whether the order was made by a member
+     */
+    private boolean isMember;
+    /**
      * A Map that contains a Menu Item object as a key and the total numbers of that item ordered in a single order as the value
      */
     private Map<AMenuItem, Integer> itemList;
@@ -65,13 +69,14 @@ public class Order{
         this.orderID = globalID++;
         this.tableID = tableID;
         this.createdBy = orderCreator;
+        this.isMember = isMember;
         this.itemList = new HashMap<AMenuItem, Integer>();
         this.subTotal = 0;
         this.dateTime  = DateTimeFormatHelper.formatToStringDate(DateTimeFormatHelper.inbuiltDate());
         this.itemList = new HashMap<AMenuItem, Integer>(itemList); //Create a shallow copy
 
         if (isMember){ // check Membership status
-            this.subTotal = (this.subTotal)*DISCOUNT_RATE;
+            this.subTotal = (this.subTotal)*(1-DISCOUNT_RATE);
         }
 
         this.grandTotal = subTotal*(1+TAX_RATE); // Add tax
@@ -124,7 +129,25 @@ public class Order{
         else{ // Item key is not inside the map
             this.itemList.put(key, quantity);
         }
+        
+        updateOrder(); // Update the subTotal and grandTotal with values of the new item
+
         System.out.println("Item successfully added.");
+    }
+
+    public void updateOrder(){
+        this.subTotal = 0;
+        this.grandTotal = 0;
+        for (var entry : this.itemList.entrySet()){
+            AMenuItem item = entry.getKey();
+            int count = entry.getValue();
+            this.subTotal += item.getPrice()*count;
+        }
+
+        if (this.isMember){ // Order made by a member
+            this.subTotal = this.subTotal*(1-DISCOUNT_RATE);
+        }
+        this.grandTotal = this.grandTotal*(1+TAX_RATE);
     }
 
     /**

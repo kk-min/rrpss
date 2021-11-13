@@ -8,7 +8,7 @@ import Classes.Printer.UserInterfacePrinter;
  * 
  * 
  */
-public class MenuManager extends UserInterfacePrinter {
+public class MenuManager extends UserInterfacePrinter{
 	
     private static ArrayList<MainDish> maindishes;
     private static ArrayList<Beverage> beverages;
@@ -90,7 +90,7 @@ public class MenuManager extends UserInterfacePrinter {
 			System.out.println("ID: "+maindishes.get(i).getId());
 			System.out.println("Name: "+maindishes.get(i).getName());
 			System.out.println("Description: "+maindishes.get(i).getDescription());
-			System.out.println("Price: S$"+maindishes.get(i).getPrice());
+			System.out.printf("Price: S$%.2f\n", maindishes.get(i).getPrice());
 			System.out.println();
 		}
 		System.out.printf("-".repeat(rowLength));
@@ -112,7 +112,7 @@ public class MenuManager extends UserInterfacePrinter {
 			System.out.println("ID: "+desserts.get(i).getId());
 			System.out.println("Name: "+desserts.get(i).getName());
 			System.out.println("Description: "+desserts.get(i).getDescription());
-			System.out.println("Price: S$"+desserts.get(i).getPrice());
+			System.out.printf("Price: S$%.2f\n",desserts.get(i).getPrice());
 			System.out.println();
 		}
 
@@ -135,7 +135,7 @@ public class MenuManager extends UserInterfacePrinter {
 			System.out.println("ID: "+beverages.get(i).getId());
 			System.out.println("Name: "+beverages.get(i).getName());
 			System.out.println("Description: "+beverages.get(i).getDescription());
-			System.out.println("Price: S$"+beverages.get(i).getPrice());
+			System.out.printf("Price: S$%.2f\n",beverages.get(i).getPrice());
 			System.out.println();
 		}
 
@@ -157,7 +157,7 @@ public class MenuManager extends UserInterfacePrinter {
 			System.out.println("ID: "+promotionals.get(i).getId());
 			System.out.println("Name: "+promotionals.get(i).getName());
 			System.out.println("Description: "+promotionals.get(i).getDescription());
-			System.out.println("Price: S$"+promotionals.get(i).getPrice());
+			System.out.printf("Price: S$%.2f", promotionals.get(i).getPrice());
 			System.out.println();
 		}
 		System.out.printf("-".repeat(rowLength));
