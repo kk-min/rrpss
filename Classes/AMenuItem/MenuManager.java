@@ -96,29 +96,6 @@ public class MenuManager extends UserInterfacePrinter{
 		System.out.printf("-".repeat(rowLength));
 		System.out.println();
 
-		String dessertsString = "DESSERTS";
-		leftFormat = "%-" + ((rowLength / 2) - (dessertsString.length() / 2)) + "s";
-		rightFormat = "%" + ((rowLength / 2) - (dessertsString.length() / 2)) + "s";
-		System.out.format(leftFormat, " ");
-		System.out.print(dessertsString);
-		System.out.format(rightFormat, " ");
-		System.out.println();
-		//Line 5:
-		System.out.println();
-
-
-		for(int i=0;i<desserts.size();i++)
-		{
-			System.out.println("ID: "+desserts.get(i).getId());
-			System.out.println("Name: "+desserts.get(i).getName());
-			System.out.println("Description: "+desserts.get(i).getDescription());
-			System.out.printf("Price: S$%.2f\n",desserts.get(i).getPrice());
-			System.out.println();
-		}
-
-		System.out.printf("-".repeat(rowLength));
-		System.out.println();
-
 		String beveragesString = "BEVERAGES";
 		leftFormat = "%-" + ((rowLength / 2) - (beveragesString.length() / 2)) + "s";
 		rightFormat = "%" + ((rowLength / 2) - (beveragesString.length() / 2)) + "s";
@@ -142,6 +119,31 @@ public class MenuManager extends UserInterfacePrinter{
 		System.out.printf("-".repeat(rowLength));
 		System.out.println();
 
+		String dessertsString = "DESSERTS";
+		leftFormat = "%-" + ((rowLength / 2) - (dessertsString.length() / 2)) + "s";
+		rightFormat = "%" + ((rowLength / 2) - (dessertsString.length() / 2)) + "s";
+		System.out.format(leftFormat, " ");
+		System.out.print(dessertsString);
+		System.out.format(rightFormat, " ");
+		System.out.println();
+		//Line 5:
+		System.out.println();
+
+
+		for(int i=0;i<desserts.size();i++)
+		{
+			System.out.println("ID: "+desserts.get(i).getId());
+			System.out.println("Name: "+desserts.get(i).getName());
+			System.out.println("Description: "+desserts.get(i).getDescription());
+			System.out.printf("Price: S$%.2f\n",desserts.get(i).getPrice());
+			System.out.println();
+		}
+
+		System.out.printf("-".repeat(rowLength));
+		System.out.println();
+
+		
+
 		String promotionString = "PROMOTIONAL BUNDLES";
 		leftFormat = "%-" + ((rowLength / 2) - (promotionString.length() / 2)) + "s";
 		rightFormat = "%" + ((rowLength / 2) - (promotionString.length() / 2)) + "s";
@@ -157,7 +159,7 @@ public class MenuManager extends UserInterfacePrinter{
 			System.out.println("ID: "+promotionals.get(i).getId());
 			System.out.println("Name: "+promotionals.get(i).getName());
 			System.out.println("Description: "+promotionals.get(i).getDescription());
-			System.out.printf("Price: S$%.2f", promotionals.get(i).getPrice());
+			System.out.printf("Price: S$%.2f\n", promotionals.get(i).getPrice());
 			System.out.println();
 		}
 		System.out.printf("-".repeat(rowLength));
