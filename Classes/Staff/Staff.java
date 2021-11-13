@@ -27,18 +27,39 @@ public class Staff {
         this.gender = gender;
         this.jobTitle = jobTitle;
     }
+    /**
+     * Return the employee ID
+     * 
+     * @return employeeID
+     */
 
     public int getEmployeeID() {
         return employeeID;
     }
+    /**
+     * Return the employee name
+     * 
+     * @return name
+     */
 
     public String getName() {
         return name;
     }
+    /**
+     * Return the employee gender
+     * 
+     * @return gender
+     */
 
     public char getGender() {
         return gender;
     }
+
+    /**
+     * Return the employee jobTitle
+     * 
+     * @return jobTitle
+     */
 
     public JobTitle getJobTitle() {
         return jobTitle;
