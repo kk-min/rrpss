@@ -1,7 +1,6 @@
 package Classes.AMenuItem;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 import Classes.Printer.UserInterfacePrinter;
 
 /**
@@ -115,6 +114,7 @@ public class MenuManager extends UserInterfacePrinter {
 			System.out.println("Name: "+desserts.get(i).getName());
 			System.out.println("Description: "+desserts.get(i).getDescription());
 			System.out.println("Price: S$"+desserts.get(i).getPrice());
+			System.out.println();
 		}
 
 		System.out.printf("-".repeat(rowLength));
@@ -137,6 +137,7 @@ public class MenuManager extends UserInterfacePrinter {
 			System.out.println("Name: "+beverages.get(i).getName());
 			System.out.println("Description: "+beverages.get(i).getDescription());
 			System.out.println("Price: S$"+beverages.get(i).getPrice());
+			System.out.println();
 		}
 
 		System.out.printf("-".repeat(rowLength));
@@ -158,6 +159,7 @@ public class MenuManager extends UserInterfacePrinter {
 			System.out.println("Name: "+promotionals.get(i).getName());
 			System.out.println("Description: "+promotionals.get(i).getDescription());
 			System.out.println("Price: S$"+promotionals.get(i).getPrice());
+			System.out.println();
 		}
 		System.out.printf("-".repeat(rowLength));
 		System.out.println();

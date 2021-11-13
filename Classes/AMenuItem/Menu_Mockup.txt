@@ -1,0 +1,45 @@
+---------------------------------------------------------------
+			    MENU
+---------------------------------------------------------------
+                         MAIN COURSE
+
+ID: 1
+Name: Chicken Rice
+Description: XXXX
+Price: $XX.XX
+
+ID: 2
+Name: Noodles
+Description: XXXX
+Price: $XX.XX
+... 
+...
+---------------------------------------------------------------
+                         DESSERTS
+
+ID: 1
+Name: Chicken Rice
+Description: XXXX
+Price: $XX.XX
+
+ID: 2
+Name: Noodles
+Description: XXXX
+Price: $XX.XX
+... 
+...
+---------------------------------------------------------------
+                         BEVERAGES
+
+ID: 1
+Name: Chicken Rice
+Description: XXXX
+Price: $XX.XX
+
+ID: 2
+Name: Noodles
+Description: XXXX
+Price: $XX.XX
+... 
+...
+---------------------------------------------------------------

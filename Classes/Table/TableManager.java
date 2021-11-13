@@ -85,7 +85,7 @@ public class TableManager {
     	Reservation.ReservationSession s;
     	s = DateTimeFormatHelper.inbuiltSession(time);
     	if(s == null) return;
-		ArrayList<Table> booked = getTableBookedByDateAndSession(date,s);
+		ArrayList<Table> booked = ReservationManager.getTableBookedByDateAndSession(date,s);
 		for(Table t: booked)
 			t.setReserved();
     }
