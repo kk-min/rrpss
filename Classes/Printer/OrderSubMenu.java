@@ -1,5 +1,7 @@
 package Classes.Printer;
 
+import Classes.Order.OrderManager;
+
 /**
  * Implements printing functionality for Order sub-menus
  * @version 1.0
@@ -18,27 +20,29 @@ public class OrderSubMenu extends UserInterfacePrinter {
             System.out.println("2) View an existing order");
             System.out.println("3) Add item to an existing order");
             System.out.println("4) Remove item from an existing order");
-            System.out.println("5) Back to main menu");
+            System.out.println("5) Checkout an order / Print Order Invoice");
+            System.out.println("6) Back to main menu");
             System.out.println("0) Exit Application");
             System.out.printf("-".repeat(rowLength));
             System.out.println();
-            int choice = input.nextInt();
-            input.nextLine();
+            int choice = input.nextInt(); input.nextLine();
         
             switch (choice) {
                 case 1:
-                    Classes.Order.OrderManager.create();
+                    OrderManager.create();
                     break;
                 case 2:
-                    Classes.Order.OrderManager.view();
+                    OrderManager.view();
                     break;
                 case 3:
-                    Classes.Order.OrderManager.add();
+                    OrderManager.add();
                     break;
                 case 4:
-                    Classes.Order.OrderManager.remove();
+                    OrderManager.remove();
                     break;
                 case 5:
+                    OrderManager.checkout();
+                case 6:
                     return -1;
                 case 0:
                     return 1;

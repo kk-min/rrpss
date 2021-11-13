@@ -1,5 +1,6 @@
 package Classes.Printer;
 
+import Classes.AMenuItem.AMenuItem;
 import Classes.Order.Order;
 
 /**
@@ -46,7 +47,7 @@ public class PrintOrderSummary implements Printer {
 
         //Items:
         for (var entry : viewOrder.getItemList().entrySet()){
-            Classes.AMenuItem.AMenuItem item = entry.getKey();
+            AMenuItem item = entry.getKey();
             String itemName = item.getName();
             String leftString = itemName+" x"+entry.getValue();
             System.out.print(leftString);

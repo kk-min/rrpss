@@ -1,7 +1,6 @@
 import java.util.Scanner;
 
 import Classes.AMenuItem.MenuManager;
-import Classes.Order.OrderManager;
 import Classes.Printer.MenuSubMenu;
 import Classes.Printer.OrderSubMenu;
 import Classes.Printer.PrintReport;
@@ -22,7 +21,7 @@ public class MainApp {
 	public static void main(String args[]) {
 
 		String restaurantName = Printer.restaurantName;
-		int rowLength = Printer.rowLength;	// TODO: think of a better way to do this
+		int rowLength = Printer.rowLength;
 
 		MenuManager.initialiseMenu();
 		TableManager.initialiseTableCollection();
@@ -54,8 +53,7 @@ public class MainApp {
 			System.out.println("2) Order");
 			System.out.println("3) Reservation");
 			System.out.println("4) Check Current Table Availabilities");
-			System.out.println("5) Print Order Invoice");
-			System.out.println("6) Print Sale Revenue Report");
+			System.out.println("5) Print Sale Revenue Report");
 			System.out.println("0) Exit Application");
 
 			//Line 11:
@@ -63,9 +61,9 @@ public class MainApp {
 			System.out.println();
 
 			do {
-				System.out.print("Enter your choice (0-6): ");
-				choice = input.nextInt();
-			} while (choice > 6 || choice < 0);
+				System.out.print("Enter your choice (0-5): ");
+				choice = input.nextInt(); input.nextLine();
+			} while (choice > 5 || choice < 0);
 
 			switch(choice) {
 				case 1: //Menu submenu
@@ -80,10 +78,7 @@ public class MainApp {
 				case 4: // Check table availability
 					TableManager.printTableAvailabilities();
 					break;
-				case 5:	// Print Order Invoice
-					OrderManager.checkout();
-					break;
-				case 6: // Print Sale Revenue Report
+				case 5:	// Print Sales Revenue Report
 					PrintReport.print();
 					break;
 			}

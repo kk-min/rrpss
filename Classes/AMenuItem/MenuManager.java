@@ -190,13 +190,11 @@ public class MenuManager extends UserInterfacePrinter{
 		System.out.println("What is the name of the new item?");
 		Mname += input.nextLine();
 		System.out.println("What is the price of this item?");
-		Mprice = input.nextDouble();
-		input.nextLine();
+		Mprice = input.nextDouble(); input.nextLine();
 		System.out.println("What is the description of the item?");
 		Mdescription += input.nextLine();
 		System.out.println("What type of item is the new menu item (Main Dish 1)/(Beverage 2)/(Dessert 3)?");
-		int choice = input.nextInt();
-		input.nextLine();
+		int choice = input.nextInt(); input.nextLine();
 		switch (choice)
 		{   
 			case 1:
@@ -229,13 +227,11 @@ public class MenuManager extends UserInterfacePrinter{
 		displayMenu();
 		int id, choiceType, choiceDetail, check = 0;
 		System.out.println("What type of item is the menu item to be updated (Main Dish 1)/(Beverage 2)/(Dessert 3)?");
-		choiceType = input.nextInt();
-		input.nextLine();
+		choiceType = input.nextInt(); input.nextLine();
 		System.out.println("What is the ID of the item to be updated?");
-		id = input.nextInt();
+		id = input.nextInt(); input.nextLine();
 		System.out.println("What detail would you like to update (Name 1)/(Description 2)/(Price 3)?");
-		choiceDetail = input.nextInt();
-		input.nextLine();
+		choiceDetail = input.nextInt(); input.nextLine();
 
 		switch (choiceType)
 		{
@@ -262,7 +258,7 @@ public class MenuManager extends UserInterfacePrinter{
 							break;
 							case 3: {
 								System.out.println("What is the new price of the Main Dish?");
-								double newprice = input.nextDouble();
+								double newprice = input.nextDouble(); input.nextLine();
 								maindishes.get(i).setPrice(newprice);
 							}
 							break;
@@ -296,7 +292,7 @@ public class MenuManager extends UserInterfacePrinter{
 							break;
 							case 3: {
 								System.out.println("What is the new price of the Beverage?");
-								double newprice = input.nextDouble();
+								double newprice = input.nextDouble(); input.nextLine();
 								beverages.get(i).setPrice(newprice);
 							}
 							break;
@@ -330,7 +326,7 @@ public class MenuManager extends UserInterfacePrinter{
 							break;
 							case 3: {
 								System.out.println("What is the new price of the Dessert?");
-								double newprice = input.nextDouble();
+								double newprice = input.nextDouble(); input.nextLine();
 								desserts.get(i).setPrice(newprice);
 							}
 							break;
@@ -357,7 +353,7 @@ public class MenuManager extends UserInterfacePrinter{
 		System.out.println("What type of item do you want to delete (Main Dish 1)/(Beverage 2)/(Dessert 3)?");
 		int choice = input.nextInt();
 		System.out.println("What is the ID of the item to be deleted?");
-		id = input.nextInt();
+		id = input.nextInt(); input.nextLine();
 
 		switch (choice)
 		{
@@ -430,7 +426,7 @@ public class MenuManager extends UserInterfacePrinter{
 		System.out.println("What is the name of the new Promotional Item?");
 		Mname += input.nextLine();
 		System.out.println("What is the price of this item?");
-		Mprice = input.nextDouble();
+		Mprice = input.nextDouble(); input.nextLine();
 		input.nextLine();
 		System.out.println("What is the description of the item?");
 		Mdescription += input.nextLine();
@@ -444,10 +440,9 @@ public class MenuManager extends UserInterfacePrinter{
 		System.out.println("Here is the current menu:\n---");
 		displayMenu();
 		System.out.println("What is the ID of the Promotional Item to be updated?");
-		int id = input.nextInt();
+		int id = input.nextInt(); input.nextLine();
 		System.out.println("What detail would you like to update (Name 1)/(Description 2)/(Price 3)?");
-		int choice = input.nextInt();
-		input.nextLine();
+		int choice = input.nextInt(); input.nextLine();
 		int check = 0;
 		for(int i=0;i<promotionals.size();i++)
 		{
@@ -470,7 +465,7 @@ public class MenuManager extends UserInterfacePrinter{
 					break;
 					case 3: {
 						System.out.println("What is the new price of the Promotional Item?");
-						double newprice = input.nextDouble();
+						double newprice = input.nextDouble(); input.nextLine();
 						promotionals.get(i).setPrice(newprice);
 					}
 					break;
@@ -491,7 +486,7 @@ public class MenuManager extends UserInterfacePrinter{
 		System.out.println("Here is the current menu:\n---");
 		displayMenu();
 		System.out.println("What is the ID of the Promotional Item to be deleted?");
-		int id = input.nextInt();
+		int id = input.nextInt(); input.nextLine();
 		int check = 0;
 		for(int i=0;i<promotionals.size();i++)
 		{
@@ -516,11 +511,9 @@ public class MenuManager extends UserInterfacePrinter{
 	public static AMenuItem getMenuItem() {
 		displayMenu();
 		System.out.println("What is the type of the item (Main Dish 1)/(Beverage 2)/(Dessert 3)/(Promotional 4)?");
-		int choice = input.nextInt();
-		input.nextLine();
+		int choice = input.nextInt(); input.nextLine();
 		System.out.println("What is the ID of the item?");
-		int id = input.nextInt();
-		input.nextLine();
+		int id = input.nextInt(); input.nextLine();
 
 		switch (choice)
 		{

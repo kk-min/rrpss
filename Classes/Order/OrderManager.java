@@ -38,7 +38,7 @@ public class OrderManager {
      */
     public static void create() {
         System.out.print("Enter customer's reservation ID (enter -1 if this is a walk-in): ");
-        int resvID = input.nextInt();
+        int resvID = input.nextInt(); input.nextLine();
         int tableID, numPax;
 
         // assign customer to a table
@@ -47,7 +47,7 @@ public class OrderManager {
             numPax = 0;
             while (numPax <= 0 || numPax > 10) {
 				System.out.print("Enter number of pax: ");
-				numPax = input.nextInt();
+				numPax = input.nextInt(); input.nextLine();
 				if (numPax <= 0) {
 					System.out.println("You have cannot have less than 1 person.");
 				} else if (numPax > 10) {
@@ -81,7 +81,7 @@ public class OrderManager {
      */
     public static void view() {
         System.out.print("Please enter the Order ID to view: ");
-        int orderID = input.nextInt();
+        int orderID = input.nextInt(); input.nextLine();
         for (Order viewOrder : OrderHistory){
             if (viewOrder.getID() == orderID){
                 PrintOrderSummary.print(viewOrder);
@@ -96,7 +96,7 @@ public class OrderManager {
      */
     public static void add() {
         System.out.print("Please enter the Order ID to add items to: ");
-        int orderID = input.nextInt();
+        int orderID = input.nextInt(); input.nextLine();
         for (Order userOrder : OrderHistory){
             if (userOrder.getID() == orderID){
                 System.out.printf("Current summary for Order %-9d is shown below.%n", userOrder.getID());
@@ -105,7 +105,7 @@ public class OrderManager {
                 // Add Item
                 AMenuItem newItem = MenuManager.getMenuItem();
                 System.out.println("Enter the quantity: ");
-                int itemQty = input.nextInt();
+                int itemQty = input.nextInt(); input.nextLine();
                 userOrder.addItem(newItem, itemQty);
                 return;
             }
@@ -119,7 +119,7 @@ public class OrderManager {
      */
     public static void remove() {
         System.out.print("Please enter the Order ID to remove items from: ");
-        int orderID = input.nextInt();
+        int orderID = input.nextInt(); input.nextLine();
         for (Order userOrder : OrderHistory){
             if (userOrder.getID() == orderID){
                 System.out.printf("Shown below is the current summary for Order %-9d %n", userOrder.getID());
@@ -133,9 +133,9 @@ public class OrderManager {
                     System.out.printf("%-2d - %-50s x%-2d\n", i+1, items.get(i).getName(), userOrder.getItemList().get(items.get(i)));
                 }
                 System.out.print("Item number to remove: ");
-                int itemIndex = input.nextInt();
+                int itemIndex = input.nextInt(); input.nextLine();
                 System.out.print("Enter the quantity: ");
-                int itemQty = input.nextInt();
+                int itemQty = input.nextInt(); input.nextLine();
                 userOrder.removeItem(items.get(itemIndex-1), itemQty);
 
                 return;
@@ -150,7 +150,7 @@ public class OrderManager {
      */
     public static void checkout() {
         System.out.print("Please enter the Order to checkout: ");
-        int orderID = input.nextInt();
+        int orderID = input.nextInt(); input.nextLine();
         for (Order userOrder : OrderHistory){
             if (userOrder.getID() == orderID){
                 PrintReceipt.print(userOrder);
