@@ -29,7 +29,7 @@ public class SalesRevenueReport {
         switch(this.period){
             case "DAY":
                 for (Order order : orderList){
-                    if ((order.getDateTime()[0]+order.getDateTime[1]) == (currentDate[0]+currentDate[1]))
+                    if ((order.getDateTime().charAt(0)+order.getDateTime().charAt(1)) == (currentDate.charAt(0)+currentDate.charAt(1)))
                     {
                         this.orderList.add(order);
                         this.totalRevenue += order.getGrandTotal();
@@ -39,7 +39,7 @@ public class SalesRevenueReport {
 
             case "MONTH":
                 for (Order order : orderList){
-                    if ((order.getDateTime()[3]+order.getdateTime[4]) == (currentDate[3]+currentDate[4]))
+                    if ((order.getDateTime().charAt(3)+order.getdateTime.charAt(4)) == (currentDate.charAt(3)+currentDate.charAt(4)))
                     {
                         this.orderList.add(order);
                         this.totalRevenue += order.getGrandTotal();
@@ -49,7 +49,7 @@ public class SalesRevenueReport {
 
             case "YEAR":
                 for (Order order : orderList){
-                    if ((order.getDateTime()[6]+order.getdateTime[7]+order.getDateTime()[8]+order.getDateTime()[9]) == (currentDate[6]+currentDate[7]+currentDate[8]+currentDate[9]))
+                    if ((order.getDateTime().charAt(6)+order.getdateTime.charAt(7)+order.getDateTime().charAt(8)+order.getDateTime().charAt(9)) == (currentDate.charAt(6)+currentDate.charAt(7)+currentDate.charAt(8)+currentDate.charAt(9)))
                     {
                         this.orderList.add(order);
                         this.totalRevenue += order.getGrandTotal();
@@ -65,7 +65,7 @@ public class SalesRevenueReport {
         return this.orderList;
     }
 
-    public double getPeriod() {
+    public String getPeriod() {
         return this.period;
     }
 
