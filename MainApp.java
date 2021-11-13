@@ -58,10 +58,10 @@ public class MainApp {
 			System.out.printf("-".repeat(rowLength));
 			System.out.println();
 
-			System.out.print("Enter your choice: ");
 			do {
+				System.out.print("Enter your choice (0-6): ");
 				choice = input.nextInt();
-			} while (choice > 5 || choice < 0);
+			} while (choice > 6 || choice < 0);
 
 			switch(choice) {
 				case 1: //Menu submenu
@@ -85,5 +85,6 @@ public class MainApp {
 			}
 		}
 		System.out.println("System exiting... thank you for visiting our restaurant!");
+		System.exit(0);
 	}
 }
