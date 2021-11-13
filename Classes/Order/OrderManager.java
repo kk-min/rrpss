@@ -1,9 +1,6 @@
 package Classes.Order;
 
 import java.util.Scanner;
-
-import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.ArrayList;
 
 import Classes.Printer.PrintOrderSummary;
@@ -14,7 +11,6 @@ import Classes.AMenuItem.MenuManager;
 import Classes.Staff.Staff;
 import Classes.Staff.StaffManager;
 import Classes.Table.TableManager;
-import Classes.Time.DateTimeFormatHelper;
 
 /**
  * Manages various functionalities pertaining to Order objects.
@@ -39,9 +35,6 @@ public class OrderManager {
         System.out.print("Enter customer's reservation ID (enter -1 if this is a walk-in): ");
         int resvID = input.nextInt();
         int tableID, numPax;
-        LocalDate currentDate = DateTimeFormatHelper.inbuiltDate();
-        LocalTime currentTime = DateTimeFormatHelper.inbuiltTime();
-        char currentSession = ' ';
 
         // assign customer to a table
         if (resvID == -1) {
@@ -56,14 +49,7 @@ public class OrderManager {
 					System.out.println("Sorry! The restaurant's maximum seating is 10 people.");
 				}
 			}
-            if (DateTimeFormatHelper.checkResvTimeSession(currentTime, LocalTime.of(10, 0), LocalTime.of(16, 0))) {
-                    currentSession = 'A';
-                }
-            else if (DateTimeFormatHelper.checkResvTimeSession(currentTime, LocalTime.of(18, 0),
-                    LocalTime.of(23, 59))) {
-                currentSession = 'P';
-            }
-			tableID = ReservationManager.findTableForReservation(numPax, currentDate, currentSession);
+			tableID = TableManager.findTableForWalkIn(numPax);
             if (tableID == -1) {
 				System.out.println(
 					"There are no available tables that can cater the number of pax for now. We're sorry!");

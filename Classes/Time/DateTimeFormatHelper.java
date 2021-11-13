@@ -50,7 +50,7 @@ public class DateTimeFormatHelper {
     }
 
     public static LocalDate getTodayDate() {
-            return LocalDate.ofEpochDay(SGTimeZone() / MILLIS_TO_DAYS);
+        return LocalDate.ofEpochDay(SGTimeZone() / MILLIS_TO_DAYS);
     }
 
     public static LocalTime getTimeNow() {
@@ -126,15 +126,16 @@ public class DateTimeFormatHelper {
     public static LocalTime inbuiltTime() {
     	return inbuiltDateTime().toLocalTime();
     }
-    
+
     public static Reservation.ReservationSession inbuiltSession(LocalTime time){
-    	if(time.compareTo(LocalTime.of(10, 0)) > 0 && time.compareTo(LocalTime.of(16, 00)) < 0)
-    		return Reservation.ReservationSession.AM;
-		else if (time.compareTo(LocalTime.of(18, 0)) > 0 && time.compareTo(LocalTime.of(23, 59)) < 0)
-			return Reservation.ReservationSession.PM;
-		return null;
+        if(time.compareTo(LocalTime.of(10, 0)) > 0 && time.compareTo(LocalTime.of(16, 00)) < 0) {
+            return Reservation.ReservationSession.AM;
+        } else if (time.compareTo(LocalTime.of(18, 0)) > 0 && time.compareTo(LocalTime.of(23, 59)) < 0) {
+            return Reservation.ReservationSession.PM;
+        }
+        return null;
     }
-    
+
     public static void advanceTime() {
     	System.out.print("Advance Time Options:\n"
     			+ "1. In days\n"
@@ -189,7 +190,7 @@ public class DateTimeFormatHelper {
     	TIME_MODIFIER += minute;
     }
     
-    private static void synchronize() {
+    public static void synchronize() {
     	ReservationManager.checkExpiredReservations();
     	TableManager.updateTableStatus();
     }

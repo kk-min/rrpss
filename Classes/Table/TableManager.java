@@ -47,7 +47,16 @@ public class TableManager {
 		}
 		return available;
 	}
-
+	
+	public static int findTableForWalkIn(int pax){
+		ArrayList<Table> available = getTableAvailabilities();
+		for(Table t : available){
+			if(t.getCapacity() >= pax)
+				return t.getID();
+		}
+		return -1;
+	}
+	
 	public static void printTableAvailabilities() {
 		ArrayList<Table> available = getTableAvailabilities();
 		for (Table t : available) {
