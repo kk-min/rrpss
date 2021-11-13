@@ -1,20 +1,43 @@
-package Printer;
+package Classes.Printer;
 
 import java.util.Map;
+import java.util.Scanner;
+
+import Classes.SalesRevenueReport.SalesRevenueReport;
 
 public class PrintReport implements Printer{
+
+    private static Scanner input = new Scanner(System.in);
+
+    public static SalesRevenueReport generateReport() {
+        System.out.print("Choose a period to generate the Sales Revenue Report for\n1) Day\n2)Month\n3)Year");
+        int choice = input.nextInt();
+        String period = "";
+        switch (choice) {
+            case 1:
+                period = "DAY";
+                break;
+            case 2:
+                period = "MONTH";
+                break;
+            case 3:
+            default:
+                period = "YEAR";
+        }
+        SalesRevenueReport report = new Classes.SalesRevenueReport.SalesRevenueReport(period);
+        return report;
+    }
     /**
      * Prints the Sales Revenue Report for a particular SalesRevenueReport object
      *
      * @param period String variable denoting the time period we are generating the report for.
      */
-    public static void print(String period) {
-        Classes.SalesRevenueReport.SalesRevenueReport report = new Classes.SalesRevenueReport.SalesRevenueReport(period);
-        String Header = "SALES REVENUE REPORT" + " (" + report.getPeriod() + ")";
-        int rowLength = 63;
-        int count;
+    public static void print() {
+        SalesRevenueReport report = generateReport();
         Map<Classes.AMenuItem.AMenuItem, Integer> alacarteStatistics = report.getAlaCarteStatistics();
         Map<Classes.AMenuItem.AMenuItem, Integer> promotionalStatistics = report.getPromotionalStatistics();
+        String Header = "SALES REVENUE REPORT" + " (" + report.getPeriod() + ")";
+        int count;
 
         // Line 1:
         System.out.printf("-".repeat(rowLength));
@@ -173,5 +196,4 @@ public class PrintReport implements Printer{
         System.out.printf("-".repeat(rowLength));
         System.out.println();
     }
-
 }

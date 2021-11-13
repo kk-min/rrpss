@@ -1,11 +1,9 @@
-package Printer;
+package Classes.Printer;
 
 import java.util.Map;
 
 import Classes.AMenuItem.AMenuItem;
 import Classes.Order.Order;
-import Classes.Staff.StaffManager;
-import Classes.SalesRevenueReport.SalesRevenueReport; // Why does this not work
 
 /**
  * Printer class that prints the receipts and Sales Revenue Reports onto the
@@ -18,11 +16,9 @@ public class PrintReceipt implements Printer{
      * @param order The order for which to print the receipt
      */
     public static void print(Order order) {
-        String restaurantName = "Happy Chicken Diner";
         Map<AMenuItem, Integer> itemList = order.getItemList();
         double subTotal = order.getSubTotal();
         double grandTotal = order.getGrandTotal();
-        int rowLength = 63;
         // Line 1:
         System.out.printf("-".repeat(rowLength));
         System.out.println();
