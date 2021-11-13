@@ -117,7 +117,6 @@ public class DateTimeFormatHelper {
     }
     
     public static LocalDateTime inbuiltDateTime() {
-    	long time = System.currentTimeMillis() + TIME_MODIFIER;
     	return LocalDateTime.now().plus(TIME_MODIFIER,ChronoUnit.MINUTES);
     }
     
@@ -174,6 +173,8 @@ public class DateTimeFormatHelper {
         	}
         	}
     	}while(choice < 0 || choice > 3);
+    	ReservationMenuUI.checkExpiredReservations();
+    	sc.close();
     }
     
     private static void incrementModifier(int minute) {
