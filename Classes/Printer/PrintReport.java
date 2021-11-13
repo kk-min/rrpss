@@ -1,7 +1,6 @@
 package Classes.Printer;
 
 import java.util.Map;
-import java.util.Scanner;
 
 import Classes.SalesRevenueReport.SalesRevenueReport;
 
@@ -29,8 +28,7 @@ public class PrintReport extends UserInterfacePrinter {
         default:
             period = "YEAR";
         }
-        SalesRevenueReport report = new Classes.SalesRevenueReport.SalesRevenueReport(period);
-        System.out.println("DEBUGGGGGGGGGGG");
+        SalesRevenueReport report = new SalesRevenueReport(period);
         return report;
     }
 
@@ -109,8 +107,8 @@ public class PrintReport extends UserInterfacePrinter {
         System.out.printf(" ".repeat(rowLength - 2));
         System.out.println("|");
 
-        // Item lists:
-        if (alacarteStatistics == null) {
+        // Ala Carte:
+        if (alacarteStatistics.isEmpty()) {
             String leftString = "| No Items sold.";
             System.out.print(leftString);
             String formatString = "%" + (rowLength - leftString.length()) + "s";
@@ -118,17 +116,22 @@ public class PrintReport extends UserInterfacePrinter {
             System.out.println();
         } else {
             for (var entry : alacarteStatistics.entrySet()) {
-                Classes.AMenuItem.AMenuItem key = entry.getKey();
-                String name = key.getName();
+                Classes.AMenuItem.AMenuItem alacarteItem = entry.getKey();
+                String name = alacarteItem.getName();
                 String leftString = "| " + name + ": ";
                 System.out.print(leftString);
-                count = (int) alacarteStatistics.get(key);
+                count = (int) alacarteStatistics.get(alacarteItem);
                 System.out.print(count);
                 rightFormat = "%" + (rowLength - leftString.length() - 1) + "s";
                 System.out.format(rightFormat, "|");
                 System.out.println();
             }
         }
+
+        // Line Promotional - 1:
+        System.out.print("|");
+        System.out.printf(" ".repeat(rowLength - 2));
+        System.out.println("|");
 
         // Promotional:
         String promotionalHeader = "Promotions";
@@ -144,7 +147,7 @@ public class PrintReport extends UserInterfacePrinter {
         System.out.printf(" ".repeat(rowLength - 2));
         System.out.println("|");
 
-        if (promotionalStatistics == null) {
+        if (promotionalStatistics.isEmpty()) {
             String leftString = "| No Items sold.";
             System.out.print(leftString);
             String formatString = "%" + (rowLength - leftString.length()) + "s";
@@ -155,9 +158,9 @@ public class PrintReport extends UserInterfacePrinter {
                 Classes.AMenuItem.AMenuItem promotionItem = entry.getKey();
                 String name = promotionItem.getName();
                 String leftString = "| " + name + ": ";
-                System.out.println(leftString);
+                System.out.print(leftString);
                 count = (int) promotionalStatistics.get(promotionItem);
-                System.out.println(count);
+                System.out.print(count);
                 rightFormat = "%" + (rowLength - leftString.length() - 1) + "s";
                 System.out.format(rightFormat, "|");
                 System.out.println();
@@ -194,10 +197,9 @@ public class PrintReport extends UserInterfacePrinter {
         System.out.println();
 
         // Line x+5:
-
         System.out.print("| Income tax expense");
         String incomeTaxFormat = "%" + (rowLength - 20) + "s";
-        String incomeTaxString = "$" + String.format("%.2f", (earningsBeforeIncomeTax * (double) (7 / 107))) + "    |";
+        String incomeTaxString = "$" + String.format("%.2f", (earningsBeforeIncomeTax * (double) 7 / (double) 107)) + "    |";
         incomeTaxString = String
                 .format("|" + " ".repeat(revenueString.length() - incomeTaxString.length() - 1) + incomeTaxString);
         System.out.format(incomeTaxFormat, incomeTaxString);
@@ -208,7 +210,7 @@ public class PrintReport extends UserInterfacePrinter {
         System.out.println();
 
         // Line x+7:
-        double netIncome = earningsBeforeIncomeTax * (double) (100 / 107);
+        double netIncome = earningsBeforeIncomeTax * (double) 100 / (double) 107;
         System.out.print("| Net income");
         String netIncomeFormat = "%" + (rowLength - 12) + "s";
         String netIncomeString = "$" + String.format("%.2f", netIncome) + "    |";

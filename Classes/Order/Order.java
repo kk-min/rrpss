@@ -109,7 +109,10 @@ public class Order{
             return;
         }
         this.itemList.put(key, this.itemList.get(key)-quantity);
-        System.out.println("Item successfully removed.");
+
+        updateOrder(); // Update the subTotal and grandTotal with values of the new item
+
+        System.out.println("Successfully removed.");
     }
 
     /**
@@ -132,7 +135,7 @@ public class Order{
         
         updateOrder(); // Update the subTotal and grandTotal with values of the new item
 
-        System.out.println("Item successfully added.");
+        System.out.println("Successfully added.");
     }
 
     public void updateOrder(){
@@ -203,6 +206,7 @@ public class Order{
      * @return the discount rate that can be applied on the order
      */
     public double getDISCOUNT_RATE(){
-        return this.DISCOUNT_RATE;
+        if (isMember) return this.DISCOUNT_RATE;
+        else return 0;
     }
 }

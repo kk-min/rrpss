@@ -1,7 +1,9 @@
 package Classes.Order;
 
 import java.util.Scanner;
+import java.util.Set;
 import java.util.ArrayList;
+import java.util.List;
 
 import Classes.Printer.PrintOrderSummary;
 import Classes.Printer.PrintReceipt;
@@ -94,7 +96,7 @@ public class OrderManager {
         int orderID = input.nextInt();
         for (Order userOrder : OrderHistory){
             if (userOrder.getID() == orderID){
-                System.out.printf("You have chosen Order %-9d. Current order summary: %n", userOrder.getID());
+                System.out.printf("Current summary for Order %-9d is shown below.%n", userOrder.getID());
                 PrintOrderSummary.print(userOrder);
                 
                 // Add Item
@@ -117,14 +119,21 @@ public class OrderManager {
         int orderID = input.nextInt();
         for (Order userOrder : OrderHistory){
             if (userOrder.getID() == orderID){
-                System.out.printf("You have chosen Order %-9d. Current order summary: %n", userOrder.getID());
+                System.out.printf("Shown below is the current summary for Order %-9d %n", userOrder.getID());
                 PrintOrderSummary.print(userOrder);
 
                 // Remove Item
-                AMenuItem item = MenuManager.getMenuItem();
-                System.out.println("Enter the quantity: ");
+                System.out.println("Choose item to remove from this order:");
+                Set<AMenuItem> itemsSet = userOrder.getItemList().keySet();
+                List<AMenuItem> items = new ArrayList<AMenuItem>(itemsSet);
+                for (int i = 0; i < items.size(); i++) {
+                    System.out.printf("%-2d - %-50s x%-2d\n", i+1, items.get(i).getName(), userOrder.getItemList().get(items.get(i)));
+                }
+                System.out.print("Item number to remove: ");
+                int itemIndex = input.nextInt();
+                System.out.print("Enter the quantity: ");
                 int itemQty = input.nextInt();
-                userOrder.removeItem(item, itemQty);
+                userOrder.removeItem(items.get(itemIndex-1), itemQty);
 
                 return;
             }

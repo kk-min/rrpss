@@ -49,7 +49,7 @@ public class MainApp {
 			System.out.println("1) Menu");
 			System.out.println("2) Order");
 			System.out.println("3) Reservation");
-			System.out.println("4) Check current table availabilities");
+			System.out.println("4) Check Current Table Availabilities");
 			System.out.println("5) Print Order Invoice");
 			System.out.println("6) Print Sale Revenue Report");
 			System.out.println("0) Exit Application");

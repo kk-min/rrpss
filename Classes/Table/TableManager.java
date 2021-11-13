@@ -83,7 +83,7 @@ public class TableManager {
 		ArrayList<Table> available = getTableAvailabilities();
 		System.out.println("These tables are currently available:");
 		for (Table t : available) {
-			System.out.printf("Table %-9d - %-9d pax %n", t.getID(), t.getCapacity());
+			System.out.printf("Table %-3d - %-3d pax %n", t.getID(), t.getCapacity());
 		}
 	}
 	/**
