@@ -1,11 +1,9 @@
-package Printer;
+package Classes.Printer;
 
 import java.util.Map;
 
 import Classes.AMenuItem.AMenuItem;
 import Classes.Order.Order;
-import Classes.Staff.StaffManager;
-import Classes.SalesRevenueReport.SalesRevenueReport; // Why does this not work
 
 /**
  * Printer class that prints the receipts and Sales Revenue Reports onto the

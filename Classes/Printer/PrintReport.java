@@ -1,4 +1,4 @@
-package Printer;
+package Classes.Printer;
 
 import java.util.Map;
 
