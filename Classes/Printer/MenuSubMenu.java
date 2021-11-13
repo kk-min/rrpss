@@ -2,6 +2,7 @@ package Classes.Printer;
 
 /**
  * Implements printing functinality for Menu sub-menus
+ * @version 1.0
  */
 public class MenuSubMenu extends UserInterfacePrinter {
     /**

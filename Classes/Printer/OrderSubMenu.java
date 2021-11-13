@@ -2,6 +2,7 @@ package Classes.Printer;
 
 /**
  * Implements printing functionality for Order sub-menus
+ * @version 1.0
  */
 public class OrderSubMenu extends UserInterfacePrinter {
     /**

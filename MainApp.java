@@ -10,6 +10,10 @@ import Classes.Printer.ReservationSubMenu;
 import Classes.Staff.StaffManager;
 import Classes.Table.TableManager;
 import Classes.Time.TimerExecutor;
+/**
+ * MainApp for RRPSS project
+ * @version 1.0
+ */
 
 public class MainApp {
 	

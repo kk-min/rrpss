@@ -1,15 +1,36 @@
 package Classes.Staff;
 
-public class Staff {
+/**
+ * Contains all the detail for Employee in the resturants
+ * @version 1.0
+ * @author Herhuey
+ * 
+ */
 
+public class Staff {
+     /**
+     * enum to show the JobTitle of the resturant's employee
+     */
 
     public enum JobTitle {
 		MANAGER, ASSISTANT_MANAGER, CHIEF_SERVER, SERVER
 	};
 
+    /**
+     * ID of the resturant's employee
+     */
     private int employeeID;
+    /**
+     * name of the resturant's employee
+     */
     private String name;
+    /**
+     * gender of the resturant's employee
+     */
     private char gender;
+    /**
+     * jobTitle of the resturant's employee
+     */
     private JobTitle jobTitle;
 
     /**
@@ -28,7 +49,7 @@ public class Staff {
         this.jobTitle = jobTitle;
     }
     /**
-     * Return the employee ID
+     * Accessor to Return the employee ID
      * 
      * @return employeeID
      */
@@ -37,7 +58,7 @@ public class Staff {
         return employeeID;
     }
     /**
-     * Return the employee name
+     * Accessors to Return the employee name
      * 
      * @return name
      */
@@ -46,7 +67,7 @@ public class Staff {
         return name;
     }
     /**
-     * Return the employee gender
+     * Accessors to Return the employee gender
      * 
      * @return gender
      */
@@ -56,7 +77,7 @@ public class Staff {
     }
 
     /**
-     * Return the employee jobTitle
+     * Accessors to Return the employee jobTitle
      * 
      * @return jobTitle
      */

@@ -13,6 +13,7 @@ import Classes.AMenuItem.AMenuItem.TYPE;
 /**
  * Contains the sales information of all items sold for a particular period of
  * time.
+ * @version 1.0
  */
 public class SalesRevenueReport {
     /**
@@ -37,7 +38,7 @@ public class SalesRevenueReport {
     private Map<AMenuItem, Integer> promotionalStatistics;
 
     /**
-     * Creates a report for a specified period.
+     * Constructor to Creates a report for a specified period.
      * 
      * @param period The period (Day, Month, Year) that the report covers.
      */
@@ -105,7 +106,7 @@ public class SalesRevenueReport {
     }
 
     /**
-     * Gets the order history within the specified period for this report
+     * Accessors to Gets the order history within the specified period for this report
      * 
      * @return a list of the order history for the report's period
      */
@@ -114,7 +115,7 @@ public class SalesRevenueReport {
     }
 
     /**
-     * Gets the period that the report covers
+     * Accessors to Gets the period that the report covers
      * 
      * @return the period that the report covers
      */
@@ -123,7 +124,7 @@ public class SalesRevenueReport {
     }
 
     /**
-     * Gets the total revenue reported in the report
+     * Accessors to Gets the total revenue reported in the report
      * 
      * @return the total revenue covered in the report
      */
@@ -132,7 +133,7 @@ public class SalesRevenueReport {
     }
 
     /**
-     * Gets the Map containing the statistics for Ala Carte items
+     * Accessors to Gets the Map containing the statistics for Ala Carte items
      * 
      * @return a map containing statistics for Ala Carte items
      */
@@ -141,7 +142,7 @@ public class SalesRevenueReport {
     }
 
     /**
-     * Gets the Map containing the statistics for Promotional items
+     * Accessors to Gets the Map containing the statistics for Promotional items
      * 
      * @return a map containing statistics for Promotion items
      */

@@ -2,10 +2,18 @@ package Classes.Staff;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+/**
+ * StaffManager for all the Employees in the resturants
+ * @version 1.0
+ * @author Herhuey
+ */
 
 public class StaffManager {
     
     private static Scanner input = new Scanner(System.in);
+    /**
+     * ArrayList staffList to store Staff Object 
+     */
 
     private static ArrayList<Staff> staffList = new ArrayList<Staff>();
 

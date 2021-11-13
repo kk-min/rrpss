@@ -7,6 +7,7 @@ import Classes.SalesRevenueReport.SalesRevenueReport;
 /**
  * Implements printing functionality for printing the Sales Revenue Report
  * object.
+ * @version 1.0
  */
 public class PrintReport extends UserInterfacePrinter {
     /**
