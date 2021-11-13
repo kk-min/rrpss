@@ -1,7 +1,6 @@
 import java.util.Scanner;
 
 import Classes.AMenuItem.MenuManager;
-import Classes.Order.OrderManager;
 import Classes.Printer.MenuSubMenu;
 import Classes.Printer.OrderSubMenu;
 import Classes.Printer.PrintReport;
@@ -9,22 +8,37 @@ import Classes.Printer.Printer;
 import Classes.Printer.ReservationSubMenu;
 import Classes.Staff.StaffManager;
 import Classes.Table.TableManager;
+import Classes.Time.DateTimeFormatHelper;
 import Classes.Time.TimerExecutor;
+/**
+ * MainApp for RRPSS project
+ * this is where the main program will be run
+ * 
+ * @version 1.0
+ * @since   2021-11-12
+ */
 
 public class MainApp {
-	
+	/**
+     * Scanner object for taking user input
+     */
 	private static Scanner input = new Scanner(System.in);
 	
+	/**
+	 * main function that prompts selection of tasks to perform
+	 * @param args command line arguments
+	 */
 	public static void main(String args[]) {
 
+		// initialisations
 		String restaurantName = Printer.restaurantName;
-		int rowLength = Printer.rowLength;	// TODO: think of a better way to do this
-
+		int rowLength = Printer.rowLength;
 		MenuManager.initialiseMenu();
 		TableManager.initialiseTableCollection();
 		StaffManager.initialiseStaffList();
 		TimerExecutor.runScheduler();
 
+		// program
 		int choice = 1, subMenuResult = -1;
 		while (choice != 0 && subMenuResult != 1) {
 			//Line 1:
@@ -49,9 +63,9 @@ public class MainApp {
 			System.out.println("1) Menu");
 			System.out.println("2) Order");
 			System.out.println("3) Reservation");
-			System.out.println("4) Check current table availabilities");
-			System.out.println("5) Print Order Invoice");
-			System.out.println("6) Print Sale Revenue Report");
+			System.out.println("4) Check Current Table Availabilities");
+			System.out.println("5) Print Sale Revenue Report");
+			System.out.println("6) Advance Time (TESTING)");
 			System.out.println("0) Exit Application");
 
 			//Line 11:
@@ -60,7 +74,7 @@ public class MainApp {
 
 			do {
 				System.out.print("Enter your choice (0-6): ");
-				choice = input.nextInt();
+				choice = input.nextInt(); input.nextLine();
 			} while (choice > 6 || choice < 0);
 
 			switch(choice) {
@@ -76,11 +90,11 @@ public class MainApp {
 				case 4: // Check table availability
 					TableManager.printTableAvailabilities();
 					break;
-				case 5:	// Print Order Invoice
-					OrderManager.checkout();
-					break;
-				case 6: // Print Sale Revenue Report
+				case 5:	// Print Sales Revenue Report
 					PrintReport.print();
+					break;
+				case 6:	// Advance Time
+					DateTimeFormatHelper.advanceTime();
 					break;
 			}
 		}

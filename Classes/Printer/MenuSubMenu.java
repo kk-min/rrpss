@@ -1,12 +1,21 @@
 package Classes.Printer;
 
+import Classes.AMenuItem.MenuManager;
+
 /**
+ * The MenuSubMenu Class
  * Implements printing functinality for Menu sub-menus
+ * extends UserInterfacePrinter
+ * @author  Lingyi
+ * @author  Her Huey
+ * @author  Min
+ * @version 2.0
+ * @since   2021-11-12
  */
 public class MenuSubMenu extends UserInterfacePrinter {
     /**
-     * Prints the menu submenu
-     * @return an integer flag indicating whether to exit the the application or go to previous menu
+     * Prints the menu submenu and calls the respective MenuManager methods based on the user's choice
+     * @return an integer flag indicating whether to exit the the application
      */
     public static int print(){
         while (true) {
@@ -25,30 +34,29 @@ public class MenuSubMenu extends UserInterfacePrinter {
             System.out.println("0) Exit Application");
             System.out.printf("-".repeat(rowLength));
             System.out.println();
-            int choice = input.nextInt();
-            input.nextLine();
+            int choice = input.nextInt(); input.nextLine();
         
             switch (choice) {
                 case 1: // Prints menu
-                    Classes.AMenuItem.MenuManager.displayMenu();
+                    MenuManager.displayMenu();
                     break;
                 case 2: // Create new menu item
-                    Classes.AMenuItem.MenuManager.addAlaCarteItem();
+                    MenuManager.addAlaCarteItem();
                     break;
                 case 3: // Edit an existing menu item
-                    Classes.AMenuItem.MenuManager.updateAlaCarteItem();
+                    MenuManager.updateAlaCarteItem();
                     break;
                 case 4: // Delete an existing menu item
-                    Classes.AMenuItem.MenuManager.deleteAlaCarteItem();
+                    MenuManager.deleteAlaCarteItem();
                     break;
                 case 5: // Create a new promo item
-                    Classes.AMenuItem.MenuManager.addPromoItem();
+                    MenuManager.addPromoItem();
                     break;
                 case 6: // Edit an existing promo item's details
-                    Classes.AMenuItem.MenuManager.updatePromoItem();
+                    MenuManager.updatePromoItem();
                     break;
                 case 7: // Delete a promo item"
-                    Classes.AMenuItem.MenuManager.deletePromoItem();
+                    MenuManager.deletePromoItem();
                     break;
                 case 8:
                     return -1;

@@ -1,7 +1,12 @@
 package Classes.Printer;
 import java.util.Hashtable;
+/**
+ * For testing program main
+ * @version 1.0
+ */
 
 public class ForTestingPurposes {
+
     public static void main(String args[]) {
 
         //Print Receipt:

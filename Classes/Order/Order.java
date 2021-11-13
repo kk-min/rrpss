@@ -13,7 +13,7 @@ import Classes.Time.DateTimeFormatHelper;
  @version 1.0
  @since   2021-11-12
  */
-public class Order{
+public class Order {
     /**
      * The table from which the order was made.
      */
@@ -31,36 +31,36 @@ public class Order{
      */
     private boolean isMember;
     /**
-     * A Map that contains a Menu Item object as a key and the total numbers of that item ordered in a single order as the value
+     * A Map that contains a Menu Item object as a key and the total number of that item ordered in a single order as the value
      */
     private Map<AMenuItem, Integer> itemList;
     /**
-     * Name of the staff who created the order
+     * The staff who created the order
      */
     private Staff createdBy;
     /**
      * The tax rate to be applied to the total cost of the items
      */
     private final double TAX_RATE = 0.07; // 7% tax
-    /** The discount rate to be applied to the total cost if the customer is a member
-     *
+    /**
+     * The discount rate to be applied to the total cost if the customer is a member
      */
     private final double DISCOUNT_RATE = 0.05;
     /**
      *  Total price of the items before taxes, discounts included
      */
-    private double subTotal; // before taxes, discounts included
+    private double subTotal;
     /**
      * Total price including taxes and discounts
      */
-    private double grandTotal; // after taxes
+    private double grandTotal;
     /**
      * The date the order was made in the form DD/MM/YYYY
      */
     private String dateTime;
 
     /**
-     * Creates a new order with the given tableID and orderCreator
+     * Constructor to create a new order with the given tableID and orderCreator
      * @param tableID The Table ID where the order was made
      * @param orderCreator The name of the Staff who crated the order
      * @param isMember Flag value that checks whether order was made by a member to apply discount
@@ -83,7 +83,7 @@ public class Order{
     }
 
     /**
-     * Gets the subtotal for this order
+     * Accessor for the subtotal for this order
      * @return the subtotal price (after discount, before taxes)
      */
     public double getSubTotal(){
@@ -91,8 +91,8 @@ public class Order{
     }
 
     /**
-     * Gets the grand total for this order
-     * @return the grand total price (including discounts taxes)
+     * Accessor for the grand total for this order
+     * @return the grand total price (including discounts and taxes)
      */
     public double getGrandTotal(){
         return this.grandTotal;
@@ -109,7 +109,10 @@ public class Order{
             return;
         }
         this.itemList.put(key, this.itemList.get(key)-quantity);
-        System.out.println("Item successfully removed.");
+
+        updateOrder(); // Update the subTotal and grandTotal with values of the new item
+
+        System.out.println("Successfully removed.");
     }
 
     /**
@@ -130,11 +133,14 @@ public class Order{
             this.itemList.put(key, quantity);
         }
         
-        updateOrder(); // Update the subTotal and grandTotal with values of the new item
+        updateOrder();
 
-        System.out.println("Item successfully added.");
+        System.out.println("Successfully added.");
     }
 
+    /**
+     * Update the subTotal and grandTotal after adding/removing any items
+     */
     public void updateOrder(){
         this.subTotal = 0;
         this.grandTotal = 0;
@@ -151,7 +157,7 @@ public class Order{
     }
 
     /**
-     * Gets the order's ID
+     * Accessor for the order's ID
      * @return this Order's orderID
      */
     public int getID(){
@@ -159,7 +165,7 @@ public class Order{
     }
 
     /**
-     * Gets the order's tableID
+     * Accessor for the order's tableID
      * @return this Order's tableID
      */
     public int getTableID(){
@@ -167,7 +173,7 @@ public class Order{
     }
 
     /**
-     * Gets the order's itemList
+     * Accessor for the order's itemList
      * @return this Order's itemList
      */
     public Map<AMenuItem, Integer> getItemList(){
@@ -175,7 +181,7 @@ public class Order{
     }
 
     /**
-     * Gets the order's creator
+     * Accessor for the order's creator
      * @return this Order's creator (Staff)
      */
     public Staff getCreator(){
@@ -183,7 +189,7 @@ public class Order{
     }
 
     /**
-     * Gets the order's creation date
+     * Accessor for the order's creation date
      * @return this Order's creation date
      */
     public String getDateTime(){
@@ -191,7 +197,7 @@ public class Order{
     }
 
     /**
-     * Gets the tax rate imposed on the Order
+     * Accessor for the tax rate imposed on the Order
      * @return the tax rate imposed on the Order
      */
     public double getTAX_RATE() {
@@ -199,10 +205,11 @@ public class Order{
     }
 
     /**
-     * Gets the discount rate that can be applied on the order (if the customer is a member)
+     * Accessor for the discount rate that can be applied on the order (if the customer is a member)
      * @return the discount rate that can be applied on the order
      */
     public double getDISCOUNT_RATE(){
-        return this.DISCOUNT_RATE;
+        if (isMember) return this.DISCOUNT_RATE;
+        else return 0;
     }
 }

@@ -11,28 +11,81 @@ import Classes.AMenuItem.AMenuItem;
 import Classes.AMenuItem.AMenuItem.TYPE;
 
 /**
- * Contains the sales information of all items sold for a particular period of
- * time.
+ * The SalesRevenueReport Class
+ * Contains the sales information of all items sold in a particular period of time.
+ * @author  Min
+ * @version 1.0
+ * @since   2021-11-02
  */
 public class SalesRevenueReport {
+    /**
+     * Collection of all orders.
+     */
     private ArrayList<Order> orderList;
+    /**
+     * A specified period to generate a report from
+     */
     private String period;
+    /**
+     * Total revenue in the given peroid.
+     */
     private double totalRevenue;
+    /**
+     * Statistics of alacarte items sold.
+     */
     private Map<AMenuItem, Integer> alacarteStatistics;
+    /**
+     * Statistics of promotional items sold.
+     */
     private Map<AMenuItem, Integer> promotionalStatistics;
 
     /**
-     * Creates a report for a specified period.
+     * Constructor to create a report for a specified period.
      * 
      * @param period The period (Day, Month, Year) that the report covers.
      */
     public SalesRevenueReport(String period) {
-        this.totalRevenue = 0;
-        this.orderList = OrderManager.getOrderHistory();
+        this.orderList = new ArrayList<Order>();
         this.period = period;
-        String currentDate = DateTimeFormatHelper.formatToStringDate(DateTimeFormatHelper.inbuiltDate());
+        this.totalRevenue = 0;
         this.alacarteStatistics = new HashMap<AMenuItem, Integer>();
         this.promotionalStatistics = new HashMap<AMenuItem, Integer>();
+        String currentDate = DateTimeFormatHelper.formatToStringDate(DateTimeFormatHelper.inbuiltDate());
+
+        switch (this.period) {
+            case "DAY":
+                for (Order order : OrderManager.getOrderHistory()) {
+                    if ((order.getDateTime().charAt(0) + order.getDateTime().charAt(1)) == (currentDate.charAt(0)
+                            + currentDate.charAt(1))) {
+                                System.out.println(order.getDateTime());
+                        this.orderList.add(order);
+                        this.totalRevenue += order.getGrandTotal();
+                    }
+                }
+                break;
+    
+            case "MONTH":
+                for (Order order : OrderManager.getOrderHistory()) {
+                    if ((order.getDateTime().charAt(3) + order.getDateTime().charAt(4)) == (currentDate.charAt(3)
+                            + currentDate.charAt(4))) {
+                        this.orderList.add(order);
+                        this.totalRevenue += order.getGrandTotal();
+                    }
+                }
+                break;
+    
+            case "YEAR":
+                for (Order order : OrderManager.getOrderHistory()) {
+                    if ((order.getDateTime().charAt(6) + order.getDateTime().charAt(7) + order.getDateTime().charAt(8)
+                            + order.getDateTime().charAt(9)) == (currentDate.charAt(6) + currentDate.charAt(7)
+                                    + currentDate.charAt(8) + currentDate.charAt(9))) {
+                        this.orderList.add(order);
+                        this.totalRevenue += order.getGrandTotal();
+                    }
+                }
+                break;
+            default:
+        }
 
         for (Order order : this.orderList) {
             for (var entry : order.getItemList().entrySet()) {
@@ -53,44 +106,10 @@ public class SalesRevenueReport {
                 }
             }
         }
-
-        switch (this.period) {
-        case "DAY":
-            for (Order order : orderList) {
-                if ((order.getDateTime().charAt(0) + order.getDateTime().charAt(1)) == (currentDate.charAt(0)
-                        + currentDate.charAt(1))) {
-                    this.orderList.add(order);
-                    this.totalRevenue += order.getGrandTotal();
-                }
-            }
-            break;
-
-        case "MONTH":
-            for (Order order : orderList) {
-                if ((order.getDateTime().charAt(3) + order.getDateTime().charAt(4)) == (currentDate.charAt(3)
-                        + currentDate.charAt(4))) {
-                    this.orderList.add(order);
-                    this.totalRevenue += order.getGrandTotal();
-                }
-            }
-            break;
-
-        case "YEAR":
-            for (Order order : orderList) {
-                if ((order.getDateTime().charAt(6) + order.getDateTime().charAt(7) + order.getDateTime().charAt(8)
-                        + order.getDateTime().charAt(9)) == (currentDate.charAt(6) + currentDate.charAt(7)
-                                + currentDate.charAt(8) + currentDate.charAt(9))) {
-                    this.orderList.add(order);
-                    this.totalRevenue += order.getGrandTotal();
-                }
-            }
-            break;
-        default:
-        }
     }
 
     /**
-     * Gets the order history within the specified period for this report
+     * Accessors to get the order history within the specified period for this report
      * 
      * @return a list of the order history for the report's period
      */
@@ -99,7 +118,7 @@ public class SalesRevenueReport {
     }
 
     /**
-     * Gets the period that the report covers
+     * Accessors to get the period that the report covers
      * 
      * @return the period that the report covers
      */
@@ -108,7 +127,7 @@ public class SalesRevenueReport {
     }
 
     /**
-     * Gets the total revenue reported in the report
+     * Accessors to get the total revenue reported in the report
      * 
      * @return the total revenue covered in the report
      */
@@ -117,7 +136,7 @@ public class SalesRevenueReport {
     }
 
     /**
-     * Gets the Map containing the statistics for Ala Carte items
+     * Accessors to get the Map containing the statistics for Ala Carte items
      * 
      * @return a map containing statistics for Ala Carte items
      */
@@ -126,7 +145,7 @@ public class SalesRevenueReport {
     }
 
     /**
-     * Gets the Map containing the statistics for Promotional items
+     * Accessors to get the Map containing the statistics for Promotional items
      * 
      * @return a map containing statistics for Promotion items
      */

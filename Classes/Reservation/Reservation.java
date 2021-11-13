@@ -6,24 +6,23 @@ import java.time.LocalTime;
 import Classes.Table.TableManager;
 
 /**
- * The Reservation Class.
- * Constructor and setter for the variables.
- * 
- * @author Zhang Erli
+ * The Reservation Class
+ * Contains information about a reservation booking
+ * @author  Zhang Erli
  * @version 1.0
+ * @since   2021-11-02
  */
-
 public class Reservation {
 
 	/**
-     * The sessions enum of the reservation, AM or PM.
+     * The sessions enum of the reservation, AM (10 am to 4 pm) or PM (6 pm to midnight).
      */
 	public enum ReservationSession {
 		AM, PM
 	};
 
     /**
-     * Serial number of the reservation.
+     * ID of the reservation.
      */
 	private int Id;
 
@@ -33,7 +32,7 @@ public class Reservation {
 	private LocalDate resvDate;
 
 	/**
-     * The reservation date. 
+     * The reservation time. 
      */
 	private LocalTime resvTime;
 
@@ -53,12 +52,12 @@ public class Reservation {
 	private String customerName;
 
 	/**
-     * The number of people
+     * The number of people booking is made for
      */
 	private int numPax;
 
 	/**
-     * The table number linked to Reservation
+     * The table ID linked to the Reservation
      */
 	private int tableID;
 	
@@ -74,7 +73,6 @@ public class Reservation {
      * @param pax           Number of customers
      * @param tableId       Table number assigned
      */
-
 	public Reservation(int id, LocalDate rd, LocalTime rt, char session, String custContact, String custName, int pax,
 			int tableId) {
 		this.Id = id;
@@ -93,7 +91,6 @@ public class Reservation {
      *
      * @return Reservation ID in integer
      */
-
 	public int getResvId() {
 		return Id;
 	}

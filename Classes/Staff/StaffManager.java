@@ -2,24 +2,26 @@ package Classes.Staff;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+
 /**
- * The Staff Manager class
- *
- * @author Her Huey
+ * The StaffManager Class
+ * manages all the Employees in the resturant
+ * @author  Her Huey
  * @version 1.0
- * @since 2021-11-02
+ * @since   2021-11-01
  */
 public class StaffManager {
     /**
-     * Scanner object for taking user input.
+     * Scanner object to take in user input
      */
     private static Scanner input = new Scanner(System.in);
     /**
-     * The arraylist storing all the staff records.
+     * The ArrayList to store all Staff Objects
      */
     private static ArrayList<Staff> staffList = new ArrayList<Staff>();
+
     /**
-     * Populate the staff records with initial data.
+     * Initialises a list of staff working at the restaurant.
      */
     public static void initialiseStaffList()
 	{
@@ -32,8 +34,9 @@ public class StaffManager {
 		staffList.add(s1); staffList.add(s2); staffList.add(s3);
         staffList.add(s4); staffList.add(s5); staffList.add(s6);
 	}
+
     /**
-     * Print out the staff records with all staff details.
+     * Prints a list of details of staff working at the restaurant.
      */
     public static void displayStaffList() {
         System.out.println("Staff List:");
@@ -42,20 +45,25 @@ public class StaffManager {
         }
     }
     /**
-     * Accessor for total number of staff employed currently.
-     * @return staffList.size() The total number of staff currently employed.
+     * Returns the number of staff working at the restaurant based on size of staffList.
+     *
+     * @return staffList.size() as an integer
      */
     public static int totalStaffNum() {
         return staffList.size();
     }
+
     /**
-     * Accessor for a Staff object in the staff records.
-     * @return staff The staff object that corresponds with the staff ID inputted.
+     * Returns a Staff based on satff ID.
+     *
+     * @return Staff object if given staff ID exists
+     * @return null if given Staff ID does not exists
      */
+
     public static Staff getStaff() {
         displayStaffList();
 		System.out.print("Please enter your staff ID: ");
-        int staffID = input.nextInt();
+        int staffID = input.nextInt(); input.nextLine();
 
 		for (Staff staff : staffList) {
             if (staff.getEmployeeID() == staffID) {

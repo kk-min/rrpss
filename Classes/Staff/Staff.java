@@ -1,34 +1,34 @@
 package Classes.Staff;
 
 /**
- Contains information about the employees/staff in the restaurant.
- @author  Her Huey
- @version 1.0
- @since   2021-11-02
+ * The Staff Class
+ * Contains all the details for an employee (Staff) working in the resturant
+ * @author  Her Huey
+ * @version 1.0
+ * @since   2021-11-01
  */
 public class Staff {
-    /**
-     * The job title which the staff holds
-     * This can be Manager, Assistant Manager, Chief Server, or Server.
+     /**
+     * enum to show the JobTitle of the resturant's employee
      */
     public enum JobTitle {
 		MANAGER, ASSISTANT_MANAGER, CHIEF_SERVER, SERVER
 	};
 
     /**
-     * ID of the staff.
+     * ID of the resturant's employee
      */
     private int employeeID;
     /**
-     * The name of the staff.
+     * name of the resturant's employee
      */
     private String name;
     /**
-     * The gender of the staff.
+     * gender of the resturant's employee
      */
     private char gender;
     /**
-     * The job title which the staff holds.
+     * jobTitle of the resturant's employee
      */
     private JobTitle jobTitle;
 
@@ -36,11 +36,10 @@ public class Staff {
      * Constructor to pass in all required parameters for menu item.
      *
      * @param employeeID          employee's ID.
-     * @param name        employee's name.
-     * @param gender employee's description.
-     * @param jobTitle       employee's jobTitle.
+     * @param name                employee's name.
+     * @param gender              employee's description.
+     * @param jobTitle            employee's jobTitle.
      */
-
     public Staff(int employeeID, String name, char gender, JobTitle jobTitle) {
         this.employeeID = employeeID;
         this.name = name;
@@ -48,29 +47,34 @@ public class Staff {
         this.jobTitle = jobTitle;
     }
     /**
-     * Accessor for the ID of the staff.
-     * @return ID of the staff.
+     * Accessor to Return the employee ID
+     *
+     * @return employeeID
      */
     public int getEmployeeID() {
         return employeeID;
     }
     /**
-     * Accessor for the gender of the staff.
-     * @return Name of the staff.
+     * Accessor to Return the employee name
+     *
+     * @return name
      */
     public String getName() {
         return name;
     }
     /**
-     * Accessor for the gender of the staff.
-     * @return Gender of the staff.
+     * Accessor to Return the employee gender
+     *
+     * @return gender
      */
     public char getGender() {
         return gender;
     }
+
     /**
-     * Accessor for the job title of the staff.
-     * @return jobTitle of the staff.
+     * Accessor to Return the employee jobTitle
+     *
+     * @return jobTitle
      */
     public JobTitle getJobTitle() {
         return jobTitle;

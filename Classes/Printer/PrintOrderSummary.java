@@ -1,9 +1,14 @@
 package Classes.Printer;
 
+import Classes.AMenuItem.AMenuItem;
 import Classes.Order.Order;
 
 /**
+ * The PrintOrderSummary Class
  * Implements printing functionality for viewing a current order's summary
+ * @author  Min
+ * @version 2.0
+ * @since   2021-11-12
  */
 public class PrintOrderSummary implements Printer {
     /**
@@ -45,7 +50,7 @@ public class PrintOrderSummary implements Printer {
 
         //Items:
         for (var entry : viewOrder.getItemList().entrySet()){
-            Classes.AMenuItem.AMenuItem item = entry.getKey();
+            AMenuItem item = entry.getKey();
             String itemName = item.getName();
             String leftString = itemName+" x"+entry.getValue();
             System.out.print(leftString);

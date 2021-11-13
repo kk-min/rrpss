@@ -1,60 +1,76 @@
 package Classes.AMenuItem;
 
 import java.util.ArrayList;
-import Classes.Printer.UserInterfacePrinter;
 
+import Classes.Printer.UserInterfacePrinter;
 /**
- * MenuManager - the manager for our restaurant Menu
- * 
- * 
+ * The MenuManager Class
+ * our restaurant menu's manager
+ * @author Lingyi
+ * @author Her Huey
+ * @version 2.0
+ * @since 2021-11-03
  */
 public class MenuManager extends UserInterfacePrinter{
-	
+	/**
+     * The ArrayList to store MainDish Objects
+     */
     private static ArrayList<MainDish> maindishes;
+	/**
+     * The ArrayList to store Beverage Objects
+     */
     private static ArrayList<Beverage> beverages;
+	/**
+     * The ArrayList to store Dessert Objects
+     */
     private static ArrayList<Dessert> desserts;
+	/**
+     * The ArrayList to store Dessert Promotional objects
+     */
     private static ArrayList<Promotional> promotionals;
 
 	/**
-     * initialiseMenu()
-	 * defalt menu options
+	 * Initialises default menu items in the menu
      */
     public static void initialiseMenu() {
+
 		maindishes = new ArrayList<MainDish>();
 		beverages = new ArrayList<Beverage>();
 		desserts = new ArrayList<Dessert>();
 		promotionals = new ArrayList<Promotional>();
 		
-		MainDish myDish = new MainDish(1, "Chicken Rice", 3.00, "Flavourful chicken, juicy and fresh");
+		MainDish myDish = new MainDish(1, "Chicken Rice", 3.50, "Hainanese style, fragrant chicken rice.");
 		maindishes.add(myDish);
-		MainDish myDish1 = new MainDish(2, "Noodle in Sweet Sesame Sauce (Chicken)", 7.90, "Dinner under Starlight");
+		MainDish myDish1 = new MainDish(2, "Roasted Lemon Rosemary Chicken", 12.90, "A tender and flavourful oven-roasted chicken.");
 		maindishes.add(myDish1);
-		MainDish myDish2 = new MainDish(3, "Teriyaki Chicken Pasta", 12.80, "Lime added for that special flavour");
+		MainDish myDish2 = new MainDish(3, "Teriyaki Chicken Pasta", 9.80, "Delicious marriage of Japanese and Western cuisine.");
 		maindishes.add(myDish2);
 
-		Beverage myBeverage = new Beverage(1, "Ice Milo", 1.00, "Chilling milo to start your day");
+		Beverage myBeverage = new Beverage(1, "Iced Lemon Tea", 1.80, "Tangy, fruity, and refreshing for a hot summer day.");
 		beverages.add(myBeverage);
-		Beverage myBeverage1 = new Beverage(2, "Signature Coconut Shake", 5.50, " Delicious cooling coconut drink for a hot summer day");
+		Beverage myBeverage1 = new Beverage(2, "Vanilla Milkshake", 5.60, "A sweet treat for you!");
 		beverages.add(myBeverage1);
-		Beverage myBeverage2 = new Beverage(3, "Lemon Tea", 4.00, "Lemon and tea");
+		Beverage myBeverage2 = new Beverage(3, "Chocolate Hazelnut Milk", 4.30, "A warm and fuzzy combination that hits home every time.");
 		beverages.add(myBeverage2);
 
-		Dessert myDessert = new Dessert(1, "Sweet Potato Soup with Barley", 2.50, "Not really sweet.");
+		Dessert myDessert = new Dessert(1, "Sweet Potato Soup with Barley", 2.50, "A healthy and earthy taste.");
 		desserts.add(myDessert);
-		Dessert myDessert1 = new Dessert(2, "Mixed Bean Longan", 5.00, "A sweet treat to brighten up your day.");
+		Dessert myDessert1 = new Dessert(2, "Chicken and Waffles", 14.80, "The timeless sweet and savory combination.");
 		desserts.add(myDessert1);
-		Dessert myDessert2 = new Dessert(3, "Gelato", 5.00, "Silky smooth texture");
+		Dessert myDessert2 = new Dessert(3, "Gelato", 5.00, "The silky smooth texture that you'll keep returning for.");
 		desserts.add(myDessert2);
 
-		Promotional myPromo = new Promotional(1,"Chicken Family Combo", 10.00, "Fambam! Have 4 sets of chicken rice to feed the family.");
+		Promotional myPromo = new Promotional(1,"Chicken Family Combo", 18.00, "Have 4 sets of chicken dishes to feed the family.");
 		promotionals.add(myPromo);
-		Promotional myPromo1 = new Promotional(2,"Teriyaki Chicken Pasta with Ice Milo", 10.00, " Best Match!");
+		Promotional myPromo1 = new Promotional(2,"Full Roasted Chicken", 20.90, "A whole roasted chicken for sharing.");
 		promotionals.add(myPromo1);
-		Promotional myPromo2 = new Promotional(3,"Sweet Potato Soup for 3", 10.00, "proudly serving our best dessert for your family");
+		Promotional myPromo2 = new Promotional(3,"Double Scoop Gelato", 8.00, "Double the fun!");
 		promotionals.add(myPromo2);
 	}
 
-	// every function is public static so that it can be accessed without creating an object
+	/**
+	 * Prints out the whole menu.
+	 */
     public static void displayMenu()
 	{
 		// Line 1:
@@ -164,9 +180,11 @@ public class MenuManager extends UserInterfacePrinter{
 		}
 		System.out.printf("-".repeat(rowLength));
 		System.out.println();
-
 	}
 
+	/**
+	 * Allows user to add an AlaCarte Item to the menu.
+	 */
     public static void addAlaCarteItem()
 	{
 		String Mname, Mdescription;
@@ -177,13 +195,11 @@ public class MenuManager extends UserInterfacePrinter{
 		System.out.println("What is the name of the new item?");
 		Mname += input.nextLine();
 		System.out.println("What is the price of this item?");
-		Mprice = input.nextDouble();
-		input.nextLine();
+		Mprice = input.nextDouble(); input.nextLine();
 		System.out.println("What is the description of the item?");
 		Mdescription += input.nextLine();
 		System.out.println("What type of item is the new menu item (Main Dish 1)/(Beverage 2)/(Dessert 3)?");
-		int choice = input.nextInt();
-		input.nextLine();
+		int choice = input.nextInt(); input.nextLine();
 		switch (choice)
 		{   
 			case 1:
@@ -210,19 +226,20 @@ public class MenuManager extends UserInterfacePrinter{
 		}
 	}
 
+	/**
+	 * Allows user to change the details of an AlaCarte Item on the menu.
+	 */
 	public static void updateAlaCarteItem()
 	{
 		System.out.println("Here is the current menu:\n---");
 		displayMenu();
 		int id, choiceType, choiceDetail, check = 0;
 		System.out.println("What type of item is the menu item to be updated (Main Dish 1)/(Beverage 2)/(Dessert 3)?");
-		choiceType = input.nextInt();
-		input.nextLine();
+		choiceType = input.nextInt(); input.nextLine();
 		System.out.println("What is the ID of the item to be updated?");
-		id = input.nextInt();
+		id = input.nextInt(); input.nextLine();
 		System.out.println("What detail would you like to update (Name 1)/(Description 2)/(Price 3)?");
-		choiceDetail = input.nextInt();
-		input.nextLine();
+		choiceDetail = input.nextInt(); input.nextLine();
 
 		switch (choiceType)
 		{
@@ -249,7 +266,7 @@ public class MenuManager extends UserInterfacePrinter{
 							break;
 							case 3: {
 								System.out.println("What is the new price of the Main Dish?");
-								double newprice = input.nextDouble();
+								double newprice = input.nextDouble(); input.nextLine();
 								maindishes.get(i).setPrice(newprice);
 							}
 							break;
@@ -283,7 +300,7 @@ public class MenuManager extends UserInterfacePrinter{
 							break;
 							case 3: {
 								System.out.println("What is the new price of the Beverage?");
-								double newprice = input.nextDouble();
+								double newprice = input.nextDouble(); input.nextLine();
 								beverages.get(i).setPrice(newprice);
 							}
 							break;
@@ -317,7 +334,7 @@ public class MenuManager extends UserInterfacePrinter{
 							break;
 							case 3: {
 								System.out.println("What is the new price of the Dessert?");
-								double newprice = input.nextDouble();
+								double newprice = input.nextDouble(); input.nextLine();
 								desserts.get(i).setPrice(newprice);
 							}
 							break;
@@ -336,6 +353,9 @@ public class MenuManager extends UserInterfacePrinter{
 			System.out.println("Updating Failed...");
 	}
 
+	/**
+	 * Allows user to delete an AlaCarte Item on the menu.
+	 */
 	public static void deleteAlaCarteItem()
 	{
 		System.out.println("Here is the current menu:\n---");
@@ -344,7 +364,7 @@ public class MenuManager extends UserInterfacePrinter{
 		System.out.println("What type of item do you want to delete (Main Dish 1)/(Beverage 2)/(Dessert 3)?");
 		int choice = input.nextInt();
 		System.out.println("What is the ID of the item to be deleted?");
-		id = input.nextInt();
+		id = input.nextInt(); input.nextLine();
 
 		switch (choice)
 		{
@@ -407,6 +427,9 @@ public class MenuManager extends UserInterfacePrinter{
 			System.out.println("Deletion Failed...");
 	}
 
+	/**
+	 * Allows user to add a Promotional Item onto the menu.
+	 */
 	public static void addPromoItem()
 	{
 		String Mname, Mdescription;
@@ -417,7 +440,7 @@ public class MenuManager extends UserInterfacePrinter{
 		System.out.println("What is the name of the new Promotional Item?");
 		Mname += input.nextLine();
 		System.out.println("What is the price of this item?");
-		Mprice = input.nextDouble();
+		Mprice = input.nextDouble(); input.nextLine();
 		input.nextLine();
 		System.out.println("What is the description of the item?");
 		Mdescription += input.nextLine();
@@ -431,10 +454,9 @@ public class MenuManager extends UserInterfacePrinter{
 		System.out.println("Here is the current menu:\n---");
 		displayMenu();
 		System.out.println("What is the ID of the Promotional Item to be updated?");
-		int id = input.nextInt();
+		int id = input.nextInt(); input.nextLine();
 		System.out.println("What detail would you like to update (Name 1)/(Description 2)/(Price 3)?");
-		int choice = input.nextInt();
-		input.nextLine();
+		int choice = input.nextInt(); input.nextLine();
 		int check = 0;
 		for(int i=0;i<promotionals.size();i++)
 		{
@@ -457,7 +479,7 @@ public class MenuManager extends UserInterfacePrinter{
 					break;
 					case 3: {
 						System.out.println("What is the new price of the Promotional Item?");
-						double newprice = input.nextDouble();
+						double newprice = input.nextDouble(); input.nextLine();
 						promotionals.get(i).setPrice(newprice);
 					}
 					break;
@@ -473,12 +495,15 @@ public class MenuManager extends UserInterfacePrinter{
 			System.out.println("Update Failed...");
 	}
 
+	/**
+	 * Allows user to remove a Promotional Item from the menu.
+	 */
 	public static void deletePromoItem()
 	{
 		System.out.println("Here is the current menu:\n---");
 		displayMenu();
 		System.out.println("What is the ID of the Promotional Item to be deleted?");
-		int id = input.nextInt();
+		int id = input.nextInt(); input.nextLine();
 		int check = 0;
 		for(int i=0;i<promotionals.size();i++)
 		{
@@ -500,14 +525,17 @@ public class MenuManager extends UserInterfacePrinter{
 			System.out.println("Deletion Failed...");
 	}
 
+	/**
+	 * Gets a menu item from the menu.
+	 * @return a menu item
+	 * @return null if selected menu item is not found on the menu
+	 */
 	public static AMenuItem getMenuItem() {
 		displayMenu();
 		System.out.println("What is the type of the item (Main Dish 1)/(Beverage 2)/(Dessert 3)/(Promotional 4)?");
-		int choice = input.nextInt();
-		input.nextLine();
+		int choice = input.nextInt(); input.nextLine();
 		System.out.println("What is the ID of the item?");
-		int id = input.nextInt();
-		input.nextLine();
+		int id = input.nextInt(); input.nextLine();
 
 		switch (choice)
 		{
