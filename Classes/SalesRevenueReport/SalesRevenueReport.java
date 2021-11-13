@@ -13,17 +13,16 @@ import Classes.AMenuItem.AMenuItem.TYPE;
  * Contains the sales information of all items sold for a particular period of time.
  */
 public class SalesRevenueReport {
-    /**
-     * Creates a Sales Revenue Report for a certain period of time.
-     * @param orderList List of all orders sold within the period
-     * @param period The period (day, month, year) which sales are being reported for
-     */
     private ArrayList<Order> orderList;
     private String period;
     private double totalRevenue;
     private Map<AMenuItem, Integer> alacarteStatistics;
     private Map<AMenuItem, Integer> promotionalStatistics;
 
+    /**
+     * Creates a report for a specified period.
+     * @param period The period (Day, Month, Year) that the report covers.
+     */
     public SalesRevenueReport(String period){
         this.totalRevenue = 0;
         this.orderList = OrderManager.getOrderHistory();
@@ -87,22 +86,42 @@ public class SalesRevenueReport {
         }
     }
 
+    /**
+     * Gets the order history within the specified period for this report
+     * @return a list of the order history for the report's period
+     */
     public ArrayList<Order> getOrderList() {
         return this.orderList;
     }
 
+    /**
+     * Gets the period that the report covers
+     * @return the period that the report covers
+     */
     public String getPeriod() {
         return this.period;
     }
 
+    /**
+     * Gets the total revenue reported in the report
+     * @return the total revenue covered in the report
+     */
     public double getTotalRevenue() {
         return this.totalRevenue;
     }
 
+    /**
+     * Gets the Map containing the statistics for Ala Carte items
+     * @return a map containing statistics for Ala Carte items
+     */
     public Map<AMenuItem, Integer> getAlaCarteStatistics(){
         return this.alacarteStatistics;
     }
 
+    /**
+     * Gets the Map containing the statistics for Promotional items
+     * @return a map containing statistics for Promotion items
+     */
     public Map<AMenuItem, Integer> getPromotionalStatistics(){
         return this.promotionalStatistics;
     }

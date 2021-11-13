@@ -171,11 +171,16 @@ public class DateTimeFormatHelper {
         	}
         	}
     	}while(choice < 0 || choice > 3);
-    	ReservationManager.checkExpiredReservations();
+        synchronize();
     	sc.close();
     }
     
     private static void incrementModifier(int minute) {
     	TIME_MODIFIER += minute;
+    }
+    
+    private static void synchronize() {
+    	ReservationManager.checkExpiredReservations();
+    	TableManager.updateTableStatus();
     }
 }

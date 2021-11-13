@@ -93,7 +93,7 @@ public class ReservationManager {
 				System.out.print("Enter number of pax: ");
 				numPax = input.nextInt();
 				if (numPax <= 0) {
-					System.out.println("You have cannot have less than 1 person.");
+					System.out.println("You cannot have less than 1 person.");
 				} else if (numPax > 10) {
 					System.out.println("Sorry! The restaurant's maximum seating is 10 people.");
 				}
@@ -141,7 +141,7 @@ public class ReservationManager {
 		Reservation.ReservationSession s = session == 'A' ? Reservation.ReservationSession.AM
 				: Reservation.ReservationSession.PM;
 		unavailable = getTableBookedByDateAndSession(resvDate, s);
-		available = TableManager.getTheOtherHalf(unavailable);
+		available = TableManager.getComplement(unavailable);
 		for (Table t : available) {
 			if (t.getCapacity() >= cusCount)
 				return t.getID();
@@ -149,58 +149,83 @@ public class ReservationManager {
 		return -1;
 	}
 
-	public static void checkReservationBooking() {
-		int count = 0;
+	public static int checkReservationBooking() {
+		boolean flag = false;
 		System.out.print("Enter your reservation Id: ");
 		int Id = input.nextInt();
-		count = printReservationLine(Id);
-
-		if (count == 0) {
-			System.out.println("Invalid reservation Id! Please check again!");
-		}
-	}
-
-	public static void removeReservationFromList(int Id) {
-		if (Id == -1)
-			return;
-
-		Iterator<Reservation> iter = reservationCollection.iterator();
-		while (iter.hasNext()) {
-			Reservation r = iter.next();
-			if (r.getResvId() == Id) {
-				iter.remove();
-				System.out.println("Reservation ID " + Id + " has been successfully removed.");
-				return;
+		for (Reservation r : reservationCollection) {
+			if (Id == r.getResvId()) {
+				System.out.println("Below are the reservations linked to the reservation number " + Id);
+				System.out.printf("%-6s %-15s %-10s %-10s %-15s %-30s %-3s %-9s\n", "ID", "Date", "Session", "Time", "Tel. No",
+						"Name", "Pax", "Table No.");
+				System.out.println("");
+				System.out.printf("%-6d %-15s %-10s %-10s %-15s %-30s %-3d %-9d\n", r.getResvId(),
+						DateTimeFormatHelper.formatToStringDate(r.getResvDate()),
+						r.getResvSession() == Reservation.ReservationSession.AM ? 'A' : 'P',
+						DateTimeFormatHelper.formatToStringTime(r.getResvTime()), r.getCustomerContact(), r.getCustomerName(),
+						r.getNumPax(), r.getTableID());
+				flag = true;
+				break;
 			}
 		}
 
-		System.out.println("Invalid Reservation ID. No removals made.");
+		if (!flag) {
+			System.out.println("Invalid reservation Id! Please check again!");
+			Id = -1;
+		}
+		return Id;
+	}
+
+	public static void printAllReservations() {
+		System.out.println("Here are all the current reservations:");
+		System.out.printf("%-6s %-15s %-10s %-10s %-15s %-30s %-3s %-9s\n", "ID", "Date", "Session", "Time", "Tel. No",
+			"Name", "Pax", "Table No.");
+		System.out.println("");
+		boolean passed = false;
+		for (Reservation r : reservationCollection) {
+			if (DateTimeFormatHelper.compareIfBeforeToday(r.getResvDate())) {
+				passed = true;
+			} else if (r.getResvDate().isEqual(DateTimeFormatHelper.getTodayDate())) {
+				if (r.getResvTime().isBefore(DateTimeFormatHelper.getTimeNow())) {
+					passed = true;
+				}
+			}
+			if (!passed) {
+				System.out.printf("%-6d %-15s %-10s %-10s %-15s %-30s %-3d %-9d\n", r.getResvId(),
+						DateTimeFormatHelper.formatToStringDate(r.getResvDate()),
+						r.getResvSession() == Reservation.ReservationSession.AM ? 'A' : 'P',
+						DateTimeFormatHelper.formatToStringTime(r.getResvTime()), r.getCustomerContact(), r.getCustomerName(),
+						r.getNumPax(), r.getTableID());
+			}
+		}
 	}
 
 	public static void removeReservationBooking() {
-		int count = 0;
-
 		System.out.println("Remove Reservation Booking");
-		System.out.print("Enter the reservation Id: ");
-		int resvId = input.nextInt();
-		input.nextLine();
+		int Id =  checkReservationBooking();
 
-		count = printReservationLine(resvId);
-
-		if (count == 1) {
+		if (Id != -1) {
 			System.out.print("Are you sure you want to delete this reservation (Y/N)? ");
 			switch (Character.toUpperCase(input.nextLine().charAt(0))) {
 			case 'Y':
-				removeReservationFromList(resvId);
+				Iterator<Reservation> iter = reservationCollection.iterator();
+				while (iter.hasNext()) {
+					Reservation r = iter.next();
+					if (r.getResvId() == Id) {
+						iter.remove();
+						System.out.println("Reservation ID " + Id + " has been successfully removed.");
+						break;
+					}
+				}
 				break;
 			case 'N':
+				System.out.println("Request cancelled.");
 				break;
 			default:
 				System.out.println("Invalid option!");
 				break;
 			}
-		} else
-			System.out.println("Invalid reservation Id! Please check again!");
+		}
 	}
 
 	public static void checkExpiredReservations() {
@@ -215,26 +240,6 @@ public class ReservationManager {
 					iter.remove();
 				}
 		}
-
-	}
-
-	private static int printReservationLine(int resvId) {
-		int count = 0;
-		System.out.println("Below are the reservations linked to the reservation number " + resvId);
-		System.out.printf("%-6s %-15s %-10s %-10s %-15s %-30s %-3s %-9s\n", "ID", "Date", "Session", "Time", "Tel. No",
-				"Name", "Pax", "Table No.");
-		System.out.println("");
-		for (Reservation r : reservationCollection) {
-			if (resvId == r.getResvId()) {
-				System.out.printf("%-6d %-15s %-10s %-10s %-15s %-30s %-3d %-9d\n", r.getResvId(),
-						DateTimeFormatHelper.formatToStringDate(r.getResvDate()),
-						r.getResvSession() == Reservation.ReservationSession.AM ? 'A' : 'P',
-						DateTimeFormatHelper.formatToStringTime(r.getResvTime()), r.getCustomerContact(), r.getCustomerName(),
-						r.getNumPax(), r.getTableID());
-				count++;
-			}
-		}
-		return count;
 	}
 
 	public static int getTableIDByReservationID(int id) {
