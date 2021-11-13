@@ -5,11 +5,14 @@ import Classes.Printer.UserInterfacePrinter;
 
 /**
  * MenuManager - the manager for our restaurant Menu
- * 
+ * @version 1.0
  * 
  */
 public class MenuManager extends UserInterfacePrinter{
 	
+	/**
+     * The ArrayList to store Maindish Object
+     */
     private static ArrayList<MainDish> maindishes;
     private static ArrayList<Beverage> beverages;
     private static ArrayList<Dessert> desserts;

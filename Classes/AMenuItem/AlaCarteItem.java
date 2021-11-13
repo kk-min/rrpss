@@ -1,9 +1,9 @@
 package Classes.AMenuItem;
 
 /**
- * AlaCarteItem Class 
+ * AlaCarteItem Class for AlaCarteItem object 
  * extend from AMenuItem
- *
+ *@version 1.0
  */
 public class AlaCarteItem extends AMenuItem  {
     

@@ -1,8 +1,8 @@
 package Classes.AMenuItem;
-
 /**
 * AMenuItem Class
-*
+* Contain all base variable and function for AlaCarteItem and Promotional
+*@version 1.0
 */
 public class AMenuItem {
     public enum TYPE {ALACARTE, PROMOTIONAL};
@@ -27,10 +27,10 @@ public class AMenuItem {
     /**
      * Constructor to pass in all required parameters for a general menu item.
      *
-     * ID           This menu item's ID.
-     * name         This menu item's name.
-     * price        This menu item's price.
-     * description  This menu item's description.
+     * @param  ID          This menu item's ID.
+     * @param  name         This menu item's name.
+     * @param  price        This menu item's price.
+     * @param  description  This menu item's description.
      */
     public AMenuItem (int ID, String name, double price, String description)
     {
@@ -40,71 +40,83 @@ public class AMenuItem {
         this.description = description;
     }
     
+    /* Methods in class
+      getId()
+      setId(int ID)
+      getName()
+      setName(String name)
+      getPrice()
+      setPrice(double price)
+      getDescription()
+      setDescription(String description)
+      getType()
+     */
+
     /**
-     * getId()
-     * setId(int ID)
-     * getName()
-     * setName(String name)
-     * getPrice()
-     * setPrice(double price)
-     * getDescription()
-     * setDescription(String description)
-     * 
+     * Accessor for ID of the AmenuItem object
+     * @return ID 
      */
 
     public int getId() {
         return ID;
     }
+    /**
+     * 
+     * @param ID  Mutator for ID of the AmenuItem object
+     * 
+     */
 
     public void setId(int ID) {
         this.ID = ID;
     }
     /**
-
-     * @return name  name of the AmenuItem object
-
-     * 
+     * Accessor for Name of the AmenuItem object
+     * @return name  
      */
     public String getName() {
         return name;
     }
-
-
-
+    /**
+     * @param name  Mutator for Name of the AmenuItem object
+     * 
+     */
     public void setName(String name) {
         this.name = name;
     }
     /**
-
-     * @return price  price of the AmenuItem object
-
+     *  Accessor for Price of the AmenuItem object
+     * @return price 
      * 
      */
     public double getPrice() {
         return price;
     }
-
+    /**
+     * @param price  Mutator for Price of the AmenuItem object
+     * 
+     */
     public void setPrice(double price) {
         this.price = price;
     }
     /**
-
-     * @return description  descriptioon of the AmenuItem object
-
-     * 
+     * Accessor for Descriptioon of the AmenuItem object
+     * @return description  
      */
     public String getDescription() {
         return description;
     }
+    /**
+     * @param description  Mutator for Descriptioon of the AmenuItem object
+     * 
+     */
 
     public void setDescription(String description) {
         this.description = description;
     }
 
-        /**
-
-     * @return itemType  itemType of the AmenuItem object
-
+    /**
+     * Accessor for ItemType of the AmenuItem object
+     * @return itemType  
      * 
      */
     public TYPE getType(){
