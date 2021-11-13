@@ -33,12 +33,14 @@ public class Staff {
     private JobTitle jobTitle;
 
     /**
-     * Constructor to create staff instances
-     * @param employeeID ID assigned to the staff.
-     * @param name Name of the staff.
-     * @param gender Gender of the staff.
-     * @param jobTitle Job title of the staff.
+     * Constructor to pass in all required parameters for menu item.
+     *
+     * @param employeeID          employee's ID.
+     * @param name        employee's name.
+     * @param gender employee's description.
+     * @param jobTitle       employee's jobTitle.
      */
+
     public Staff(int employeeID, String name, char gender, JobTitle jobTitle) {
         this.employeeID = employeeID;
         this.name = name;
