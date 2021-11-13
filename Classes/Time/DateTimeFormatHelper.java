@@ -11,6 +11,7 @@ import java.util.Date;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import Classes.Reservation.Reservation;
 import Classes.Reservation.ReservationManager;
 
 public class DateTimeFormatHelper {
@@ -124,7 +125,16 @@ public class DateTimeFormatHelper {
     public static LocalTime inbuiltTime() {
     	return inbuiltDateTime().toLocalTime();
     }
-    
+
+    public static Reservation.ReservationSession inbuiltSession(LocalTime time){
+        if(time.compareTo(LocalTime.of(10, 0)) > 0 && time.compareTo(LocalTime.of(16, 00)) < 0) {
+            return Reservation.ReservationSession.AM;
+        } else if (time.compareTo(LocalTime.of(18, 0)) > 0 && time.compareTo(LocalTime.of(23, 59)) < 0) {
+            return Reservation.ReservationSession.PM;
+        }     
+        return null;
+    }
+
     public static void advanceTime() {
     	System.out.print("Advance Time Options:\n"
     			+ "1. In days\n"
