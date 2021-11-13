@@ -4,6 +4,7 @@ import java.util.Scanner;
 import java.util.ArrayList;
 
 import Classes.Printer.PrintReceipt;
+import Classes.Printer.SubMenuPrinter;
 import Classes.AMenuItem.AMenuItem;
 import Classes.AMenuItem.MenuManager;
 import Classes.Staff.Staff;
@@ -43,7 +44,7 @@ public class OrderManager {
         int orderID = input.nextInt();
         for (Order viewOrder : OrderHistory){
             if (viewOrder.getID() == orderID){
-                PrintReceipt.printInvoice(viewOrder); // We can just print the invoice from the printer class, because that's basically the summary of the order...
+                SubMenuPrinter.printOrderSummary(viewOrder); // We can just print the invoice from the printer class, because that's basically the summary of the order...
                 return;
             }
         }
