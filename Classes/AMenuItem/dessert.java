@@ -1,20 +1,20 @@
 package Classes.AMenuItem;
-
 /**
-* Dessert Class for Dessert object
-* extend from AlaCarteItem
-*@version 1.0
-*/
+ * The Dessert Class
+ * extends from AlaCarteItem
+ * @author Lingyi
+ * @version 1.0
+ * @since 2021-11-01
+ */
 class Dessert extends AlaCarteItem {
     /**
      * Constructor to pass in all required parameters for Dessert
      *
-     * @param ID          Menu item's ID.
-     * @param name        Menu item's name.
-     * @param description Menu item's description.
-     * @param price       Menu item's price.
+     * @param ID          Dessert's ID.
+     * @param name        Dessert's name.
+     * @param description Dessert's description.
+     * @param price       Dessert's price.
      */
-
     public Dessert(int ID, String name, double price, String description) {
         super(ID, name, price, description);
     }

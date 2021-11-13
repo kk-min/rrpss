@@ -14,13 +14,13 @@ import java.time.format.DateTimeParseException;
 import java.util.InputMismatchException;
 
 /**
- * The Reservation Manager
+ * The ReservationManager Class
  * Create, check, delete and list the reservations and automatically delete the expired reservations.
- * 
- * @author Zhang Erli
+ * @author  Zhang Erli
+ * @author  Her Huey
  * @version 1.0
+ * @since   2021-11-02
  */
-
 public class ReservationManager {
 
 	/**
@@ -29,7 +29,7 @@ public class ReservationManager {
 	private static ArrayList<Reservation> reservationCollection = new ArrayList<Reservation>();
 
     /**
-     * Scanner object for taking user input
+     * Scanner object for taking in user input
      */
 	private static Scanner input = new Scanner(System.in);	
 
@@ -184,7 +184,7 @@ public class ReservationManager {
      * @param cusCount     The given number of customers
 	 * @param resvDate     The given date to check tables' availability
 	 * @param session      The given session to check tables' availability
-	 * @return the first table id if there exists a table that fit the requirements, -1 if all table are occupied
+	 * @return the first table id if there exists a table that fit the requirements, -1 if all tables are occupied
      */
 	public static int findTableForReservation(int cusCount, LocalDate resvDate, char session) {
 		ArrayList<Table> available, unavailable = new ArrayList<Table>();
@@ -246,12 +246,6 @@ public class ReservationManager {
 				System.out.println("Name: " + r.getCustomerName());
 				System.out.println("Date & Time: " + r.getResvDate() + " " + r.getResvTime());
 				System.out.println("Pax: " + r.getNumPax());
-				// System.out.printf("%-6s %-15s %-10s %-10s %-15s %-15s %-3s %-9s\n", "ID", "Date", "Session", "Time", "Tel. No",
-				// 		"Name", "Pax", "Table No.");
-				// System.out.println("");
-				// System.out.printf("%-6d %-15s %-10s %-10s %-15s %-15s %-3d %-9d\n", r.getResvId(),
-				// DateTimeFormatHelper.formatToStringDate(r.getResvDate()), r.getResvSession() == Reservation.ReservationSession.AM ? 'A' : 'P',
-				// DateTimeFormatHelper.formatToStringTime(r.getResvTime()), r.getCustomerContact(), r.getCustomerName(), r.getNumPax(), r.getTableID());
 				flag = true;
 				break;
 			}
@@ -306,9 +300,9 @@ public class ReservationManager {
 	}
 
 	/**
-     * Method to automatedly delete the reservation after 30 minutes of its reservation time and the customer(s) haven't showed up
+     * Method to automatically delete the reservation after 30 minutes of its reservation time and the customer(s) haven't showed up
 	 * 
-	 * This method will be called once a minute by TimerExecutr in the MainApp
+	 * This method will be called once a minute by TimerExecute in the MainApp
      */
 	public static void checkExpiredReservations() {
 		Reservation r;

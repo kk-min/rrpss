@@ -6,13 +6,15 @@ import Classes.AMenuItem.AMenuItem;
 import Classes.Order.Order;
 
 /**
- * Printer class that prints the receipts and Sales Revenue Reports onto the console
+ * The PrintReceipt class
+ * Implements printing functionality for order receipts
+ * @author  Min
  * @version 1.0
+ * @since   2021-11-01
  */
-public class PrintReceipt implements Printer{
+public class PrintReceipt implements Printer {
     /**
      * Prints the receipt for a particular order
-     * 
      * @param order The order for which to print the receipt
      */
     public static void print(Order order) {

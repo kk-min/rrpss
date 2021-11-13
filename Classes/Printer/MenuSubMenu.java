@@ -3,13 +3,19 @@ package Classes.Printer;
 import Classes.AMenuItem.MenuManager;
 
 /**
+ * The MenuSubMenu Class
  * Implements printing functinality for Menu sub-menus
- * @version 1.0
+ * extends UserInterfacePrinter
+ * @author  Lingyi
+ * @author  Her Huey
+ * @author  Min
+ * @version 2.0
+ * @since   2021-11-12
  */
 public class MenuSubMenu extends UserInterfacePrinter {
     /**
-     * Prints the menu submenu
-     * @return an integer flag indicating whether to exit the the application or go to previous menu
+     * Prints the menu submenu and calls the respective MenuManager methods based on the user's choice
+     * @return an integer flag indicating whether to exit the the application
      */
     public static int print(){
         while (true) {

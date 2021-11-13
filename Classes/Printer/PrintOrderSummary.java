@@ -4,8 +4,11 @@ import Classes.AMenuItem.AMenuItem;
 import Classes.Order.Order;
 
 /**
+ * The PrintOrderSummary Class
  * Implements printing functionality for viewing a current order's summary
- * @version 1.0
+ * @author  Min
+ * @version 2.0
+ * @since   2021-11-12
  */
 public class PrintOrderSummary implements Printer {
     /**

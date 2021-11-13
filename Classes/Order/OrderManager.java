@@ -15,12 +15,16 @@ import Classes.Staff.StaffManager;
 import Classes.Table.TableManager;
 
 /**
+ * The OrderManager Class
  * Manages various functionalities pertaining to Order objects.
- * @version 1.0
+ * @author  Her Huey
+ * @author  Min
+ * @version 2.0
+ * @since   2021-11-12
  */
 public class OrderManager {
     /**
-     * Scanner object for taking user input
+     * Scanner object for taking in user input
      */
     private static Scanner input = new Scanner(System.in);
     /**
@@ -29,7 +33,7 @@ public class OrderManager {
     private static ArrayList<Order> OrderHistory = new ArrayList<Order>();
 
     /**
-     * Gets the order history.
+     * Accessor for the order history (list of all orders made).
      * @return the order history
      */
     public static ArrayList<Order> getOrderHistory() {
@@ -37,7 +41,7 @@ public class OrderManager {
     }
 
     /**
-     * Creates a new Order.
+     * Assigns customer to a table and creates a new order for them.
      */
     public static void create() {
         System.out.print("Enter customer's reservation ID (enter -1 if this is a walk-in): ");
@@ -95,7 +99,7 @@ public class OrderManager {
     }
 
     /**
-     * Adds a AMenuItem to an existing Order.
+     * Adds a AMenuItem with specified quantity to an existing Order.
      */
     public static void add() {
         System.out.print("Please enter the Order ID to add items to: ");
@@ -118,7 +122,7 @@ public class OrderManager {
     }
 
     /**
-     * Removes an item from an existing Order.
+     * Removes a MenuItem with specified quantity from an existing Order.
      */
     public static void remove() {
         System.out.print("Please enter the Order ID to remove items from: ");
@@ -149,7 +153,8 @@ public class OrderManager {
     }
 
     /**
-     * Checks out an Order anr prints its Receipt.
+     * Checks out an Order and prints its Receipt.
+     * Customer to make payment and leave.
      */
     public static void checkout() {
         System.out.print("Please enter the Order to checkout: ");

@@ -3,13 +3,18 @@ package Classes.Printer;
 import Classes.Order.OrderManager;
 
 /**
- * Implements printing functionality for Order sub-menus
- * @version 1.0
+ * The OrderSubMenu Class
+ * Implements printing functinality for Order sub-menus
+ * extends UserInterfacePrinter
+ * @author  Her Huey
+ * @author  Min
+ * @version 2.0
+ * @since   2021-11-12
  */
 public class OrderSubMenu extends UserInterfacePrinter {
     /**
-     * Prints the order sub-menu
-     * @return an integer flag indicating whether to exit the the application or go to previous menu
+     * Prints the order submenu and calls the respective OrderManager methods based on the user's choice
+     * @return an integer flag indicating whether to exit the the application
      */
     public static int print(){
         while (true) {

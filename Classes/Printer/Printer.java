@@ -1,8 +1,12 @@
 package Classes.Printer;
 
 /**
- * Printer Interface that can be extended for Submenu printing.
+ * Printer Interface
+ * to be implemented by Submenu and other forms of printing.
+ * @author  Min
+ * @author  Her Huey
  * @version 1.0
+ * @since   2021-11-12
  */
 public interface Printer {
 

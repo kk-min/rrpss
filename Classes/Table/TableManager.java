@@ -8,24 +8,25 @@ import java.util.Comparator;
 import Classes.Reservation.Reservation;
 import Classes.Reservation.ReservationManager;
 import Classes.Time.DateTimeFormatHelper;
+
 /**
  * The Table Manager class
- *
+ * manages the collection of tables in the restaurant
  * @author Ma Guangheng
  * @version 1.0
+ * @since 2021-11-02
  */
-
 public class TableManager {
 	/**
-	 * Arraylist to store all the table.
+	 * Arraylist to store all the tables.
 	 */
 	private static ArrayList<Table> tableCollection = new ArrayList<Table>();
 	/**
-	 * Array to store number of each type of tables.
+	 * Array to store the number of each type of table.
 	 */
 	private static final int[] tableTrack = { 2, 2, 2, 2, 2 };
 	/**
-	 * Create arraylist table collection. Execute once at the start of the program.
+	 * Initialise the arraylist of table collection.
 	 */
 	public static void initialiseTableCollection() {
 		int i = 0, j, n = 1, capacity = 2;
@@ -39,7 +40,7 @@ public class TableManager {
 		}
 	}
 	/**
-	 * Get total number of tables.
+	 * Get the total number of tables.
 	 * @return Number of tables
 	 */
 	public static int totalTableNum() {

@@ -2,20 +2,27 @@ package Classes.Staff;
 
 import java.util.ArrayList;
 import java.util.Scanner;
-/**
- * StaffManager for all the Employees in the resturants
- * @version 1.0
- * @author Herhuey
- */
 
+/**
+ * The StaffManager Class
+ * manages all the Employees in the resturant
+ * @author  Her Huey
+ * @version 1.0
+ * @since   2021-11-01
+ */
 public class StaffManager {
-    
+    /**
+     * Scanner object to take in user input
+     */
     private static Scanner input = new Scanner(System.in);
     /**
-     * ArrayList staffList to store Staff Object 
+     * The ArrayList to store all Staff Objects
      */
     private static ArrayList<Staff> staffList = new ArrayList<Staff>();
 
+    /**
+     * Initialises a list of staff working at the restaurant.
+     */
     public static void initialiseStaffList()
 	{
 		Staff s1 = new Staff(1, "Carl Ryder", 'M', Staff.JobTitle.MANAGER);
@@ -28,6 +35,9 @@ public class StaffManager {
         staffList.add(s4); staffList.add(s5); staffList.add(s6);
 	}
 
+    /**
+     * Prints a list of details of staff working at the restaurant.
+     */
     public static void displayStaffList() {
         System.out.println("Staff List:");
         for (Staff staff : staffList) {
@@ -35,18 +45,19 @@ public class StaffManager {
         }
     }
     /**
-     * Return the how long is the staffList
+     * Returns the number of staff working at the restaurant based on size of staffList.
      * 
-     * @return staffList.size()
+     * @return staffList.size() as an integer
      */
     public static int totalStaffNum() {
         return staffList.size();
     }
+
     /**
-     * If the staff ID exist, return Object staff
-     * if the staff ID does not exist, return null
+     * Returns a Staff based on satff ID.
      * 
-     * @return staff,null
+     * @return Staff object if given staff ID exists
+     * @return null if given Staff ID does not exists
      */
 
     public static Staff getStaff() {

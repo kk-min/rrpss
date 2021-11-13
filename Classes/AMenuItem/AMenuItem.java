@@ -1,10 +1,14 @@
 package Classes.AMenuItem;
 /**
-* AMenuItem Class
-* Contain all base variable and function for AlaCarteItem and Promotional
-*@version 1.0
-*/
+ * The AMenuItem Class
+ * @author Lingyi
+ * @version 1.0
+ * @since 2021-11-01
+ */
 public class AMenuItem {
+    /**
+     * The type of the menu item, whether AlaCarte or Promotional.
+     */
     public enum TYPE {ALACARTE, PROMOTIONAL};
     protected TYPE itemType;
     /**
@@ -27,7 +31,7 @@ public class AMenuItem {
     /**
      * Constructor to pass in all required parameters for a general menu item.
      *
-     * @param  ID          This menu item's ID.
+     * @param  ID           This menu item's ID.
      * @param  name         This menu item's name.
      * @param  price        This menu item's price.
      * @param  description  This menu item's description.
@@ -53,71 +57,64 @@ public class AMenuItem {
      */
 
     /**
-     * Accessor for ID of the AmenuItem object
+     * Accessor for ID of the AMenuItem object
      * @return ID 
      */
-
     public int getId() {
         return ID;
     }
     /**
-     * 
-     * @param ID  Mutator for ID of the AmenuItem object
-     * 
+     * Mutator for ID of the AMenuItem object
+     * @param ID 
      */
-
     public void setId(int ID) {
         this.ID = ID;
     }
     /**
-     * Accessor for Name of the AmenuItem object
+     * Accessor for Name of the AMenuItem object
      * @return name  
      */
     public String getName() {
         return name;
     }
     /**
-     * @param name  Mutator for Name of the AmenuItem object
-     * 
+     * Mutator for Name of the AMenuItem object
+     * @param name
      */
     public void setName(String name) {
         this.name = name;
     }
     /**
-     *  Accessor for Price of the AmenuItem object
+     *  Accessor for Price of the AMenuItem object
      * @return price 
-     * 
      */
     public double getPrice() {
         return price;
     }
     /**
-     * @param price  Mutator for Price of the AmenuItem object
-     * 
+     * Mutator for Price of the AMenuItem object
+     * @param price 
      */
     public void setPrice(double price) {
         this.price = price;
     }
     /**
-     * Accessor for Descriptioon of the AmenuItem object
+     * Accessor for Descriptioon of the AMenuItem object
      * @return description  
      */
     public String getDescription() {
         return description;
     }
     /**
-     * @param description  Mutator for Descriptioon of the AmenuItem object
-     * 
+     * Mutator for Description of the AMenuItem object
+     * @param description
      */
-
     public void setDescription(String description) {
         this.description = description;
     }
-
     /**
-     * Accessor for ItemType of the AmenuItem object
+     * Accessor for ItemType of the AMenuItem object
      * @return itemType  
-     * 
      */
     public TYPE getType(){
         return this.itemType;

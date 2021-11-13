@@ -2,7 +2,9 @@ package Classes.Time;
 
 import java.util.Timer;
 /**
+ * The TimerExecutor Class
  * A recurring task defined.
+ * @version 1.0
  */
 public class TimerExecutor {
 	/**

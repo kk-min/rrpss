@@ -13,8 +13,8 @@ import Classes.Reservation.Reservation;
 import Classes.Reservation.ReservationManager;
 import Classes.Table.TableManager;
 /**
- * The date and time format helper
- * Help format date and time and manage manually advanced time
+ * The DateTimeFormatHelper Class
+ * Helps format date and time and manage manually advanced time
  * 
  * @version 1.0
  */
@@ -261,5 +261,4 @@ public class DateTimeFormatHelper {
     	ReservationManager.checkExpiredReservations();
     	TableManager.updateTableStatus();
     }
-    
 }

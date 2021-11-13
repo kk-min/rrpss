@@ -1,35 +1,36 @@
 package Classes.AMenuItem;
 
 import java.util.ArrayList;
-import Classes.Printer.UserInterfacePrinter;
 
+import Classes.Printer.UserInterfacePrinter;
 /**
- * MenuManager - the manager for our restaurant Menu
- * @version 1.0
- * 
+ * The MenuManager Class
+ * our restaurant menu's manager
+ * @author Lingyi
+ * @author Her Huey
+ * @version 2.0
+ * @since 2021-11-03
  */
 public class MenuManager extends UserInterfacePrinter{
-	
 	/**
-     * The ArrayList to store Maindish Object
+     * The ArrayList to store MainDish Objects
      */
     private static ArrayList<MainDish> maindishes;
 	/**
-     * The ArrayList to store Beverage Object
+     * The ArrayList to store Beverage Objects
      */
     private static ArrayList<Beverage> beverages;
 	/**
-     * The ArrayList to store Dessert Object
+     * The ArrayList to store Dessert Objects
      */
     private static ArrayList<Dessert> desserts;
 	/**
-     * The ArrayList to store Dessert Promotional object
+     * The ArrayList to store Dessert Promotional objects
      */
     private static ArrayList<Promotional> promotionals;
 
 	/**
-     * initialiseMenu()
-	 * defalt menu options
+	 * Initialises default menu items in the menu
      */
     public static void initialiseMenu() {
 
@@ -67,7 +68,9 @@ public class MenuManager extends UserInterfacePrinter{
 		promotionals.add(myPromo2);
 	}
 
-	// every function is public static so that it can be accessed without creating an object
+	/**
+	 * Prints out the whole menu.
+	 */
     public static void displayMenu()
 	{
 		// Line 1:
@@ -177,9 +180,11 @@ public class MenuManager extends UserInterfacePrinter{
 		}
 		System.out.printf("-".repeat(rowLength));
 		System.out.println();
-
 	}
 
+	/**
+	 * Allows user to add an AlaCarte Item to the menu.
+	 */
     public static void addAlaCarteItem()
 	{
 		String Mname, Mdescription;
@@ -221,6 +226,9 @@ public class MenuManager extends UserInterfacePrinter{
 		}
 	}
 
+	/**
+	 * Allows user to change the details of an AlaCarte Item on the menu.
+	 */
 	public static void updateAlaCarteItem()
 	{
 		System.out.println("Here is the current menu:\n---");
@@ -345,6 +353,9 @@ public class MenuManager extends UserInterfacePrinter{
 			System.out.println("Updating Failed...");
 	}
 
+	/**
+	 * Allows user to delete an AlaCarte Item on the menu.
+	 */
 	public static void deleteAlaCarteItem()
 	{
 		System.out.println("Here is the current menu:\n---");
@@ -416,6 +427,9 @@ public class MenuManager extends UserInterfacePrinter{
 			System.out.println("Deletion Failed...");
 	}
 
+	/**
+	 * Allows user to add a Promotional Item onto the menu.
+	 */
 	public static void addPromoItem()
 	{
 		String Mname, Mdescription;
@@ -481,6 +495,9 @@ public class MenuManager extends UserInterfacePrinter{
 			System.out.println("Update Failed...");
 	}
 
+	/**
+	 * Allows user to remove a Promotional Item from the menu.
+	 */
 	public static void deletePromoItem()
 	{
 		System.out.println("Here is the current menu:\n---");
@@ -508,6 +525,11 @@ public class MenuManager extends UserInterfacePrinter{
 			System.out.println("Deletion Failed...");
 	}
 
+	/**
+	 * Gets a menu item from the menu.
+	 * @return a menu item
+	 * @return null if selected menu item is not found on the menu
+	 */
 	public static AMenuItem getMenuItem() {
 		displayMenu();
 		System.out.println("What is the type of the item (Main Dish 1)/(Beverage 2)/(Dessert 3)/(Promotional 4)?");

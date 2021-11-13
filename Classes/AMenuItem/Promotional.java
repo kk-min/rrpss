@@ -1,12 +1,17 @@
 package Classes.AMenuItem;
-
 /**
- * Promotional Class extend from AMenuItem
+ * The Promotional Class
+ * extends from AMenuItem
+ * describes promotional set items
+ * @author Lingyi
  * @version 1.0
+ * @since 2021-11-01
  */
 public class Promotional extends AMenuItem {
     /**
      *
+     * Constructor to pass in all required parameters.
+     * 
      * @param ID          Promotional item's ID.
      * @param name        Promotional item's name.
      * @param description Promotional item's description.

@@ -12,7 +12,10 @@ import Classes.Time.DateTimeFormatHelper;
 import Classes.Time.TimerExecutor;
 /**
  * MainApp for RRPSS project
+ * this is where the main program will be run
+ * 
  * @version 1.0
+ * @since   2021-11-12
  */
 
 public class MainApp {
@@ -21,6 +24,10 @@ public class MainApp {
      */
 	private static Scanner input = new Scanner(System.in);
 	
+	/**
+	 * main function that prompts selection of tasks to perform
+	 * @param args command line arguments
+	 */
 	public static void main(String args[]) {
 
 		// initialisations

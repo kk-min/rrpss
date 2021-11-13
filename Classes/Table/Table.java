@@ -1,9 +1,11 @@
 package Classes.Table;
 /**
- * The Table class for detail of the table
+ * The Table Class
+ * stores information regarding a table
  *
  * @author Ma Guangheng
  * @version 1.0
+ * @since 2021-11-02
  */
 public class Table {
 	/**
@@ -30,6 +32,7 @@ public class Table {
 	};
 	/**
 	 * Constructor to create table instances
+	 * 
 	 * @param tableNo Number assigned to the table.
 	 * @param cap Capacity of the table.
 	 */
@@ -42,7 +45,7 @@ public class Table {
 			capacity = cap;
 	}
 	/**
-	 * Mutator for set table status to empty.
+	 * Mutator to set table status to empty.
 	 */
 	public void setEmpty() {
 		this.status = TStatus.EMPTY;
@@ -54,7 +57,7 @@ public class Table {
 		this.status = TStatus.RESERVED;
 	}
 	/**
-	 * Mutator for set table status to occupied.
+	 * Mutator to set table status to occupied.
 	 */
 	public void setOccupied() {
 		this.status = TStatus.OCCUPIED;

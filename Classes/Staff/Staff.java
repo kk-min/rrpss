@@ -1,17 +1,16 @@
 package Classes.Staff;
 
 /**
- * Contains all the detail for Employee in the resturants
+ * The Staff Class
+ * Contains all the details for an employee (Staff) working in the resturant
+ * @author  Her Huey
  * @version 1.0
- * @author Herhuey
- * 
+ * @since   2021-11-01
  */
-
 public class Staff {
      /**
      * enum to show the JobTitle of the resturant's employee
      */
-
     public enum JobTitle {
 		MANAGER, ASSISTANT_MANAGER, CHIEF_SERVER, SERVER
 	};
@@ -37,11 +36,10 @@ public class Staff {
      * Constructor to pass in all required parameters for menu item.
      *
      * @param employeeID          employee's ID.
-     * @param name        employee's name.
-     * @param gender employee's description.
-     * @param jobTitle       employee's jobTitle.
+     * @param name                employee's name.
+     * @param gender              employee's description.
+     * @param jobTitle            employee's jobTitle.
      */
- 
     public Staff(int employeeID, String name, char gender, JobTitle jobTitle) {
         this.employeeID = employeeID;
         this.name = name;
@@ -53,35 +51,31 @@ public class Staff {
      * 
      * @return employeeID
      */
-
     public int getEmployeeID() {
         return employeeID;
     }
     /**
-     * Accessors to Return the employee name
+     * Accessor to Return the employee name
      * 
      * @return name
      */
-
     public String getName() {
         return name;
     }
     /**
-     * Accessors to Return the employee gender
+     * Accessor to Return the employee gender
      * 
      * @return gender
      */
-
     public char getGender() {
         return gender;
     }
 
     /**
-     * Accessors to Return the employee jobTitle
+     * Accessor to Return the employee jobTitle
      * 
      * @return jobTitle
      */
-
     public JobTitle getJobTitle() {
         return jobTitle;
     }

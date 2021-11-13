@@ -3,13 +3,19 @@ package Classes.Printer;
 import Classes.Reservation.ReservationManager;
 
 /**
- * Implements printing functionality for Reservation sub-menus
- * @version 1.0
+ * The OrderSubMenu Class
+ * Implements printing functinality for Reservation sub-menus
+ * extends UserInterfacePrinter
+ * @author  Erli
+ * @author  Her Huey
+ * @author  Min
+ * @version 2.0
+ * @since   2021-11-12
  */
 public class ReservationSubMenu extends UserInterfacePrinter {
     /**
-     * Prints the reservation submenu
-     * @return an integer flag indicating whether to exit the the application (1) or go to previous menu (-1)
+     * Prints the reservation submenu and calls the respective ReservationManager methods based on the user's choice
+     * @return an integer flag indicating whether to exit the the application
      */
     public static int print(){
         while (true) {

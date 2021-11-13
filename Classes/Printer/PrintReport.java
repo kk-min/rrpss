@@ -7,14 +7,17 @@ import Classes.SalesRevenueReport.SalesRevenueReport;
 import Classes.Staff.StaffManager;
 
 /**
+ * The PrintReport class
  * Implements printing functionality for printing the Sales Revenue Report
- * object.
+ * @author  Min
+ * @author  Her Huey
  * @version 1.0
+ * @since   2021-11-01
  */
 public class PrintReport extends UserInterfacePrinter {
     /**
-     * Prints the Sales Revenue Report. If generation failed,Return SalesRevenueReport Object for debugging 
-     * @return SalesRevenueReport r with name report 
+     * Generates a SalesRevenueReport object based on choice of period (Day, Month, or Year)
+     * @return SalesRevenueReport report object
      */
     public static SalesRevenueReport generateReport() {
         System.out.print("Choose a period to generate the Sales Revenue Report for:\n1) Day\n2) Month\n3) Year\nYour Choice: ");
@@ -37,9 +40,6 @@ public class PrintReport extends UserInterfacePrinter {
 
     /**
      * Prints the Sales Revenue Report for a particular SalesRevenueReport object
-     *
-     * @param period String variable denoting the time period we are generating the
-     *               report for.
      */
     public static void print() {
         SalesRevenueReport report = PrintReport.generateReport();
