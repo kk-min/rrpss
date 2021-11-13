@@ -23,30 +23,10 @@ import java.util.InputMismatchException;
 
 public class ReservationManager {
 
-<<<<<<< HEAD
 	/**
      * The arraylist storing all the reservation records
      */
-	private static ArrayList<Reservation> reservationCollection;
-
-    /**
-     * Accessor for reservation collection
-     *
-     * @return the reservation collection in arraylist
-     */
-	public static ArrayList<Reservation> getReservationCollection() {
-		return reservationCollection;
-	}
-
-	/**
-     * Constructor of reservation collection arraylist
-     */
-	public ReservationManager() {
-		reservationCollection = new ArrayList<Reservation>();
-	}
-=======
 	private static ArrayList<Reservation> reservationCollection = new ArrayList<Reservation>();
->>>>>>> f7ac3abc8940ad617edc12ff34043abccf562e24
 
     /**
      * Scanner object for taking user input
@@ -196,7 +176,7 @@ public class ReservationManager {
 	 * @param session      The given session to check tables' availability
 	 * @return the first table id if there exists a table that fit the requirements, -1 if all table are occupied
      */
-	private static int findTableForReservation(int cusCount, LocalDate resvDate, char session) {
+	public static int findTableForReservation(int cusCount, LocalDate resvDate, char session) {
 		ArrayList<Table> available, unavailable = new ArrayList<Table>();
 		Reservation.ReservationSession s = session == 'A' ? Reservation.ReservationSession.AM
 				: Reservation.ReservationSession.PM;

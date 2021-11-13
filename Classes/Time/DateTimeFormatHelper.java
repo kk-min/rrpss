@@ -50,11 +50,7 @@ public class DateTimeFormatHelper {
     }
 
     public static LocalDate getTodayDate() {
-<<<<<<< HEAD
         return LocalDate.ofEpochDay(SGTimeZone() / MILLIS_TO_DAYS);
-=======
-            return LocalDate.ofEpochDay(SGTimeZone() / MILLIS_TO_DAYS);
->>>>>>> 3d7b03179c02b15f65669b9fd603979ea53a1142
     }
 
     public static LocalTime getTimeNow() {
@@ -132,20 +128,12 @@ public class DateTimeFormatHelper {
     }
 
     public static Reservation.ReservationSession inbuiltSession(LocalTime time){
-<<<<<<< HEAD
         if(time.compareTo(LocalTime.of(10, 0)) > 0 && time.compareTo(LocalTime.of(16, 00)) < 0) {
             return Reservation.ReservationSession.AM;
         } else if (time.compareTo(LocalTime.of(18, 0)) > 0 && time.compareTo(LocalTime.of(23, 59)) < 0) {
             return Reservation.ReservationSession.PM;
-        }     
+        }
         return null;
-=======
-    	if(time.compareTo(LocalTime.of(10, 0)) > 0 && time.compareTo(LocalTime.of(16, 00)) < 0)
-    		return Reservation.ReservationSession.AM;
-		else if (time.compareTo(LocalTime.of(18, 0)) > 0 && time.compareTo(LocalTime.of(23, 59)) < 0)
-			return Reservation.ReservationSession.PM;
-		return null;
->>>>>>> 3d7b03179c02b15f65669b9fd603979ea53a1142
     }
 
     public static void advanceTime() {
