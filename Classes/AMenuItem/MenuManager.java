@@ -85,14 +85,13 @@ public class MenuManager extends UserInterfacePrinter {
 		//Line 5:
 		System.out.println();
 
-
-
 		for(int i=0;i<maindishes.size();i++)
 		{
 			System.out.println("ID: "+maindishes.get(i).getId());
 			System.out.println("Name: "+maindishes.get(i).getName());
 			System.out.println("Description: "+maindishes.get(i).getDescription());
 			System.out.println("Price: S$"+maindishes.get(i).getPrice());
+			System.out.println();
 		}
 		System.out.printf("-".repeat(rowLength));
 		System.out.println();

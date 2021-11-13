@@ -21,6 +21,8 @@ public class ReservationSubMenu extends UserInterfacePrinter {
             System.out.println("0) Exit Application");
 
             int choice = input.nextInt();
+            input.nextLine();
+            
             switch (choice) {
                 case 1:
                     Classes.Reservation.ReservationManager.createReservationBooking();

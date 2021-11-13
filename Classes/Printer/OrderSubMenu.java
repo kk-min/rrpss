@@ -22,6 +22,7 @@ public class OrderSubMenu extends UserInterfacePrinter {
             System.out.printf("-".repeat(rowLength));
             System.out.println();
             int choice = input.nextInt();
+            input.nextLine();
         
             switch (choice) {
                 case 1:

@@ -16,6 +16,7 @@ public class PrintReport extends UserInterfacePrinter {
     public static SalesRevenueReport generateReport() {
         System.out.print("Choose a period to generate the Sales Revenue Report for\n1) Day\n2)Month\n3)Year");
         int choice = input.nextInt();
+        input.nextLine();
         String period = "";
         switch (choice) {
             case 1:
