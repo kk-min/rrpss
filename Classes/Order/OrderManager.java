@@ -16,20 +16,32 @@ import Classes.Staff.StaffManager;
 import Classes.Table.TableManager;
 import Classes.Time.DateTimeFormatHelper;
 
+/**
+ * Manages various functionalities pertaining to Order objects.
+ */
 public class OrderManager {
-
     private static Scanner input = new Scanner(System.in);
 
     private static ArrayList<Order> OrderHistory;
 
+    /**
+     * Creates an Order Manager with an initialized list detailing Order History.
+     */
     public OrderManager() {
         OrderHistory = new ArrayList<Order>();
     }
 
+    /**
+     * Gets the order history.
+     * @return the order history
+     */
     public static ArrayList<Order> getOrderHistory() {
         return OrderHistory;
     }
 
+    /**
+     * Creates a new Order.
+     */
     public static void create() {
         System.out.print("Enter customer's reservation ID (enter -1 if this is a walk-in): ");
         int resvID = input.nextInt();
@@ -80,6 +92,9 @@ public class OrderManager {
         System.out.printf("You have created a new order with ID-%d %n", newOrder.getID());
     }
 
+    /**
+     * Views an Order based on Order ID by printing its Order Summary.
+     */
     public static void view() {
         System.out.print("Please enter the Order ID to view: ");
         int orderID = input.nextInt();
@@ -92,6 +107,9 @@ public class OrderManager {
         System.out.println("Invalid Order ID.");
     }
 
+    /**
+     * Adds a AMenuItem to an existing Order.
+     */
     public static void add() {
         System.out.print("Please enter the Order ID to add items to: ");
         int orderID = input.nextInt();
@@ -113,6 +131,9 @@ public class OrderManager {
         System.out.println("Invalid Order ID.");
     }
 
+    /**
+     * Removes an item from an existing Order.
+     */
     public static void remove() {
         System.out.print("Please enter the Order ID to remove items from: ");
         int orderID = input.nextInt();
@@ -134,6 +155,9 @@ public class OrderManager {
         System.out.println("Invalid Order ID.");
     }
 
+    /**
+     * Checks out an Order anr prints its Receipt.
+     */
     public static void checkout() {
         System.out.print("Please enter the Order to checkout: ");
         int orderID = input.nextInt();
