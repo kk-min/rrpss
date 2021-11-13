@@ -2,6 +2,7 @@ package Classes.Staff;
 
 public class Staff {
 
+
     public enum JobTitle {
 		MANAGER, ASSISTANT_MANAGER, CHIEF_SERVER, SERVER
 	};
@@ -10,6 +11,15 @@ public class Staff {
     private String name;
     private char gender;
     private JobTitle jobTitle;
+
+    /**
+     * Constructor to pass in all required parameters for menu item.
+     *
+     * @param employeeID          employee's ID.
+     * @param name        employee's name.
+     * @param gender employee's description.
+     * @param jobTitle       employee's jobTitle.
+     */
  
     public Staff(int employeeID, String name, char gender, JobTitle jobTitle) {
         this.employeeID = employeeID;

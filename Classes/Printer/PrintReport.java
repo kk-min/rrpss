@@ -30,6 +30,7 @@ public class PrintReport extends UserInterfacePrinter {
             period = "YEAR";
         }
         SalesRevenueReport report = new Classes.SalesRevenueReport.SalesRevenueReport(period);
+        System.out.println("DEBUGGGGGGGGGGG");
         return report;
     }
 
@@ -51,12 +52,12 @@ public class PrintReport extends UserInterfacePrinter {
         System.out.println();
 
         // Line 2:
-        String leftFormat = "%-" + ((rowLength / 2) - (Header.length() / 2)) + "s";
+        String leftFormat = "%-" + ((rowLength-Header.length())/2) + "s";
         String rightFormat;
         if ((report.getPeriod().length()) % 2 == 0) {
-            rightFormat = "%" + ((rowLength / 2) - (Header.length() / 2)) + "s";
+            rightFormat = "%" + (((rowLength-Header.length())/2)) + "s";
         } else {
-            rightFormat = "%" + ((rowLength / 2) - (Header.length() / 2) + 1) + "s";
+            rightFormat = "%" + (((rowLength-Header.length())/2) + 1) + "s";
         }
         System.out.format(leftFormat, "|");
         System.out.print(Header);
@@ -86,7 +87,7 @@ public class PrintReport extends UserInterfacePrinter {
         leftFormat = "%-" + ((rowLength / 2) - (itemsSoldHeader.length() / 2)) + "s";
         rightFormat = "%" + ((rowLength / 2) - (itemsSoldHeader.length() / 2) + 1) + "s";
         System.out.format(leftFormat, "|");
-        System.out.print(Header);
+        System.out.print(itemsSoldHeader);
         System.out.format(rightFormat, "|");
         System.out.println();
 
@@ -109,16 +110,24 @@ public class PrintReport extends UserInterfacePrinter {
         System.out.println("|");
 
         // Item lists:
-        for (var entry : alacarteStatistics.entrySet()) {
-            Classes.AMenuItem.AMenuItem key = entry.getKey();
-            String name = key.getName();
-            String leftString = "| " + name + ": ";
+        if (alacarteStatistics == null) {
+            String leftString = "| No Items sold.";
             System.out.print(leftString);
-            count = (int) alacarteStatistics.get(key);
-            System.out.print(count);
-            rightFormat = "%" + (rowLength - leftString.length() - 1) + "s";
-            System.out.format(rightFormat, "|");
+            String formatString = "%" + (rowLength - leftString.length()) + "s";
+            System.out.format(formatString, "|");
             System.out.println();
+        } else {
+            for (var entry : alacarteStatistics.entrySet()) {
+                Classes.AMenuItem.AMenuItem key = entry.getKey();
+                String name = key.getName();
+                String leftString = "| " + name + ": ";
+                System.out.print(leftString);
+                count = (int) alacarteStatistics.get(key);
+                System.out.print(count);
+                rightFormat = "%" + (rowLength - leftString.length() - 1) + "s";
+                System.out.format(rightFormat, "|");
+                System.out.println();
+            }
         }
 
         // Promotional:
@@ -135,16 +144,24 @@ public class PrintReport extends UserInterfacePrinter {
         System.out.printf(" ".repeat(rowLength - 2));
         System.out.println("|");
 
-        for (var entry : promotionalStatistics.entrySet()) {
-            Classes.AMenuItem.AMenuItem promotionItem = entry.getKey();
-            String name = promotionItem.getName();
-            String leftString = "| " + name + ": ";
-            System.out.println(leftString);
-            count = (int) promotionalStatistics.get(promotionItem);
-            System.out.println(count);
-            rightFormat = "%" + (rowLength - leftString.length() - 1) + "s";
-            System.out.format(rightFormat, "|");
+        if (promotionalStatistics == null) {
+            String leftString = "| No Items sold.";
+            System.out.print(leftString);
+            String formatString = "%" + (rowLength - leftString.length()) + "s";
+            System.out.format(formatString, "|");
             System.out.println();
+        } else {
+            for (var entry : promotionalStatistics.entrySet()) {
+                Classes.AMenuItem.AMenuItem promotionItem = entry.getKey();
+                String name = promotionItem.getName();
+                String leftString = "| " + name + ": ";
+                System.out.println(leftString);
+                count = (int) promotionalStatistics.get(promotionItem);
+                System.out.println(count);
+                rightFormat = "%" + (rowLength - leftString.length() - 1) + "s";
+                System.out.format(rightFormat, "|");
+                System.out.println();
+            }
         }
 
         // Line x:

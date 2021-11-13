@@ -102,7 +102,6 @@ public class OrderManager {
                 System.out.println("Enter the quantity: ");
                 int itemQty = input.nextInt();
                 userOrder.addItem(newItem, itemQty);
-
                 return;
             }
         }

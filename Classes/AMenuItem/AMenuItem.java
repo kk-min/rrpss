@@ -59,15 +59,27 @@ public class AMenuItem {
     public void setId(int ID) {
         this.ID = ID;
     }
+    /**
 
+     * @return name  name of the AmenuItem object
+
+     * 
+     */
     public String getName() {
         return name;
     }
 
+
+
     public void setName(String name) {
         this.name = name;
     }
+    /**
 
+     * @return price  price of the AmenuItem object
+
+     * 
+     */
     public double getPrice() {
         return price;
     }
@@ -75,7 +87,12 @@ public class AMenuItem {
     public void setPrice(double price) {
         this.price = price;
     }
- 
+    /**
+
+     * @return description  descriptioon of the AmenuItem object
+
+     * 
+     */
     public String getDescription() {
         return description;
     }
@@ -83,6 +100,13 @@ public class AMenuItem {
     public void setDescription(String description) {
         this.description = description;
     }
+
+        /**
+
+     * @return itemType  itemType of the AmenuItem object
+
+     * 
+     */
     public TYPE getType(){
         return this.itemType;
     }
