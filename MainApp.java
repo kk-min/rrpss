@@ -9,6 +9,7 @@ import Classes.Printer.Printer;
 import Classes.Printer.ReservationSubMenu;
 import Classes.Staff.StaffManager;
 import Classes.Table.TableManager;
+import Classes.Time.TimerExecutor;
 
 public class MainApp {
 	
@@ -22,6 +23,7 @@ public class MainApp {
 		MenuManager.initialiseMenu();
 		TableManager.initialiseTableCollection();
 		StaffManager.initialiseStaffList();
+		TimerExecutor.runScheduler();
 
 		int choice = 1, subMenuResult = -1;
 		while (choice != 0 && subMenuResult != 1) {

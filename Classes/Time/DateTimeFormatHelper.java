@@ -190,7 +190,7 @@ public class DateTimeFormatHelper {
     	TIME_MODIFIER += minute;
     }
     
-    private static void synchronize() {
+    public static void synchronize() {
     	ReservationManager.checkExpiredReservations();
     	TableManager.updateTableStatus();
     }
