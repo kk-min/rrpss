@@ -39,7 +39,7 @@ public class MenuManager  {
 
 		Beverage myBeverage = new Beverage(1, "Ice Milo", 1.00, "Chilling milo to start your day");
 		beverages.add(myBeverage);
-		Beverage myBeverage1 = new Beverage(2, "Mr. coconut's signature", 5.50, " We sell Mr.coconut and price it higher");
+		Beverage myBeverage1 = new Beverage(2, "Signature Coconut Shake", 5.50, " Delicious cooling coconut drink for a hot summer day");
 		beverages.add(myBeverage1);
 		Beverage myBeverage2 = new Beverage(3, "Lemon Tea", 4.00, "Lemon and tea");
 		beverages.add(myBeverage2);
@@ -53,9 +53,9 @@ public class MenuManager  {
 
 		Promotional myPromo = new Promotional(1,"Chicken Family Combo", 10.00, "Fambam! Have 4 sets of chicken rice to feed the family.");
 		promotionals.add(myPromo);
-		Promotional myPromo1 = new Promotional(2,"Teriyaki Chicken Paster with Ice Milo", 10.00, " Best Match!");
+		Promotional myPromo1 = new Promotional(2,"Teriyaki Chicken Pasta with Ice Milo", 10.00, " Best Match!");
 		promotionals.add(myPromo1);
-		Promotional myPromo2 = new Promotional(3,"sweet potato soup for 3", 10.00, "proudly serving our best dessert for your family");
+		Promotional myPromo2 = new Promotional(3,"Sweet Potato Soup for 3", 10.00, "proudly serving our best dessert for your family");
 		promotionals.add(myPromo2);
 	}
 

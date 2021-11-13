@@ -4,7 +4,6 @@ import Classes.Order.Order;
 
 public class PrintOrderSummary implements Printer{
     public static void print(Order viewOrder){
-        int rowLength = 63;
 
         //Line 1:
         System.out.printf("-".repeat(rowLength));
