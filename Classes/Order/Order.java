@@ -95,7 +95,7 @@ public class Order{
 
     /**
      * Removes an item from this order
-     * @param key the specific Amenuitem we wish to remove
+     * @param key the specific AMenuItem we wish to remove
      * @param quantity the quantity of the item to remove
      */
     public void removeItem(AMenuItem key, int quantity){
@@ -109,7 +109,7 @@ public class Order{
 
     /**
      * Adds an item to this order
-     * @param key the specific Amenuitem we wish to add
+     * @param key the specific AMenuItem we wish to add
      * @param quantity the quantity of the item to add
      */
     public void addItem(AMenuItem key, int quantity){

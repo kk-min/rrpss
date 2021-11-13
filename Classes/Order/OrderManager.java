@@ -58,7 +58,7 @@ public class OrderManager {
             if (viewOrder.getID() == orderID){
                 Order userOrder = viewOrder;
                 System.out.printf("You have chosen Order %-9d. Current order summary: %n", userOrder.getID());
-                PrintReceipt.printInvoice(userOrder);
+                PrintReceipt.print(userOrder);
                 
                 // Add Item
                 AMenuItem newItem = MenuManager.getMenuItem();
@@ -80,7 +80,7 @@ public class OrderManager {
             if (viewOrder.getID() == orderID){
                 Order userOrder = viewOrder;
                 System.out.printf("You have chosen Order %-9d. Current order summary: %n", userOrder.getID());
-                PrintReceipt.printInvoice(userOrder);
+                PrintReceipt.print(userOrder);
 
                 // Remove Item
                 AMenuItem item = MenuManager.getMenuItem();
@@ -101,7 +101,7 @@ public class OrderManager {
         for (Order viewOrder : OrderHistory){
             if (viewOrder.getID() == orderID){
                 Order userOrder = viewOrder;
-                PrintReceipt.printInvoice(userOrder);
+                PrintReceipt.print(userOrder);
                 int tableID = userOrder.getTableID();
                 TableManager.getTableByID(tableID).setEmpty();
                 System.out.println("Order successfully checked out.");

@@ -1,10 +1,9 @@
 package Classes.AMenuItem;
 
 /**
- * Promotional Class
- * extend from AMenuItem
+ * Promotional Class extend from AMenuItem
  */
-public class Promotional extends AMenuItem  {
+public class Promotional extends AMenuItem {
     /**
      *
      * @param ID          Promotional item's ID.
@@ -12,7 +11,8 @@ public class Promotional extends AMenuItem  {
      * @param description Promotional item's description.
      * @param price       Promotional item's price.
      */
-    public Promotional(int ID,String name, double price,String description) {
+    public Promotional(int ID, String name, double price, String description) {
         super(ID, name, price, description);
-	}
+        this.itemType = TYPE.PROMOTIONAL;
+    }
 }
