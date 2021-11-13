@@ -1,12 +1,12 @@
 package Printer;
 
 import Classes.Order.Order;
-import Classes.Printer.UserInterfacePrinter;
+import Classes.Printer;
 
 /**
  * Implements printing functionality for viewing a current order's summary
  */
-public class PrintOrderSummary extends UserInterfacePrinter {
+public class PrintOrderSummary implements Printer {
     /**
      * Prints the order summary for a particular order
      * @param viewOrder The order which we are trying to view the current summary for
