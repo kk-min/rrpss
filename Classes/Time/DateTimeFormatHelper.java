@@ -20,6 +20,10 @@ import Classes.Table.TableManager;
  */
 public class DateTimeFormatHelper {
     /**
+     * Scanner object for taking user input
+     */
+    private static Scanner sc = new Scanner(System.in);
+    /**
      * Final long to help convert between milliseconds and days.
      */
     private final static long MILLIS_TO_DAYS = 1000 * 60 * 60 * 24;
@@ -199,49 +203,49 @@ public class DateTimeFormatHelper {
     			+ "1. In days\n"
     			+ "2. In hours\n"
     			+ "3. In minutes\n");
-    	Scanner sc = new Scanner(System.in);
+        System.out.print("Your choice: ");
     	int choice;
     	int amount;
     	do {
     		choice = sc.nextInt(); sc.nextLine();
         	switch(choice) {
-        	case (1):{
-        		System.out.println("Enter number of days:");
-        		amount = sc.nextInt(); sc.nextLine();
-        		while (amount < 0) {
-        			System.out.println("Time must not be negative. Reenter:");
-        			amount = sc.nextInt(); sc.nextLine();
-        		}
-        		incrementModifier(24*60*amount);
-        		break;
+                case (1):{
+                    System.out.println("Enter number of days:");
+                    amount = sc.nextInt(); sc.nextLine();
+                    while (amount < 0) {
+                        System.out.println("Time must not be negative. Re-enter:");
+                        amount = sc.nextInt(); sc.nextLine();
+                    }
+                    incrementModifier(24*60*amount);
+                    break;
+                }
+                case (2):{
+                    System.out.println("Enter number of hours:");
+                    amount = sc.nextInt(); sc.nextLine();
+                    while (amount < 0) {
+                        System.out.println("Time must not be negative. Re-enter:");
+                        amount = sc.nextInt(); sc.nextLine();
+                    }
+                    incrementModifier(60*amount);
+                    break;
+                }
+                case (3):{
+                    System.out.println("Enter number of minutes:");
+                    amount = sc.nextInt(); sc.nextLine();
+                    while (amount < 0) {
+                        System.out.println("Time must not be negative. Re-enter:");
+                        amount = sc.nextInt(); sc.nextLine();
+                    }
+                    incrementModifier(amount);
+                    break;
+                }
+                default:{
+                    System.out.println("Invalid choice. Re-enter: ");
+                }
         	}
-        	case (2):{
-        		System.out.println("Enter number of hours:");
-        		amount = sc.nextInt(); sc.nextLine();
-        		while (amount < 0) {
-        			System.out.println("Time must not be negative. Reenter:");
-        			amount = sc.nextInt(); sc.nextLine();
-        		}
-        		incrementModifier(60*amount);
-        		break;
-        	}
-        	case (3):{
-        		System.out.println("Enter number of minutes:");
-        		amount = sc.nextInt(); sc.nextLine();
-        		while (amount < 0) {
-        			System.out.println("Time must not be negative. Reenter:");
-        			amount = sc.nextInt(); sc.nextLine();
-        		}
-        		incrementModifier(amount);
-        		break;
-        	}
-        	default:{
-        		System.out.println("Invalid choice.");
-        	}
-        	}
-    	}while(choice < 0 || choice > 3);
+    	} while (choice < 0 || choice > 3);
+        System.out.println("Time has been advanced, it is now " + formatToStringDate(inbuiltDate()) + " " + formatToStringTime(inbuiltTime()) + ".");
     	synchronize();
-    	sc.close();
     }
     /**
      * The mutator for the global variable TIME_MODIFIER called by advanceTIme().

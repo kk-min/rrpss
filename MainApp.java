@@ -8,6 +8,7 @@ import Classes.Printer.Printer;
 import Classes.Printer.ReservationSubMenu;
 import Classes.Staff.StaffManager;
 import Classes.Table.TableManager;
+import Classes.Time.DateTimeFormatHelper;
 import Classes.Time.TimerExecutor;
 /**
  * MainApp for RRPSS project
@@ -15,19 +16,22 @@ import Classes.Time.TimerExecutor;
  */
 
 public class MainApp {
-	
+	/**
+     * Scanner object for taking user input
+     */
 	private static Scanner input = new Scanner(System.in);
 	
 	public static void main(String args[]) {
 
+		// initialisations
 		String restaurantName = Printer.restaurantName;
 		int rowLength = Printer.rowLength;
-
 		MenuManager.initialiseMenu();
 		TableManager.initialiseTableCollection();
 		StaffManager.initialiseStaffList();
 		TimerExecutor.runScheduler();
 
+		// program
 		int choice = 1, subMenuResult = -1;
 		while (choice != 0 && subMenuResult != 1) {
 			//Line 1:
@@ -54,6 +58,7 @@ public class MainApp {
 			System.out.println("3) Reservation");
 			System.out.println("4) Check Current Table Availabilities");
 			System.out.println("5) Print Sale Revenue Report");
+			System.out.println("6) Advance Time (TESTING)");
 			System.out.println("0) Exit Application");
 
 			//Line 11:
@@ -61,9 +66,9 @@ public class MainApp {
 			System.out.println();
 
 			do {
-				System.out.print("Enter your choice (0-5): ");
+				System.out.print("Enter your choice (0-6): ");
 				choice = input.nextInt(); input.nextLine();
-			} while (choice > 5 || choice < 0);
+			} while (choice > 6 || choice < 0);
 
 			switch(choice) {
 				case 1: //Menu submenu
@@ -80,6 +85,9 @@ public class MainApp {
 					break;
 				case 5:	// Print Sales Revenue Report
 					PrintReport.print();
+					break;
+				case 6:	// Advance Time
+					DateTimeFormatHelper.advanceTime();
 					break;
 			}
 		}

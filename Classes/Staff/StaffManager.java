@@ -14,7 +14,6 @@ public class StaffManager {
     /**
      * ArrayList staffList to store Staff Object 
      */
-
     private static ArrayList<Staff> staffList = new ArrayList<Staff>();
 
     public static void initialiseStaffList()

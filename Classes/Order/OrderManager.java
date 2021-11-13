@@ -19,6 +19,9 @@ import Classes.Table.TableManager;
  * @version 1.0
  */
 public class OrderManager {
+    /**
+     * Scanner object for taking user input
+     */
     private static Scanner input = new Scanner(System.in);
     /**
     * ArrayList OrderHistor to store all Order Objects
