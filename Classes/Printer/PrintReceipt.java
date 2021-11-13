@@ -3,8 +3,8 @@ import java.util.Map;
 
 import Classes.AMenuItem.AMenuItem;
 import Classes.Order.Order;
-import Classes.SalesRevenueReport.SalesRevenueReport;
 import Classes.Staff.StaffManager;
+import Classes.SalesRevenueReport.SalesRevenueReport; // Why does this not work
 
 /**
  * Printer class that prints the receipts and Sales Revenue Reports onto the console
@@ -61,9 +61,10 @@ public class PrintReceipt{
         System.out.println();
         //Line 6:
         // TODO Min: didnt include count of each item (and itemList is a map now)
-        for (AMenuItem item : itemList){
+        for (var entry : itemList.entrySet()){
+            AMenuItem item = entry.getKey();
             String itemName = item.getName();
-            String leftString = "| "+itemName+" x"+itemList.get(item);
+            String leftString = "| "+itemName+" x"+entry.getValue();
             System.out.print(leftString);
             priceFormat = "%"+(rowLength-leftString.length())+"s";
             String priceString = "|     $"+String.format("%.2f",item.getPrice()*itemList.get(item))+"     |";
