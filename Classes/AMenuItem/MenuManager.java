@@ -30,14 +30,32 @@ public class MenuManager  {
 	 * defalt menu options
      */
     public static void initialiseMenu() {
-		// TODO lingyi: can we have 5 items in each array :""
 		MainDish myDish = new MainDish(1, "Chicken Rice", 3.00, "Flavourful chicken, juicy and fresh");
 		maindishes.add(myDish);
+		MainDish myDish = new MainDish(2, "Noodle in Sweet Sesame Sauce (Chicken)", 7.90, "Dinner under Starlight");
+		maindishes.add(myDish);
+		MainDish myDish = new MainDish(3, "Teriyaki Chicken Pasta", 12.80, "Lime added for that special flavour");
+		maindishes.add(myDish);
+
 		Beverage myBeverage = new Beverage(1, "Ice Milo", 1.00, "Chilling milo to start your day");
 		beverages.add(myBeverage);
-		Dessert myDessert = new Dessert(1, "Gelato", 5.00, "Silky smooth texture");
+		Beverage myBeverage = new Beverage(2, "Mr. coconut's signature", 5.50, " We sell Mr.coconut and price it higher");
+		beverages.add(myBeverage);
+		Beverage myBeverage = new Beverage(3, "Lemon Tea", 4.00, "Lemon and tea");
+		beverages.add(myBeverage);
+
+		Dessert myDessert = new Dessert(1, "Sweet Potato Soup with Barley", 2.50, "Not really sweet.");
 		desserts.add(myDessert);
+		Dessert myDessert = new Dessert(2, "Mixed Bean Longan", 5.00, "from our next door neighbour Mr.bean");
+		desserts.add(myDessert);
+		Dessert myDessert = new Dessert(3, "Gelato", 5.00, "Silky smooth texture");
+		desserts.add(myDessert);
+
 		Promotional myPromo = new Promotional(1,"Chicken Family Combo", 10.00, "Fambam! Have 4 sets of chicken rice to feed the family.");
+		promotionals.add(myPromo);
+		Promotional myPromo = new Promotional(2,"Teriyaki Chicken Paster with Ice Milo", 10.00, " Best Match!");
+		promotionals.add(myPromo);
+		Promotional myPromo = new Promotional(3,"sweet potato soup for 3", 10.00, "proudly serving our best dessert for your family");
 		promotionals.add(myPromo);
 	}
 
