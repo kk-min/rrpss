@@ -20,7 +20,7 @@ public class Reservation {
 	private ReservationSession resvSession;
 
 	public Reservation(int id, LocalDate rd, LocalTime rt, char session, String custContact, String custName, int pax,
-			int t) {
+			int tableId) {
 		this.Id = id;
 		this.resvDate = rd;
 		this.resvTime = rt;
@@ -28,8 +28,8 @@ public class Reservation {
 		this.customerContact = custContact;
 		this.customerName = custName;
 		this.numPax = pax;
-		this.tableID = t;
-		TableManager.getTableByID(t).setReserved();
+		this.tableID = tableId;
+		TableManager.getTableByID(tableId).setReserved();
 	}
 
 	public int getResvId() {

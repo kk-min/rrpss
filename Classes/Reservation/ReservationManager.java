@@ -1,30 +1,23 @@
 package Classes.Reservation;
-
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.time.format.DateTimeParseException;
-import java.util.ArrayList;
-import java.util.InputMismatchException;
-import java.util.Iterator;
-import java.util.Scanner;
-
 import Classes.Table.Table;
 import Classes.Table.TableManager;
 import Classes.Time.DateTimeFormatHelper;
+
+import java.time.LocalDate;
+import java.time.LocalTime;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Scanner;
+
+import java.time.format.DateTimeParseException;
+import java.util.InputMismatchException;
 
 public class ReservationManager {
 
 	private static Scanner input = new Scanner(System.in);
 
 	private static ArrayList<Reservation> reservationCollection;
-
-	//  TODO Erli: can this main func be removed
-	// public static void main(String[] args) {
-	// 	MainApp.main(args);
-	// 	ReservationManager ui = new ReservationManager();
-	// 	while (true)
-	// 		ui.generateMenuScreen();
-	// }// debug
 
 	public ReservationManager() {
 		reservationCollection = new ArrayList<Reservation>();
@@ -39,8 +32,8 @@ public class ReservationManager {
 		LocalDate resvDate = LocalDate.now();
 		LocalTime resvTime = LocalTime.now();
 		char resvSession = ' ';
-
 		String userDate = "";
+		
 		boolean correctDate = false;
 		boolean correctTime = false;
 		boolean isToday = false;
@@ -74,10 +67,9 @@ public class ReservationManager {
 			}
 
 			while (!correctTime) {
-				System.out.println("The opening hours are 10:00 to 16:00, and 18:00 to 00:00.");
+				System.out.println("The opening hours are 10:00 to 16:00 (AM session), and 18:00 to 00:00 (PM session).");
 				System.out.println("Enter reservation time in the 24-hour format of <hh:mm>: ");
 				resvTime = DateTimeFormatHelper.formatToLocalTime(input.nextLine());
-				// System.out.print(resvTime); //debug
 
 				if (!isToday || !(DateTimeFormatHelper.getTimeDifferenceMinutes(LocalTime.now(), resvTime) <= 0)) {
 					if (DateTimeFormatHelper.checkResvTimeSession(resvTime, LocalTime.of(16, 0), LocalTime.of(18, 0))) {
@@ -98,10 +90,10 @@ public class ReservationManager {
 			}
 
 			while (numPax <= 0 || numPax > 10) {
-				System.out.print("Enter pax amount: ");
+				System.out.print("Enter numble of pax: ");
 				numPax = input.nextInt();
 				if (numPax <= 0) {
-					System.out.println("You cannot book a reservation for 0 pax.");
+					System.out.println("You cannot book a reservation for 0 people.");
 				} else if (numPax > 10) {
 					System.out.println("Sorry! The restaurant's maximum seating is 10 people.");
 				}
@@ -110,15 +102,15 @@ public class ReservationManager {
 			tableNum = findTableForReservation(numPax, resvDate, resvSession);
 
 			if (tableNum > 0) {
-				int lastNum;
+				int assignedTableNum;
 				if (reservationCollection.isEmpty())
-					lastNum = 1;
+					assignedTableNum = 1;
 				else
-					lastNum = reservationCollection.get(reservationCollection.size() - 1).getResvId()
+					assignedTableNum = reservationCollection.get(reservationCollection.size() - 1).getResvId()
 							+ 1;
-				r = new Reservation(lastNum, resvDate, resvTime, resvSession, custContact, custName, numPax, tableNum);
+				r = new Reservation(assignedTableNum, resvDate, resvTime, resvSession, custContact, custName, numPax, tableNum);
 				reservationCollection.add(r);
-				System.out.println("Your reservation has been successfully recorded! Your reservation ID is " + lastNum
+				System.out.println("Your reservation has been successfully recorded! Your reservation ID is " + assignedTableNum
 						+ " , and your assigned table is " + tableNum + ".");
 				System.out.println(
 						"Please take notice that your reservation will expire after 30 minutes of your booking time.");
@@ -129,9 +121,9 @@ public class ReservationManager {
 
 			input.nextLine();
 		} catch (DateTimeParseException e) {
-			System.out.println("ERROR! Input date or time format is wrong. (" + e.getLocalizedMessage() + ")");
+			System.out.println("ERROR! Please make sure the date or time input is in correct format! (" + e.getLocalizedMessage() + ")");
 		} catch (InputMismatchException e) {
-			System.out.println("ERROR! Please input a valid number of pax. (" + e.getLocalizedMessage() + "}");
+			System.out.println("ERROR! Please make sure the input is valid! (" + e.getLocalizedMessage() + "}");
 		}
 	}
 
@@ -207,7 +199,7 @@ public class ReservationManager {
 			case 'N':
 				break;
 			default:
-				System.out.println("Invalid option. Returning Reservation Menu...");
+				System.out.println("Invalid option!");
 				break;
 			}
 		} else
