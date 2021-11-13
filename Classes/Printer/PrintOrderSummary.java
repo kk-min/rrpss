@@ -42,7 +42,7 @@ public class PrintOrderSummary implements Printer{
             String leftString = itemName+" x"+entry.getValue();
             System.out.print(leftString);
             String priceFormat = "%"+(rowLength-leftString.length())+"s";
-            String priceString = "      $"+String.format("%.2f",item.getPrice()*entry.getValue())+"      ";
+            String priceString = "      S$"+String.format("%.2f",item.getPrice()*entry.getValue())+"      ";
             System.out.format(priceFormat, priceString);
             System.out.println();
         }
@@ -52,8 +52,8 @@ public class PrintOrderSummary implements Printer{
         double subTotal = viewOrder.getSubTotal();
         double grandTotal = viewOrder.getGrandTotal();
         //Bottom segment:
-        String subTotalPrice = "$"+String.format("%.2f",subTotal);
-        String totalPrice = "$"+String.format("%.2f",grandTotal);
+        String subTotalPrice = "S$"+String.format("%.2f",subTotal);
+        String totalPrice = "S$"+String.format("%.2f",grandTotal);
         String discountRate = Integer.toString((int)(100*viewOrder.getDISCOUNT_RATE())) + "%";
         String taxRate = Integer.toString((int)(100*viewOrder.getTAX_RATE())) + "%";
 
@@ -64,7 +64,7 @@ public class PrintOrderSummary implements Printer{
 
         String subTotalString = "subTotal: "+subTotalFormat+"     ";
         String discountString = "Discount: "+discountFormat+"     ";
-        String taxString = "Tax:      "+taxFormat+"     ";
+        String taxString = "GST:      "+taxFormat+"     ";
         String totalString = "Total:    "+totalFormat+"     ";
 
         String resultFormatter = "%"+(rowLength)+"s";

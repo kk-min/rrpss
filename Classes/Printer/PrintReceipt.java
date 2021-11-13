@@ -69,15 +69,15 @@ public class PrintReceipt implements Printer{
             String leftString = "| " + itemName + " x" + entry.getValue();
             System.out.print(leftString);
             priceFormat = "%" + (rowLength - leftString.length()) + "s";
-            String priceString = "|     $" + String.format("%.2f", item.getPrice() * itemList.get(item)) + "     |";
+            String priceString = "|     S$" + String.format("%.2f", item.getPrice() * itemList.get(item)) + "     |";
             System.out.format(priceFormat, priceString);
             System.out.println();
         }
         System.out.printf("-".repeat(rowLength));
         System.out.println();
         // Bottom segment:
-        String subTotalPrice = "$" + String.format("%.2f", subTotal);
-        String totalPrice = "$" + String.format("%.2f", grandTotal);
+        String subTotalPrice = "S$" + String.format("%.2f", subTotal);
+        String totalPrice = "S$" + String.format("%.2f", grandTotal);
         String discountRate = Integer.toString((int) (100 * order.getDISCOUNT_RATE())) + "%";
         String taxRate = Integer.toString((int) (100 * order.getTAX_RATE())) + "%";
 
@@ -88,7 +88,7 @@ public class PrintReceipt implements Printer{
 
         String subTotalString = "subTotal: " + subTotalFormat + "    |";
         String discountString = "Discount: " + discountFormat + "    |";
-        String taxString = "Tax:      " + taxFormat + "    |";
+        String taxString = "GST:      " + taxFormat + "    |";
         String totalString = "Total:    " + totalFormat + "    |";
 
         String resultFormatter = "%" + (rowLength - 1) + "s";
