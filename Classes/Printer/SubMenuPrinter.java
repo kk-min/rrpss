@@ -104,8 +104,7 @@ public class SubMenuPrinter implements Printer {
 		System.out.println("1) Create a new reservation booking");
 		System.out.println("2) Check reservation booking");
 		System.out.println("3) Remove a reservation booking");
-		System.out.println("4) Check for expired reservations");
-		System.out.println("5) Back to main menu");
+		System.out.println("4) Back to main menu");
 		System.out.println("0) Exit Application");
 
 		int choice = input.nextInt();
@@ -121,9 +120,6 @@ public class SubMenuPrinter implements Printer {
                     ReservationManager.removeReservationBooking();
                     break;
                 case 4:
-                    ReservationManager.checkExpiredReservations();
-                    break;
-                case 5:
                     return -1;
                 case 0:
                     return 1;

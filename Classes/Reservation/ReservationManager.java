@@ -54,7 +54,7 @@ public class ReservationManager {
 
 				if (correctDate) {
 					resvDate = DateTimeFormatHelper.formatToLocalDate(userDate);
-					isToday = resvDate.isEqual(DateTimeFormatHelper.getTodayDate(false));
+					isToday = resvDate.isEqual(DateTimeFormatHelper.inbuiltDate());
 
 					if (DateTimeFormatHelper.compareIfBeforeToday(resvDate)) {
 						System.out.println("ERROR! The date entered is already over.");
@@ -71,29 +71,29 @@ public class ReservationManager {
 				System.out.println("Enter reservation time in the 24-hour format of <hh:mm>: ");
 				resvTime = DateTimeFormatHelper.formatToLocalTime(input.nextLine());
 
-				if (!isToday || !(DateTimeFormatHelper.getTimeDifferenceMinutes(LocalTime.now(), resvTime) <= 0)) {
-					if (DateTimeFormatHelper.checkResvTimeSession(resvTime, LocalTime.of(16, 0), LocalTime.of(18, 0))) {
-						resvSession = 'A';
-						correctTime = true;
+				if (!isToday || !(DateTimeFormatHelper.getTimeDifferenceMinutes(DateTimeFormatHelper.inbuiltTime(), resvTime) <= 0)) {
+					if (DateTimeFormatHelper.checkResvTimeSession(resvTime, LocalTime.of(10, 0), LocalTime.of(16, 0))) {
+					  resvSession = 'A';
+					  correctTime = true;
 					} else if (DateTimeFormatHelper.checkResvTimeSession(resvTime, LocalTime.of(18, 0),
-							LocalTime.of(23, 59))) {
-						resvSession = 'P';
-						correctTime = true;
+						LocalTime.of(23, 59))) {
+					  resvSession = 'P';
+					  correctTime = true;
 					} else {
-						System.out.println("The restaurant is not in operation at the time you entered.");
-						correctTime = false;
+					  System.out.println("The restaurant is not in operation at the time you entered.");
+					  correctTime = false;
 					}
-				} else {
+				  } else {
 					System.out.println("The time entered is passed! Current time is " + LocalTime.now() + ".");
 					correctTime = false;
-				}
+				  }
 			}
 
 			while (numPax <= 0 || numPax > 10) {
-				System.out.print("Enter numble of pax: ");
+				System.out.print("Enter number of pax: ");
 				numPax = input.nextInt();
 				if (numPax <= 0) {
-					System.out.println("You cannot book a reservation for 0 people.");
+					System.out.println("You have cannot have less than 1 person.");
 				} else if (numPax > 10) {
 					System.out.println("Sorry! The restaurant's maximum seating is 10 people.");
 				}
@@ -136,14 +136,11 @@ public class ReservationManager {
 		return bookedTables;
 	}
 
-	private static int findTableForReservation(int cusCount, LocalDate resvDate, char session) {
+	public static int findTableForReservation(int cusCount, LocalDate resvDate, char session) {
 		ArrayList<Table> available, unavailable = new ArrayList<Table>();
 		Reservation.ReservationSession s = session == 'A' ? Reservation.ReservationSession.AM
 				: Reservation.ReservationSession.PM;
 		unavailable = getTableBookedByDateAndSession(resvDate, s);
-		for (Table i : unavailable) {
-			System.out.println("Table ID " + i.getID());
-		}
 		available = TableManager.getTheOtherHalf(unavailable);
 		for (Table t : available) {
 			if (t.getCapacity() >= cusCount)
@@ -214,7 +211,6 @@ public class ReservationManager {
 			if (r.getResvDate().equals(LocalDate.now()))
 				if (DateTimeFormatHelper.getTimeDifferenceMinutes(LocalTime.now(), r.getResvTime()) <= -30
 						&& !(TableManager.getTableByID(r.getTableID()).getStatus() == Table.TStatus.OCCUPIED)) {
-					System.out.println("Reservation " + r.getResvId() + "has expired and removed.");
 					TableManager.getTableByID(r.getTableID());
 					iter.remove();
 				}
