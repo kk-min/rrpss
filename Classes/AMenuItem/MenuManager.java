@@ -38,32 +38,32 @@ public class MenuManager extends UserInterfacePrinter{
 		desserts = new ArrayList<Dessert>();
 		promotionals = new ArrayList<Promotional>();
 		
-		MainDish myDish = new MainDish(1, "Chicken Rice", 3.00, "Flavourful chicken, juicy and fresh");
+		MainDish myDish = new MainDish(1, "Chicken Rice", 3.50, "Hainanese style, fragrant chicken rice.");
 		maindishes.add(myDish);
-		MainDish myDish1 = new MainDish(2, "Noodle in Sweet Sesame Sauce (Chicken)", 7.90, "Dinner under Starlight");
+		MainDish myDish1 = new MainDish(2, "Roasted Lemon Rosemary Chicken", 12.90, "A tender and flavourful oven-roasted chicken.");
 		maindishes.add(myDish1);
-		MainDish myDish2 = new MainDish(3, "Teriyaki Chicken Pasta", 12.80, "Lime added for that special flavour");
+		MainDish myDish2 = new MainDish(3, "Teriyaki Chicken Pasta", 9.80, "Delicious marriage of Japanese and Western cuisine.");
 		maindishes.add(myDish2);
 
-		Beverage myBeverage = new Beverage(1, "Ice Milo", 1.00, "Chilling milo to start your day");
+		Beverage myBeverage = new Beverage(1, "Iced Lemon Tea", 1.80, "Tangy, fruity, and refreshing for a hot summer day.");
 		beverages.add(myBeverage);
-		Beverage myBeverage1 = new Beverage(2, "Signature Coconut Shake", 5.50, " Delicious cooling coconut drink for a hot summer day");
+		Beverage myBeverage1 = new Beverage(2, "Vanilla Milkshake", 5.60, "A sweet treat for you!");
 		beverages.add(myBeverage1);
-		Beverage myBeverage2 = new Beverage(3, "Lemon Tea", 4.00, "Lemon and tea");
+		Beverage myBeverage2 = new Beverage(3, "Chocolate Hazelnut Milk", 4.30, "A warm and fuzzy combination that hits home every time.");
 		beverages.add(myBeverage2);
 
-		Dessert myDessert = new Dessert(1, "Sweet Potato Soup with Barley", 2.50, "Not really sweet.");
+		Dessert myDessert = new Dessert(1, "Sweet Potato Soup with Barley", 2.50, "A healthy and earthy taste.");
 		desserts.add(myDessert);
-		Dessert myDessert1 = new Dessert(2, "Mixed Bean Longan", 5.00, "A sweet treat to brighten up your day.");
+		Dessert myDessert1 = new Dessert(2, "Chicken and Waffles", 14.80, "The timeless sweet and savory combination.");
 		desserts.add(myDessert1);
-		Dessert myDessert2 = new Dessert(3, "Gelato", 5.00, "Silky smooth texture");
+		Dessert myDessert2 = new Dessert(3, "Gelato", 5.00, "The silky smooth texture that you'll keep returning for.");
 		desserts.add(myDessert2);
 
-		Promotional myPromo = new Promotional(1,"Chicken Family Combo", 10.00, "Fambam! Have 4 sets of chicken rice to feed the family.");
+		Promotional myPromo = new Promotional(1,"Chicken Family Combo", 18.00, "Have 4 sets of chicken dishes to feed the family.");
 		promotionals.add(myPromo);
-		Promotional myPromo1 = new Promotional(2,"Teriyaki Chicken Pasta with Ice Milo", 10.00, " Best Match!");
+		Promotional myPromo1 = new Promotional(2,"Full Roasted Chicken", 20.90, "A whole roasted chicken for sharing.");
 		promotionals.add(myPromo1);
-		Promotional myPromo2 = new Promotional(3,"Sweet Potato Soup for 3", 10.00, "proudly serving our best dessert for your family");
+		Promotional myPromo2 = new Promotional(3,"Double Scoop Gelato", 8.00, "Double the fun!");
 		promotionals.add(myPromo2);
 	}
 
