@@ -110,6 +110,7 @@ public class ReservationManager {
 				//Find the reservation session according to the input reservation time
 
 				if (correctTime) {
+					resvTime = DateTimeFormatHelper.formatToLocalTime(userTime);
 					if (!isToday || !(DateTimeFormatHelper.getTimeDifferenceMinutes(DateTimeFormatHelper.inbuiltTime(), resvTime) <= 0)) {
 						if (DateTimeFormatHelper.checkResvTimeSession(resvTime, LocalTime.of(10, 0), LocalTime.of(16, 0))) {
 						  resvSession = 'A';
