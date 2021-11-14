@@ -8,11 +8,10 @@ import Classes.Staff.Staff;
 import Classes.Time.DateTimeFormatHelper;
 
 /**
- * The Order Class
- * Contains information about the items ordered by a single Customer/Table.
- * @author  Min
- * @version 1.0
- * @since   2021-11-12
+ Contains information about the items ordered by a single Customer/Table.
+ @author  Min
+ @version 1.0
+ @since   2021-11-12
  */
 public class Order {
     /**
@@ -43,7 +42,7 @@ public class Order {
      * The tax rate to be applied to the total cost of the items
      */
     private final double TAX_RATE = 0.07; // 7% tax
-    /** 
+    /**
      * The discount rate to be applied to the total cost if the customer is a member
      */
     private final double DISCOUNT_RATE = 0.05;

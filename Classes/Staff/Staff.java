@@ -56,7 +56,7 @@ public class Staff {
     }
     /**
      * Accessor to Return the employee name
-     * 
+     *
      * @return name
      */
     public String getName() {
@@ -64,7 +64,7 @@ public class Staff {
     }
     /**
      * Accessor to Return the employee gender
-     * 
+     *
      * @return gender
      */
     public char getGender() {
@@ -73,7 +73,7 @@ public class Staff {
 
     /**
      * Accessor to Return the employee jobTitle
-     * 
+     *
      * @return jobTitle
      */
     public JobTitle getJobTitle() {
