@@ -96,7 +96,7 @@ public class TableManager {
 		System.out.printf("%-9s %-10s %-8s\n", "TableID", "Capacity", "Status");
 		String status = "";
 		for (Table t : tableCollection) {
-			status = "Available";
+			status = "Empty";
 			if (unavailable.contains(t))
 				status = "Reserved";
 			if (now && t.getStatus() == Table.TStatus.OCCUPIED)
