@@ -55,7 +55,8 @@ public class PrintReceipt implements Printer {
         // Line 4:
         System.out.print("| Item");
         String priceFormat = "%" + (rowLength - 6) + "s";
-        System.out.format(priceFormat, "|     Price     |");
+        String priceHeader = "|     Price     |";
+        System.out.format(priceFormat, priceHeader);
         System.out.println();
         // Line 5:
         System.out.printf("-".repeat(rowLength));
@@ -65,11 +66,14 @@ public class PrintReceipt implements Printer {
             AMenuItem item = entry.getKey();
             String itemName = item.getName();
             String leftString = "| " + itemName + " x" + entry.getValue();
-            System.out.print(leftString);
+            System.out.format("%-"+(rowLength-priceHeader.length())+"s",leftString);
             priceFormat = "%" + (rowLength - leftString.length()) + "s";
-            String priceString = "|     S$" + String.format("%.2f", item.getPrice() * itemList.get(item)) + "     |";
-            System.out.format(priceFormat, priceString);
-            System.out.println();
+            String priceString = "S$" + String.format("%.2f", item.getPrice() * itemList.get(item));
+            leftFormat = "%-"+((priceHeader.length()-(priceString.length()))/2)+"s";
+            rightFormat = "%"+((priceHeader.length()-(priceString.length()))/2)+"s";
+            System.out.format(leftFormat, "|");
+            System.out.print(priceString);
+            System.out.format(rightFormat, "|");
         }
         System.out.printf("-".repeat(rowLength));
         System.out.println();
