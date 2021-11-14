@@ -370,7 +370,6 @@ public class ReservationManager {
 		}
 	}
 
-
 	/**
      * Method to return the reserved table id by the input reservation ID
 	 * 
@@ -384,6 +383,7 @@ public class ReservationManager {
 		}
 		return -1;
 	}
+
 	/**
 	 * Method to get reservation object by reservation ID
 	 * @param id input ID
@@ -396,6 +396,7 @@ public class ReservationManager {
 		}
 		return null;
 	}
+	
 	/**
 	 * Method to remove a reservation by ID.
 	 * @param id input ID to be removed.
