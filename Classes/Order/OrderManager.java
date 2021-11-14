@@ -91,7 +91,7 @@ public class OrderManager {
         Staff staff = StaffManager.getStaff();
         Order newOrder = new Order(tableID, staff, isMember);
         OrderHistory.add(newOrder);
-        System.out.printf("You have created a new order with ID-%d %n", newOrder.getID());
+        System.out.printf("You have created a new order with ID %d and table ID %d\n", newOrder.getID(), tableID);
     }
 
     /**
