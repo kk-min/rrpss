@@ -530,8 +530,7 @@ public class MenuManager extends UserInterfacePrinter{
 
 	/**
 	 * Gets a menu item from the menu.
-	 * @return a menu item
-	 * @return null if selected menu item is not found on the menu
+	 * @return a menu item or null if selected menu item is not found on the menu
 	 */
 	public static AMenuItem getMenuItem() {
 		displayMenu();

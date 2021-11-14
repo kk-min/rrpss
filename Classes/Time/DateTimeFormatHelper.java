@@ -162,7 +162,7 @@ public class DateTimeFormatHelper {
     /**
      * Return the program date and time with the modifier.
      * Note: the modified program time is ahead of real system time.
-     * @returnv return the program date and time
+     * @return return the program date and time
      */
     public static LocalDateTime inbuiltDateTime() {
     	return LocalDateTime.now().plus(TIME_MODIFIER,ChronoUnit.MINUTES);

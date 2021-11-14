@@ -56,8 +56,7 @@ public class StaffManager {
     /**
      * Returns a Staff based on satff ID.
      *
-     * @return Staff object if given staff ID exists
-     * @return null if given Staff ID does not exists
+     * @return Staff object if given staff ID exists or null if given Staff ID does not exist
      */
 
     public static Staff getStaff() {
