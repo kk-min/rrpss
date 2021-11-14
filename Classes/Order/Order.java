@@ -61,15 +61,15 @@ public class Order {
     private String dateTime;
 
     /**
-     * Constructor to create a new order with the given tableID and orderCreator
+     * Constructor to create a new order with the given tableID and createdBy
      * @param tableID The Table ID where the order was made
-     * @param orderCreator The name of the Staff who crated the order
+     * @param createdBy The name of the Staff who crated the order
      * @param isMember Flag value that checks whether order was made by a member to apply discount
      */
-    public Order (int tableID, Staff orderCreator, boolean isMember){
+    public Order(int tableID, Staff createdBy, boolean isMember) {
         this.orderID = globalID++;
         this.tableID = tableID;
-        this.createdBy = orderCreator;
+        this.createdBy = createdBy;
         this.isMember = isMember;
         this.itemList = new HashMap<AMenuItem, Integer>();
         this.subTotal = 0;

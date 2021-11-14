@@ -449,6 +449,9 @@ public class MenuManager extends UserInterfacePrinter{
 		System.out.println("Promotional item added successfully!");
 	}
 
+	/**
+	 * Allows user to make changes to details of a Promotional Item from the menu.
+	 */
 	public static void updatePromoItem()
 	{
 		System.out.println("Here is the current menu:\n---");

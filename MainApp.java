@@ -31,8 +31,6 @@ public class MainApp {
 	public static void main(String args[]) {
 
 		// initialisations
-		String restaurantName = Printer.restaurantName;
-		int rowLength = Printer.rowLength;
 		MenuManager.initialiseMenu();
 		TableManager.initialiseTableCollection();
 		StaffManager.initialiseStaffList();
@@ -41,37 +39,8 @@ public class MainApp {
 		// program
 		int choice = 1, subMenuResult = -1;
 		while (choice != 0 && subMenuResult != 1) {
-			//Line 1:
-			System.out.printf("-".repeat(rowLength));
-			System.out.println();
-
-			//Line 2:
-			String leftFormat = "%-"+((rowLength/2)-(restaurantName.length()/2))+"s";
-			String rightFormat = "%"+((rowLength/2)-(restaurantName.length()/2))+"s";
-			System.out.format(leftFormat, " ");
-			System.out.print(restaurantName);
-			System.out.format(rightFormat, " ");
-			System.out.println();
-
-			//Line 3:
-			System.out.printf("-".repeat(rowLength));
-			System.out.println();
-
-			//Line 4+:
-			System.out.println("Select an option:");
-			System.out.println();
-			System.out.println("1) Menu");
-			System.out.println("2) Order");
-			System.out.println("3) Reservation");
-			System.out.println("4) Check Current Table Availabilities");
-			System.out.println("5) Print Sale Revenue Report");
-			System.out.println("6) Advance Time (TESTING)");
-			System.out.println("0) Exit Application");
-
-			//Line 11:
-			System.out.printf("-".repeat(rowLength));
-			System.out.println();
-
+			printMainMenu();
+			
 			do {
 				System.out.print("Enter your choice (0-6): ");
 				choice = input.nextInt(); input.nextLine();
@@ -100,5 +69,41 @@ public class MainApp {
 		}
 		System.out.println("System exiting... thank you for visiting our restaurant!");
 		System.exit(0);
+	}
+
+	private static void printMainMenu() {
+		String restaurantName = Printer.restaurantName;
+		int rowLength = Printer.rowLength;
+
+		//Line 1:
+		System.out.printf("-".repeat(rowLength));
+		System.out.println();
+
+		//Line 2:
+		String leftFormat = "%-"+((rowLength/2)-(restaurantName.length()/2))+"s";
+		String rightFormat = "%"+((rowLength/2)-(restaurantName.length()/2))+"s";
+		System.out.format(leftFormat, " ");
+		System.out.print(restaurantName);
+		System.out.format(rightFormat, " ");
+		System.out.println();
+
+		//Line 3:
+		System.out.printf("-".repeat(rowLength));
+		System.out.println();
+
+		//Line 4+:
+		System.out.println("Select an option:");
+		System.out.println();
+		System.out.println("1) Menu");
+		System.out.println("2) Order");
+		System.out.println("3) Reservation");
+		System.out.println("4) Check Current Table Availabilities");
+		System.out.println("5) Print Sale Revenue Report");
+		System.out.println("6) Advance Time (TESTING)");
+		System.out.println("0) Exit Application");
+
+		//Line 11:
+		System.out.printf("-".repeat(rowLength));
+		System.out.println();
 	}
 }

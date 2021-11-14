@@ -22,7 +22,7 @@ public class DateTimeFormatHelper {
     /**
      * Scanner object for taking user input
      */
-    private static Scanner sc = new Scanner(System.in);
+    private static Scanner input = new Scanner(System.in);
     /**
      * Final long to help convert between milliseconds and days.
      */
@@ -207,34 +207,34 @@ public class DateTimeFormatHelper {
     	int choice;
     	int amount;
     	do {
-    		choice = sc.nextInt(); sc.nextLine();
+    		choice = input.nextInt(); input.nextLine();
         	switch(choice) {
                 case (1):{
                     System.out.println("Enter number of days:");
-                    amount = sc.nextInt(); sc.nextLine();
+                    amount = input.nextInt(); input.nextLine();
                     while (amount < 0) {
                         System.out.println("Time must not be negative. Re-enter:");
-                        amount = sc.nextInt(); sc.nextLine();
+                        amount = input.nextInt(); input.nextLine();
                     }
                     incrementModifier(24*60*amount);
                     break;
                 }
                 case (2):{
                     System.out.println("Enter number of hours:");
-                    amount = sc.nextInt(); sc.nextLine();
+                    amount = input.nextInt(); input.nextLine();
                     while (amount < 0) {
                         System.out.println("Time must not be negative. Re-enter:");
-                        amount = sc.nextInt(); sc.nextLine();
+                        amount = input.nextInt(); input.nextLine();
                     }
                     incrementModifier(60*amount);
                     break;
                 }
                 case (3):{
                     System.out.println("Enter number of minutes:");
-                    amount = sc.nextInt(); sc.nextLine();
+                    amount = input.nextInt(); input.nextLine();
                     while (amount < 0) {
                         System.out.println("Time must not be negative. Re-enter:");
-                        amount = sc.nextInt(); sc.nextLine();
+                        amount = input.nextInt(); input.nextLine();
                     }
                     incrementModifier(amount);
                     break;
