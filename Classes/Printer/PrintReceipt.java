@@ -70,9 +70,11 @@ public class PrintReceipt implements Printer {
             priceFormat = "%" + (rowLength - leftString.length()) + "s";
             String priceString = "S$" + String.format("%.2f", item.getPrice() * itemList.get(item));
             leftFormat = "%-"+((priceHeader.length()-(priceString.length()))/2)+"s";
-            rightFormat = "%"+((priceHeader.length()-(priceString.length()))/2)+"s";
+            leftString = String.format(leftFormat, "|")+priceString;
+            rightFormat = "%"+(priceHeader.length()-leftString.length())+"s";
             System.out.format(leftFormat, "|");
             System.out.print(priceString);
+    
             System.out.format(rightFormat, "|");
         }
         System.out.printf("-".repeat(rowLength));
