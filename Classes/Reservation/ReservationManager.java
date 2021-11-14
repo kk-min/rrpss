@@ -255,24 +255,30 @@ public class ReservationManager {
 	 * @return the reservation Id the user wants to check, -1 if the input is not valid
      */
 	public static int checkReservationBooking() {
-		boolean flag = false;
-		System.out.print("Enter your reservation ID: ");
-		int Id = input.nextInt(); input.nextLine();
-		for (Reservation r : reservationCollection) {
-			if (Id == r.getResvId()) {
-				System.out.println("Name: " + r.getCustomerName());
-				System.out.println("Date & Time: " + DateTimeFormatHelper.formatToStringDate(r.getResvDate()) + " " + DateTimeFormatHelper.formatToStringTime(r.getResvTime()));
-				System.out.println("Pax: " + r.getNumPax());
-				flag = true;
-				break;
+		try{
+			boolean flag = false;
+			System.out.print("Enter your reservation ID: ");
+			int Id = input.nextInt(); input.nextLine();
+			for (Reservation r : reservationCollection) {
+				if (Id == r.getResvId()) {
+					System.out.println("Name: " + r.getCustomerName());
+					System.out.println("Date & Time: " + DateTimeFormatHelper.formatToStringDate(r.getResvDate()) + " " + DateTimeFormatHelper.formatToStringTime(r.getResvTime()));
+					System.out.println("Pax: " + r.getNumPax());
+					flag = true;
+					break;
+				}
 			}
+	
+			if (!flag) {
+				System.out.println("Invalid reservation Id! Please check again!");
+				Id = -1;
+			}
+			return Id;
+		}catch (InputMismatchException e){
+			System.out.println("Please enter a valid entry.");
+			input.nextLine();
+			return -1;
 		}
-
-		if (!flag) {
-			System.out.println("Invalid reservation Id! Please check again!");
-			Id = -1;
-		}
-		return Id;
 	}
 
 	/**
@@ -284,34 +290,39 @@ public class ReservationManager {
 	 * 
      */
 	public static void removeReservationBooking() {
-		System.out.println("Remove Reservation Booking");
-		int Id =  checkReservationBooking();
-
-		if (Id != -1) {
-			System.out.print("Are you sure you want to delete this reservation (Y/N)? ");
-			switch (Character.toUpperCase(input.nextLine().charAt(0))) {
-			case 'Y':
-				for(int i=0;i<reservationCollection.size();i++){
-					if (Id == reservationCollection.get(i).getResvId()){
-						Reservation r = reservationCollection.get(i);
-						boolean isToday = isToday(r);
-						boolean isCurrentSession = isCurrentSession(r);
-						if (isToday && isCurrentSession) {
-							changeTableStatusToEmpty(r);
+		try{
+			System.out.println("Remove Reservation Booking");
+			int Id =  checkReservationBooking();
+	
+			if (Id != -1) {
+				System.out.print("Are you sure you want to delete this reservation (Y/N)? ");
+				switch (Character.toUpperCase(input.nextLine().charAt(0))) {
+				case 'Y':
+					for(int i=0;i<reservationCollection.size();i++){
+						if (Id == reservationCollection.get(i).getResvId()){
+							Reservation r = reservationCollection.get(i);
+							boolean isToday = isToday(r);
+							boolean isCurrentSession = isCurrentSession(r);
+							if (isToday && isCurrentSession) {
+								changeTableStatusToEmpty(r);
+							}
+							reservationCollection.remove(i);
+							System.out.println("Reservation ID " + Id + " has been successfully removed.");
+							break;
 						}
-						reservationCollection.remove(i);
-						System.out.println("Reservation ID " + Id + " has been successfully removed.");
-						break;
 					}
+					break;
+				case 'N':
+					System.out.println("Request cancelled.");
+					break;
+				default:
+					System.out.println("Invalid option!");
+					break;
 				}
-				break;
-			case 'N':
-				System.out.println("Request cancelled.");
-				break;
-			default:
-				System.out.println("Invalid option!");
-				break;
 			}
+		}catch (InputMismatchException e){
+			System.out.println("Please enter a valid entry.");
+			input.nextLine();
 		}
 	}
 
