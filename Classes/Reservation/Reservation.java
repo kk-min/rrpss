@@ -81,7 +81,6 @@ public class Reservation {
 		this.customerName = custName;
 		this.numPax = pax;
 		this.tableID = tableId;
-		TableManager.getTableByID(tableId).setReserved();
 	}
 
     /**
