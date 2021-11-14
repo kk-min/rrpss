@@ -240,15 +240,9 @@ public class ReservationManager {
 		int Id = input.nextInt();
 		for (Reservation r : reservationCollection) {
 			if (Id == r.getResvId()) {
-				System.out.println("Below is the reservation linked to the reservation number " + Id);
-				System.out.printf("%-6s %-15s %-10s %-10s %-15s %-30s %-3s %-9s\n", "ID", "Date", "Session", "Time", "Tel. No",
-						"Name", "Pax", "Table No.");
-				System.out.println("");
-				System.out.printf("%-6d %-15s %-10s %-10s %-15s %-30s %-3d %-9d\n", r.getResvId(),
-						DateTimeFormatHelper.formatToStringDate(r.getResvDate()),
-						r.getResvSession() == Reservation.ReservationSession.AM ? 'A' : 'P',
-						DateTimeFormatHelper.formatToStringTime(r.getResvTime()), r.getCustomerContact(), r.getCustomerName(),
-						r.getNumPax(), r.getTableID());
+				System.out.println("Name: " + r.getCustomerName());
+				System.out.println("Date & Time: " + DateTimeFormatHelper.formatToStringDate(r.getResvDate()) + " " + DateTimeFormatHelper.formatToStringTime(r.getResvTime()));
+				System.out.println("Pax: " + r.getNumPax());
 				flag = true;
 				break;
 			}
@@ -260,8 +254,6 @@ public class ReservationManager {
 		}
 		return Id;
 	}
-	//TODO
-	//Add isToday, isCurrentSession, passedThirtyMinutes, notComeYet, changeTableStatusToEmpty
 
 	/**
      * Method to delete the reservation booking information according to the input reservation id
