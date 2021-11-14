@@ -7,12 +7,14 @@ import java.util.List;
 
 import Classes.Printer.PrintOrderSummary;
 import Classes.Printer.PrintReceipt;
+import Classes.Reservation.Reservation;
 import Classes.Reservation.ReservationManager;
 import Classes.AMenuItem.AMenuItem;
 import Classes.AMenuItem.MenuManager;
 import Classes.Staff.Staff;
 import Classes.Staff.StaffManager;
 import Classes.Table.TableManager;
+import Classes.Time.DateTimeFormatHelper;
 
 /**
  * The OrderManager Class
@@ -69,7 +71,16 @@ public class OrderManager {
 			}
         }
         else { // reservation
-            tableID = ReservationManager.getTableIDByReservationID(resvID);
+            Reservation r = ReservationManager.getReservationByReservationID(resvID);
+            if(r == null){
+                System.out.println("Invalid reservation ID!"); return;
+            }
+            else if(!r.getResvDate().equals(DateTimeFormatHelper.inbuiltDate())||
+                    !r.getResvSession().equals(DateTimeFormatHelper.inbuiltSession(DateTimeFormatHelper.inbuiltTime()))){
+                        System.out.println("Not reserved time yet! Consider walk-in instead."); return;
+                    }
+            else tableID = r.getTableID();
+            ReservationManager.removeReservationByReservationID(resvID);
         }
 
         TableManager.getTableByID(tableID).setOccupied();

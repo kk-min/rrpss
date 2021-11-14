@@ -17,6 +17,7 @@ import java.util.InputMismatchException;
  * Create, check, delete and list the reservations and automatically delete the expired reservations.
  * @author  Zhang Erli
  * @author  Her Huey
+ * @author  Ma Guangheng
  * @version 1.0
  * @since   2021-11-02
  */
@@ -189,9 +190,18 @@ public class ReservationManager {
 				: Reservation.ReservationSession.PM;
 		unavailable = getTableBookedByDateAndSession(resvDate, s);
 		available = TableManager.getComplement(unavailable);
-		for (Table t : available) {
-			if (t.getCapacity() >= cusCount)
-				return t.getID();
+		if(DateTimeFormatHelper.inbuiltDate().equals(resvDate) && 
+				DateTimeFormatHelper.inbuiltSession(DateTimeFormatHelper.inbuiltTime()).equals(s)){
+					for (Table t : available) {
+						if (t.getCapacity() >= cusCount && t.getStatus() == Table.TStatus.EMPTY)
+							return t.getID();
+					}
+				}
+		else{
+			for (Table t : available) {
+				if (t.getCapacity() >= cusCount)
+					return t.getID();
+			}
 		}
 		return -1;
 	}
@@ -373,5 +383,31 @@ public class ReservationManager {
 				return r.getTableID();
 		}
 		return -1;
+	}
+	/**
+	 * Method to get reservation object by reservation ID
+	 * @param id input ID
+	 * @return reservation object. Null if the input ID is invalid.
+	 */
+	public static Reservation getReservationByReservationID(int id){
+		for (Reservation r: reservationCollection){
+			if(r.getResvId() == id)
+				return r;
+		}
+		return null;
+	}
+	/**
+	 * Method to remove a reservation by ID.
+	 * @param id input ID to be removed.
+	 */
+	public static void removeReservationByReservationID(int id){
+		for(Reservation r: reservationCollection){
+			if(r.getResvId() == id){
+				reservationCollection.remove(r);
+				return;
+			}
+		}
+		System.out.println("Invalid id. No removal performed.");
+		return;
 	}
 }

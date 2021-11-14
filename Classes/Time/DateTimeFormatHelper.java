@@ -24,14 +24,6 @@ public class DateTimeFormatHelper {
      */
     private static Scanner input = new Scanner(System.in);
     /**
-     * Final long to help convert between milliseconds and days.
-     */
-    private final static long MILLIS_TO_DAYS = 1000 * 60 * 60 * 24;
-    /**
-     * Final long to help adjust to SG time zone
-     */
-    private final static long TO_UTC_8 = 28800000;
-    /**
      * Global variable to manually advance time in program in minutes. The value represents how much the program time
      * is ahead of the real system time in minutes.
      */
