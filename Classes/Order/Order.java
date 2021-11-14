@@ -8,10 +8,11 @@ import Classes.Staff.Staff;
 import Classes.Time.DateTimeFormatHelper;
 
 /**
- Contains information about the items ordered by a single Customer/Table.
- @author  Min
- @version 1.0
- @since   2021-11-12
+ * The Order Class
+ * Contains information about the items ordered by a single Customer/Table.
+ * @author  Min
+ * @version 1.0
+ * @since   2021-11-12
  */
 public class Order {
     /**
