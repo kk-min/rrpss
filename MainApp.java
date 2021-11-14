@@ -42,7 +42,7 @@ public class MainApp {
 			printMainMenu();
 
 			do {
-				System.out.print("Enter your choice (0-6): ");
+				System.out.println("Enter your choice (0-6): ");
 				choice = input.nextInt(); input.nextLine();
 			} while (choice > 6 || choice < 0);
 
