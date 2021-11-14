@@ -40,7 +40,7 @@ public class MainApp {
 		int choice = 1, subMenuResult = -1;
 		while (choice != 0 && subMenuResult != 1) {
 			printMainMenu();
-			
+
 			do {
 				System.out.print("Enter your choice (0-6): ");
 				choice = input.nextInt(); input.nextLine();
@@ -71,6 +71,9 @@ public class MainApp {
 		System.exit(0);
 	}
 
+	/**
+	 * print out main menu for user to view functionalities available
+	 */
 	private static void printMainMenu() {
 		String restaurantName = Printer.restaurantName;
 		int rowLength = Printer.rowLength;
