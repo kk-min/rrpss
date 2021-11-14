@@ -190,6 +190,12 @@ public class ReservationManager {
 				: Reservation.ReservationSession.PM;
 		unavailable = getTableBookedByDateAndSession(resvDate, s);
 		available = TableManager.getComplement(unavailable);
+		if(DateTimeFormatHelper.inbuiltSession() == null) {
+			for (Table t : available) {
+				if (t.getCapacity() >= cusCount)
+					return t.getID();
+			}
+		}
 		if(DateTimeFormatHelper.inbuiltDate().equals(resvDate) && 
 				DateTimeFormatHelper.inbuiltSession().equals(s)){
 					for (Table t : available) {
