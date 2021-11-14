@@ -1,6 +1,7 @@
 package Classes.Printer;
 
 import Classes.Reservation.ReservationManager;
+import java.util.InputMismatchException;
 
 /**
  * The OrderSubMenu Class
@@ -30,7 +31,18 @@ public class ReservationSubMenu extends UserInterfacePrinter {
             System.out.println("0) Exit Application");
             System.out.printf("-".repeat(rowLength));
             System.out.println();
-            int choice = input.nextInt(); input.nextLine();
+            int choice = -1;
+            boolean validChoice = false;
+            while(!validChoice){
+                try{
+                    choice = input.nextInt(); input.nextLine();
+                }
+                catch(InputMismatchException e){
+                    System.out.println("Please enter a valid entry.");
+                    input.nextLine();
+                }
+                validChoice = true;
+            }
             
             switch (choice) {
                 case 1:
