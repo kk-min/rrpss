@@ -25,7 +25,8 @@ public class ReservationSubMenu extends UserInterfacePrinter {
             System.out.println("1) Create a new reservation booking");
             System.out.println("2) Check reservation booking");
             System.out.println("3) Remove a reservation booking");
-            System.out.println("4) Back to main menu");
+            System.out.println("4) List all reservation bookings");
+            System.out.println("5) Back to main menu");
             System.out.println("0) Exit Application");
             System.out.printf("-".repeat(rowLength));
             System.out.println();
@@ -42,6 +43,9 @@ public class ReservationSubMenu extends UserInterfacePrinter {
                     ReservationManager.removeReservationBooking();
                     break;
                 case 4:
+                    ReservationManager.printAllReservations();
+                    break;
+                case 5:
                     return -1;
                 case 0:
                     return 1;
