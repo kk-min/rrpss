@@ -389,7 +389,7 @@ public class ReservationManager {
 			boolean notComeYet = notComeYet(r);
 			if (isToday && passedThirtyMinutes && notComeYet) {
 				changeTableStatusToEmpty(r);
-				System.out.println("Current time is" + DateTimeFormatHelper.formatToStringTime(DateTimeFormatHelper.inbuiltTime()) + ".");
+				System.out.println("Current time is " + DateTimeFormatHelper.formatToStringTime(DateTimeFormatHelper.inbuiltTime()) + ".");
 
 				System.out.println("Reservation with the ID " + r.getResvId() + " at " + r.getResvTime() + " has expired and thus been removed.");
 				reservationCollection.remove(i);
