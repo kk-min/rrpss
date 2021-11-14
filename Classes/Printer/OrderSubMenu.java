@@ -31,7 +31,7 @@ public class OrderSubMenu extends UserInterfacePrinter {
             System.out.println("0) Exit Application");
             System.out.printf("-".repeat(rowLength));
             System.out.println();
-            int choice = 0;
+            int choice = -1;
             boolean validChoice = false;
             while(!validChoice){
                 try{

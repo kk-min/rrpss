@@ -20,7 +20,6 @@ public class MenuSubMenu extends UserInterfacePrinter {
      */
     public static int print(){
         while (true) {
-
             System.out.printf("-".repeat(rowLength));
             System.out.println();
             System.out.println("Restaurant Menu\nSelect an option:\n" );
@@ -35,7 +34,7 @@ public class MenuSubMenu extends UserInterfacePrinter {
             System.out.println("0) Exit Application");
             System.out.printf("-".repeat(rowLength));
             System.out.println();
-            int choice = 0;
+            int choice = -1;
             boolean validChoice = false;
             while(!validChoice){
                 try{
