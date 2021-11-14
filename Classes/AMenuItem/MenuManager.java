@@ -227,7 +227,7 @@ public class MenuManager extends UserInterfacePrinter{
 		while(!varification){
 			try{	
 				System.out.println("What type of item is the new menu item (Main Dish 1)/(Beverage 2)/(Dessert 3)?");
-						choice = input.nextInt(); 
+						choice = input.nextInt(); input.nextLine();
 						varification = true;
 				}catch(InputMismatchException e){
 					System.out.println("Error: Enter an integer number.");
