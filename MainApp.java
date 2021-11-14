@@ -57,7 +57,8 @@ public class MainApp {
 					subMenuResult = ReservationSubMenu.print();
 					break;
 				case 4: // Check table availability
-					TableManager.printTableAvailabilities();
+					TableManager.printTableStatusByDateAndSession(DateTimeFormatHelper.inbuiltDate(),
+						DateTimeFormatHelper.inbuiltSession(),true);
 					break;
 				case 5:	// Print Sales Revenue Report
 					PrintReport.print();

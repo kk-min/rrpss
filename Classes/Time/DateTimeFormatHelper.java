@@ -178,7 +178,8 @@ public class DateTimeFormatHelper {
      * @param time input time to be checked
      * @return the session the input time is in. Null if the input time is not in a session.
      */
-    public static Reservation.ReservationSession inbuiltSession(LocalTime time){
+    public static Reservation.ReservationSession inbuiltSession(){
+        LocalTime time = inbuiltTime();
         if(time.compareTo(LocalTime.of(10, 0)) > 0 && time.compareTo(LocalTime.of(16, 00)) < 0) {
             return Reservation.ReservationSession.AM;
         } else if (time.compareTo(LocalTime.of(18, 0)) > 0 && time.compareTo(LocalTime.of(23, 59)) < 0) {

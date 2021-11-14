@@ -76,7 +76,7 @@ public class OrderManager {
                 System.out.println("Invalid reservation ID!"); return;
             }
             else if(!r.getResvDate().equals(DateTimeFormatHelper.inbuiltDate())||
-                    !r.getResvSession().equals(DateTimeFormatHelper.inbuiltSession(DateTimeFormatHelper.inbuiltTime()))){
+                    !r.getResvSession().equals(DateTimeFormatHelper.inbuiltSession())){
                         System.out.println("Not reserved time yet! Consider walk-in instead."); return;
                     }
             else tableID = r.getTableID();

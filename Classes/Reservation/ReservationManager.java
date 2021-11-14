@@ -191,7 +191,7 @@ public class ReservationManager {
 		unavailable = getTableBookedByDateAndSession(resvDate, s);
 		available = TableManager.getComplement(unavailable);
 		if(DateTimeFormatHelper.inbuiltDate().equals(resvDate) && 
-				DateTimeFormatHelper.inbuiltSession(DateTimeFormatHelper.inbuiltTime()).equals(s)){
+				DateTimeFormatHelper.inbuiltSession().equals(s)){
 					for (Table t : available) {
 						if (t.getCapacity() >= cusCount && t.getStatus() == Table.TStatus.EMPTY)
 							return t.getID();
@@ -326,7 +326,7 @@ public class ReservationManager {
 	 * @return isCurrentSession is true if the reservation session is the current session, othervise false
      */	
 	public static boolean isCurrentSession(Reservation r) {
-		return r.getResvSession().equals(DateTimeFormatHelper.inbuiltSession(DateTimeFormatHelper.inbuiltTime()));
+		return r.getResvSession().equals(DateTimeFormatHelper.inbuiltSession());
 	}
 
 	/**
