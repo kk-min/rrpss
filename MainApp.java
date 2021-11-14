@@ -57,7 +57,8 @@ public class MainApp {
 					subMenuResult = ReservationSubMenu.print();
 					break;
 				case 4: // Check table availability
-					TableManager.printTableAvailabilities();
+					TableManager.printTableStatusByDateAndSession(DateTimeFormatHelper.inbuiltDate(),
+						DateTimeFormatHelper.inbuiltSession(),true);
 					break;
 				case 5:	// Print Sales Revenue Report
 					PrintReport.print();
@@ -67,7 +68,7 @@ public class MainApp {
 					break;
 			}
 		}
-		System.out.println("System exiting... thank you for visiting our restaurant!");
+		System.out.println("System exiting... thank you for using our system!");
 		System.exit(0);
 	}
 

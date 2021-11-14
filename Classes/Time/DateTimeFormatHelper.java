@@ -24,14 +24,6 @@ public class DateTimeFormatHelper {
      */
     private static Scanner input = new Scanner(System.in);
     /**
-     * Final long to help convert between milliseconds and days.
-     */
-    private final static long MILLIS_TO_DAYS = 1000 * 60 * 60 * 24;
-    /**
-     * Final long to help adjust to SG time zone
-     */
-    private final static long TO_UTC_8 = 28800000;
-    /**
      * Global variable to manually advance time in program in minutes. The value represents how much the program time
      * is ahead of the real system time in minutes.
      */
@@ -186,7 +178,8 @@ public class DateTimeFormatHelper {
      * @param time input time to be checked
      * @return the session the input time is in. Null if the input time is not in a session.
      */
-    public static Reservation.ReservationSession inbuiltSession(LocalTime time){
+    public static Reservation.ReservationSession inbuiltSession(){
+        LocalTime time = inbuiltTime();
         if(time.compareTo(LocalTime.of(10, 0)) > 0 && time.compareTo(LocalTime.of(16, 00)) < 0) {
             return Reservation.ReservationSession.AM;
         } else if (time.compareTo(LocalTime.of(18, 0)) > 0 && time.compareTo(LocalTime.of(23, 59)) < 0) {

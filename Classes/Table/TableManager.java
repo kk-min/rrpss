@@ -1,7 +1,6 @@
 package Classes.Table;
 
 import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Comparator;
 
@@ -84,16 +83,6 @@ public class TableManager {
 		return -1;
 	}
 	/**
-	 * Find and print all tables with status "EMPTY".
-	 */
-	public static void printTableAvailabilities() {
-		ArrayList<Table> available = getTableAvailabilities();
-		System.out.println("These tables are currently available:");
-		for (Table t : available) {
-			System.out.printf("Table %-3d - %-3d pax %n", t.getID(), t.getCapacity());
-		}
-	}
-	/**
 	 * Print the status of the tables in a given date and session. If now is set, the function will print the results
 	 * of the current session. The tables will be available, reserved or occupied. If now is not set, the function will
 	 * print the result in future. The tables will be either available or reserved.
@@ -133,9 +122,8 @@ public class TableManager {
 	 */
 	public static void updateTableStatus() {
     	LocalDate date = DateTimeFormatHelper.inbuiltDate();
-    	LocalTime time = DateTimeFormatHelper.inbuiltTime();
     	Reservation.ReservationSession s;
-    	s = DateTimeFormatHelper.inbuiltSession(time);
+    	s = DateTimeFormatHelper.inbuiltSession();
     	if(s == null) return;
 		ArrayList<Table> booked = ReservationManager.getTableBookedByDateAndSession(date,s);
 		for(Table t: booked)

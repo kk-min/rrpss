@@ -17,6 +17,7 @@ import java.util.InputMismatchException;
  * Create, check, delete and list the reservations and automatically delete the expired reservations.
  * @author  Zhang Erli
  * @author  Her Huey
+ * @author  Ma Guangheng
  * @version 1.0
  * @since   2021-11-02
  */
@@ -45,7 +46,7 @@ public class ReservationManager {
 	 */
 	public static int globalID = 1;
 	/**
-	 * Creating a new reservation booking. 
+	 * Creating a new reservation booking.
 	 * Get inputs from user: Customer name, customer contact, date, time of reservation and no of pax
 	 */
 	public static void createReservationBooking() {
@@ -190,9 +191,18 @@ public class ReservationManager {
 				: Reservation.ReservationSession.PM;
 		unavailable = getTableBookedByDateAndSession(resvDate, s);
 		available = TableManager.getComplement(unavailable);
-		for (Table t : available) {
-			if (t.getCapacity() >= cusCount)
-				return t.getID();
+		if(DateTimeFormatHelper.inbuiltDate().equals(resvDate) &&
+				DateTimeFormatHelper.inbuiltSession().equals(s)){
+					for (Table t : available) {
+						if (t.getCapacity() >= cusCount && t.getStatus() == Table.TStatus.EMPTY)
+							return t.getID();
+					}
+				}
+		else{
+			for (Table t : available) {
+				if (t.getCapacity() >= cusCount)
+					return t.getID();
+			}
 		}
 		return -1;
 	}
@@ -205,8 +215,7 @@ public class ReservationManager {
 	 */
 	public static void printAllReservations() {
 		System.out.println("Here are all the current reservations:");
-		System.out.printf("%-6s %-15s %-10s %-10s %-15s %-30s %-3s %-9s\n", "ID", "Date", "Session", "Time", "Tel. No",
-				"Name", "Pax", "Table No.");
+		System.out.printf("%-6s %-15s %-10s %-15s %-3s %-9s\n", "ID", "Date", "Time", "Name", "Pax", "Table No.");
 		System.out.println("");
 		boolean passed = false;
 		for (Reservation r : reservationCollection) {
@@ -218,10 +227,9 @@ public class ReservationManager {
 				}
 			}
 			if (!passed) {
-				System.out.printf("%-6d %-15s %-10s %-10s %-15s %-30s %-3d %-9d\n", r.getResvId(),
+				System.out.printf("%-6d %-15s %-10s %-15s %-3d %-9d\n", r.getResvId(),
 						DateTimeFormatHelper.formatToStringDate(r.getResvDate()),
-						r.getResvSession() == Reservation.ReservationSession.AM ? 'A' : 'P',
-						DateTimeFormatHelper.formatToStringTime(r.getResvTime()), r.getCustomerContact(), r.getCustomerName(),
+						DateTimeFormatHelper.formatToStringTime(r.getResvTime()), r.getCustomerName(),
 						r.getNumPax(), r.getTableID());
 			}
 		}
@@ -235,19 +243,13 @@ public class ReservationManager {
 	 */
 	public static int checkReservationBooking() {
 		boolean flag = false;
-		System.out.print("Enter your reservation Id: ");
-		int Id = input.nextInt();
+		System.out.print("Enter your reservation ID: ");
+		int Id = input.nextInt(); input.nextLine();
 		for (Reservation r : reservationCollection) {
 			if (Id == r.getResvId()) {
-				System.out.println("Below is the reservation linked to the reservation number " + Id);
-				System.out.printf("%-6s %-15s %-10s %-10s %-15s %-30s %-3s %-9s\n", "ID", "Date", "Session", "Time", "Tel. No",
-						"Name", "Pax", "Table No.");
-				System.out.println("");
-				System.out.printf("%-6d %-15s %-10s %-10s %-15s %-30s %-3d %-9d\n", r.getResvId(),
-						DateTimeFormatHelper.formatToStringDate(r.getResvDate()),
-						r.getResvSession() == Reservation.ReservationSession.AM ? 'A' : 'P',
-						DateTimeFormatHelper.formatToStringTime(r.getResvTime()), r.getCustomerContact(), r.getCustomerName(),
-						r.getNumPax(), r.getTableID());
+				System.out.println("Name: " + r.getCustomerName());
+				System.out.println("Date & Time: " + DateTimeFormatHelper.formatToStringDate(r.getResvDate()) + " " + DateTimeFormatHelper.formatToStringTime(r.getResvTime()));
+				System.out.println("Pax: " + r.getNumPax());
 				flag = true;
 				break;
 			}
@@ -317,7 +319,7 @@ public class ReservationManager {
 	 * @return isCurrentSession is true if the reservation session is the current session, othervise false
 	 */
 	public static boolean isCurrentSession(Reservation r) {
-		return r.getResvSession().equals(DateTimeFormatHelper.inbuiltSession(DateTimeFormatHelper.inbuiltTime()));
+		return r.getResvSession().equals(DateTimeFormatHelper.inbuiltSession());
 	}
 
 	/**
@@ -382,5 +384,33 @@ public class ReservationManager {
 				return r.getTableID();
 		}
 		return -1;
+	}
+
+	/**
+	 * Method to get reservation object by reservation ID
+	 * @param id input ID
+	 * @return reservation object. Null if the input ID is invalid.
+	 */
+	public static Reservation getReservationByReservationID(int id){
+		for (Reservation r: reservationCollection){
+			if(r.getResvId() == id)
+				return r;
+		}
+		return null;
+	}
+
+	/**
+	 * Method to remove a reservation by ID.
+	 * @param id input ID to be removed.
+	 */
+	public static void removeReservationByReservationID(int id){
+		for(Reservation r: reservationCollection){
+			if(r.getResvId() == id){
+				reservationCollection.remove(r);
+				return;
+			}
+		}
+		System.out.println("Invalid id. No removal performed.");
+		return;
 	}
 }

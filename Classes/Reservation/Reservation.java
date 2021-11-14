@@ -3,8 +3,6 @@ package Classes.Reservation;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-import Classes.Table.TableManager;
-
 /**
  * The Reservation Class
  * Contains information about a reservation booking
@@ -81,7 +79,6 @@ public class Reservation {
 		this.customerName = custName;
 		this.numPax = pax;
 		this.tableID = tableId;
-		TableManager.getTableByID(tableId).setReserved();
 	}
 
     /**

@@ -47,6 +47,7 @@ public class OrderSubMenu extends UserInterfacePrinter {
                     break;
                 case 5:
                     OrderManager.checkout();
+                    break;
                 case 6:
                     return -1;
                 case 0:
