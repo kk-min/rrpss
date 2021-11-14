@@ -10,6 +10,7 @@ import Classes.Staff.StaffManager;
 import Classes.Table.TableManager;
 import Classes.Time.DateTimeFormatHelper;
 import Classes.Time.TimerExecutor;
+import java.util.InputMismatchException;
 /**
  * MainApp for RRPSS project
  * this is where the main program will be run
@@ -41,10 +42,20 @@ public class MainApp {
 		while (choice != 0 && subMenuResult != 1) {
 			printMainMenu();
 
-			do {
-				System.out.println("Enter your choice (0-6): ");
-				choice = input.nextInt(); input.nextLine();
-			} while (choice > 6 || choice < 0);
+			boolean validEntry = false;
+			while(!validEntry){
+				try{
+					do {
+						System.out.println("Enter your choice (0-6): ");
+						choice = input.nextInt(); input.nextLine();
+					} while (choice > 6 || choice < 0);
+					validEntry = true;
+				}
+				catch (InputMismatchException e){
+					System.out.println("Please enter an integer.");
+					input.nextLine();
+				}
+			}
 
 			switch(choice) {
 				case 1: //Menu submenu
