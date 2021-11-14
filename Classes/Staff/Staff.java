@@ -35,7 +35,7 @@ public class Staff {
     /**
      * Constructor to pass in all required parameters for menu item.
      *
-     * @param ID          employee's ID.
+     * @param ID                  employee's ID.
      * @param name                employee's name.
      * @param gender              employee's description.
      * @param jobTitle            employee's jobTitle.

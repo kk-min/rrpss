@@ -121,11 +121,10 @@ public class PrintReport extends UserInterfacePrinter {
             for (var entry : alacarteStatistics.entrySet()) {
                 AMenuItem alacarteItem = entry.getKey();
                 String name = alacarteItem.getName();
-                String leftString = "| " + name + ": ";
-                System.out.print(leftString);
                 count = (int) alacarteStatistics.get(alacarteItem);
-                System.out.print(count);
-                rightFormat = "%" + (rowLength - leftString.length() - 1) + "s";
+                String leftString = "| " + name + ": "+count;
+                System.out.print(leftString);
+                rightFormat = "%" + (rowLength - leftString.length()) + "s";
                 System.out.format(rightFormat, "|");
                 System.out.println();
             }
@@ -160,11 +159,10 @@ public class PrintReport extends UserInterfacePrinter {
             for (var entry : promotionalStatistics.entrySet()) {
                 AMenuItem promotionItem = entry.getKey();
                 String name = promotionItem.getName();
-                String leftString = "| " + name + ": ";
-                System.out.print(leftString);
                 count = (int) promotionalStatistics.get(promotionItem);
-                System.out.print(count);
-                rightFormat = "%" + (rowLength - leftString.length() - 1) + "s";
+                String leftString = "| " + name + ": "+count;
+                System.out.print(leftString);
+                rightFormat = "%" + (rowLength - leftString.length()) + "s";
                 System.out.format(rightFormat, "|");
                 System.out.println();
             }
