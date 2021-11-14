@@ -207,7 +207,7 @@ public class MenuManager extends UserInterfacePrinter{
 		while(!varification){
 			try{	
 				System.out.println("What is the price of this item?");
-				Mprice = input.nextDouble(); 
+				Mprice = input.nextDouble(); input.nextLine();
 				varification = true;
 			}catch(InputMismatchException e){
 			System.out.println("Error: Enter an integer/float number.");
@@ -558,7 +558,7 @@ public class MenuManager extends UserInterfacePrinter{
 				while(!varification){
 					try{	
 						System.out.println("What is the price of this item?");
-						Mprice = input.nextDouble(); 
+						Mprice = input.nextDouble();  input.nextLine();
 						varification = true;
 					}catch(InputMismatchException e){
 					System.out.println("Error: Enter an integer/float number.");
