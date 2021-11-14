@@ -42,7 +42,7 @@ public class PrintReceipt implements Printable {
         String dateTimeString = "| Date: " + order.getDateTime() + " |";
         String dateTimeFormat = "%" + dateTimeString.length() + "s";
         int midLength = rowLength - orderIdString.length() - dateTimeString.length();
-        String tableIdString = " Table ID: " + order.getTableID() + " ";
+        String tableIdString = " Table ID: " + order.getTableId() + " ";
         String tableIdFormat = "%-" + ((midLength / 2) + (tableIdString.length() / 2)) + "s";
         System.out.format(orderIdFormat, orderIdString);
         System.out.print(" ".repeat((midLength / 2) - tableIdString.length() / 2));

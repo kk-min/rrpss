@@ -71,7 +71,7 @@ public class OrderManager {
 			}
         }
         else { // reservation
-            Reservation r = ReservationManager.getReservationByReservationID(resvID);
+            Reservation r = ReservationManager.getReservationByReservationId(resvID);
             if(r == null){
                 System.out.println("Invalid reservation ID!"); return;
             }
@@ -79,11 +79,11 @@ public class OrderManager {
                     !r.getResvSession().equals(DateTimeFormatHelper.inbuiltSession())){
                         System.out.println("Not reserved time yet! Consider walk-in instead."); return;
                     }
-            else tableId = r.getTableID();
-            ReservationManager.removeReservationByReservationID(resvID);
+            else tableId = r.getTableId();
+            ReservationManager.removeReservationByReservationId(resvID);
         }
 
-        TableManager.getTableByID(tableId).setOccupied();
+        TableManager.getTableById(tableId).setOccupied();
         System.out.print("Is the customer a member? (Y/N): ");
         char member = input.next().charAt(0);
         boolean isMember = false;
@@ -173,8 +173,8 @@ public class OrderManager {
         for (Order userOrder : orderHistory){
             if (userOrder.getId() == orderId){
                 PrintReceipt.print(userOrder);
-                int tableId = userOrder.getTableID();
-                TableManager.getTableByID(tableId).setEmpty();
+                int tableId = userOrder.getTableId();
+                TableManager.getTableById(tableId).setEmpty();
                 System.out.println("Order successfully checked out.");
                 return;
             }

@@ -159,7 +159,7 @@ public class Reservation {
      *
      * @return Table number in integer
      */
-	public int getTableID() {
+	public int getTableId() {
 		return tableId;
 	}
 }

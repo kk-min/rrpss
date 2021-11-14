@@ -178,7 +178,7 @@ public class ReservationManager {
 		ArrayList<Table> bookedTables = new ArrayList<Table>();
 		for (Reservation resv : reservationCollection) {
 			if (resv.getResvDate().equals(date) && resv.getResvSession() == session)
-				bookedTables.add(TableManager.getTableByID(resv.getTableID()));
+				bookedTables.add(TableManager.getTableById(resv.getTableId()));
 		}
 		return bookedTables;
 	}
@@ -243,7 +243,7 @@ public class ReservationManager {
 				System.out.printf("%-6d %-15s %-10s %-15s %-3d %-9d\n", r.getResvId(),
 						DateTimeFormatHelper.formatToStringDate(r.getResvDate()),
 						DateTimeFormatHelper.formatToStringTime(r.getResvTime()), r.getCustomerName(),
-						r.getNumPax(), r.getTableID());
+						r.getNumPax(), r.getTableId());
 			}
 		}
 	}
@@ -353,7 +353,7 @@ public class ReservationManager {
 	 * @return notComeYet is true if the customers haven't arrvied, otherwise false
      */	
 	public static boolean notComeYet(Reservation r) {
-		return !(TableManager.getTableByID(r.getTableID()).getStatus() == Table.TStatus.OCCUPIED);
+		return !(TableManager.getTableById(r.getTableId()).getStatus() == Table.TStatus.OCCUPIED);
 	}
 
 	/**
@@ -362,7 +362,7 @@ public class ReservationManager {
 	 * @param r reservation
      */	
 	public static void changeTableStatusToEmpty(Reservation r) {
-		TableManager.getTableByID(r.getTableID()).setEmpty();
+		TableManager.getTableById(r.getTableId()).setEmpty();
 	}	
 
 	/**
@@ -392,10 +392,10 @@ public class ReservationManager {
 	 * @param id reservation id
 	 * @return the table id according to the reservation id, -1 if the reservation id is not valid
      */
-	public static int getTableIDByReservationID(int id) {
+	public static int getTableIdByReservationId(int id) {
 		for (Reservation r : reservationCollection) {
 			if (r.getResvId() == id)
-				return r.getTableID();
+				return r.getTableId();
 		}
 		return -1;
 	}
@@ -405,7 +405,7 @@ public class ReservationManager {
 	 * @param id input ID
 	 * @return reservation object. Null if the input ID is invalid.
 	 */
-	public static Reservation getReservationByReservationID(int id){
+	public static Reservation getReservationByReservationId(int id){
 		for (Reservation r: reservationCollection){
 			if(r.getResvId() == id)
 				return r;
@@ -417,7 +417,7 @@ public class ReservationManager {
 	 * Method to remove a reservation by ID.
 	 * @param id input ID to be removed.
 	 */
-	public static void removeReservationByReservationID(int id){
+	public static void removeReservationByReservationId(int id){
 		for(Reservation r: reservationCollection){
 			if(r.getResvId() == id){
 				reservationCollection.remove(r);

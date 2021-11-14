@@ -70,8 +70,8 @@ public class Table {
 		return status;
 	}
 	/**
-	 * Accessor for the ID of the table.
-	 * @return ID of the table
+	 * Accessor for the id of the table.
+	 * @return id of the table
 	 */
 	public int getId() {
 		return id;

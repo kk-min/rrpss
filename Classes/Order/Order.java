@@ -169,7 +169,7 @@ public class Order {
      * Accessor for the order's tableId
      * @return this Order's tableId
      */
-    public int getTableID(){
+    public int getTableId(){
         return this.tableId;
     }
 
