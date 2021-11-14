@@ -7,7 +7,6 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.Scanner;
 
 import java.time.format.DateTimeParseException;
@@ -235,15 +234,19 @@ public class ReservationManager {
      */
 	public static int checkReservationBooking() {
 		boolean flag = false;
-		System.out.print("Enter your reservation ID: ");
-		int Id = input.nextInt(); input.nextLine();
+		System.out.print("Enter your reservation Id: ");
+		int Id = input.nextInt();
 		for (Reservation r : reservationCollection) {
 			if (Id == r.getResvId()) {
-				System.out.println("Here are your reservation details:");
-				System.out.println("ID: " + r.getResvId());
-				System.out.println("Name: " + r.getCustomerName());
-				System.out.println("Date & Time: " + r.getResvDate() + " " + r.getResvTime());
-				System.out.println("Pax: " + r.getNumPax());
+				System.out.println("Below is the reservation linked to the reservation number " + Id);
+				System.out.printf("%-6s %-15s %-10s %-10s %-15s %-30s %-3s %-9s\n", "ID", "Date", "Session", "Time", "Tel. No",
+						"Name", "Pax", "Table No.");
+				System.out.println("");
+				System.out.printf("%-6d %-15s %-10s %-10s %-15s %-30s %-3d %-9d\n", r.getResvId(),
+						DateTimeFormatHelper.formatToStringDate(r.getResvDate()),
+						r.getResvSession() == Reservation.ReservationSession.AM ? 'A' : 'P',
+						DateTimeFormatHelper.formatToStringTime(r.getResvTime()), r.getCustomerContact(), r.getCustomerName(),
+						r.getNumPax(), r.getTableID());
 				flag = true;
 				break;
 			}
@@ -255,6 +258,8 @@ public class ReservationManager {
 		}
 		return Id;
 	}
+	//TODO
+	//Add isToday, isCurrentSession, passedThirtyMinutes, notComeYet, changeTableStatusToEmpty
 
 	/**
      * Method to delete the reservation booking information according to the input reservation id
@@ -270,19 +275,18 @@ public class ReservationManager {
 
 		if (Id != -1) {
 			System.out.print("Are you sure you want to delete this reservation (Y/N)? ");
-			int confirm = input.nextLine().charAt(0);
-			switch (Character.toUpperCase(confirm)) {
+			switch (Character.toUpperCase(input.nextLine().charAt(0))) {
 			case 'Y':
-				Iterator<Reservation> iter = reservationCollection.iterator();
-				while (iter.hasNext()) {
-					Reservation r = iter.next();
-					if (r.getResvId() == Id) {
-						iter.remove();
-						if (r.getResvDate().equals(DateTimeFormatHelper.inbuiltDate()) 
-						&& r.getResvSession().equals(DateTimeFormatHelper.inbuiltSession(DateTimeFormatHelper.inbuiltTime()))) {
-							TableManager.getTableByID(r.getTableID()).setEmpty();
+				for(int i=0;i<reservationCollection.size();i++){
+					if (Id == reservationCollection.get(i).getResvId()){
+						Reservation r = reservationCollection.get(i);
+						boolean isToday = isToday(r);
+						boolean isCurrentSession = isCurrentSession(r);
+						if (isToday && isCurrentSession) {
+							changeTableStatusToEmpty(r);
 						}
-						System.out.println("Reservation with ID " + Id + " has been successfully removed.");
+						reservationCollection.remove(i);
+						System.out.println("Reservation ID " + Id + " has been successfully removed.");
 						break;
 					}
 				}
@@ -298,23 +302,74 @@ public class ReservationManager {
 	}
 
 	/**
-     * Method to automatically delete the reservation after 30 minutes of its reservation time and the customer(s) haven't showed up
+     * Method to check whether the reservation date is today
 	 * 
-	 * This method will be called once a minute by TimerExecute in the MainApp
+	 * @param r reservation
+	 * @return isToday is true if the reservation is today, othervise false
+     */	
+	public static boolean isToday(Reservation r) {
+		return r.getResvDate().equals(DateTimeFormatHelper.inbuiltDate());
+	}
+
+	/**
+	 * Method to check whether the reservation session is the current session
+	 * 
+	 * @param r reservation
+	 * @return isCurrentSession is true if the reservation session is the current session, othervise false
+     */	
+	public static boolean isCurrentSession(Reservation r) {
+		return r.getResvSession().equals(DateTimeFormatHelper.inbuiltSession(DateTimeFormatHelper.inbuiltTime()));
+	}
+
+	/**
+     * Method to check whether the reservation has passed for 30 minutes
+	 * 
+	 * @param r reservation
+	 * @return passedThirtyMinutes is true if the reservation has passed for 30 minutes, otherwise false
+     */	
+	public static boolean passedThirtyMinutes(Reservation r) {
+		return DateTimeFormatHelper.getTimeDifferenceMinutes(DateTimeFormatHelper.inbuiltTime(), r.getResvTime()) <= -30;
+	}
+
+	/**
+     * Method to check whether the customers have arrived or not
+	 * by checking the status of the table they reserved
+	 * 
+	 * @param r reservation
+	 * @return notComeYet is true if the customers haven't arrvied, otherwise false
+     */	
+	public static boolean notComeYet(Reservation r) {
+		return !(TableManager.getTableByID(r.getTableID()).getStatus() == Table.TStatus.OCCUPIED);
+	}
+
+	/**
+     * Method to change the table status to EMPTY if the reservation is deleted at its reserved session
+	 * 
+	 * @param r reservation
+     */	
+	public static void changeTableStatusToEmpty(Reservation r) {
+		TableManager.getTableByID(r.getTableID()).setEmpty();
+	}	
+
+	/**
+     * Method to automatedly delete the reservation after 30 minutes of its reservation time and the customer(s) haven't showed up
+	 * 
+	 * This method will be called once a minute in the MainApp
      */
 	public static void checkExpiredReservations() {
-		Reservation r;
-		Iterator<Reservation> iter = reservationCollection.iterator();
-		while (iter.hasNext()) {
-			r = iter.next();
-			if (r.getResvDate().equals(DateTimeFormatHelper.inbuiltDate()))
-				if (DateTimeFormatHelper.getTimeDifferenceMinutes(DateTimeFormatHelper.inbuiltTime(), r.getResvTime()) <= -30
-						&& !(TableManager.getTableByID(r.getTableID()).getStatus() == Table.TStatus.OCCUPIED)) {
-					TableManager.getTableByID(r.getTableID()).setEmpty();
-					iter.remove();
-				}
+		for(int i=0;i<reservationCollection.size();i++){
+			Reservation r = reservationCollection.get(i);
+			boolean isToday = isToday(r);
+			boolean passedThirtyMinutes = passedThirtyMinutes(r);
+			boolean notComeYet = notComeYet(r);
+			if (isToday && passedThirtyMinutes && notComeYet) {
+				changeTableStatusToEmpty(r);
+				System.out.println("Reservation ID " + r.getResvId() + " has been successfully removed.");
+				reservationCollection.remove(i);
+			}
 		}
 	}
+
 
 	/**
      * Method to return the reserved table id by the input reservation ID

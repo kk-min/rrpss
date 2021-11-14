@@ -95,6 +95,15 @@ public class Reservation {
 		return Id;
 	}
 
+     /**
+     * Moderator for Reservation ID
+     *
+     * @param id reservation id
+     */
+     public void setResvId(int id) {
+          this.Id = id;
+     }
+
     /**
      * Accessor for Reservation Date
      *
