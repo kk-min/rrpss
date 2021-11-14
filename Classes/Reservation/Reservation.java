@@ -17,9 +17,7 @@ public class Reservation {
 	/**
      * The sessions enum of the reservation, AM (10 am to 4 pm) or PM (6 pm to midnight).
      */
-	public enum ReservationSession {
-		AM, PM
-	};
+	public enum ReservationSession {AM, PM};
 
     /**
      * ID of the reservation.

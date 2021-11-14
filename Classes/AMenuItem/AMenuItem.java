@@ -10,6 +10,9 @@ public class AMenuItem {
      * The type of the menu item, whether AlaCarte or Promotional.
      */
     public enum TYPE {ALACARTE, PROMOTIONAL};
+    /**
+     * The type (ALACARTE, PROMOTIONAL) of the object
+     */
     protected TYPE itemType;
     /**
      * The ID of the menu item.
@@ -65,21 +68,21 @@ public class AMenuItem {
     }
     /**
      * Mutator for ID of the AMenuItem object
-     * @param ID 
+     * @param ID ID of AMenuItem object
      */
     public void setId(int ID) {
         this.ID = ID;
     }
     /**
      * Accessor for Name of the AMenuItem object
-     * @return name  
+     * @return Name of the AMenuItem object
      */
     public String getName() {
         return name;
     }
     /**
      * Mutator for Name of the AMenuItem object
-     * @param name
+     * @param name Name of the AMenuItem object
      */
     public void setName(String name) {
         this.name = name;
@@ -93,21 +96,21 @@ public class AMenuItem {
     }
     /**
      * Mutator for Price of the AMenuItem object
-     * @param price 
+     * @param price Price of the AMenuItem object
      */
     public void setPrice(double price) {
         this.price = price;
     }
     /**
      * Accessor for Descriptioon of the AMenuItem object
-     * @return description  
+     * @return Price of the AMenuItem object
      */
     public String getDescription() {
         return description;
     }
     /**
      * Mutator for Description of the AMenuItem object
-     * @param description
+     * @param description Description of the AMenuItem object
      */
     public void setDescription(String description) {
         this.description = description;

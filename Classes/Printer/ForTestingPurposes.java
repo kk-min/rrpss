@@ -6,7 +6,10 @@ import java.util.Hashtable;
  */
 
 public class ForTestingPurposes {
-
+    /**
+     * Dummy function for testing purposes
+     * @param args
+     */
     public static void main(String args[]) {
 
         //Print Receipt:

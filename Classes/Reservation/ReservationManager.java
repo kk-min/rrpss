@@ -40,7 +40,10 @@ public class ReservationManager {
 	public static ArrayList<Reservation> getReservationCollection() {
 		return reservationCollection;
 	}
-
+     /**
+      * ID to be assigned to the reservation.
+      */
+	  public static int globalID = 1;
     /**
      * Creating a new reservation booking
 	 * Get inputs from user: Customer name, customer contact, date, time of reservation and no of pax
@@ -137,12 +140,7 @@ public class ReservationManager {
 
 			//If exists, assign the table to the customer and finish the reservation
 			if (tableNum > 0) {
-				int assignedTableNum;
-				if (reservationCollection.isEmpty())
-					assignedTableNum = 1;
-				else
-					assignedTableNum = reservationCollection.get(reservationCollection.size() - 1).getResvId()
-							+ 1;
+				int assignedTableNum = globalID++;
 				r = new Reservation(assignedTableNum, resvDate, resvTime, resvSession, custContact, custName, numPax, tableNum);
 				reservationCollection.add(r);
 				System.out.println("Your reservation has been successfully recorded! Your reservation ID is " + assignedTableNum + ".");
