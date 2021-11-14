@@ -37,16 +37,16 @@ public class PrintReceipt implements Printable {
         System.out.println();
 
         // Info Line:
-        String orderIDString = "| Order ID: " + order.getId() + " |";
-        String orderIDFormat = "%-" + orderIDString.length() + "s";
+        String orderIdString = "| Order ID: " + order.getId() + " |";
+        String orderIdFormat = "%-" + orderIdString.length() + "s";
         String dateTimeString = "| Date: " + order.getDateTime() + " |";
         String dateTimeFormat = "%" + dateTimeString.length() + "s";
-        int midLength = rowLength - orderIDString.length() - dateTimeString.length();
-        String tableIDString = " Table ID: " + order.getTableID() + " ";
-        String tableIDFormat = "%-" + ((midLength / 2) + (tableIDString.length() / 2)) + "s";
-        System.out.format(orderIDFormat, orderIDString);
-        System.out.print(" ".repeat((midLength / 2) - tableIDString.length() / 2));
-        System.out.format(tableIDFormat, tableIDString);
+        int midLength = rowLength - orderIdString.length() - dateTimeString.length();
+        String tableIdString = " Table ID: " + order.getTableID() + " ";
+        String tableIdFormat = "%-" + ((midLength / 2) + (tableIdString.length() / 2)) + "s";
+        System.out.format(orderIdFormat, orderIdString);
+        System.out.print(" ".repeat((midLength / 2) - tableIdString.length() / 2));
+        System.out.format(tableIdFormat, tableIdString);
         System.out.format(dateTimeFormat, dateTimeString);
         System.out.println();
 

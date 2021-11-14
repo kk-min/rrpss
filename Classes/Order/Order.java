@@ -18,13 +18,13 @@ public class Order {
     /**
      * The table from which the order was made.
      */
-    private int tableID;
+    private int tableId;
     /**
      * ID of the order
      */
-    private int orderID;
+    private int orderId;
     /**
-     * Variable that is assigned and incremented in order to ensure orderID is unique for every instance of order
+     * Variable that is assigned and incremented in order to ensure orderId is unique for every instance of order
      */
     private static int globalID = 1;
     /**
@@ -61,14 +61,14 @@ public class Order {
     private String dateTime;
 
     /**
-     * Constructor to create a new order with the given tableID and createdBy
-     * @param tableID The Table ID where the order was made
+     * Constructor to create a new order with the given tableId and createdBy
+     * @param tableId The Table ID where the order was made
      * @param createdBy The name of the Staff who crated the order
      * @param isMember Flag value that checks whether order was made by a member to apply discount
      */
-    public Order(int tableID, Staff createdBy, boolean isMember) {
-        this.orderID = globalID++;
-        this.tableID = tableID;
+    public Order(int tableId, Staff createdBy, boolean isMember) {
+        this.orderId = globalID++;
+        this.tableId = tableId;
         this.createdBy = createdBy;
         this.isMember = isMember;
         this.itemList = new HashMap<AMenuItem, Integer>();
@@ -159,18 +159,18 @@ public class Order {
 
     /**
      * Accessor for the order's ID
-     * @return this Order's orderID
+     * @return this Order's orderId
      */
     public int getId(){
-        return this.orderID;
+        return this.orderId;
     }
 
     /**
-     * Accessor for the order's tableID
-     * @return this Order's tableID
+     * Accessor for the order's tableId
+     * @return this Order's tableId
      */
     public int getTableID(){
-        return this.tableID;
+        return this.tableId;
     }
 
     /**
