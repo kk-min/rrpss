@@ -6,15 +6,16 @@ import Classes.AMenuItem.AMenuItem;
 import Classes.Order.Order;
 
 /**
- * The PrintReceipt class
- * Implements printing functionality for order receipts
- * @author  Min
+ * The PrintReceipt class Implements printing functionality for order receipts
+ * 
+ * @author Min
  * @version 1.0
- * @since   2021-11-01
+ * @since 2021-11-01
  */
 public class PrintReceipt implements Printer {
     /**
      * Prints the receipt for a particular order
+     * 
      * @param order The order for which to print the receipt
      */
     public static void print(Order order) {
@@ -66,16 +67,16 @@ public class PrintReceipt implements Printer {
             AMenuItem item = entry.getKey();
             String itemName = item.getName();
             String leftString = "| " + itemName + " x" + entry.getValue();
-            System.out.format("%-"+(rowLength-priceHeader.length())+"s",leftString);
+            System.out.format("%-" + (rowLength - priceHeader.length()) + "s", leftString);
             priceFormat = "%" + (rowLength - leftString.length()) + "s";
             String priceString = "S$" + String.format("%.2f", item.getPrice() * itemList.get(item));
-            leftFormat = "%-"+((priceHeader.length()-(priceString.length()))/2)+"s";
-            leftString = String.format(leftFormat, "|")+priceString;
-            rightFormat = "%"+(priceHeader.length()-leftString.length())+"s";
+            leftFormat = "%-" + ((priceHeader.length() - (priceString.length())) / 2) + "s";
+            leftString = String.format(leftFormat, "|") + priceString;
+            rightFormat = "%" + (priceHeader.length() - leftString.length()) + "s";
             System.out.format(leftFormat, "|");
             System.out.print(priceString);
-    
             System.out.format(rightFormat, "|");
+            System.out.println();
         }
         System.out.printf("-".repeat(rowLength));
         System.out.println();
