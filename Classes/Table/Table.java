@@ -15,7 +15,7 @@ public class Table {
 	/**
 	 * The number assigned to the table.
 	 */
-	private int ID;
+	private int id;
 	/**
 	 * The present status of the table.
 	 */
@@ -37,7 +37,7 @@ public class Table {
 	 * @param cap Capacity of the table.
 	 */
 	public Table(int tableNo, int cap) {
-		this.ID = tableNo;
+		this.id = tableNo;
 		this.status = TStatus.EMPTY;
 		if (cap > 10)
 			capacity = 10;
@@ -73,8 +73,8 @@ public class Table {
 	 * Accessor for the ID of the table.
 	 * @return ID of the table
 	 */
-	public int getID() {
-		return ID;
+	public int getId() {
+		return id;
 	}
 	/**
 	 * Accessor for the capacity of the table.

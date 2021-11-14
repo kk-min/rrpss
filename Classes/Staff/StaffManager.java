@@ -41,7 +41,7 @@ public class StaffManager {
     public static void displayStaffList() {
         System.out.println("Staff List:");
         for (Staff staff : staffList) {
-            System.out.printf("%-3s - %-30s %n", staff.getID(), staff.getName());
+            System.out.printf("%-3s - %-30s %n", staff.getId(), staff.getName());
         }
     }
     /**
@@ -65,7 +65,7 @@ public class StaffManager {
         int staffID = input.nextInt(); input.nextLine();
 
 		for (Staff staff : staffList) {
-            if (staff.getID() == staffID) {
+            if (staff.getId() == staffID) {
                 return staff;
             }
         }

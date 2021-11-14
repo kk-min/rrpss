@@ -8,7 +8,7 @@ import java.util.Scanner;
  * @version 1.0
  * @since   2021-11-12
  */
-public abstract class UserInterfacePrinter implements Printer {
+public abstract class UserInterfacePrinter implements Printable {
     /**
      * Scanner object for taking in user input
      */

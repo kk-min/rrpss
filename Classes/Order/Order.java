@@ -161,7 +161,7 @@ public class Order {
      * Accessor for the order's ID
      * @return this Order's orderID
      */
-    public int getID(){
+    public int getId(){
         return this.orderID;
     }
 

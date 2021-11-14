@@ -10,12 +10,12 @@ class Dessert extends AlaCarteItem {
     /**
      * Constructor to pass in all required parameters for Dessert
      *
-     * @param ID          Dessert's ID.
+     * @param id          Dessert's id.
      * @param name        Dessert's name.
      * @param description Dessert's description.
      * @param price       Dessert's price.
      */
-    public Dessert(int ID, String name, double price, String description) {
-        super(ID, name, price, description);
+    public Dessert(int id, String name, double price, String description) {
+        super(id, name, price, description);
     }
 }

@@ -32,14 +32,14 @@ public class OrderManager {
     /**
     * ArrayList OrderHistor to store all Order Objects
     */
-    private static ArrayList<Order> OrderHistory = new ArrayList<Order>();
+    private static ArrayList<Order> orderHistory = new ArrayList<Order>();
 
     /**
      * Accessor for the order history (list of all orders made).
      * @return the order history
      */
     public static ArrayList<Order> getOrderHistory() {
-        return OrderHistory;
+        return orderHistory;
     }
 
     /**
@@ -90,8 +90,8 @@ public class OrderManager {
         if (member == 'Y') isMember = true;
         Staff staff = StaffManager.getStaff();
         Order newOrder = new Order(tableID, staff, isMember);
-        OrderHistory.add(newOrder);
-        System.out.printf("You have created a new order with ID-%d %n", newOrder.getID());
+        orderHistory.add(newOrder);
+        System.out.printf("You have created a new order with ID-%d %n", newOrder.getId());
     }
 
     /**
@@ -100,8 +100,8 @@ public class OrderManager {
     public static void view() {
         System.out.print("Please enter the Order ID to view: ");
         int orderID = input.nextInt(); input.nextLine();
-        for (Order viewOrder : OrderHistory){
-            if (viewOrder.getID() == orderID){
+        for (Order viewOrder : orderHistory){
+            if (viewOrder.getId() == orderID){
                 PrintOrderSummary.print(viewOrder);
                 return;
             }
@@ -115,9 +115,9 @@ public class OrderManager {
     public static void add() {
         System.out.print("Please enter the Order ID to add items to: ");
         int orderID = input.nextInt(); input.nextLine();
-        for (Order userOrder : OrderHistory){
-            if (userOrder.getID() == orderID){
-                System.out.printf("Current summary for Order %-9d is shown below.%n", userOrder.getID());
+        for (Order userOrder : orderHistory){
+            if (userOrder.getId() == orderID){
+                System.out.printf("Current summary for Order %-9d is shown below.%n", userOrder.getId());
                 PrintOrderSummary.print(userOrder);
                 
                 // Add Item
@@ -138,9 +138,9 @@ public class OrderManager {
     public static void remove() {
         System.out.print("Please enter the Order ID to remove items from: ");
         int orderID = input.nextInt(); input.nextLine();
-        for (Order userOrder : OrderHistory){
-            if (userOrder.getID() == orderID){
-                System.out.printf("Shown below is the current summary for Order %-9d %n", userOrder.getID());
+        for (Order userOrder : orderHistory){
+            if (userOrder.getId() == orderID){
+                System.out.printf("Shown below is the current summary for Order %-9d %n", userOrder.getId());
                 PrintOrderSummary.print(userOrder);
 
                 // Remove Item
@@ -170,8 +170,8 @@ public class OrderManager {
     public static void checkout() {
         System.out.print("Please enter the Order to checkout: ");
         int orderID = input.nextInt(); input.nextLine();
-        for (Order userOrder : OrderHistory){
-            if (userOrder.getID() == orderID){
+        for (Order userOrder : orderHistory){
+            if (userOrder.getId() == orderID){
                 PrintReceipt.print(userOrder);
                 int tableID = userOrder.getTableID();
                 TableManager.getTableByID(tableID).setEmpty();

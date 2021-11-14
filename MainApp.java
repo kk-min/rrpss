@@ -4,7 +4,7 @@ import Classes.AMenuItem.MenuManager;
 import Classes.Printer.MenuSubMenu;
 import Classes.Printer.OrderSubMenu;
 import Classes.Printer.PrintReport;
-import Classes.Printer.Printer;
+import Classes.Printer.Printable;
 import Classes.Printer.ReservationSubMenu;
 import Classes.Staff.StaffManager;
 import Classes.Table.TableManager;
@@ -76,8 +76,8 @@ public class MainApp {
 	 * print out main menu for user to view functionalities available
 	 */
 	private static void printMainMenu() {
-		String restaurantName = Printer.restaurantName;
-		int rowLength = Printer.rowLength;
+		String restaurantName = Printable.restaurantName;
+		int rowLength = Printable.rowLength;
 
 		//Line 1:
 		System.out.printf("-".repeat(rowLength));

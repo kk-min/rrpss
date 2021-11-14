@@ -12,14 +12,14 @@ public class AlaCarteItem extends AMenuItem  {
     /**
      * Constructor to pass in all required parameters.
      *
-     * @param ID          AlaCarte item's ID.
+     * @param id          AlaCarte item's ID.
      * @param name        AlaCarte item's name.
      * @param description AlaCarte item's description.
      * @param price       AlaCarte item's price.
      */
-	public AlaCarteItem(int ID, String name, double price, String description)
+	public AlaCarteItem(int id, String name, double price, String description)
 	{
-        super(ID, name, price, description);
+        super(id, name, price, description);
         this.itemType = TYPE.ALACARTE;
     }
 }

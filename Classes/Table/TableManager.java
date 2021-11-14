@@ -52,7 +52,7 @@ public class TableManager {
 	 */
 	public static Table getTableByID(int id) {
 		for (Table t : tableCollection) {
-			if (t.getID() == id)
+			if (t.getId() == id)
 				return t;
 		}
 		return null;
@@ -78,7 +78,7 @@ public class TableManager {
 		ArrayList<Table> available = getTableAvailabilities();
 		for(Table t : available){
 			if(t.getCapacity() >= pax)
-				return t.getID();
+				return t.getId();
 		}
 		return -1;
 	}
@@ -101,7 +101,7 @@ public class TableManager {
 				status = "Reserved";
 			if (now && t.getStatus() == Table.TStatus.OCCUPIED)
 				status = "Occupied";
-			System.out.printf("%-9d %-10d %-8s\n", t.getID(), t.getCapacity(), status);
+			System.out.printf("%-9d %-10d %-8s\n", t.getId(), t.getCapacity(), status);
 		}
 	}
 	/**

@@ -18,7 +18,7 @@ public class Staff {
     /**
      * ID of the resturant's employee
      */
-    private int ID;
+    private int id;
     /**
      * name of the resturant's employee
      */
@@ -40,8 +40,8 @@ public class Staff {
      * @param gender              employee's description.
      * @param jobTitle            employee's jobTitle.
      */
-    public Staff(int ID, String name, char gender, JobTitle jobTitle) {
-        this.ID = ID;
+    public Staff(int id, String name, char gender, JobTitle jobTitle) {
+        this.id = id;
         this.name = name;
         this.gender = gender;
         this.jobTitle = jobTitle;
@@ -51,8 +51,8 @@ public class Staff {
      * 
      * @return ID
      */
-    public int getID() {
-        return ID;
+    public int getId() {
+        return id;
     }
     /**
      * Accessor to Return the employee name

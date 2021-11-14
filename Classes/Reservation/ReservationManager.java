@@ -44,7 +44,7 @@ public class ReservationManager {
      /**
       * ID to be assigned to the reservation.
       */
-	  public static int globalID = 1;
+	  public static int globalId = 1;
     /**
      * Creating a new reservation booking
 	 * Get inputs from user: Customer name, customer contact, date, time of reservation and no of pax
@@ -149,7 +149,7 @@ public class ReservationManager {
 
 			//If exists, assign the table to the customer and finish the reservation
 			if (tableNum > 0) {
-				int assignedTableNum = globalID++;
+				int assignedTableNum = globalId++;
 				r = new Reservation(assignedTableNum, resvDate, resvTime, resvSession, custContact, custName, numPax, tableNum);
 				reservationCollection.add(r);
 				System.out.println("Your reservation has been successfully recorded! Your reservation ID is " + assignedTableNum + ".");
@@ -201,20 +201,20 @@ public class ReservationManager {
 		if(DateTimeFormatHelper.inbuiltSession() == null) {
 			for (Table t : available) {
 				if (t.getCapacity() >= cusCount)
-					return t.getID();
+					return t.getId();
 			}
 		}
 		if(DateTimeFormatHelper.inbuiltDate().equals(resvDate) && 
 				DateTimeFormatHelper.inbuiltSession().equals(s)){
 					for (Table t : available) {
 						if (t.getCapacity() >= cusCount && t.getStatus() == Table.TStatus.EMPTY)
-							return t.getID();
+							return t.getId();
 					}
 				}
 		else{
 			for (Table t : available) {
 				if (t.getCapacity() >= cusCount)
-					return t.getID();
+					return t.getId();
 			}
 		}
 		return -1;

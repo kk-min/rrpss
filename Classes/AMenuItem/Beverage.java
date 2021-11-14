@@ -10,13 +10,13 @@ class Beverage extends AlaCarteItem {
     /**
      * Constructor to pass in all required parameters for Beverage
      *
-     * @param ID          Beverage's ID.
+     * @param id          Beverage's ID.
      * @param name        Beverage's name.
      * @param description Beverage's description.
      * @param price       Beverage's price.
      */
-    public Beverage(int ID, String name, double price, String description) {
-        super(ID, name, price, description);
+    public Beverage(int id, String name, double price, String description) {
+        super(id, name, price, description);
     }
 }
 

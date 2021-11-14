@@ -12,7 +12,7 @@ import Classes.Order.Order;
  * @version 1.0
  * @since 2021-11-01
  */
-public class PrintReceipt implements Printer {
+public class PrintReceipt implements Printable {
     /**
      * Prints the receipt for a particular order
      * 
@@ -37,7 +37,7 @@ public class PrintReceipt implements Printer {
         System.out.println();
 
         // Info Line:
-        String orderIDString = "| Order ID: " + order.getID() + " |";
+        String orderIDString = "| Order ID: " + order.getId() + " |";
         String orderIDFormat = "%-" + orderIDString.length() + "s";
         String dateTimeString = "| Date: " + order.getDateTime() + " |";
         String dateTimeFormat = "%" + dateTimeString.length() + "s";
