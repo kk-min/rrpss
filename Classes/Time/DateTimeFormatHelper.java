@@ -217,53 +217,59 @@ public class DateTimeFormatHelper {
      * advance time in days, hours or minutes.
      */
     public static void advanceTime() {
-    	System.out.print("Advance Time Options:\n"
-    			+ "1. In days\n"
-    			+ "2. In hours\n"
-    			+ "3. In minutes\n");
-        System.out.print("Your choice: ");
-    	int choice;
-    	int amount;
-    	do {
-    		choice = input.nextInt(); input.nextLine();
-        	switch(choice) {
-                case (1):{
-                    System.out.println("Enter number of days:");
-                    amount = input.nextInt(); input.nextLine();
-                    while (amount < 0) {
-                        System.out.println("Time must not be negative. Re-enter:");
+        try{
+            System.out.print("Advance Time Options:\n"
+                    + "1. In days\n"
+                    + "2. In hours\n"
+                    + "3. In minutes\n");
+            System.out.print("Your choice: ");
+            int choice;
+            int amount;
+            do {
+                choice = input.nextInt(); input.nextLine();
+                switch(choice) {
+                    case (1):{
+                        System.out.println("Enter number of days:");
                         amount = input.nextInt(); input.nextLine();
+                        while (amount < 0) {
+                            System.out.println("Time must not be negative. Re-enter:");
+                            amount = input.nextInt(); input.nextLine();
+                        }
+                        incrementModifier(24*60*amount);
+                        break;
                     }
-                    incrementModifier(24*60*amount);
-                    break;
-                }
-                case (2):{
-                    System.out.println("Enter number of hours:");
-                    amount = input.nextInt(); input.nextLine();
-                    while (amount < 0) {
-                        System.out.println("Time must not be negative. Re-enter:");
+                    case (2):{
+                        System.out.println("Enter number of hours:");
                         amount = input.nextInt(); input.nextLine();
+                        while (amount < 0) {
+                            System.out.println("Time must not be negative. Re-enter:");
+                            amount = input.nextInt(); input.nextLine();
+                        }
+                        incrementModifier(60*amount);
+                        break;
                     }
-                    incrementModifier(60*amount);
-                    break;
-                }
-                case (3):{
-                    System.out.println("Enter number of minutes:");
-                    amount = input.nextInt(); input.nextLine();
-                    while (amount < 0) {
-                        System.out.println("Time must not be negative. Re-enter:");
+                    case (3):{
+                        System.out.println("Enter number of minutes:");
                         amount = input.nextInt(); input.nextLine();
+                        while (amount < 0) {
+                            System.out.println("Time must not be negative. Re-enter:");
+                            amount = input.nextInt(); input.nextLine();
+                        }
+                        incrementModifier(amount);
+                        break;
                     }
-                    incrementModifier(amount);
-                    break;
+                    default:{
+                        System.out.println("Invalid choice. Re-enter: ");
+                    }
                 }
-                default:{
-                    System.out.println("Invalid choice. Re-enter: ");
-                }
-        	}
-    	} while (choice < 0 || choice > 3);
-        System.out.println("Time has been advanced, it is now " + formatToStringDate(inbuiltDate()) + " " + formatToStringTime(inbuiltTime()) + ".");
-    	synchronize();
+            } while (choice < 0 || choice > 3);
+            System.out.println("Time has been advanced, it is now " + formatToStringDate(inbuiltDate()) + " " + formatToStringTime(inbuiltTime()) + ".");
+            synchronize();
+
+        }catch (InputMismatchException e){
+            System.out.println("Invalid input. Time stays still.");
+            input.nextLine();
+        }
     }
     /**
      * The mutator for the global variable TIME_MODIFIER called by advanceTIme().
