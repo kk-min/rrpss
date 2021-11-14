@@ -210,7 +210,7 @@ public class MenuManager extends UserInterfacePrinter{
 				Mprice = input.nextDouble(); 
 				varification = true;
 			}catch(InputMismatchException e){
-			System.out.println("Error: Enter a integer/float number.");
+			System.out.println("Error: Enter an integer/float number.");
 			input.nextLine();
 			}
 	
@@ -230,7 +230,7 @@ public class MenuManager extends UserInterfacePrinter{
 						choice = input.nextInt(); 
 						varification = true;
 				}catch(InputMismatchException e){
-					System.out.println("Error: Enter a integer number.");
+					System.out.println("Error: Enter an integer number.");
 					input.nextLine();
 					}
 			
@@ -281,7 +281,7 @@ public class MenuManager extends UserInterfacePrinter{
 								choiceType = input.nextInt(); 
 								varification = true;
 						}catch(InputMismatchException e){
-							System.out.println("Error: Enter a integer number.");
+							System.out.println("Error: Enter an integer number.");
 							input.nextLine();
 							}
 					
@@ -299,7 +299,7 @@ public class MenuManager extends UserInterfacePrinter{
 										id = input.nextInt(); 
 										varification = true;
 								}catch(InputMismatchException e){
-									System.out.println("Error: Enter a integer number.");
+									System.out.println("Error: Enter an integer number.");
 									input.nextLine();
 								}
 								
@@ -317,7 +317,7 @@ public class MenuManager extends UserInterfacePrinter{
 				choiceDetail = input.nextInt(); 
 						varification = true;
 				}catch(InputMismatchException e){
-					System.out.println("Error: Enter a integer number.");
+					System.out.println("Error: Enter an integer number.");
 					input.nextLine();
 					}
 			
@@ -455,7 +455,7 @@ public class MenuManager extends UserInterfacePrinter{
 						choice = input.nextInt(); 
 						varification = true;
 				}catch(NumberFormatException e){
-					System.out.println("Error: Enter a integer number.");
+					System.out.println("Error: Enter an integer number.");
 					}
 			
 				}
@@ -471,7 +471,7 @@ public class MenuManager extends UserInterfacePrinter{
 						id = input.nextInt(); 
 						varification = true;
 				}catch(NumberFormatException e){
-					System.out.println("Error: Enter a integer number.");
+					System.out.println("Error: Enter an integer number.");
 					}
 			
 				}
@@ -561,7 +561,7 @@ public class MenuManager extends UserInterfacePrinter{
 						Mprice = input.nextDouble(); 
 						varification = true;
 					}catch(InputMismatchException e){
-					System.out.println("Error: Enter a integer/float number.");
+					System.out.println("Error: Enter an integer/float number.");
 					input.nextLine();
 					}
 			
@@ -593,7 +593,7 @@ public class MenuManager extends UserInterfacePrinter{
 												id = input.nextInt(); 
 												varification = true;
 										}catch(InputMismatchException e){
-											System.out.println("Error: Enter a integer number.");
+											System.out.println("Error: Enter an integer number.");
 											input.nextLine();
 										}
 										
@@ -613,7 +613,7 @@ public class MenuManager extends UserInterfacePrinter{
 						choice = input.nextInt(); 
 						varification = true;
 				}catch(InputMismatchException e){
-					System.out.println("Error: Enter a integer number.");
+					System.out.println("Error: Enter an integer number.");
 					input.nextLine();
 					}
 			
@@ -677,7 +677,7 @@ public class MenuManager extends UserInterfacePrinter{
 						id = input.nextInt(); 
 						varification = true;
 				}catch(InputMismatchException e){
-					System.out.println("Error: Enter a integer number.");
+					System.out.println("Error: Enter an integer number.");
 					input.nextLine();
 				}
 				

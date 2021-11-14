@@ -51,38 +51,6 @@ public class OrderManager {
             System.out.print("Enter customer's reservation ID (enter -1 if this is a walk-in): ");
             int resvID = input.nextInt(); input.nextLine();
             int tableId, numPax;
-            // assign customer to a table
-            if (resvID == -1) {
-                // walk in
-                numPax = 0;
-                while (numPax <= 0 || numPax > 10) {
-                    System.out.print("Enter number of pax: ");
-                    numPax = input.nextInt(); input.nextLine();
-                    if (numPax <= 0) {
-                        System.out.println("You have cannot have less than 1 person.");
-                    } else if (numPax > 10) {
-                        System.out.println("Sorry! The restaurant's maximum seating is 10 people.");
-                    }
-                }
-                tableId = TableManager.findTableForWalkIn(numPax);
-                if (tableId == -1) {
-                    System.out.println(
-                        "There are no available tables that can cater the number of pax for now. We're sorry!");
-                    return;
-                }
-            }
-            else { // reservation
-                Reservation r = ReservationManager.getReservationByReservationId(resvID);
-                if(r == null){
-                    System.out.println("Invalid reservation ID!"); return;
-                }
-                else if(!r.getResvDate().equals(DateTimeFormatHelper.inbuiltDate())||
-                        !r.getResvSession().equals(DateTimeFormatHelper.inbuiltSession())){
-                            System.out.println("Not reserved time yet! Consider walk-in instead."); return;
-                        }
-                else tableId = r.getTableId();
-                ReservationManager.removeReservationByReservationId(resvID);
-            }
 
         // assign customer to a table
         if (resvID == -1) {
@@ -96,6 +64,7 @@ public class OrderManager {
 				} else if (numPax > 10) {
 					System.out.println("Sorry! The restaurant's maximum seating is 10 people.");
 				}
+                else break;
 			}
 			tableId = TableManager.findTableForWalkIn(numPax);
             if (tableId == -1) {
