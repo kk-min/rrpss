@@ -48,7 +48,7 @@ public class OrderManager {
     public static void create() {
         System.out.print("Enter customer's reservation ID (enter -1 if this is a walk-in): ");
         int resvID = input.nextInt(); input.nextLine();
-        int tableID, numPax;
+        int tableId, numPax;
 
         // assign customer to a table
         if (resvID == -1) {
@@ -63,8 +63,8 @@ public class OrderManager {
 					System.out.println("Sorry! The restaurant's maximum seating is 10 people.");
 				}
 			}
-			tableID = TableManager.findTableForWalkIn(numPax);
-            if (tableID == -1) {
+			tableId = TableManager.findTableForWalkIn(numPax);
+            if (tableId == -1) {
 				System.out.println(
 					"There are no available tables that can cater the number of pax for now. We're sorry!");
                 return;
@@ -79,19 +79,19 @@ public class OrderManager {
                     !r.getResvSession().equals(DateTimeFormatHelper.inbuiltSession())){
                         System.out.println("Not reserved time yet! Consider walk-in instead."); return;
                     }
-            else tableID = r.getTableID();
+            else tableId = r.getTableID();
             ReservationManager.removeReservationByReservationID(resvID);
         }
 
-        TableManager.getTableByID(tableID).setOccupied();
+        TableManager.getTableByID(tableId).setOccupied();
         System.out.print("Is the customer a member? (Y/N): ");
         char member = input.next().charAt(0);
         boolean isMember = false;
         if (member == 'Y') isMember = true;
         Staff staff = StaffManager.getStaff();
-        Order newOrder = new Order(tableID, staff, isMember);
+        Order newOrder = new Order(tableId, staff, isMember);
         orderHistory.add(newOrder);
-        System.out.printf("You have created a new order with ID-%d %n", newOrder.getId());
+        System.out.printf("You have created a new order with ID %d and table ID %d\n", newOrder.getId(), tableId);
     }
 
     /**
@@ -99,9 +99,9 @@ public class OrderManager {
      */
     public static void view() {
         System.out.print("Please enter the Order ID to view: ");
-        int orderID = input.nextInt(); input.nextLine();
+        int orderId = input.nextInt(); input.nextLine();
         for (Order viewOrder : orderHistory){
-            if (viewOrder.getId() == orderID){
+            if (viewOrder.getId() == orderId){
                 PrintOrderSummary.print(viewOrder);
                 return;
             }
@@ -114,9 +114,9 @@ public class OrderManager {
      */
     public static void add() {
         System.out.print("Please enter the Order ID to add items to: ");
-        int orderID = input.nextInt(); input.nextLine();
+        int orderId = input.nextInt(); input.nextLine();
         for (Order userOrder : orderHistory){
-            if (userOrder.getId() == orderID){
+            if (userOrder.getId() == orderId){
                 System.out.printf("Current summary for Order %-9d is shown below.%n", userOrder.getId());
                 PrintOrderSummary.print(userOrder);
                 
@@ -137,9 +137,9 @@ public class OrderManager {
      */
     public static void remove() {
         System.out.print("Please enter the Order ID to remove items from: ");
-        int orderID = input.nextInt(); input.nextLine();
+        int orderId = input.nextInt(); input.nextLine();
         for (Order userOrder : orderHistory){
-            if (userOrder.getId() == orderID){
+            if (userOrder.getId() == orderId){
                 System.out.printf("Shown below is the current summary for Order %-9d %n", userOrder.getId());
                 PrintOrderSummary.print(userOrder);
 
@@ -169,12 +169,12 @@ public class OrderManager {
      */
     public static void checkout() {
         System.out.print("Please enter the Order to checkout: ");
-        int orderID = input.nextInt(); input.nextLine();
+        int orderId = input.nextInt(); input.nextLine();
         for (Order userOrder : orderHistory){
-            if (userOrder.getId() == orderID){
+            if (userOrder.getId() == orderId){
                 PrintReceipt.print(userOrder);
-                int tableID = userOrder.getTableID();
-                TableManager.getTableByID(tableID).setEmpty();
+                int tableId = userOrder.getTableID();
+                TableManager.getTableByID(tableId).setEmpty();
                 System.out.println("Order successfully checked out.");
                 return;
             }
