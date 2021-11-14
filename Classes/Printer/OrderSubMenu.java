@@ -1,6 +1,7 @@
 package Classes.Printer;
 
 import Classes.Order.OrderManager;
+import java.util.InputMismatchException;
 
 /**
  * The OrderSubMenu Class
@@ -30,7 +31,18 @@ public class OrderSubMenu extends UserInterfacePrinter {
             System.out.println("0) Exit Application");
             System.out.printf("-".repeat(rowLength));
             System.out.println();
-            int choice = input.nextInt(); input.nextLine();
+            int choice = 0;
+            boolean validChoice = false;
+            while(!validChoice){
+                try{
+                    choice = input.nextInt(); input.nextLine();
+                }
+                catch(InputMismatchException e){
+                    System.out.println("Please enter a valid entry.");
+                    input.nextLine();
+                }
+                validChoice = true;
+            }
         
             switch (choice) {
                 case 1:
