@@ -53,6 +53,13 @@ public class PrintReceipt implements Printer {
         System.out.printf("-".repeat(rowLength)); // print a ----- row
         System.out.println();
 
+        String leftString = "| Order created by: " + order.getCreator().getName();
+        System.out.print(leftString);
+        System.out.format("%"+(rowLength-leftString.length())+"s","|");
+        System.out.println();
+        System.out.printf("-".repeat(rowLength)); // print a ----- row
+        System.out.println();
+
         // Line 4:
         System.out.print("| Item");
         String priceFormat = "%" + (rowLength - 6) + "s";
@@ -66,7 +73,7 @@ public class PrintReceipt implements Printer {
         for (var entry : itemList.entrySet()) {
             AMenuItem item = entry.getKey();
             String itemName = item.getName();
-            String leftString = "| " + itemName + " x" + entry.getValue();
+            leftString = "| " + itemName + " x" + entry.getValue();
             System.out.format("%-" + (rowLength - priceHeader.length()) + "s", leftString);
             priceFormat = "%" + (rowLength - leftString.length()) + "s";
             String priceString = "S$" + String.format("%.2f", item.getPrice() * itemList.get(item));

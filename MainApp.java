@@ -103,7 +103,7 @@ public class MainApp {
 		System.out.println("3) Reservation");
 		System.out.println("4) Check Current Table Availabilities");
 		System.out.println("5) Print Sale Revenue Report");
-		System.out.println("6) Advance Time (TESTING)");
+		System.out.println("6) Advance Time");
 		System.out.println("0) Exit Application");
 
 		//Line 11:
