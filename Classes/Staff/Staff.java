@@ -18,7 +18,7 @@ public class Staff {
     /**
      * ID of the resturant's employee
      */
-    private int employeeID;
+    private int ID;
     /**
      * name of the resturant's employee
      */
@@ -35,13 +35,13 @@ public class Staff {
     /**
      * Constructor to pass in all required parameters for menu item.
      *
-     * @param employeeID          employee's ID.
+     * @param ID          employee's ID.
      * @param name                employee's name.
      * @param gender              employee's description.
      * @param jobTitle            employee's jobTitle.
      */
-    public Staff(int employeeID, String name, char gender, JobTitle jobTitle) {
-        this.employeeID = employeeID;
+    public Staff(int ID, String name, char gender, JobTitle jobTitle) {
+        this.ID = ID;
         this.name = name;
         this.gender = gender;
         this.jobTitle = jobTitle;
@@ -49,10 +49,10 @@ public class Staff {
     /**
      * Accessor to Return the employee ID
      * 
-     * @return employeeID
+     * @return ID
      */
-    public int getEmployeeID() {
-        return employeeID;
+    public int getID() {
+        return ID;
     }
     /**
      * Accessor to Return the employee name
