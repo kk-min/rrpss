@@ -67,7 +67,7 @@ public class MainApp {
 					break;
 			}
 		}
-		System.out.println("System exiting... thank you for visiting our restaurant!");
+		System.out.println("System exiting... thank you for using our system!");
 		System.exit(0);
 	}
 

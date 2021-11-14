@@ -362,7 +362,7 @@ public class MenuManager extends UserInterfacePrinter{
 		displayMenu();
 		int id, check = 0;
 		System.out.println("What type of item do you want to delete (Main Dish 1)/(Beverage 2)/(Dessert 3)?");
-		int choice = input.nextInt();
+		int choice = input.nextInt(); input.nextLine();
 		System.out.println("What is the ID of the item to be deleted?");
 		id = input.nextInt(); input.nextLine();
 
@@ -441,7 +441,6 @@ public class MenuManager extends UserInterfacePrinter{
 		Mname += input.nextLine();
 		System.out.println("What is the price of this item?");
 		Mprice = input.nextDouble(); input.nextLine();
-		input.nextLine();
 		System.out.println("What is the description of the item?");
 		Mdescription += input.nextLine();
 		Promotional newitem = new Promotional((promotionals.size() + 1), Mname, Mprice, Mdescription);

@@ -204,8 +204,7 @@ public class ReservationManager {
      */
 	public static void printAllReservations() {
 		System.out.println("Here are all the current reservations:");
-		System.out.printf("%-6s %-15s %-10s %-10s %-15s %-30s %-3s %-9s\n", "ID", "Date", "Session", "Time", "Tel. No",
-			"Name", "Pax", "Table No.");
+		System.out.printf("%-6s %-15s %-10s %-15s %-3s %-9s\n", "ID", "Date", "Time", "Name", "Pax", "Table No.");
 		System.out.println("");
 		boolean passed = false;
 		for (Reservation r : reservationCollection) {
@@ -217,10 +216,9 @@ public class ReservationManager {
 				}
 			}
 			if (!passed) {
-				System.out.printf("%-6d %-15s %-10s %-10s %-15s %-30s %-3d %-9d\n", r.getResvId(),
+				System.out.printf("%-6d %-15s %-10s %-15s %-3d %-9d\n", r.getResvId(),
 						DateTimeFormatHelper.formatToStringDate(r.getResvDate()),
-						r.getResvSession() == Reservation.ReservationSession.AM ? 'A' : 'P',
-						DateTimeFormatHelper.formatToStringTime(r.getResvTime()), r.getCustomerContact(), r.getCustomerName(),
+						DateTimeFormatHelper.formatToStringTime(r.getResvTime()), r.getCustomerName(),
 						r.getNumPax(), r.getTableID());
 			}
 		}
@@ -234,8 +232,8 @@ public class ReservationManager {
      */
 	public static int checkReservationBooking() {
 		boolean flag = false;
-		System.out.print("Enter your reservation Id: ");
-		int Id = input.nextInt();
+		System.out.print("Enter your reservation ID: ");
+		int Id = input.nextInt(); input.nextLine();
 		for (Reservation r : reservationCollection) {
 			if (Id == r.getResvId()) {
 				System.out.println("Name: " + r.getCustomerName());
