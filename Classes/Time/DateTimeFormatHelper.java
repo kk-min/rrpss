@@ -151,6 +151,31 @@ public class DateTimeFormatHelper {
             return false;
         }
     }
+
+    public static boolean validateTime(String time) throws InputMismatchException, NumberFormatException, ArrayIndexOutOfBoundsException {
+        try {
+            String[] timeSplit = time.split(":");
+            int h = Integer.parseInt(timeSplit[0]);
+            int m = Integer.parseInt(timeSplit[1]);
+
+            if ((h >= 24) || (h < 0) || (m < 0) || (m >= 60)) {
+                System.out.println("Invalid time!");
+                return false;
+            } else {
+                return true;
+            }
+        } catch (InputMismatchException e) {
+            System.out.println("ERROR! Time has an invalid input!");
+            return false;
+        } catch (NumberFormatException e) {
+            System.out.println("Error! Invalid input!");
+            return false;
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("ERROR! Time has wrong format!");
+            return false;
+        }
+    }
+
     /**
      * Return the program date and time with the modifier.
      * Note: the modified program time is ahead of real system time.

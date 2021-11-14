@@ -54,6 +54,7 @@ public class ReservationManager {
 		//Variables for creating a Reservation
 		Reservation r = null;
 		String userDate = "";
+		String userTime = "";
 		LocalDate resvDate = LocalDate.now();
 		LocalTime resvTime = LocalTime.now();
 		char resvSession = ' ';
@@ -104,25 +105,31 @@ public class ReservationManager {
 			while (!correctTime) {
 				System.out.println("The opening hours are 10:00 to 16:00 (AM session), and 18:00 to 00:00 (PM session).");
 				System.out.println("Enter reservation time in the 24-hour format of <hh:mm>: ");
-				resvTime = DateTimeFormatHelper.formatToLocalTime(input.nextLine());
-
+				userTime = input.nextLine();
+				correctTime = DateTimeFormatHelper.validateTime(userTime);
 				//Find the reservation session according to the input reservation time
-				if (!isToday || !(DateTimeFormatHelper.getTimeDifferenceMinutes(DateTimeFormatHelper.inbuiltTime(), resvTime) <= 0)) {
-					if (DateTimeFormatHelper.checkResvTimeSession(resvTime, LocalTime.of(10, 0), LocalTime.of(16, 0))) {
-					  resvSession = 'A';
-					  correctTime = true;
-					} else if (DateTimeFormatHelper.checkResvTimeSession(resvTime, LocalTime.of(18, 0),
-						LocalTime.of(23, 59))) {
-					  resvSession = 'P';
-					  correctTime = true;
-					} else {
-					  System.out.println("The restaurant is not in operation at the time which you entered.");
-					  correctTime = false;
-					}
-				  } else {
-					System.out.println("The time entered has already passed! Current time is " + DateTimeFormatHelper.formatToStringTime(DateTimeFormatHelper.inbuiltTime()) + ".");
-					correctTime = false;
-				  }
+
+				if (correctTime) {
+					if (!isToday || !(DateTimeFormatHelper.getTimeDifferenceMinutes(DateTimeFormatHelper.inbuiltTime(), resvTime) <= 0)) {
+						if (DateTimeFormatHelper.checkResvTimeSession(resvTime, LocalTime.of(10, 0), LocalTime.of(16, 0))) {
+						  resvSession = 'A';
+						  correctTime = true;
+						} else if (DateTimeFormatHelper.checkResvTimeSession(resvTime, LocalTime.of(18, 0),
+							LocalTime.of(23, 59))) {
+						  resvSession = 'P';
+						  correctTime = true;
+						} else {
+						  System.out.println("The restaurant is not in operation at the time which you entered.");
+						  correctTime = false;
+						}
+					  } else {
+						System.out.println("The time entered has already passed! Current time is " + DateTimeFormatHelper.formatToStringTime(DateTimeFormatHelper.inbuiltTime()) + ".");
+						correctTime = false;
+					  }
+				} else {
+					System.out.println("ERROR! Received invalid time input.");
+				}
+
 			}
 
 			//Enter the number of customers
