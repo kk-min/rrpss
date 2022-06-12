@@ -30,30 +30,122 @@ public class MainApp {
 	 * @param args command line arguments
 	 */
 	public static void main(String args[]) {
+			Scanner sc = new Scanner(System.in);
 
-		// initialisations
-		MenuManager.initialiseMenu();
-		TableManager.initialiseTableCollection();
-		StaffManager.initialiseStaffList();
-		TimerExecutor.runScheduler();
+			String restaurantName = "HELLOWORLD";
+			int rowLength = 63;
+			
 
-		// program
-		int choice = 1, subMenuResult = -1;
-		while (choice != 0 && subMenuResult != 1) {
-			printMainMenu();
+			int choice = 0, subchoice = 0;
+			while (choice <= 5) {
+				//Line 1:
+				System.out.printf("-".repeat(rowLength));
+				System.out.println();
 
-			boolean validEntry = false;
-			while(!validEntry){
-				try{
-					do {
-						System.out.println("Enter your choice (0-6): ");
-						choice = input.nextInt(); input.nextLine();
-					} while (choice > 6 || choice < 0);
-					validEntry = true;
-				}
-				catch (InputMismatchException e){
-					System.out.println("Please enter an integer.");
-					input.nextLine();
+				//Line 2:
+				String leftFormat = "%-"+((rowLength/2)-(restaurantName.length()/2))+"s";
+				String rightFormat = "%"+((rowLength/2)-(restaurantName.length()/2))+"s";
+				System.out.format(leftFormat, " ");
+				System.out.print(restaurantName);
+				System.out.format(rightFormat, " ");
+				System.out.println();
+
+				//Line 3:
+				System.out.printf("-".repeat(rowLength));
+				System.out.println();
+
+				//Line 4+:
+				System.out.println("Select an option:");
+				System.out.println();
+				System.out.println("1. Menu");
+				System.out.println("2. Order");
+				System.out.println("3. Reservation");
+				System.out.println("4. Print Order Invoice");
+				System.out.println("5. Print Sale Revenue Report");
+				System.out.println("6. Exit");
+
+				//Line 11:
+				System.out.printf("-".repeat(rowLength));
+				System.out.println();
+
+				System.out.print("Enter your choice: ");
+				do {
+					choice = sc.nextInt();
+				} while (choice > 5 || choice <= 0);
+	
+				switch(choice) {
+					case 1: //Menu submenu
+						int exit = 1;
+        					Menumanager.initiateMenu();
+        					do{
+       						 //generateMenuScreen:exit code=-1
+        					exit = Menumanager.generateMenuScreen();} while(exit != -1);
+						break;
+					case 2:	//Order submenu
+						while (subchoice < 5) {
+							System.out.println("Select an option:");
+							System.out.println();
+							System.out.println("1. Create Order");
+							System.out.println("2. View Order");
+							System.out.println("3. Add item to Order");
+							System.out.println("4. Remove item from Order");
+							System.out.println("5. Go Back");
+						
+							System.out.printf("-".repeat(rowLength));
+							System.out.println();
+
+							System.out.print("Enter your choice: ");
+							do {
+								subchoice = sc.nextInt();
+							} while (subchoice > 5 || subchoice <= 0);
+
+							switch (subchoice) {
+								case 1:
+									OrderInterface.create(staffCollection);
+									break;
+								case 2:
+									OrderInterface.view(OngoingOrders);
+									break;
+								case 3:
+									OrderInterface.add(OngoingOrders);
+									break;
+								case 4:
+									OrderInterface.remove(OngoingOrders, OrderHistory);
+							}
+						}
+						break;
+					case 3:	// Reservation submenu
+						while (subchoice < 5) {
+							System.out.println("Select an option:");
+							System.out.println();
+							System.out.println("1. Create Reservation booking");
+							System.out.println("2. Check Reservation booking");
+							System.out.println("3. Remove Reservation booking");
+							System.out.println("4. Check Table availability");
+							System.out.println("5. Go back");
+
+							System.out.printf("-".repeat(rowLength));
+							System.out.println();
+
+							System.out.print("Enter your choice: ");
+							do {
+								subchoice = sc.nextInt();
+							} while (subchoice > 5 || subchoice <= 0);
+
+							switch (subchoice) {
+								case 1:
+								case 2:
+								case 3:
+								case 4:
+							}
+						}
+						break;
+					case 4:	// Print Order Invoice
+						// OrderInterface.checkout(OrderHistory);
+						break;
+					case 5: // Print Sale Revenue Report
+						// TODO
+						break;
 				}
 			}
 

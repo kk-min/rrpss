@@ -12,12 +12,14 @@ Select an option:
 <Menu submenu>
 Select an option:
 
-1. Create Ala Carte item
-2. Update Ala Carte item
-3. Remove Ala Carte item
-4. Create Promotional item
-5. Update Promotional item
-6. Remove Promotional item
+1. Print existing menu
+2. Create Ala Carte item
+3. Update Ala Carte item
+4. Remove Ala Carte item
+5. Create Promotional item
+6. Update Promotional item
+7. Remove Promotional item
+8. Back to Main Menu
 ---------------------------------------------------------------
 <Order submenu>
 Select an option:
