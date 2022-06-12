@@ -10,7 +10,7 @@ import Classes.Order.Order;
  * @version 2.0
  * @since   2021-11-12
  */
-public class PrintOrderSummary implements Printer {
+public class PrintOrderSummary implements Printable {
     /**
      * Prints the order summary for a particular order
      * @param viewOrder The order which we are trying to view the current summary for
@@ -35,13 +35,13 @@ public class PrintOrderSummary implements Printer {
         System.out.println();
 
         //Line 4:
-        String OrderNo = "Order no. "+viewOrder.getID();
+        String OrderNo = "Order no. "+viewOrder.getId();
         System.out.println(OrderNo);
 
         //Line 5:
         String tableFormat = "%"+(OrderNo.length()-8)+"s";
         System.out.print("Table ID");
-        System.out.format(tableFormat, viewOrder.getTableID());
+        System.out.format(tableFormat, viewOrder.getTableId());
         System.out.println();
 
         //Line 6:

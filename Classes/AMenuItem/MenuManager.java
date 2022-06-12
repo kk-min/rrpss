@@ -1,6 +1,7 @@
 package Classes.AMenuItem;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 
 import Classes.Printer.UserInterfacePrinter;
 /**
@@ -28,10 +29,15 @@ public class MenuManager extends UserInterfacePrinter{
      * The ArrayList to store Dessert Promotional objects
      */
     private static ArrayList<Promotional> promotionals;
+	/**
+     * The boolean for exception handeling
+     */
+	private static boolean varification = false;
 
 	/**
 	 * Initialises default menu items in the menu
      */
+	
     public static void initialiseMenu() {
 
 		maindishes = new ArrayList<MainDish>();
@@ -187,6 +193,7 @@ public class MenuManager extends UserInterfacePrinter{
 	 */
     public static void addAlaCarteItem()
 	{
+
 		String Mname, Mdescription;
 		Mname = "";
 		Mdescription = "";
@@ -194,12 +201,42 @@ public class MenuManager extends UserInterfacePrinter{
 
 		System.out.println("What is the name of the new item?");
 		Mname += input.nextLine();
-		System.out.println("What is the price of this item?");
-		Mprice = input.nextDouble(); input.nextLine();
+		// Exception handeling for Mprice
+		Mprice = 0.00;
+		varification = false;
+		while(!varification){
+			try{	
+				System.out.println("What is the price of this item?");
+				Mprice = input.nextDouble(); input.nextLine();
+				varification = true;
+			}catch(InputMismatchException e){
+			System.out.println("Error: Enter an integer/float number.");
+			input.nextLine();
+			}
+	
+		}
+
+
 		System.out.println("What is the description of the item?");
 		Mdescription += input.nextLine();
-		System.out.println("What type of item is the new menu item (Main Dish 1)/(Beverage 2)/(Dessert 3)?");
-		int choice = input.nextInt(); input.nextLine();
+		
+		
+		// Exception handeling for choice
+		int choice = 0;
+		varification = false;
+		while(!varification){
+			try{	
+				System.out.println("What type of item is the new menu item (Main Dish 1)/(Beverage 2)/(Dessert 3)?");
+						choice = input.nextInt(); input.nextLine();
+						varification = true;
+				}catch(InputMismatchException e){
+					System.out.println("Error: Enter an integer number.");
+					input.nextLine();
+					}
+			
+				}
+
+
 		switch (choice)
 		{   
 			case 1:
@@ -234,12 +271,58 @@ public class MenuManager extends UserInterfacePrinter{
 		System.out.println("Here is the current menu:\n---");
 		displayMenu();
 		int id, choiceType, choiceDetail, check = 0;
-		System.out.println("What type of item is the menu item to be updated (Main Dish 1)/(Beverage 2)/(Dessert 3)?");
-		choiceType = input.nextInt(); input.nextLine();
-		System.out.println("What is the ID of the item to be updated?");
-		id = input.nextInt(); input.nextLine();
-		System.out.println("What detail would you like to update (Name 1)/(Description 2)/(Price 3)?");
-		choiceDetail = input.nextInt(); input.nextLine();
+		
+				choiceType = 0;
+				// Exception handeling for choiceType
+				varification = false;
+				while(!varification){
+					try{	
+						System.out.println("What type of item is the menu item to be updated (Main Dish 1)/(Beverage 2)/(Dessert 3)?");
+								choiceType = input.nextInt(); 
+								varification = true;
+						}catch(InputMismatchException e){
+							System.out.println("Error: Enter an integer number.");
+							input.nextLine();
+							}
+					
+						}
+
+		
+		
+
+						// Exception handeling for id
+						id = 0;
+						varification = false;
+						while(!varification){
+							try{	
+								System.out.println("What is the ID of the item to be updated?");
+										id = input.nextInt(); 
+										varification = true;
+								}catch(InputMismatchException e){
+									System.out.println("Error: Enter an integer number.");
+									input.nextLine();
+								}
+								
+						
+						}
+							
+
+		
+		// Exception handeling for choiceDetail
+		choiceDetail = 0;
+		varification = false;
+		while(!varification){
+			try{	
+				System.out.println("What detail would you like to update (Name 1)/(Description 2)/(Price 3)?");
+				choiceDetail = input.nextInt(); 
+						varification = true;
+				}catch(InputMismatchException e){
+					System.out.println("Error: Enter an integer number.");
+					input.nextLine();
+					}
+			
+				}
+	
 
 		switch (choiceType)
 		{
@@ -361,10 +444,38 @@ public class MenuManager extends UserInterfacePrinter{
 		System.out.println("Here is the current menu:\n---");
 		displayMenu();
 		int id, check = 0;
-		System.out.println("What type of item do you want to delete (Main Dish 1)/(Beverage 2)/(Dessert 3)?");
-		int choice = input.nextInt(); input.nextLine();
-		System.out.println("What is the ID of the item to be deleted?");
-		id = input.nextInt(); input.nextLine();
+		
+		
+		// Exception handeling for choice
+		int choice = 0;
+		varification = false;
+		while(!varification){
+			try{	
+				System.out.println("What type of item do you want to delete (Main Dish 1)/(Beverage 2)/(Dessert 3)?");
+						choice = input.nextInt(); 
+						varification = true;
+				}catch(NumberFormatException e){
+					System.out.println("Error: Enter an integer number.");
+					}
+			
+				}
+		input.nextLine();
+		
+
+		// Exception handeling for id
+		id = 0;
+		varification = false;
+		while(!varification){
+			try{	
+				System.out.println("What is the ID of the item to be deleted?");
+						id = input.nextInt(); 
+						varification = true;
+				}catch(NumberFormatException e){
+					System.out.println("Error: Enter an integer number.");
+					}
+			
+				}
+		input.nextLine();
 
 		switch (choice)
 		{
@@ -439,8 +550,23 @@ public class MenuManager extends UserInterfacePrinter{
 
 		System.out.println("What is the name of the new Promotional Item?");
 		Mname += input.nextLine();
-		System.out.println("What is the price of this item?");
-		Mprice = input.nextDouble(); input.nextLine();
+
+
+				// Exception handeling for Mprice
+				Mprice = 0.00;
+				varification = false;
+				while(!varification){
+					try{	
+						System.out.println("What is the price of this item?");
+						Mprice = input.nextDouble();  input.nextLine();
+						varification = true;
+					}catch(InputMismatchException e){
+					System.out.println("Error: Enter an integer/float number.");
+					input.nextLine();
+					}
+			
+				}
+
 		System.out.println("What is the description of the item?");
 		Mdescription += input.nextLine();
 		Promotional newitem = new Promotional((promotionals.size() + 1), Mname, Mprice, Mdescription);
@@ -455,10 +581,45 @@ public class MenuManager extends UserInterfacePrinter{
 	{
 		System.out.println("Here is the current menu:\n---");
 		displayMenu();
-		System.out.println("What is the ID of the Promotional Item to be updated?");
-		int id = input.nextInt(); input.nextLine();
-		System.out.println("What detail would you like to update (Name 1)/(Description 2)/(Price 3)?");
-		int choice = input.nextInt(); input.nextLine();
+		
+
+
+								// Exception handeling for id
+								int id = 0;
+								varification = false;
+								while(!varification){
+									try{	
+										System.out.println("What is the ID of the Promotional Item to be updated?");
+												id = input.nextInt(); 
+												varification = true;
+										}catch(InputMismatchException e){
+											System.out.println("Error: Enter an integer number.");
+											input.nextLine();
+										}
+										
+								
+								}
+
+
+
+		
+		
+		// Exception handeling for choice
+		int choice = 0;
+		varification = false;
+		while(!varification){
+			try{	
+				System.out.println("What detail would you like to update (Name 1)/(Description 2)/(Price 3)?");
+						choice = input.nextInt(); 
+						varification = true;
+				}catch(InputMismatchException e){
+					System.out.println("Error: Enter an integer number.");
+					input.nextLine();
+					}
+			
+				}
+
+
 		int check = 0;
 		for(int i=0;i<promotionals.size();i++)
 		{
@@ -504,8 +665,27 @@ public class MenuManager extends UserInterfacePrinter{
 	{
 		System.out.println("Here is the current menu:\n---");
 		displayMenu();
-		System.out.println("What is the ID of the Promotional Item to be deleted?");
-		int id = input.nextInt(); input.nextLine();
+		
+
+
+		// Exception handeling for id
+		int id = 0;
+		varification = false;
+		while(!varification){
+			try{	
+				System.out.println("What is the ID of the Promotional Item to be deleted?");
+						id = input.nextInt(); 
+						varification = true;
+				}catch(InputMismatchException e){
+					System.out.println("Error: Enter an integer number.");
+					input.nextLine();
+				}
+				
+		
+		}
+
+
+
 		int check = 0;
 		for(int i=0;i<promotionals.size();i++)
 		{

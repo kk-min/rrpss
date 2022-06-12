@@ -12,7 +12,7 @@ import Classes.Order.Order;
  * @version 1.0
  * @since 2021-11-01
  */
-public class PrintReceipt implements Printer {
+public class PrintReceipt implements Printable {
     /**
      * Prints the receipt for a particular order
      * 
@@ -37,19 +37,26 @@ public class PrintReceipt implements Printer {
         System.out.println();
 
         // Info Line:
-        String orderIDString = "| Order ID: " + order.getID() + " |";
-        String orderIDFormat = "%-" + orderIDString.length() + "s";
+        String orderIdString = "| Order ID: " + order.getId() + " |";
+        String orderIdFormat = "%-" + orderIdString.length() + "s";
         String dateTimeString = "| Date: " + order.getDateTime() + " |";
         String dateTimeFormat = "%" + dateTimeString.length() + "s";
-        int midLength = rowLength - orderIDString.length() - dateTimeString.length();
-        String tableIDString = " Table ID: " + order.getTableID() + " ";
-        String tableIDFormat = "%-" + ((midLength / 2) + (tableIDString.length() / 2)) + "s";
-        System.out.format(orderIDFormat, orderIDString);
-        System.out.print(" ".repeat((midLength / 2) - tableIDString.length() / 2));
-        System.out.format(tableIDFormat, tableIDString);
+        int midLength = rowLength - orderIdString.length() - dateTimeString.length();
+        String tableIdString = " Table ID: " + order.getTableId() + " ";
+        String tableIdFormat = "%-" + ((midLength / 2) + (tableIdString.length() / 2)) + "s";
+        System.out.format(orderIdFormat, orderIdString);
+        System.out.print(" ".repeat((midLength / 2) - tableIdString.length() / 2));
+        System.out.format(tableIdFormat, tableIdString);
         System.out.format(dateTimeFormat, dateTimeString);
         System.out.println();
 
+        System.out.printf("-".repeat(rowLength)); // print a ----- row
+        System.out.println();
+
+        String leftString = "| Order created by: " + order.getCreator().getName();
+        System.out.print(leftString);
+        System.out.format("%"+(rowLength-leftString.length())+"s","|");
+        System.out.println();
         System.out.printf("-".repeat(rowLength)); // print a ----- row
         System.out.println();
 
@@ -66,7 +73,7 @@ public class PrintReceipt implements Printer {
         for (var entry : itemList.entrySet()) {
             AMenuItem item = entry.getKey();
             String itemName = item.getName();
-            String leftString = "| " + itemName + " x" + entry.getValue();
+            leftString = "| " + itemName + " x" + entry.getValue();
             System.out.format("%-" + (rowLength - priceHeader.length()) + "s", leftString);
             priceFormat = "%" + (rowLength - leftString.length()) + "s";
             String priceString = "S$" + String.format("%.2f", item.getPrice() * itemList.get(item));

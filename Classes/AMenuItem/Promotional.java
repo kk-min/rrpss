@@ -12,13 +12,13 @@ public class Promotional extends AMenuItem {
      *
      * Constructor to pass in all required parameters.
      * 
-     * @param ID          Promotional item's ID.
+     * @param id          Promotional item's id.
      * @param name        Promotional item's name.
      * @param description Promotional item's description.
      * @param price       Promotional item's price.
      */
-    public Promotional(int ID, String name, double price, String description) {
-        super(ID, name, price, description);
+    public Promotional(int id, String name, double price, String description) {
+        super(id, name, price, description);
         this.itemType = TYPE.PROMOTIONAL;
     }
 }

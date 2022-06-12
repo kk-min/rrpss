@@ -1,4 +1,5 @@
 package Classes.AMenuItem;
+
 /**
  * The MainDish Class
  * extends from AlaCarteItem
@@ -10,12 +11,12 @@ class MainDish extends AlaCarteItem {
     /**
      * Constructor to pass in all required parameters for MainDish
      *
-     * @param ID          MainDish's ID.
+     * @param id          MainDish's id.
      * @param name        MainDish's name.
      * @param description MainDish's description.
      * @param price       MainDish's price.
      */
-    public MainDish(int ID, String name, double price, String description) {
-        super(ID, name, price, description);
+    public MainDish(int id, String name, double price, String description) {
+        super(id, name, price, description);
     }
 }

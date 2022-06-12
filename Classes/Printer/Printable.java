@@ -8,7 +8,7 @@ package Classes.Printer;
  * @version 1.0
  * @since   2021-11-12
  */
-public interface Printer {
+public interface Printable {
     /**
      * Maximum row length of the printing on the console
      */

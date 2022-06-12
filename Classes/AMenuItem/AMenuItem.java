@@ -1,4 +1,5 @@
 package Classes.AMenuItem;
+
 /**
  * The AMenuItem Class
  * @author Lingyi
@@ -15,9 +16,9 @@ public class AMenuItem {
      */
     protected TYPE itemType;
     /**
-     * The ID of the menu item.
+     * The id of the menu item.
      */
-    private int ID;
+    private int id;
     /**
      * The name of the menu item.
      */
@@ -34,14 +35,14 @@ public class AMenuItem {
     /**
      * Constructor to pass in all required parameters for a general menu item.
      *
-     * @param  ID           This menu item's ID.
+     * @param  id           This menu item's id.
      * @param  name         This menu item's name.
      * @param  price        This menu item's price.
      * @param  description  This menu item's description.
      */
-    public AMenuItem (int ID, String name, double price, String description)
+    public AMenuItem (int id, String name, double price, String description)
     {
-        this.ID = ID;
+        this.id = id;
         this.name = name; 
         this.price = price;
         this.description = description;
@@ -49,7 +50,7 @@ public class AMenuItem {
     
     /* Methods in class
       getId()
-      setId(int ID)
+      setId(int id)
       getName()
       setName(String name)
       getPrice()
@@ -60,18 +61,18 @@ public class AMenuItem {
      */
 
     /**
-     * Accessor for ID of the AMenuItem object
-     * @return ID 
+     * Accessor for id of the AMenuItem object
+     * @return id 
      */
     public int getId() {
-        return ID;
+        return id;
     }
     /**
-     * Mutator for ID of the AMenuItem object
-     * @param ID ID of AMenuItem object
+     * Mutator for id of the AMenuItem object
+     * @param id id of AMenuItem object
      */
-    public void setId(int ID) {
-        this.ID = ID;
+    public void setId(int id) {
+        this.id = id;
     }
     /**
      * Accessor for Name of the AMenuItem object

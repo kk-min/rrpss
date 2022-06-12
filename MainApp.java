@@ -4,12 +4,13 @@ import Classes.AMenuItem.MenuManager;
 import Classes.Printer.MenuSubMenu;
 import Classes.Printer.OrderSubMenu;
 import Classes.Printer.PrintReport;
-import Classes.Printer.Printer;
+import Classes.Printer.Printable;
 import Classes.Printer.ReservationSubMenu;
 import Classes.Staff.StaffManager;
 import Classes.Table.TableManager;
 import Classes.Time.DateTimeFormatHelper;
 import Classes.Time.TimerExecutor;
+import java.util.InputMismatchException;
 /**
  * MainApp for RRPSS project
  * this is where the main program will be run
@@ -41,10 +42,20 @@ public class MainApp {
 		while (choice != 0 && subMenuResult != 1) {
 			printMainMenu();
 
-			do {
-				System.out.print("Enter your choice (0-6): ");
-				choice = input.nextInt(); input.nextLine();
-			} while (choice > 6 || choice < 0);
+			boolean validEntry = false;
+			while(!validEntry){
+				try{
+					do {
+						System.out.println("Enter your choice (0-6): ");
+						choice = input.nextInt(); input.nextLine();
+					} while (choice > 6 || choice < 0);
+					validEntry = true;
+				}
+				catch (InputMismatchException e){
+					System.out.println("Please enter an integer.");
+					input.nextLine();
+				}
+			}
 
 			switch(choice) {
 				case 1: //Menu submenu
@@ -76,8 +87,8 @@ public class MainApp {
 	 * print out main menu for user to view functionalities available
 	 */
 	private static void printMainMenu() {
-		String restaurantName = Printer.restaurantName;
-		int rowLength = Printer.rowLength;
+		String restaurantName = Printable.restaurantName;
+		int rowLength = Printable.rowLength;
 
 		//Line 1:
 		System.out.printf("-".repeat(rowLength));
@@ -103,7 +114,7 @@ public class MainApp {
 		System.out.println("3) Reservation");
 		System.out.println("4) Check Current Table Availabilities");
 		System.out.println("5) Print Sale Revenue Report");
-		System.out.println("6) Advance Time (TESTING)");
+		System.out.println("6) Advance Time");
 		System.out.println("0) Exit Application");
 
 		//Line 11:

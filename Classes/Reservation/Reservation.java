@@ -20,7 +20,7 @@ public class Reservation {
     /**
      * ID of the reservation.
      */
-	private int Id;
+	private int id;
 
 	/**
      * The reservation date. 
@@ -55,7 +55,7 @@ public class Reservation {
 	/**
      * The table ID linked to the Reservation
      */
-	private int tableID;
+	private int tableId;
 	
     /**
      * Constructor for reservation
@@ -71,14 +71,14 @@ public class Reservation {
      */
 	public Reservation(int id, LocalDate rd, LocalTime rt, char session, String custContact, String custName, int pax,
 			int tableId) {
-		this.Id = id;
+		this.id = id;
 		this.resvDate = rd;
 		this.resvTime = rt;
 		this.resvSession = session == 'A' ? ReservationSession.AM : ReservationSession.PM;
 		this.customerContact = custContact;
 		this.customerName = custName;
 		this.numPax = pax;
-		this.tableID = tableId;
+		this.tableId = tableId;
 	}
 
     /**
@@ -87,7 +87,7 @@ public class Reservation {
      * @return Reservation ID in integer
      */
 	public int getResvId() {
-		return Id;
+		return id;
 	}
 
      /**
@@ -96,7 +96,7 @@ public class Reservation {
      * @param id reservation id
      */
      public void setResvId(int id) {
-          this.Id = id;
+          this.id = id;
      }
 
     /**
@@ -159,7 +159,7 @@ public class Reservation {
      *
      * @return Table number in integer
      */
-	public int getTableID() {
-		return tableID;
+	public int getTableId() {
+		return tableId;
 	}
 }

@@ -47,12 +47,12 @@ public class TableManager {
 	}
 	/**
 	 * Get the table object from the table number in integer
-	 * @param id Table ID in integer
-	 * @return The table object whose ID matches the input ID
+	 * @param id Table id in integer
+	 * @return The table object whose id matches the input id
 	 */
-	public static Table getTableByID(int id) {
+	public static Table getTableById(int id) {
 		for (Table t : tableCollection) {
-			if (t.getID() == id)
+			if (t.getId() == id)
 				return t;
 		}
 		return null;
@@ -70,15 +70,15 @@ public class TableManager {
 		return available;
 	}
 	/**
-	 * Find a table to accommodate for a walk-in customer. Return the ID of the table found.
+	 * Find a table to accommodate for a walk-in customer. Return the id of the table found.
 	 * @param pax Number of customers
-	 * @return ID of the table found
+	 * @return id of the table found
 	 */
 	public static int findTableForWalkIn(int pax){
 		ArrayList<Table> available = getTableAvailabilities();
 		for(Table t : available){
 			if(t.getCapacity() >= pax)
-				return t.getID();
+				return t.getId();
 		}
 		return -1;
 	}
@@ -96,12 +96,12 @@ public class TableManager {
 		System.out.printf("%-9s %-10s %-8s\n", "TableID", "Capacity", "Status");
 		String status = "";
 		for (Table t : tableCollection) {
-			status = "Available";
+			status = "Empty";
 			if (unavailable.contains(t))
 				status = "Reserved";
 			if (now && t.getStatus() == Table.TStatus.OCCUPIED)
 				status = "Occupied";
-			System.out.printf("%-9d %-10d %-8s\n", t.getID(), t.getCapacity(), status);
+			System.out.printf("%-9d %-10d %-8s\n", t.getId(), t.getCapacity(), status);
 		}
 	}
 	/**
